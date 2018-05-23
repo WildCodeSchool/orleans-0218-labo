@@ -1,1 +1,11 @@
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+.navbar-brand {
+  position: absolute;
+}
+
+.navbar-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
