@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Staff creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('staff_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1 class="text-center">Ajout d'un nouveau membre au personnel de l'accueil</h1>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" class="btn btn-primary btn-sm" value="Valider"/>
+                {{ form_end(form) }}
+                <a href="{{ path('staff_index') }}" class="btn btn-primary btn-sm pull-right" role="button">Retour à la
+                    liste</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
