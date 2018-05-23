@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Stuff;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Stuff controller.
@@ -27,8 +28,9 @@ class StuffController extends Controller
         $stuffs = $em->getRepository('AppBundle:Stuff')->findAll();
 
         return $this->render(
-            'stuff/index.html.twig', array(
-            'stuffs' => $stuffs,
+            'stuff/index.html.twig',
+            array(
+                'stuffs' => $stuffs,
             )
         );
     }
@@ -54,9 +56,10 @@ class StuffController extends Controller
         }
 
         return $this->render(
-            'stuff/new.html.twig', array(
-            'stuff' => $stuff,
-            'form' => $form->createView(),
+            'stuff/new.html.twig',
+            array(
+                'stuff' => $stuff,
+                'form' => $form->createView(),
             )
         );
     }
@@ -72,9 +75,10 @@ class StuffController extends Controller
         $deleteForm = $this->createDeleteForm($stuff);
 
         return $this->render(
-            'stuff/show.html.twig', array(
-            'stuff' => $stuff,
-            'delete_form' => $deleteForm->createView(),
+            'stuff/show.html.twig',
+            array(
+                'stuff' => $stuff,
+                'delete_form' => $deleteForm->createView(),
             )
         );
     }
@@ -98,10 +102,11 @@ class StuffController extends Controller
         }
 
         return $this->render(
-            'stuff/edit.html.twig', array(
-            'stuff' => $stuff,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'stuff/edit.html.twig',
+            array(
+                'stuff' => $stuff,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
             )
         );
     }

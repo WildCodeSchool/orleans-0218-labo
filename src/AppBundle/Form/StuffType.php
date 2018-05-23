@@ -35,6 +35,4 @@ class StuffType extends AbstractType
     {
         return 'appbundle_stuff';
     }
-
-
 }
