@@ -94,4 +94,3 @@ class Staff
         return $this->firstName;
     }
 }
-
