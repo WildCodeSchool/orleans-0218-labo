@@ -1,5 +1,4 @@
 <?php
-
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Equipment;
@@ -11,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Equipment controller.
  *
- * @Route("equipment")
+ * @Route("admin/equipment")
  */
 class EquipmentController extends Controller
 {
@@ -24,9 +23,7 @@ class EquipmentController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $stuffs = $em->getRepository('AppBundle:Equipment')->findAll();
-
         return $this->render(
             'equipment/index.html.twig',
             array(
@@ -34,7 +31,6 @@ class EquipmentController extends Controller
             )
         );
     }
-
     /**
      * Creates a new equipment entity.
      *
@@ -43,27 +39,23 @@ class EquipmentController extends Controller
      */
     public function newAction(Request $request)
     {
-        $stuff = new Equipment();
-        $form = $this->createForm('AppBundle\Form\EquipmentType', $stuff);
+        $equipment = new Equipment();
+        $form = $this->createForm('AppBundle\Form\EquipmentType', $equipment);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($stuff);
+            $em->persist($equipment);
             $em->flush();
-
-            return $this->redirectToRoute('equipment_show', array('id' => $stuff->getId()));
+            return $this->redirectToRoute('equipment_show', array('id' => $equipment->getId()));
         }
-
         return $this->render(
-            'equipment/new.html.twig',
+            'admin/equipment/new.html.twig',
             array(
-                'equipment' => $stuff,
+                'equipment' => $equipment,
                 'form' => $form->createView(),
             )
         );
     }
-
     /**
      * Finds and displays a equipment entity.
      *
@@ -73,7 +65,6 @@ class EquipmentController extends Controller
     public function showAction(Equipment $stuff)
     {
         $deleteForm = $this->createDeleteForm($stuff);
-
         return $this->render(
             'equipment/show.html.twig',
             array(
@@ -82,7 +73,6 @@ class EquipmentController extends Controller
             )
         );
     }
-
     /**
      * Displays a form to edit an existing equipment entity.
      *
@@ -94,13 +84,10 @@ class EquipmentController extends Controller
         $deleteForm = $this->createDeleteForm($stuff);
         $editForm = $this->createForm('AppBundle\Form\EquipmentType', $stuff);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('equipment_edit', array('id' => $stuff->getId()));
         }
-
         return $this->render(
             'equipment/edit.html.twig',
             array(
@@ -110,7 +97,6 @@ class EquipmentController extends Controller
             )
         );
     }
-
     /**
      * Deletes a equipment entity.
      *
@@ -121,16 +107,13 @@ class EquipmentController extends Controller
     {
         $form = $this->createDeleteForm($stuff);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($stuff);
             $em->flush();
         }
-
         return $this->redirectToRoute('equipment_index');
     }
-
     /**
      * Creates a form to delete a equipment entity.
      *
