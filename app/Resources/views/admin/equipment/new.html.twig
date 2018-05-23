@@ -10,17 +10,13 @@
 
                     {{ form_start(form) }}
                     {{ form_widget(form) }}
+                    <a href="{{ path('equipment_index') }}"><img class="icon_size" src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg" alt=""></a>
                     <button type="submit" class="btn btn-primary pull-right">Sauvegarder</button>
 
                     {{ form_end(form) }}
 
                 </div>
             </div>
-        </div>
-        <div class="row">
-           <div class="col-md-1 col-md-offset-2">
-               <a href="{{ path('equipment_index') }}"><img class="pull-left img-responsive essais" src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg" alt=""></a>
-           </div>
         </div>
     </div>
 
