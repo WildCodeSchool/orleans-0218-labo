@@ -1,0 +1,36 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block layout %}
+    <section class="admin-listing-room">
+        <div class="container-fluid container-title">
+            <h1>Gestion des salles</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <table class="table">
+                    <tbody>
+                    {% for room in rooms %}
+                        <tr class="admin-listing">
+                            <td class="name">{{ room.name }}</td>
+                            <td class="edit">
+                                <a role="button" class="btn btn-primary"
+                                   href="{{ path('room_edit', { 'id': room.id }) }}">Modifier</a>
+                            </td>
+                            <td class="delete">
+                                <a role="button" class="btn btn-danger"
+                                   href="">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <a role="button" class="btn btn-primary" href="{{ path('room_new') }}"><i
+                                    class="fas fa-camera-retro"></i>Ajouter une salle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

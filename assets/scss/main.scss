@@ -1,1 +1,40 @@
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+$primary-color: #ea2b32;
+$white-color: #FFF;
+
+tr.admin-listing {
+  td {
+    padding-left: 10px;
+
+    &.name {
+      font-size: 1.4em;
+      padding-top: 10px;
+    }
+
+    &.edit {
+      width: 50px;
+    }
+    &.delete {
+      width: 50px;
+    }
+  }
+}
+
+body {
+  h1 {
+    color: white;
+    font-size: 5em;
+  }
+
+  .container-title {
+    margin-bottom: 35px;
+    color: $white-color;
+    height: 180px;
+    background-color: $primary-color;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+  }
+}
