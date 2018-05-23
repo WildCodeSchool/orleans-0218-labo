@@ -5,4 +5,4 @@ php:
 install:
   - composer require squizlabs/php_codesniffer
 script:
-  - vendor/bin/phpcs --standard=PSR2 src/AppBundle/Controller
+  - vendor/bin/phpcs --standard=PSR2 src/AppBundle/
