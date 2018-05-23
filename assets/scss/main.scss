@@ -2,6 +2,7 @@
 
 $primary-color: #ea2b32;
 $white-color: #FFF;
+$red: #E1151A;
 
 tr.admin-listing {
   td {
@@ -36,5 +37,23 @@ body {
     justify-content: center;
     justify-items: center;
     align-items: center;
+    
+.home {
+  background-color: $red;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.parameters {
+  margin-top: -120px;
+}
+
+.home-btn {
+  width: 100px;
+  height: 50px;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.7);
   }
 }

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Stuffs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Picture</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stuff in stuffs %}
+            <tr>
+                <td><a href="{{ path('equipment_show', { 'id': stuff.id }) }}">{{ stuff.id }}</a></td>
+                <td>{{ stuff.name }}</td>
+                <td>{{ stuff.description }}</td>
+                <td>{{ stuff.picture }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('equipment_show', { 'id': stuff.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('equipment_edit', { 'id': stuff.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('equipment_new') }}">Create a new stuff</a>
+        </li>
+    </ul>
+{% endblock %}
