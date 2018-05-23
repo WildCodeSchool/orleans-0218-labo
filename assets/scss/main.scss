@@ -1,7 +1,16 @@
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-$red: #E1151A;
+ $red: #E1151A;
 
+.navbar-brand {
+  position: absolute;
+}
+
+.navbar-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  
 .home {
   background-color: $red;
   min-height: 100vh;
