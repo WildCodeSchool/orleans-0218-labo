@@ -33,6 +33,4 @@ class StaffType extends AbstractType
     {
         return 'appbundle_staff';
     }
-
-
 }
