@@ -17,7 +17,7 @@ class StuffController extends Controller
     /**
      * Lists all stuff entities.
      *
-     * @Route("/", name="stuff_index")
+     * @Route("/",    name="stuff_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -26,15 +26,17 @@ class StuffController extends Controller
 
         $stuffs = $em->getRepository('AppBundle:Stuff')->findAll();
 
-        return $this->render('stuff/index.html.twig', array(
+        return $this->render(
+            'stuff/index.html.twig', array(
             'stuffs' => $stuffs,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new stuff entity.
      *
-     * @Route("/new", name="stuff_new")
+     * @Route("/new",  name="stuff_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -51,10 +53,12 @@ class StuffController extends Controller
             return $this->redirectToRoute('stuff_show', array('id' => $stuff->getId()));
         }
 
-        return $this->render('stuff/new.html.twig', array(
+        return $this->render(
+            'stuff/new.html.twig', array(
             'stuff' => $stuff,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
@@ -67,17 +71,19 @@ class StuffController extends Controller
     {
         $deleteForm = $this->createDeleteForm($stuff);
 
-        return $this->render('stuff/show.html.twig', array(
+        return $this->render(
+            'stuff/show.html.twig', array(
             'stuff' => $stuff,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing stuff entity.
      *
      * @Route("/{id}/edit", name="stuff_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Stuff $stuff)
     {
@@ -91,17 +97,19 @@ class StuffController extends Controller
             return $this->redirectToRoute('stuff_edit', array('id' => $stuff->getId()));
         }
 
-        return $this->render('stuff/edit.html.twig', array(
+        return $this->render(
+            'stuff/edit.html.twig', array(
             'stuff' => $stuff,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a stuff entity.
      *
-     * @Route("/{id}", name="stuff_delete")
+     * @Route("/{id}",   name="stuff_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Stuff $stuff)
@@ -130,7 +138,6 @@ class StuffController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('stuff_delete', array('id' => $stuff->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
