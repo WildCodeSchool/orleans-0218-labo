@@ -49,7 +49,7 @@ class StaffController extends Controller
             $em->persist($staff);
             $em->flush();
 
-            return $this->redirectToRoute('admin/staff_show', array('id' => $staff->getId()));
+            return $this->redirectToRoute('staff_show', array('id' => $staff->getId()));
         }
 
         return $this->render('admin/staff/new.html.twig', array(
@@ -116,7 +116,7 @@ class StaffController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('admin/staff_index');
+        return $this->redirectToRoute('staff_index');
     }
 
     /**
