@@ -1,41 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Staff list</h1>
+    <div class="container staff-index">
+        <h1>Liste du personnel de l'accueil</h1>
 
-    <table>
-        <thead>
+        <table class="table table-striped">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Lastname</th>
-                <th>Firstname</th>
-                <th>Actions</th>
+                <th>N°</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Éditer</th>
+                <th>Supprimer</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for staff in staff %}
-            <tr>
-                <td><a href="{{ path('staff_show', { 'id': staff.id }) }}">{{ staff.id }}</a></td>
-                <td>{{ staff.lastName }}</td>
-                <td>{{ staff.firstName }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('staff_show', { 'id': staff.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('staff_edit', { 'id': staff.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('staff_new') }}">Create a new staff</a>
-        </li>
-    </ul>
+            </thead>
+            <tbody>
+            {% for staff in staff %}
+                <tr>
+                    <td><a href="{{ path('staff_show', { 'id': staff.id }) }}">{{ staff.id }}</a></td>
+                    <td>{{ staff.lastName }}</td>
+                    <td>{{ staff.firstName }}</td>
+                    <td><a href="{{ path('staff_edit', { 'id': staff.id }) }}" class="btn btn-danger btn-sm edit" role="button">edit</a></td>
+                    <td><a href="{{ path('staff_show', { 'id': staff.id }) }}" class="btn btn-info btn-sm show" role="button">show</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('staff_new') }}" class="btn btn-primary btn-sm pull-right new" role="button">Ajouter</a>
+    </div>
 {% endblock %}
