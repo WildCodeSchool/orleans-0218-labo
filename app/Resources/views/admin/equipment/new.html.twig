@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div>
+                    <h1 class="text-center">Création d'un nouvel équipement</h1>
+
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <button type="submit" class="btn btn-primary pull-right">Sauvegarder</button>
+                    {{ form_end(form) }}
+
+                    <ul>
+                        <li>
+                            <a href="{{ path('equipment_index') }}">Back to the list</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
