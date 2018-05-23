@@ -13,9 +13,9 @@ class StuffControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/stuff/');
+        $crawler = $client->request('GET', '/equipment/');
         $this->assertEquals(200, $client->getResponse()->getStatusCode(),
-        "Unexpected HTTP status code for GET /stuff/");
+        "Unexpected HTTP status code for GET /equipment/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
