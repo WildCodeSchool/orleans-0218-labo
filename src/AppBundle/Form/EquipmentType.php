@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class StuffType extends AbstractType
+class EquipmentType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -23,7 +23,7 @@ class StuffType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-            'data_class' => 'AppBundle\Entity\Stuff'
+            'data_class' => 'AppBundle\Entity\Equipment'
             )
         );
     }
