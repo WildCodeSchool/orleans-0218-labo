@@ -27,7 +27,7 @@ class StaffController extends Controller
 
         $staff = $em->getRepository('AppBundle:Staff')->findAll();
 
-        return $this->render('staff/index.html.twig', array(
+        return $this->render('admin/staff/index.html.twig', array(
             'staff' => $staff,
         ));
     }
@@ -52,7 +52,7 @@ class StaffController extends Controller
             return $this->redirectToRoute('staff_show', array('id' => $staff->getId()));
         }
 
-        return $this->render('staff/new.html.twig', array(
+        return $this->render('admin/staff/new.html.twig', array(
             'staff' => $staff,
             'form' => $form->createView(),
         ));
@@ -68,7 +68,7 @@ class StaffController extends Controller
     {
         $deleteForm = $this->createDeleteForm($staff);
 
-        return $this->render('staff/show.html.twig', array(
+        return $this->render('admin/staff/show.html.twig', array(
             'staff' => $staff,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -92,7 +92,7 @@ class StaffController extends Controller
             return $this->redirectToRoute('staff_edit', array('id' => $staff->getId()));
         }
 
-        return $this->render('staff/edit.html.twig', array(
+        return $this->render('admin/staff/edit.html.twig', array(
             'staff' => $staff,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

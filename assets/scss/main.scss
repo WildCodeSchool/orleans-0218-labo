@@ -1,28 +1,82 @@
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-$red: #E1151A;
+$primary-color: #E1151A;
+$white-color: #FFF;
 
-.home {
-  background-color: $red;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+//ADMIN
 
-.parameters {
-  margin-top: -120px;
-}
+tr.admin-listing {
+  td {
+    padding-left: 10px;
 
-.home-btn {
-  width: 100px;
-  height: 50px;
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.7);
+    &.name {
+      font-size: 1.4em;
+      padding-top: 10px;
+    }
+
+    &.edit {
+      width: 50px;
+    }
+    &.delete {
+      width: 50px;
+    }
   }
+}
+
+body {
+  h1 {
+    color: white;
+    font-size: 5em;
+  }
+
+  .container-title {
+    margin-bottom: 35px;
+    color: $white-color;
+    height: 180px;
+    background-color: $primary-color;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+  }
+  .navbar-brand {
+    position: absolute;
+  }
+
+  .navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .home {
+    background-color: $primary-color;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .parameters {
+    margin-top: -120px;
+  }
+
 }
 
 .icon_size{
   height: 30px;
   width: 30px;
+
+
+  .home-btn {
+    width: 100px;
+    height: 50px;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+
+.staff-index .edit, .show, .new {
+  width: 80px;
 }
