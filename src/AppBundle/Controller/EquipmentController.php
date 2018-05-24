@@ -23,11 +23,11 @@ class EquipmentController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $stuffs = $em->getRepository('AppBundle:Equipment')->findAll();
+        $equipments = $em->getRepository('AppBundle:Equipment')->findAll();
         return $this->render(
-            'equipment/index.html.twig',
+            'admin/equipment/index.html.twig',
             array(
-                'stuffs' => $stuffs,
+                'equipments' => $equipments,
             )
         );
     }
