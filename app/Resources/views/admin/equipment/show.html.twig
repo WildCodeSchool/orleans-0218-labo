@@ -7,29 +7,29 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ stuff.id }}</td>
+                <td>{{ equipment.id }}</td>
             </tr>
             <tr>
                 <th>Name</th>
-                <td>{{ stuff.name }}</td>
+                <td>{{ equipment.name }}</td>
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ stuff.description }}</td>
+                <td>{{ equipment.description }}</td>
             </tr>
             <tr>
                 <th>Picture</th>
-                <td>{{ stuff.picture }}</td>
+                <td>{{ equipment.picture }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('stuff_index') }}">Back to the list</a>
+            <a href="{{ path('equipment_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('stuff_edit', { 'id': stuff.id }) }}">Edit</a>
+            <a href="{{ path('equipment_edit', { 'id': equipment.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

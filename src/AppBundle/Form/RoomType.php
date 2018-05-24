@@ -6,14 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class StuffType extends AbstractType
+class RoomType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('description')->add('picture');
+        $builder->add('name');
     }
     
     /**
@@ -21,11 +21,9 @@ class StuffType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(
-            array(
-            'data_class' => 'AppBundle\Entity\Stuff'
-            )
-        );
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\Entity\Room'
+        ));
     }
 
     /**
@@ -33,6 +31,6 @@ class StuffType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_stuff';
+        return 'appbundle_room';
     }
 }

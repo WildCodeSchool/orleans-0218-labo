@@ -1,147 +1,130 @@
 <?php
-
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Stuff;
+use AppBundle\Entity\Equipment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Stuff controller.
+ * Equipment controller.
  *
- * @Route("stuff")
+ * @Route("admin/equipment")
  */
-class StuffController extends Controller
+class EquipmentController extends Controller
 {
     /**
-     * Lists all stuff entities.
+     * Lists all Equipment entities.
      *
-     * @Route("/",    name="stuff_index")
+     * @Route("/",    name="equipment_index")
      * @Method("GET")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $stuffs = $em->getRepository('AppBundle:Stuff')->findAll();
-
+        $equipments = $em->getRepository('AppBundle:Equipment')->findAll();
         return $this->render(
-            'stuff/index.html.twig',
+            'admin/equipment/index.html.twig',
             array(
-                'stuffs' => $stuffs,
+                'equipments' => $equipments,
             )
         );
     }
-
     /**
-     * Creates a new stuff entity.
+     * Creates a new equipment entity.
      *
-     * @Route("/new",  name="stuff_new")
+     * @Route("/new",  name="equipment_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
-        $stuff = new Stuff();
-        $form = $this->createForm('AppBundle\Form\StuffType', $stuff);
+        $equipment = new Equipment();
+        $form = $this->createForm('AppBundle\Form\EquipmentType', $equipment);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($stuff);
+            $em->persist($equipment);
             $em->flush();
-
-            return $this->redirectToRoute('stuff_show', array('id' => $stuff->getId()));
+            return $this->redirectToRoute('equipment_show', array('id' => $equipment->getId()));
         }
-
         return $this->render(
-            'stuff/new.html.twig',
+            'admin/equipment/new.html.twig',
             array(
-                'stuff' => $stuff,
+                'equipment' => $equipment,
                 'form' => $form->createView(),
             )
         );
     }
-
     /**
-     * Finds and displays a stuff entity.
+     * Finds and displays a equipment entity.
      *
-     * @Route("/{id}", name="stuff_show")
+     * @Route("/{id}", name="equipment_show")
      * @Method("GET")
      */
-    public function showAction(Stuff $stuff)
+    public function showAction(Equipment $stuff)
     {
         $deleteForm = $this->createDeleteForm($stuff);
-
         return $this->render(
-            'stuff/show.html.twig',
+            'equipment/show.html.twig',
             array(
-                'stuff' => $stuff,
+                'equipment' => $stuff,
                 'delete_form' => $deleteForm->createView(),
             )
         );
     }
-
     /**
-     * Displays a form to edit an existing stuff entity.
+     * Displays a form to edit an existing equipment entity.
      *
-     * @Route("/{id}/edit", name="stuff_edit")
+     * @Route("/{id}/edit", name="equipment_edit")
      * @Method({"GET",      "POST"})
      */
-    public function editAction(Request $request, Stuff $stuff)
+    public function editAction(Request $request, Equipment $stuff)
     {
         $deleteForm = $this->createDeleteForm($stuff);
-        $editForm = $this->createForm('AppBundle\Form\StuffType', $stuff);
+        $editForm = $this->createForm('AppBundle\Form\EquipmentType', $stuff);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('stuff_edit', array('id' => $stuff->getId()));
+            return $this->redirectToRoute('equipment_edit', array('id' => $stuff->getId()));
         }
-
         return $this->render(
-            'stuff/edit.html.twig',
+            'equipment/edit.html.twig',
             array(
-                'stuff' => $stuff,
+                'equipment' => $stuff,
                 'edit_form' => $editForm->createView(),
                 'delete_form' => $deleteForm->createView(),
             )
         );
     }
-
     /**
-     * Deletes a stuff entity.
+     * Deletes a equipment entity.
      *
-     * @Route("/{id}",   name="stuff_delete")
+     * @Route("/{id}",   name="equipment_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Stuff $stuff)
+    public function deleteAction(Request $request, Equipment $stuff)
     {
         $form = $this->createDeleteForm($stuff);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($stuff);
             $em->flush();
         }
-
-        return $this->redirectToRoute('stuff_index');
+        return $this->redirectToRoute('equipment_index');
     }
-
     /**
-     * Creates a form to delete a stuff entity.
+     * Creates a form to delete a equipment entity.
      *
-     * @param Stuff $stuff The stuff entity
+     * @param Equipment $stuff The Equipment entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Stuff $stuff)
+    private function createDeleteForm(Equipment $stuff)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('stuff_delete', array('id' => $stuff->getId())))
+            ->setAction($this->generateUrl('equipment_delete', array('id' => $stuff->getId())))
             ->setMethod('DELETE')
             ->getForm();
     }

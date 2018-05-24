@@ -4,7 +4,7 @@ namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class StuffControllerTest extends WebTestCase
+class ReservationControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,14 +13,14 @@ class StuffControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/equipment/');
+        $crawler = $client->request('GET', '/reservation/');
         $this->assertEquals(200, $client->getResponse()->getStatusCode(),
-        "Unexpected HTTP status code for GET /equipment/");
+        "Unexpected HTTP status code for GET /reservation/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'appbundle_stuff[field_name]'  => 'Test',
+            'appbundle_reservation[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -35,7 +35,7 @@ class StuffControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'appbundle_stuff[field_name]'  => 'Foo',
+            'appbundle_reservation[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 
