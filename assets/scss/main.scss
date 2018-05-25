@@ -3,6 +3,8 @@
 $primary-color: #E1151A;
 $white-color: #FFF;
 
+$catamaran : 'Catamaran', sans-serif;
+
 //ADMIN
 
 tr.admin-listing {
@@ -25,20 +27,26 @@ tr.admin-listing {
 
 body {
   h1 {
-    color: white;
-    font-size: 5em;
+    font-size: 3rem;
+    font-family: $catamaran;
+    text-transform: uppercase;
   }
 
   .container-title {
+    margin-top: -1px;
     margin-bottom: 35px;
-    color: $white-color;
     height: 180px;
-    background-color: $primary-color;
     display: flex;
     justify-content: center;
     justify-items: center;
     align-items: center;
   }
+
+  .navbar {
+    background-color: $primary-color;
+    margin: -1px;
+  }
+
   .navbar-brand {
     position: absolute;
   }
@@ -47,6 +55,24 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-around;
+    font-family: $catamaran;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 2rem;
+    height: 100px;
+    li {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  .white {
+    color: $white-color;
+    &:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
   }
 
   .home {
