@@ -14,8 +14,8 @@ class StaffType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('lastName', textType::class, array('label' => 'Nom'))
-                ->add('firstName', textType::class, array('label' => 'Prénom'));
+        $builder->add('lastName', TextType::class, array('label' => 'Nom'))
+                ->add('firstName', TextType::class, array('label' => 'Prénom'));
     }
     
     /**
