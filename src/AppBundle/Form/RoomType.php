@@ -18,7 +18,9 @@ class RoomType extends AbstractType
         $builder
             ->add('name', TextType::class, array('label' => 'Nom'))
             ->add(
-                'doors', CheckboxType::class, [
+                'doors',
+                CheckboxType::class,
+                [
                 'required' => false,
                 ]
             );

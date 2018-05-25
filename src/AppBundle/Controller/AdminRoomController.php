@@ -28,7 +28,8 @@ class AdminRoomController extends Controller
         $rooms = $em->getRepository('AppBundle:Room')->findAll();
 
         return $this->render(
-            'admin/room/index.html.twig', array(
+            'admin/room/index.html.twig',
+            array(
             'rooms' => $rooms,
             )
         );
@@ -55,7 +56,8 @@ class AdminRoomController extends Controller
         }
 
         return $this->render(
-            'admin/room/new.html.twig', array(
+            'admin/room/new.html.twig',
+            array(
             'room' => $room,
             'form' => $form->createView(),
             )
@@ -81,7 +83,8 @@ class AdminRoomController extends Controller
         }
 
         return $this->render(
-            'admin/room/edit.html.twig', array(
+            'admin/room/edit.html.twig',
+            array(
             'room' => $room,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
