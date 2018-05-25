@@ -18,7 +18,7 @@ class AdminRoomController extends Controller
     /**
      * Lists all room entities.
      *
-     * @Route("/", name="room_index")
+     * @Route("/",    name="room_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -27,15 +27,17 @@ class AdminRoomController extends Controller
 
         $rooms = $em->getRepository('AppBundle:Room')->findAll();
 
-        return $this->render('admin/room/index.html.twig', array(
+        return $this->render(
+            'admin/room/index.html.twig', array(
             'rooms' => $rooms,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new room entity.
      *
-     * @Route("/new", name="room_new")
+     * @Route("/new",  name="room_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -52,17 +54,19 @@ class AdminRoomController extends Controller
             return $this->redirectToRoute('room_index', array('id' => $room->getId()));
         }
 
-        return $this->render('admin/room/new.html.twig', array(
+        return $this->render(
+            'admin/room/new.html.twig', array(
             'room' => $room,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing room entity.
      *
      * @Route("/{id}/edit", name="room_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Room $room)
     {
@@ -76,17 +80,19 @@ class AdminRoomController extends Controller
             return $this->redirectToRoute('room_edit', array('id' => $room->getId()));
         }
 
-        return $this->render('admin/room/edit.html.twig', array(
+        return $this->render(
+            'admin/room/edit.html.twig', array(
             'room' => $room,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a room entity.
      *
-     * @Route("/{id}", name="room_delete")
+     * @Route("/{id}",   name="room_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Room $room)

@@ -2,12 +2,13 @@
 
 $primary-color: #E1151A;
 $white-color: #FFF;
+$check-color: #27ae60;
 
 //ADMIN
 
 tr.admin-listing {
   td {
-    padding-left: 10px;
+    //padding-left: 10px;
 
     &.name {
       font-size: 1.4em;
@@ -17,8 +18,13 @@ tr.admin-listing {
     &.edit {
       width: 50px;
     }
+
     &.delete {
       width: 50px;
+    }
+
+    &.double {
+      width: 100px;
     }
   }
 }
@@ -69,6 +75,9 @@ body {
     margin-top: -120px;
   }
 
+  .fa-check {
+    color: $check-color;
+  }
 }
 
 .icon_size {

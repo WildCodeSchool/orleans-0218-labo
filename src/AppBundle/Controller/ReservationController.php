@@ -18,7 +18,7 @@ class ReservationController extends Controller
     /**
      * Lists all reservation entities.
      *
-     * @Route("/", name="reservation_index")
+     * @Route("/",    name="reservation_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -27,15 +27,17 @@ class ReservationController extends Controller
 
         $reservations = $em->getRepository('AppBundle:Reservation')->findAll();
 
-        return $this->render('reservation/index.html.twig', array(
+        return $this->render(
+            'reservation/index.html.twig', array(
             'reservations' => $reservations,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new reservation entity.
      *
-     * @Route("/new", name="reservation_new")
+     * @Route("/new",  name="reservation_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -52,10 +54,12 @@ class ReservationController extends Controller
             return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
         }
 
-        return $this->render('reservation/new.html.twig', array(
+        return $this->render(
+            'reservation/new.html.twig', array(
             'reservation' => $reservation,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
@@ -68,17 +72,19 @@ class ReservationController extends Controller
     {
         $deleteForm = $this->createDeleteForm($reservation);
 
-        return $this->render('reservation/show.html.twig', array(
+        return $this->render(
+            'reservation/show.html.twig', array(
             'reservation' => $reservation,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing reservation entity.
      *
      * @Route("/{id}/edit", name="reservation_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Reservation $reservation)
     {
@@ -92,17 +98,19 @@ class ReservationController extends Controller
             return $this->redirectToRoute('reservation_edit', array('id' => $reservation->getId()));
         }
 
-        return $this->render('reservation/edit.html.twig', array(
+        return $this->render(
+            'reservation/edit.html.twig', array(
             'reservation' => $reservation,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a reservation entity.
      *
-     * @Route("/{id}", name="reservation_delete")
+     * @Route("/{id}",   name="reservation_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Reservation $reservation)
@@ -131,7 +139,6 @@ class ReservationController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('reservation_delete', array('id' => $reservation->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

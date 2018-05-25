@@ -29,9 +29,9 @@ class Room
     private $name;
 
     /**
-     * @var boolean
+     * @var bool
+     * @ORM\Column(name="doors", type="boolean", options={"default"=0})
      *
-     * @ORM\Column(name="doors", type="boolean")
      */
     private $doors;
 
@@ -67,29 +67,5 @@ class Room
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set doors
-     *
-     * @param boolean $doors
-     *
-     * @return Room
-     */
-    public function setDoors($doors)
-    {
-        $this->doors = $doors;
-
-        return $this;
-    }
-
-    /**
-     * Get doors
-     *
-     * @return boolean
-     */
-    public function getDoors()
-    {
-        return $this->doors;
     }
 }
