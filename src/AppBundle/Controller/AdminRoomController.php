@@ -49,7 +49,7 @@ class AdminRoomController extends Controller
             $em->persist($room);
             $em->flush();
 
-            return $this->redirectToRoute('room_show', array('id' => $room->getId()));
+            return $this->redirectToRoute('room_index', array('id' => $room->getId()));
         }
 
         return $this->render('admin/room/new.html.twig', array(
