@@ -79,21 +79,20 @@ class EquipmentController extends Controller
      * @Route("/{id}/edit", name="equipment_edit")
      * @Method({"GET",      "POST"})
      */
-    public function editAction(Request $request, Equipment $stuff)
+    public function editAction(Request $request, Equipment $equipment)
     {
-        $deleteForm = $this->createDeleteForm($stuff);
-        $editForm = $this->createForm('AppBundle\Form\EquipmentType', $stuff);
+        $deleteForm = $this->createDeleteForm($equipment);
+        $editForm = $this->createForm('AppBundle\Form\EquipmentType', $equipment);
         $editForm->handleRequest($request);
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('equipment_edit', array('id' => $stuff->getId()));
+            return $this->redirectToRoute('equipment_index', array('id' => $equipment->getId()));
         }
         return $this->render(
-            'equipment/edit.html.twig',
+            'admin/equipment/edit.html.twig',
             array(
-                'equipment' => $stuff,
+                'equipment' => $equipment,
                 'edit_form' => $editForm->createView(),
-                'delete_form' => $deleteForm->createView(),
             )
         );
     }
