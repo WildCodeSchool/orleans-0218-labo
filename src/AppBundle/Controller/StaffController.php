@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Staff controller.
  *
- * @Route("staff")
+ * @Route("admin/staff")
  */
 class StaffController extends Controller
 {
