@@ -19,9 +19,10 @@ class EquipmentType extends AbstractType
             ->add('name', TextType::class, array('label'=> 'Nom de l\'équipement'))
             ->add(
                 'description',
-                TextareaType::class, array(
-                'label'=> 'Description de l\'équipement',
-                'attr' => array('cols' => '5', 'rows' => '5'))
+                TextareaType::class,
+                array(
+                    'label'=> 'Description de l\'équipement',
+                    'attr' => array('cols' => '5', 'rows' => '5'))
             );
     }
     
