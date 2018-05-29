@@ -24,10 +24,17 @@ class EquipmentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $equipments = $em->getRepository('AppBundle:Equipment')->findAll();
+
+        $deleteForm = array();
+        foreach ($equipments as $equipment) {
+            $deleteForm[$equipment->getId()] = $this->createDeleteForm($equipment)->createView();
+        }
+
         return $this->render(
             'admin/equipment/index.html.twig',
             array(
                 'equipments' => $equipments,
+                'delete_form' => $deleteForm
             )
         );
     }
@@ -120,10 +127,10 @@ class EquipmentController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Equipment $stuff)
+    private function createDeleteForm(Equipment $equipment)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('equipment_delete', array('id' => $stuff->getId())))
+            ->setAction($this->generateUrl('equipment_delete', array('id' => $equipment->getId())))
             ->setMethod('DELETE')
             ->getForm();
     }
