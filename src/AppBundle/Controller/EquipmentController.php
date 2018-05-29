@@ -53,7 +53,7 @@ class EquipmentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($equipment);
             $em->flush();
-            return $this->redirectToRoute('equipment_show', array('id' => $equipment->getId()));
+            return $this->redirectToRoute('equipment_index', array('id' => $equipment->getId()));
         }
         return $this->render(
             'admin/equipment/new.html.twig',
