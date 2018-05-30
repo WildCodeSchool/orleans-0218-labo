@@ -72,7 +72,7 @@ class EquipmentController extends Controller
     public function showAction(Equipment $stuff)
     {
         $deleteForm = $this->createDeleteForm($stuff);
-        return $this->render(
+        return $this        ->render(
             'equipment/show.html.twig',
             array(
                 'equipment' => $stuff,
