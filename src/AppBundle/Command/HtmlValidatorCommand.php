@@ -41,7 +41,9 @@ class HtmlValidatorCommand extends Command
     {
         $client = new Client();
 
-        if (file_exists('var/reports/app.validateHtml.html')) unlink('var/reports/app.validateHtml.html');
+        if (file_exists('var/reports/app.validateHtml.html')) {
+            unlink('var/reports/app.validateHtml.html');
+        }
 
         file_put_contents(
             'var/reports/app.validateHtml.html',
