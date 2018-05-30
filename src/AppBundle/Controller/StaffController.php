@@ -89,7 +89,7 @@ class StaffController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('staff_edit', array('id' => $staff->getId()));
+            return $this->redirectToRoute('staff_index', array('id' => $staff->getId()));
         }
 
         return $this->render('admin/staff/edit.html.twig', array(

@@ -2,14 +2,22 @@
 
 $primary-color: #E1151A;
 $white-color: #FFF;
+$check-color: #27ae60;
 
 $catamaran : 'Catamaran', sans-serif;
 
 //ADMIN
 
 tr.admin-listing {
-  td {
+  th {
     padding-left: 10px;
+
+    &.name {
+      font-size: 1.4em;
+      padding-top: 10px;
+    }
+  }
+  td {
 
     &.name {
       font-size: 1.4em;
@@ -19,8 +27,13 @@ tr.admin-listing {
     &.edit {
       width: 50px;
     }
+
     &.delete {
       width: 50px;
+    }
+
+    &.double {
+      width: 100px;
     }
   }
 }
@@ -33,7 +46,6 @@ body {
   }
 
   h2 {
-    color: black;
     font-size: 2em;
     font-family: $catamaran;
   }
@@ -93,12 +105,14 @@ body {
     margin-top: -120px;
   }
 
+  .fa-check {
+    color: $check-color;
+  }
 }
 
-.icon_size{
+.icon_size {
   height: 30px;
   width: 30px;
-
 
   .home-btn {
     width: 100px;

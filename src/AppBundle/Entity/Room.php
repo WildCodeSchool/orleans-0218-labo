@@ -28,6 +28,12 @@ class Room
      */
     private $name;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="doors", type="boolean")
+     */
+    private $doors;
 
     /**
      * Get id
@@ -61,5 +67,29 @@ class Room
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set doors
+     *
+     * @param boolean $doors
+     *
+     * @return Room
+     */
+    public function setDoors($doors)
+    {
+        $this->doors = $doors;
+
+        return $this;
+    }
+
+    /**
+     * Get doors
+     *
+     * @return boolean
+     */
+    public function getDoors()
+    {
+        return $this->doors;
     }
 }
