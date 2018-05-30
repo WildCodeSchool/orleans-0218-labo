@@ -16,9 +16,15 @@
                                 <a role="button" class="btn btn-warning"
                                    href="{{ path('room_edit', { 'id': room.id }) }}">Modifier</a>
                             </td>
-                            <td class="delete">
-                                <a role="button" class="btn btn-danger"
-                                   href="">Supprimer</a>
+                            <td>
+                                <form action="{{ path('room_delete', { 'id': room.id }) }}" method="post">
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    {{ form_widget(delete_form[room.id]) }}
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="icon-trash"></i>
+                                        Supprimer
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     {% endfor %}

@@ -26,9 +26,14 @@ class AdminRoomController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $rooms = $em->getRepository('AppBundle:Room')->findAll();
+        $deleteForm = array();
+        foreach ($rooms as $room) {
+            $deleteForm[$room->getId()] = $this->createDeleteForm($room)->createView();
+        }
 
         return $this->render('admin/room/index.html.twig', array(
             'rooms' => $rooms,
+            'delete_form' => $deleteForm,
         ));
     }
 
