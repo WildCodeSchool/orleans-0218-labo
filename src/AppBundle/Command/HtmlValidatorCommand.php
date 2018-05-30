@@ -8,7 +8,6 @@
 
 namespace AppBundle\Command;
 
-
 use GuzzleHttp\Client;
 use HtmlValidator\Validator;
 use Symfony\Component\Console\Command\Command;
@@ -42,21 +41,33 @@ class HtmlValidatorCommand extends Command
     {
         $client = new Client();
         unlink('var/reports/app.validateHtml.html');
-        file_put_contents('var/reports/app.validateHtml.html', 'NB routes tested : '.count($this->routes)."<br />", FILE_APPEND);
+        file_put_contents(
+            'var/reports/app.validateHtml.html',
+            'NB routes tested : '.count($this->routes)."<br />",
+            FILE_APPEND
+        );
 
         foreach ($this->routes as $route) {
             if (in_array('GET', $route->getMethods()) && !strstr($route->getPath(), '{')) {
-            $res = $client->request('GET', $input->getArgument('url').$route->getPath());
-            $content = $res->getBody()->getContents();
+                $res = $client->request('GET', $input->getArgument('url').$route->getPath());
+                $content = $res->getBody()->getContents();
 
-            $validator = new Validator();
-            $validator->setParser(Validator::PARSER_HTML5);
-            $result = $validator->validateDocument($content);
+                $validator = new Validator();
+                $validator->setParser(Validator::PARSER_HTML5);
+                $result = $validator->validateDocument($content);
 
-            file_put_contents('var/reports/app.validateHtml.html', '<strong>'.$route->getPath()."</strong><br />", FILE_APPEND);
-            file_put_contents('var/reports/app.validateHtml.html', '<p>'.$result->toHTML().'</p><hr />', FILE_APPEND);
+                file_put_contents(
+                    'var/reports/app.validateHtml.html',
+                    '<strong>'.$route->getPath()."</strong><br />",
+                    FILE_APPEND
+                );
+                file_put_contents(
+                    'var/reports/app.validateHtml.html',
+                    '<p>'.$result->toHTML().'</p><hr />',
+                    FILE_APPEND
+                );
 
-            $output->write($result->format());
+                $output->write($result->format());
             }
         }
     }
