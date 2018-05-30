@@ -79,7 +79,7 @@ class AdminRoomController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('room_edit', array('id' => $room->getId()));
+            return $this->redirectToRoute('room_index');
         }
 
         return $this->render(
