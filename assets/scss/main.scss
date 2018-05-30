@@ -8,6 +8,14 @@ $catamaran : 'Catamaran', sans-serif;
 //ADMIN
 
 tr.admin-listing {
+  th {
+    padding-left: 10px;
+
+    &.name {
+      font-size: 1.4em;
+      padding-top: 10px;
+    }
+  }
   td {
     padding-left: 10px;
 
