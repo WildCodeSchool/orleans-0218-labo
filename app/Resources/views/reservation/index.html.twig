@@ -1,10 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Responsable de l'Accueil</h1>
-    <select class="responsable">
-        {% for reservation in reservations %}
-            <option>{{ reservation.firstName }} {{ reservation.lastName }}</option>
-        {% endfor %}
-    </select>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6 ">
+                <div class="col-xs-6 col-sm-offset-3 ">
+                    <form>
+                        <div class="form-group">
+                            <label for="responsable">Responsable de l'accueil</label>
+                            <select class="form-control" id="responsable">
+                                {% for staff in staff %}
+                                    <option> {{ staff.firstName }} {{ staff.lastName }} </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

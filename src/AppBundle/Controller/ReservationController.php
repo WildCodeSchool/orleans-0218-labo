@@ -24,11 +24,10 @@ class ReservationController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $reservations = $em->getRepository('AppBundle:Reservation')->findAll();
+        $staff = $em->getRepository('AppBundle:Staff')->findAll();
 
         return $this->render('reservation/index.html.twig', array(
-            'reservations' => $reservations,
+            'staff' => $staff,
         ));
     }
 
@@ -131,7 +130,6 @@ class ReservationController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('reservation_delete', array('id' => $reservation->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
