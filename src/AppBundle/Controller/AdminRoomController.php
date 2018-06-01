@@ -26,11 +26,16 @@ class AdminRoomController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $rooms = $em->getRepository('AppBundle:Room')->findAll();
+        $deleteForms = array();
+        foreach ($rooms as $room) {
+            $deleteForms[$room->getId()] = $this->createDeleteForm($room)->createView();
+        }
 
         return $this->render(
             'admin/room/index.html.twig',
             array(
             'rooms' => $rooms,
+            'delete_forms' => $deleteForms,
             )
         );
     }
@@ -79,7 +84,7 @@ class AdminRoomController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('room_edit', array('id' => $room->getId()));
+            return $this->redirectToRoute('room_index');
         }
 
         return $this->render(
