@@ -130,7 +130,7 @@ class EquipmentController extends Controller
      */
     private function createDeleteForm(Equipment $equipment)
     {
-        return $this->createFormBuilder()
+        return $this->createFormBuilder(null, ['csrf_field_name' => 'delete-equip-'.$equipment->getId()])
             ->setAction($this->generateUrl(
                 'equipment_delete',
                 array(
