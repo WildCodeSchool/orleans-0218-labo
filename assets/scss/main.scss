@@ -4,7 +4,7 @@ $primary-color: #E1151A;
 $white-color: #FFF;
 $check-color: #27ae60;
 
-$catamaran : 'Catamaran', sans-serif;
+$catamaran: 'Catamaran', sans-serif;
 
 //ADMIN
 
@@ -84,11 +84,23 @@ body {
     }
   }
 
+  //HOME
+
   .home-nav {
     background-color: $primary-color;
     border: 0px;
     border-radius: 0px;
     position: fixed;
+    width: 100%;
+    padding-right: 50px;
+    font-family: $catamaran;
+    .dropdown-img-home {
+      width: 80px;
+    }
+    .dropdown-menu {
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 0px;
+    }
   }
 
   .white {
@@ -105,6 +117,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     padding-top: 100px;
+    font-family: $catamaran;
   }
 
   .parameters {
@@ -119,7 +132,6 @@ body {
 .icon_size {
   height: 30px;
   width: 30px;
-
   .home-btn {
     width: 100px;
     height: 50px;
@@ -131,5 +143,4 @@ body {
 
 .staff-index .edit, .show, .new {
   width: 80px;
-
 }

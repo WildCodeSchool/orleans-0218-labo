@@ -5,8 +5,13 @@ Encore
     .setPublicPath('/web')
     .addEntry('app', './assets/js/app.js')
     .addEntry('style', './assets/scss/main.scss')
+    .createSharedEntry('vendor', [
+        'jquery',
+        'bootstrap',
+    ])
     .cleanupOutputBeforeBuild()
     .enableSassLoader()
-    .enableBuildNotifications();
+    .enableBuildNotifications()
+    .autoProvidejQuery();
 
 module.exports = Encore.getWebpackConfig();
