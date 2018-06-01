@@ -18,4 +18,6 @@
 /web/bundles/
 /web/build/
 .idea/
+/var/reports/*
+!var/reports/.gitkeep
 *~
