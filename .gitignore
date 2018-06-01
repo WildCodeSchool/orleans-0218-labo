@@ -20,3 +20,4 @@
 .idea/
 /var/reports/*
 !var/reports/.gitkeep
+*~

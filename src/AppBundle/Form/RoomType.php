@@ -16,12 +16,13 @@ class RoomType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, array('label' => 'Nom'))
+            ->add('name', TextType::class, ['label' => 'Nom'])
             ->add(
                 'doors',
                 CheckboxType::class,
                 [
                 'required' => false,
+                    'label' => 'Double',
                 ]
             );
     }
