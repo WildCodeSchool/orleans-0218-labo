@@ -25,10 +25,15 @@ class StaffController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $staff = $em->getRepository('AppBundle:Staff')->findAll();
+        $staffs = $em->getRepository('AppBundle:Staff')->findAll();
+        $deleteForm = array();
+        foreach ($staffs as $staff) {
+            $deleteForm[$staff->getId()] = $this->createDeleteForm($staff)->createView();
+        }
 
         return $this->render('admin/staff/index.html.twig', array(
-            'staff' => $staff,
+            'staff' => $staffs,
+            'delete_form' => $deleteForm
         ));
     }
 
@@ -131,7 +136,6 @@ class StaffController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('staff_delete', array('id' => $staff->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
