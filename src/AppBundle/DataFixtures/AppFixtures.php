@@ -2,6 +2,7 @@
 /**
  * Created by PhpStorm.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * User: takne
  * Date: 30/05/18
  * Time: 16:40
@@ -10,13 +11,21 @@
  * Date: 30/05/18
  * Time: 16:24
 >>>>>>> 859bb9686cb2e7ea5d22305b54d57168c16eee56
+=======
+ * User: wilder6
+ * Date: 30/05/18
+ * Time: 16:24
+>>>>>>> fad56b538dcb8b9136f4fce0d9759a5d10afc2c2
  */
 
 namespace AppBundle\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+<<<<<<< HEAD
 
+=======
+>>>>>>> fad56b538dcb8b9136f4fce0d9759a5d10afc2c2
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Room;
 
@@ -24,7 +33,10 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+<<<<<<< HEAD
 
+=======
+>>>>>>> fad56b538dcb8b9136f4fce0d9759a5d10afc2c2
         $equipment = new Equipment();
         $equipment->setName('Cable HDMI');
         $equipment->setDescription('Ceci est un Cable HDMI');
