@@ -108,5 +108,6 @@ class AppFixtures extends Fixture
         $manager->persist($room);
 
         $manager->flush();
+
     }
 }
