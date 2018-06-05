@@ -1,22 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
-<<<<<<< HEAD
-<<<<<<< HEAD
  * User: takne
  * Date: 30/05/18
  * Time: 16:40
-=======
- * User: wilder6
- * Date: 30/05/18
- * Time: 16:24
->>>>>>> 859bb9686cb2e7ea5d22305b54d57168c16eee56
-=======
- * User: wilder6
- * Date: 30/05/18
- * Time: 16:24
->>>>>>> fad56b538dcb8b9136f4fce0d9759a5d10afc2c2
- */
 
 namespace AppBundle\DataFixtures;
 
@@ -108,6 +95,5 @@ class AppFixtures extends Fixture
         $manager->persist($room);
 
         $manager->flush();
-
     }
 }
