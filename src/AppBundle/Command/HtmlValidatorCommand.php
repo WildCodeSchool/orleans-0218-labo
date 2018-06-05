@@ -40,7 +40,11 @@ class HtmlValidatorCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $client = new Client();
-        unlink('var/reports/app.validateHtml.html');
+
+        if (file_exists('var/reports/app.validateHtml.html')) {
+            unlink('var/reports/app.validateHtml.html');
+        }
+
         file_put_contents(
             'var/reports/app.validateHtml.html',
             'NB routes tested : '.count($this->routes)."<br />",

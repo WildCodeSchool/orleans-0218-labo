@@ -18,16 +18,13 @@
                                 <a role="button" class="btn btn-warning"
                                    href="{{ path('equipment_edit', { 'id': equipment.id }) }}">Modifier</a>
                             </td>
-
                             <td class="delete">
-                                <form action="{{ path('equipment_delete', { 'id': equipment.id }) }}" method="post">
-                                    <input type="hidden" name="_method" value="DELETE"/>
-                                    {{ form_widget(delete_form[equipment.id]) }}
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="icon-trash"></i>
-                                        Supprimer
-                                    </button>
-                                </form>
+                                {{ form_start(delete_forms[equipment.id]) }}
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="icon-trash"></i>
+                                    Supprimer
+                                </button>
+                                {{ form_end(delete_forms[equipment.id]) }}
                             </td>
                         </tr>
                     {% endfor %}
