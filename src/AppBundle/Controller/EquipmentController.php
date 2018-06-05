@@ -18,7 +18,7 @@ class EquipmentController extends Controller
      * Lists all Equipment entities.
      *
      * @Route("/",    name="equipment_index")
-     * @Method({"GET"})
+     * @Method("GET")
      */
     public function indexAction()
     {
