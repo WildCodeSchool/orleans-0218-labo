@@ -22,10 +22,6 @@ namespace AppBundle\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-<<<<<<< HEAD
-
-=======
->>>>>>> fad56b538dcb8b9136f4fce0d9759a5d10afc2c2
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Room;
 
@@ -33,10 +29,6 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-<<<<<<< HEAD
-
-=======
->>>>>>> fad56b538dcb8b9136f4fce0d9759a5d10afc2c2
         $equipment = new Equipment();
         $equipment->setName('Cable HDMI');
         $equipment->setDescription('Ceci est un Cable HDMI');
