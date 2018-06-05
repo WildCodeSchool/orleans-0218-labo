@@ -1,7 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutMain.html.twig' %}
 
-{% block body %}
+{% block layout %}
     <div class="container-fluid home">
+    
         <div class="row parameters">
             <div class="col-md-1 col-md-offset-11">
                 <a href="{{ path ('equipment_index') }}">
@@ -10,6 +11,7 @@
                 </a>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12 text-center">
                 <img src="http://via.placeholder.com/350x350">
