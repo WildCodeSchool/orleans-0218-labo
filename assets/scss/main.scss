@@ -145,3 +145,20 @@ body {
 .staff-index .edit, .show, .new {
   width: 80px;
 }
+
+.equipment-title {
+  margin-bottom: 50px;
+}
+
+.add-equipment {
+  margin-bottom: 50px;
+  img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .glyphicon {
+    font-size: 5rem;
+  }
+}
