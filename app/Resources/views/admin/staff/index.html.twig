@@ -13,17 +13,20 @@
                         <th class="name">Prénom</th>
                         <th colspan=3 class="name">Nom</th>
                     </tr>
-                    {% for staff in staff %}
+                    {% for staffMember in staffMembers %}
                         <tr class="admin-listing">
-                            <td class="name">{{ staff.firstName }}</td>
-                            <td class="name">{{ staff.lastName }}</td>
+                            <td class="name">{{ staffMember.firstName }}</td>
+                            <td class="name">{{ staffMember.lastName }}</td>
                             <td class="edit">
                                 <a role="button" class="btn btn-warning"
-                                   href="{{ path('staff_edit', { 'id': staff.id }) }}">Modifier</a>
+                                   href="{{ path('staff_edit', { 'id': staffMember.id }) }}">Modifier</a>
                             </td>
                             <td class="delete">
-                                <a role="button" class="btn btn-danger"
-                                   href="">Supprimer</a>
+                                {{ form_start(deleteForm[staffMember.id]) }}
+                                <button type="submit" class="btn btn-danger">
+                                    Supprimer
+                                </button>
+                                {{ form_end(deleteForm[staffMember.id]) }}
                             </td>
                         </tr>
                     {% endfor %}
@@ -32,8 +35,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <a role="button" class="btn btn-primary" href="{{ path('staff_new') }}"><i
-                                class="fas fa-camera-retro"></i>Ajouter un membre</a>
+                    <a role="button" class="btn btn-primary" href="{{ path('staff_new') }}">Ajouter un membre</a>
                 </div>
             </div>
         </div>
