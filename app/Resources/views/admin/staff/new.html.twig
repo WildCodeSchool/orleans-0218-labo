@@ -1,4 +1,4 @@
-{% extends 'admin/layout.html.twig' %}
+{% extends 'admin/layoutAdmin.html.twig' %}
 
 {% block layout %}
 
@@ -13,9 +13,10 @@
                         <h2 class="text-center">Création d'un nouveau membre</h2>
                         {{ form_start(form) }}
                         {{ form_widget(form) }}
-                        <a href="{{ path('staff_index') }}"><img class="icon_size"
-                                                                 src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg"
-                                                                 alt=""></a>
+                        <a href="{{ path('staff_index') }}">
+                            <img class="icon_size"
+                                 src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg"
+                                 alt="Retour sur la page d'accueil du personnel"></a>
                         <button type="submit" class="btn btn-primary pull-right"> - Valider - </button>
                         {{ form_end(form) }}
                     </div>
@@ -23,5 +24,4 @@
             </div>
         </div>
     </section>
-
 {% endblock %}

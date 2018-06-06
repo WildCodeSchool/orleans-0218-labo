@@ -4,7 +4,7 @@ $primary-color: #E1151A;
 $white-color: #FFF;
 $check-color: #27ae60;
 
-$catamaran : 'Catamaran', sans-serif;
+$catamaran: 'Catamaran', sans-serif;
 
 //ADMIN
 
@@ -60,29 +60,47 @@ body {
     align-items: center;
   }
 
-  .navbar {
+  .admin-nav {
     background-color: $primary-color;
     margin: -1px;
-  }
-
-  .navbar-brand {
-    position: absolute;
-  }
-
-  .navbar-nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    font-family: $catamaran;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 2rem;
-    height: 100px;
-    li {
-      height: 100%;
+    .navbar-brand {
+      position: absolute;
+    }
+    .navbar-nav {
+      width: 100%;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-around;
+      font-family: $catamaran;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 2rem;
+      height: 100px;
+      li {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+
+
+  //HOME
+
+  .home-nav {
+    background-color: $primary-color;
+    border: 0px;
+    border-radius: 0px;
+    position: fixed;
+    width: 100%;
+    padding-right: 50px;
+    font-family: $catamaran;
+    .dropdown-img-home {
+      width: 80px;
+    }
+    .dropdown-menu {
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 0px;
     }
   }
 
@@ -99,6 +117,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-top: 100px;
+    font-family: $catamaran;
   }
 
   .parameters {
@@ -113,7 +133,6 @@ body {
 .icon_size {
   height: 30px;
   width: 30px;
-
   .home-btn {
     width: 100px;
     height: 50px;
