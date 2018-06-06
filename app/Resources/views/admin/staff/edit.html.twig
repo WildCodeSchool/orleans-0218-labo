@@ -1,4 +1,4 @@
-{% extends 'admin/layout.html.twig' %}
+{% extends 'admin/layoutAdmin.html.twig' %}
 
 {% block layout %}
     <section class="admin-listing-staff">
@@ -12,9 +12,10 @@
                         <h2 class="text-center">Modification des informations d'un membre du personnel</h2>
                         {{ form_start(edit_form) }}
                         {{ form_widget(edit_form) }}
-                        <a href="{{ path('staff_index') }}"><img class="icon_size"
-                                                                 src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg"
-                                                                 alt="Back picture"></a>
+                        <a href="{{ path('staff_index') }}">
+                            <img class="icon_size"
+                                 src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg"
+                                 alt="Retour sur la page d'accueil du personnel"></a>
                         <button type="submit" class="btn btn-warning pull-right"> - Modifier -</button>
                         {{ form_end(edit_form) }}
                     </div>
