@@ -2,16 +2,14 @@
 
 {% block layout %}
     <div class="container-fluid home">
-    
         <div class="row parameters">
             <div class="col-md-1 col-md-offset-11">
                 <a href="{{ path ('equipment_index') }}">
-                    <img class="img-responsive" src="https://image.flaticon.com/icons/svg/64/64722.svg"
-                         alt="lien vers la partie administrateur du site" >
-                </a>
+                    <img class="img-responsive"
+                         src="https://image.flaticon.com/icons/svg/64/64722.svg"
+                         alt="Menu vers la partie administrateur"></a>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-12 text-center">
                 <img src="http://via.placeholder.com/350x350">
@@ -27,3 +25,5 @@
         </div>
     </div>
 {% endblock %}
+{% block stylesheets %}{% endblock %}
+

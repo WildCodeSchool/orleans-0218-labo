@@ -9,11 +9,38 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Room;
+use AppBundle\Entity\Staff;
 
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+
+        $staff = new Staff();
+        $staff->setFirstName('Julie');
+        $staff->setLastName('VAILLANT');
+        $manager->persist($staff);
+
+        $staff = new Staff();
+        $staff->setFirstName('Cynthia');
+        $staff->setLastName('FORSECA');
+        $manager->persist($staff);
+
+        $staff = new Staff();
+        $staff->setFirstName('Pauline');
+        $staff->setLastName('BOULAS');
+        $manager->persist($staff);
+
+        $staff = new Staff();
+        $staff->setFirstName('Ludovic');
+        $staff->setLastName('COURTOIS');
+        $manager->persist($staff);
+
+        $staff = new Staff();
+        $staff->setFirstName('Sylvie');
+        $staff->setLastName('PARFUM');
+        $manager->persist($staff);
+
         $equipment = new Equipment();
         $equipment->setName('Cable HDMI');
         $equipment->setDescription('Ceci est un Cable HDMI');
