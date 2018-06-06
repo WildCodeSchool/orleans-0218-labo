@@ -21,19 +21,18 @@ class StaffController extends Controller
      * @Route("/", name="staff_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $staffs = $em->getRepository('AppBundle:Staff')->findAll();
+        $staffMembers = $em->getRepository('AppBundle:Staff')->findAll();
         $deleteForm = array();
-        foreach ($staffs as $staff) {
-            $deleteForm[$staff->getId()] = $this->createDeleteForm($staff)->createView();
+        foreach ($staffMembers as $staffMember) {
+            $deleteForm[$staffMember->getId()] = $this->createDeleteForm($staffMember)->createView();
         }
-
         return $this->render('admin/staff/index.html.twig', array(
-            'staff' => $staffs,
-            'delete_form' => $deleteForm
+            'staffMembers' => $staffMembers,
+            'deleteForm' => $deleteForm
         ));
     }
 

@@ -13,23 +13,20 @@
                         <th class="name">Prénom</th>
                         <th colspan=3 class="name">Nom</th>
                     </tr>
-                    {% for staff in staff %}
+                    {% for staffMember in staffMembers %}
                         <tr class="admin-listing">
-                            <td class="name">{{ staff.firstName }}</td>
-                            <td class="name">{{ staff.lastName }}</td>
+                            <td class="name">{{ staffMember.firstName }}</td>
+                            <td class="name">{{ staffMember.lastName }}</td>
                             <td class="edit">
                                 <a role="button" class="btn btn-warning"
-                                   href="{{ path('staff_edit', { 'id': staff.id }) }}">Modifier</a>
+                                   href="{{ path('staff_edit', { 'id': staffMember.id }) }}">Modifier</a>
                             </td>
                             <td class="delete">
-                                <form action="{{ path('staff_delete', { 'id': staff.id }) }}" method="post">
-                                    <input type="hidden" name="_method" value="DELETE"/>
-                                    {{ form_widget(delete_form[staff.id]) }}
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="icon-trash"></i>
-                                        Supprimer
-                                    </button>
-                                </form>
+                                {{ form_start(deleteForm[staffMember.id]) }}
+                                <button type="submit" class="btn btn-danger">
+                                    Supprimer
+                                </button>
+                                {{ form_end(deleteForm[staffMember.id]) }}
                             </td>
                         </tr>
                     {% endfor %}
