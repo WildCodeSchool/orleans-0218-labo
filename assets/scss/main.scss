@@ -24,6 +24,10 @@ tr.admin-listing {
       padding-top: 10px;
     }
 
+    &.show {
+      width: 50px;
+    }
+
     &.edit {
       width: 50px;
     }
@@ -161,4 +165,12 @@ body {
   .glyphicon {
     font-size: 5rem;
   }
+}
+
+.imgSize{
+  height: 400px;
+}
+
+.widhtButton{
+  width: 100%;
 }
