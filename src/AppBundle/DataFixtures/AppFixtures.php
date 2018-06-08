@@ -43,14 +43,17 @@ class AppFixtures extends Fixture
 
         $equipment = new Equipment();
         $equipment->setName('Cable HDMI');
-        $equipment->setDescription('Ceci est un Cable HDMI');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setDescription('La numérotation d\'un connecteur mâle, généralement monté sur un câble, 
+        est symétrique. Un connecteur VGA est un connecteur de type D-sub, plus précisément DE-15. Il est utilisé pour 
+        connecter une carte graphique à un écran d\'ordinateur en analogique. Ce connecteur est parfois appelé 
+        connecteur RGB, HD-15 ou D-sub 15');
+        $equipment->setPicture('https://images-na.ssl-images-amazon.com/images/I/81kz%2BIy9YwL._SX679_.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Cable VGA');
         $equipment->setDescription('Ceci est un Cable VGA');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setPicture('https://images-na.ssl-images-amazon.com/images/I/41-pTAb-q1L.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
