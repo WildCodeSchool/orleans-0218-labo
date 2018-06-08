@@ -1,21 +1,25 @@
-{% extends 'admin/layout.html.twig' %}
+{% extends 'admin/layoutAdmin.html.twig' %}
 
 {% block layout %}
-    <h1>Room edit</h1>
 
-    {{ form_start(edit_form) }}
-    {{ form_widget(edit_form) }}
-    <input type="submit" value="Edit"/>
-    {{ form_end(edit_form) }}
+    <section class="admin-listing-room">
+        <div class="container-fluid container-title text-center">
+            <h1>Gestion des salles</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div>
+                        <h2 class="text-center">Modification des salles</h2>
 
-    <ul>
-        <li>
-            <a href="{{ path('room_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                        {{ form_start(edit_form) }}
+                        {{ form_widget(edit_form) }}
+                        <a href="{{ path('room_index') }}"><img class="icon_size" src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg" alt=""></a>
+                        <button type="submit" class="btn btn-warning pull-right">Modifier</button>
+                        {{ form_end(edit_form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

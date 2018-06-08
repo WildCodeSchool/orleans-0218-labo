@@ -33,4 +33,35 @@
             <a href="{{ path('reservation_index') }}">Back to the list</a>
         </li>
     </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="equipment-title">Équipements</h2>
+            </div>
+            <div class="row text-center">
+                {% for equipment in equipments %}
+                    <div class="col-md-4 add-equipment">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img src="{{ equipment.picture }}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>{{ equipment.name }}</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
