@@ -9,6 +9,7 @@ $catamaran: 'Catamaran', sans-serif;
 //ADMIN
 
 tr.admin-listing {
+
   th {
     padding-left: 10px;
 
@@ -22,6 +23,10 @@ tr.admin-listing {
     &.name {
       font-size: 1.4em;
       padding-top: 10px;
+    }
+
+    &.show {
+      width: 50px;
     }
 
     &.edit {
@@ -161,4 +166,16 @@ body {
   .glyphicon {
     font-size: 5rem;
   }
+}
+
+.imgSize{
+  height: 400px;
+}
+
+.widhtButton{
+  width: 100%;
+}
+
+.spaceWhite{
+  height: 100px;
 }
