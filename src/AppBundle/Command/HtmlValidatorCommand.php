@@ -33,8 +33,8 @@ class HtmlValidatorCommand extends Command
         $this->addArgument('url');
 
         $this->setName('app.validateHtml')
-             ->setDescription('Validation HTML de certaines pages')
-             ->setHelp('Validation HTML de certaines pages');
+            ->setDescription('Validation HTML de certaines pages')
+            ->setHelp('Validation HTML de certaines pages');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
