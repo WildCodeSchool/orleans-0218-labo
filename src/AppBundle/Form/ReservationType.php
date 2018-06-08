@@ -20,7 +20,9 @@ class ReservationType extends AbstractType
             ->add('lastName')
             ->add('reservationDate')
             ->add('email')
-            ->add('room', EntityType::class,
+            ->add(
+                'room',
+                EntityType::class,
                 [
                     'class' => Room::class,
                     'choice_label' => 'name',
