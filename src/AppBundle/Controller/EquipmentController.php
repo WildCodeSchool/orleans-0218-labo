@@ -25,19 +25,21 @@ class EquipmentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $equipments = $em->getRepository('AppBundle:Equipment')->findAll();
 
-        $deleteForm = array();
+        $deleteForms = array();
         foreach ($equipments as $equipment) {
-            $deleteForm[$equipment->getId()] = $this->createDeleteForm($equipment)->createView();
+            $formDelete = $this->createDeleteForm($equipment);
+            $deleteForms[$equipment->getId()] = $formDelete->createView();
         }
 
         return $this->render(
             'admin/equipment/index.html.twig',
             array(
                 'equipments' => $equipments,
-                'delete_form' => $deleteForm
+                'delete_forms' => $deleteForms
             )
         );
     }
+
     /**
      * Creates a new equipment entity.
      *
@@ -73,7 +75,7 @@ class EquipmentController extends Controller
     {
         $deleteForm = $this->createDeleteForm($stuff);
         return $this->render(
-            'equipment/show.html.twig',
+            'admin/equipment/show.html.twig',
             array(
                 'equipment' => $stuff,
                 'delete_form' => $deleteForm->createView(),
@@ -88,7 +90,6 @@ class EquipmentController extends Controller
      */
     public function editAction(Request $request, Equipment $equipment)
     {
-        $deleteForm = $this->createDeleteForm($equipment);
         $editForm = $this->createForm('AppBundle\Form\EquipmentType', $equipment);
         $editForm->handleRequest($request);
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -129,8 +130,13 @@ class EquipmentController extends Controller
      */
     private function createDeleteForm(Equipment $equipment)
     {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('equipment_delete', array('id' => $equipment->getId())))
+        return $this->createFormBuilder(null, ['csrf_field_name' => 'delete-equip-'.$equipment->getId()])
+            ->setAction($this->generateUrl(
+                'equipment_delete',
+                array(
+                    'id' => $equipment->getId()
+                )
+            ))
             ->setMethod('DELETE')
             ->getForm();
     }
