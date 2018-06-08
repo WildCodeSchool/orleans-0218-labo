@@ -1,16 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Reservation creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <section class="staff-reservation">
+        <div class="container-fluid container-title text-center">
+            <h1>Reservation creation</h1>
+        </div>
+            <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6 ">
+                    <div>
+                        <h2 class="text-center">Création d'une nouvelle réservation</h2>
 
-    <ul>
-        <li>
-            <a href="{{ path('reservation_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <a href="{{ path('equipment_index') }}"><img class="icon_size"
+                                                                     src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg"
+                                                                     alt=""></a>
+                        <button type="submit" class="btn btn-primary pull-right"> - Valider -</button>
+                        {{ form_end(form) }}
+
+                        <ul>
+                            <li>
+                                <a href="{{ path('reservation_index') }}">Back to the list</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+    </section>
 {% endblock %}
