@@ -59,43 +59,43 @@ class AppFixtures extends Fixture
         $equipment = new Equipment();
         $equipment->setName('Badge');
         $equipment->setDescription('Ceci est un badge');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/
-        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setPicture(
+            'http://www.aspirateur.free.fr/images/Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Chariot');
         $equipment->setDescription('Ceci est un chariot');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/
-        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setPicture(
+            'http://www.aspirateur.free.fr/images/Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Escabeau');
         $equipment->setDescription('Ceci est un escabeau');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/
-        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setPicture(
+            'http://www.aspirateur.free.fr/images/Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Aspirateur');
         $equipment->setDescription('Ceci est un aspirateur');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/
-        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setPicture(
+            'http://www.aspirateur.free.fr/images/Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Sonorisation portative');
         $equipment->setDescription('Ceci est une sonorisation portative');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/
-        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setPicture(
+            'http://www.aspirateur.free.fr/images/Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Scene mobile');
         $equipment->setDescription('Ceci est une scene mobile');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/
-        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setPicture(
+            'http://www.aspirateur.free.fr/images/Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
         $manager->persist($equipment);
 
         $room = new Room();
