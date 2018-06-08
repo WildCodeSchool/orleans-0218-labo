@@ -49,6 +49,11 @@ class Reservation
      */
     private $email;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Room")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $room;
 
     /**
      * Get id
@@ -154,5 +159,29 @@ class Reservation
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set room
+     *
+     * @param \AppBundle\Entity\Room $room
+     *
+     * @return Reservation
+     */
+    public function setRoom(\AppBundle\Entity\Room $room)
+    {
+        $this->room = $room;
+
+        return $this;
+    }
+
+    /**
+     * Get room
+     *
+     * @return \AppBundle\Entity\Room
+     */
+    public function getRoom()
+    {
+        return $this->room;
     }
 }

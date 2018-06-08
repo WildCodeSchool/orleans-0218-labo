@@ -2,6 +2,8 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Room;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,9 +15,21 @@ class ReservationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstName')->add('lastName')->add('reservationDate')->add('email');
+        $builder
+            ->add('firstName')
+            ->add('lastName')
+            ->add('reservationDate')
+            ->add('email')
+            ->add('room', EntityType::class,
+                [
+                    'class' => Room::class,
+                    'choice_label' => 'name',
+                    'expanded' => true,
+                    'multiple' => false
+                ]
+            );
     }
-    
+
     /**
      * {@inheritdoc}
      */
