@@ -113,12 +113,10 @@ body {
   }
 
   .home {
-    background-color: white /*$primary-color*/ ;
-    /*min-height: 100vh;*/
+    background-color: $primary-color ;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 100px;
     font-family: $catamaran;
   }
 
@@ -148,10 +146,33 @@ body {
 }
 
 .hei{
-  height: 150px;
+  height: 10vh;
+}
+
+.Heifull{
+
 }
 
 .heiPage
 {
-  height: 50%;
+  height: 80vh;
+}
+
+.heiFooter
+{
+  height: 10vh;
+}
+
+.fa-red{
+  color : $primary-color;
+}
+
+.wheel-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.width-full{
+  width: 100%;
 }
