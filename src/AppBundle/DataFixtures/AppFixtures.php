@@ -43,58 +43,59 @@ class AppFixtures extends Fixture
 
         $equipment = new Equipment();
         $equipment->setName('Cable HDMI');
-        $equipment->setDescription('Ceci est un Cable HDMI');
-        $equipment->setPicture('https://i2.cdscdn.com/pdt2/5/q/s/1/700x700/
-        samvcma15qs/rw/samsung-vcma15qs-aspirateur-traineau-sans-sac-15.jpg');
+        $equipment->setDescription('La numérotation d\'un connecteur mâle, généralement monté sur un câble, 
+        est symétrique. Un connecteur VGA est un connecteur de type D-sub, plus précisément DE-15. Il est utilisé pour 
+        connecter une carte graphique à un écran d\'ordinateur en analogique. Ce connecteur est parfois appelé 
+        connecteur RGB, HD-15 ou D-sub 15');
+        $equipment->setPicture('https://images-na.ssl-images-amazon.com/images/I/81kz%2BIy9YwL._SX679_.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Cable VGA');
         $equipment->setDescription('Ceci est un Cable VGA');
-        $equipment->setPicture('https://i2.cdscdn.com/pdt2/5/q/s/1/700x700/
-        samvcma15qs/rw/samsung-vcma15qs-aspirateur-traineau-sans-sac-15.jpg');
+        $equipment->setPicture('https://images-na.ssl-images-amazon.com/images/I/41-pTAb-q1L.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Badge');
         $equipment->setDescription('Ceci est un badge');
-        $equipment->setPicture('https://i2.cdscdn.com/pdt2/5/q/s/1/700x700/
-        samvcma15qs/rw/samsung-vcma15qs-aspirateur-traineau-sans-sac-15.jpg');
+        $equipment->setPicture('http://www.aspirateur.free.fr/images/
+        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Chariot');
         $equipment->setDescription('Ceci est un chariot');
-        $equipment->setPicture('https://i2.cdscdn.com/pdt2/5/q/s/1/700x700/
-        samvcma15qs/rw/samsung-vcma15qs-aspirateur-traineau-sans-sac-15.jpg');
+        $equipment->setPicture('http://www.aspirateur.free.fr/images/
+        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Escabeau');
         $equipment->setDescription('Ceci est un escabeau');
-        $equipment->setPicture('https://i2.cdscdn.com/pdt2/5/q/s/1/700x700/
-        samvcma15qs/rw/samsung-vcma15qs-aspirateur-traineau-sans-sac-15.jpg');
+        $equipment->setPicture('http://www.aspirateur.free.fr/images/
+        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Aspirateur');
         $equipment->setDescription('Ceci est un aspirateur');
-        $equipment->setPicture('https://i2.cdscdn.com/pdt2/5/q/s/1/700x700/
-        samvcma15qs/rw/samsung-vcma15qs-aspirateur-traineau-sans-sac-15.jpg');
+        $equipment->setPicture('http://www.aspirateur.free.fr/images/
+        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Sonorisation portative');
         $equipment->setDescription('Ceci est une sonorisation portative');
-        $equipment->setPicture('https://i2.cdscdn.com/pdt2/5/q/s/1/700x700/
-        samvcma15qs/rw/samsung-vcma15qs-aspirateur-traineau-sans-sac-15.jpg');
+        $equipment->setPicture('http://www.aspirateur.free.fr/images/
+        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Scene mobile');
         $equipment->setDescription('Ceci est une scene mobile');
-        $equipment->setPicture('https://i2.cdscdn.com/pdt2/5/q/s/1/700x700/
-        samvcma15qs/rw/samsung-vcma15qs-aspirateur-traineau-sans-sac-15.jpg');
+        $equipment->setPicture('http://www.aspirateur.free.fr/images/
+        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
         $manager->persist($equipment);
 
         $room = new Room();
