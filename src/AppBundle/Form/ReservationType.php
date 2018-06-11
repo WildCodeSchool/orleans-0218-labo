@@ -22,19 +22,19 @@ class ReservationType extends AbstractType
                 'dateDebut',
                 DateType::class,
                 array(
-                'widget' => 'single_text',
-                'html5'=>true)
+                    'widget' => 'single_text',
+                    'html5' => true)
             )
             ->add(
                 'dateFin',
                 DateType::class,
                 array(
-                'widget' => 'single_text',
-                'html5'=>true)
+                    'widget' => 'single_text',
+                    'html5' => true)
             )
             ->add('email')
             ->add('staff');
-        }
+    }
 
     /**
      * {@inheritdoc}
@@ -43,7 +43,7 @@ class ReservationType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-            'data_class' => 'AppBundle\Entity\Reservation'
+                'data_class' => 'AppBundle\Entity\Reservation'
             )
         );
     }
