@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Staff
 {
+    public function __toString()
+    {
+        return $this->getFirstName() . ' ' . $this->getLastName();
+    }
+
     /**
      * @var int
      *

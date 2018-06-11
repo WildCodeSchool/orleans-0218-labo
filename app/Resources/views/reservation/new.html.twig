@@ -1,47 +1,48 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Reservation creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('reservation_index') }}">Back to the list</a>
-        </li>
-    </ul>
-    <div class="container">
+    <section class="staff-reservation">
+        <div class="container-fluid container-title text-center">
+            <h1>Reservation creation</h1>
+        </div>
         <div class="row">
-            <div class="col-md-12">
-                <h2 class="equipment-title">Équipements</h2>
-            </div>
-            <div class="row text-center">
-                {% for equipment in equipments %}
-                    <div class="col-md-4 add-equipment">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <img src="{{ equipment.picture }}">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3>{{ equipment.name }}</h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                            </div>
-                        </div>
+            <div class="col-md-6">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="text-center">Responsable accueil</h2>
+                    {{ form_row(form.staff) }}
+                    {{ form_row(form.dateDebut) }}
+                    {{ form_row(form.dateFin) }}
+                    <div>
                     </div>
-                {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="text-center">Informations de l'emprunteur</h2>
+
+                    {{ form_row(form.firstName) }}
+                    {{ form_row(form.lastName) }}
+
+                </div>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+                <a href="{{ path('equipment_index') }}"><img class="icon_size"
+                                                             src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg"
+                                                             alt=""></a>
+                <button type="submit" class="btn btn-primary pull-right"> - Valider -</button>
+
+
+                <ul>
+                    <li>
+                        <a href="{{ path('reservation_index') }}">Back to the list</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
 {% endblock %}
