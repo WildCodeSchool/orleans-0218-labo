@@ -6,13 +6,25 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
 {
-    public function testIndex()
+    /**
+     * @dataProvider urlProvider
+     */
+    public function testPageIsSuccessful($url)
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
-        $crawler = $client->request('GET', '/');
+        $client->request('GET', $url);
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('Welcome to Symfony', $crawler->filter('#container h1')->text());
+        $this->assertTrue($client->getResponse()->isSuccessful());
+    }
+
+    public function urlProvider()
+    {
+        return [
+            ['/'],
+            ['/admin/room/'],
+            ['/admin/staff/'],
+            ['/admin/equipment/'],
+        ];
     }
 }
