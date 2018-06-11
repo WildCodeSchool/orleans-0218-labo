@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Reservation
 {
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ReservationEquipment", mappedBy="reservation")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $reservationEquipments;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -154,5 +160,46 @@ class Reservation
     public function getEmail()
     {
         return $this->email;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reservationEquipments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add reservationEquipment
+     *
+     * @param \AppBundle\Entity\ReservationEquipment $reservationEquipment
+     *
+     * @return Reservation
+     */
+    public function addReservationEquipment(\AppBundle\Entity\ReservationEquipment $reservationEquipment)
+    {
+        $this->reservationEquipments[] = $reservationEquipment;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservationEquipment
+     *
+     * @param \AppBundle\Entity\ReservationEquipment $reservationEquipment
+     */
+    public function removeReservationEquipment(\AppBundle\Entity\ReservationEquipment $reservationEquipment)
+    {
+        $this->reservationEquipments->removeElement($reservationEquipment);
+    }
+
+    /**
+     * Get reservationEquipments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservationEquipments()
+    {
+        return $this->reservationEquipments;
     }
 }
