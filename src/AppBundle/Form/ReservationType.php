@@ -19,13 +19,15 @@ class ReservationType extends AbstractType
             ->add('firstName')
             ->add('lastName')
             ->add(
-                'dateDebut', DateType::class,
+                'dateDebut',
+                DateType::class,
                 array(
                 'widget' => 'single_text',
                 'html5'=>true)
             )
             ->add(
-                'dateFin', DateType::class,
+                'dateFin',
+                DateType::class,
                 array(
                 'widget' => 'single_text',
                 'html5'=>true)
