@@ -100,8 +100,9 @@ body {
     width: 100%;
     padding-right: 50px;
     font-family: $catamaran;
+    height: 110px;
     .dropdown-img-home {
-      width: 80px;
+      width: 100px;
     }
     .dropdown-menu {
       background-color: rgba(255, 255, 255, 0.9);
@@ -117,12 +118,10 @@ body {
   }
 
   .home {
-    background-color: $primary-color;
-    min-height: 100vh;
+    background-color: $primary-color ;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 100px;
     font-family: $catamaran;
   }
 
@@ -150,6 +149,33 @@ body {
 .staff-index .edit, .show, .new {
   width: 80px;
 }
+
+.hei{
+  height: 10vh;
+}
+
+.heiPage
+{
+  height: 80vh;
+}
+
+.heiFooter
+{
+  height: 10vh;
+}
+
+.fa-red{
+  color : $primary-color;
+}
+
+.wheel-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.width-full{
+  width: 100%;
 
 .equipment-title {
   margin-bottom: 50px;
