@@ -8,8 +8,6 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-
-
 class ReservationType extends AbstractType
 {
     /**
@@ -21,19 +19,20 @@ class ReservationType extends AbstractType
             ->add('firstName')
             ->add('lastName')
             ->add(
-                'dateDebut', DateType::class, array(
+                'dateDebut', DateType::class,
+                array(
                 'widget' => 'single_text',
                 'html5'=>true)
             )
             ->add(
-                'dateFin', DateType::class, array(
+                'dateFin', DateType::class,
+                array(
                 'widget' => 'single_text',
                 'html5'=>true)
             )
             ->add('email')
             ->add('staff');
-
-    }
+        }
 
     /**
      * {@inheritdoc}
