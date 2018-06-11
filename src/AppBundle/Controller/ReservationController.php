@@ -101,14 +101,16 @@ class ReservationController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('reservation_edit',
+            return $this->redirectToRoute(
+                'reservation_edit',
                 array(
                     'id' => $reservation->getId())
             );
         }
 
         return $this->render(
-            'reservation/edit.html.twig', array(
+            'reservation/edit.html.twig',
+            array(
                 'reservation' => $reservation,
                 'edit_form' => $editForm->createView(),
                 'delete_form' => $deleteForm->createView(),
