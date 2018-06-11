@@ -102,7 +102,9 @@ class ReservationController extends Controller
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('reservation_edit',
-                array('id' => $reservation->getId()));
+                array(
+                    'id' => $reservation->getId())
+            );
         }
 
         return $this->render(

@@ -31,7 +31,8 @@ class StaffController extends Controller
             $deleteForm[$staffMember->getId()] = $this->createDeleteForm($staffMember)->createView();
         }
         return $this->render(
-            'admin/staff/index.html.twig', array(
+            'admin/staff/index.html.twig',
+            array(
             'staffMembers' => $staffMembers,
             'deleteForm' => $deleteForm
             )
@@ -59,7 +60,8 @@ class StaffController extends Controller
         }
 
         return $this->render(
-            'admin/staff/new.html.twig', array(
+            'admin/staff/new.html.twig',
+            array(
             'staff' => $staff,
             'form' => $form->createView(),
             )
