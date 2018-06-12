@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Doctrine\DBAL\Types\IntegerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -25,6 +26,14 @@ class EquipmentType extends AbstractType
                     'attr' => array('cols' => '5', 'rows' => '5'))
             );
     }
+
+    /*public function buildNewOrderForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('order', IntegerType::class, array(
+                'label' => 'N°'
+            ));
+    }*/
     
     /**
      * {@inheritdoc}
