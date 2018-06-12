@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Reservation
 {
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Staff")
+     * @var int
+     */
+    private $staff;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -34,6 +40,13 @@ class Reservation
      * @ORM\Column(name="lastName", type="string", length=120)
      */
     private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="society", type="string", length=120)
+     */
+    private $society;
 
     /**
      * @var \DateTime
@@ -154,5 +167,53 @@ class Reservation
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set society
+     *
+     * @param string $society
+     *
+     * @return Reservation
+     */
+    public function setSociety($society)
+    {
+        $this->society = $society;
+
+        return $this;
+    }
+
+    /**
+     * Get society
+     *
+     * @return string
+     */
+    public function getSociety()
+    {
+        return $this->society;
+    }
+
+    /**
+     * Set staff
+     *
+     * @param \AppBundle\Entity\Staff $staff
+     *
+     * @return Reservation
+     */
+    public function setStaff(\AppBundle\Entity\Staff $staff = null)
+    {
+        $this->staff = $staff;
+
+        return $this;
+    }
+
+    /**
+     * Get staff
+     *
+     * @return \AppBundle\Entity\Staff
+     */
+    public function getStaff()
+    {
+        return $this->staff;
     }
 }

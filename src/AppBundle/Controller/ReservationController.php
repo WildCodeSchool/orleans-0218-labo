@@ -63,6 +63,7 @@ class ReservationController extends Controller
             'form' => $form->createView(),
             'equipments' => $equipments,
             'staffs' => $staffs,
+            ''
         ));
     }
 

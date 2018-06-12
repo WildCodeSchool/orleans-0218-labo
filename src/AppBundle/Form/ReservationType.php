@@ -5,6 +5,9 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use AppBundle\Entity\Staff;
+
 
 class ReservationType extends AbstractType
 {
@@ -13,7 +16,23 @@ class ReservationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstName')->add('lastName')->add('reservationDate')->add('email');
+        $builder
+            ->add('firstName')
+            ->add('lastName')
+            ->add('reservationDate')
+            ->add('email')
+            ->add('society')
+            ->add ('staff', EntityType::class, [
+                'class' => Staff::class,
+                'placeholder' => 'Choisir un membre du personnel',
+                'choice_label' => function ($lastName) {
+
+                return $lastName->getLastName();
+
+
+                }
+            ]);
+
     }
     
     /**
