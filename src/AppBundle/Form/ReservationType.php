@@ -23,9 +23,9 @@ class ReservationType extends AbstractType
             ->add('staff', EntityType::class, [
                 'class' => Staff::class,
                 'placeholder' => 'Choisir un membre du personnel',
-                'choice_label' => function ($lastName) {
+                'choice_label' => function ($reservation) {
 
-                    return $lastName->getLastName();
+                    return $reservation->getLastName() . ' ' .$reservation->getFirstName();
                 }
             ]);
     }
