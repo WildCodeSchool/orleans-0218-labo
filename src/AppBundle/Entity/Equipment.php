@@ -22,6 +22,13 @@ class Equipment
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="order", type="integer")
+     */
+    private $order;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -123,5 +130,29 @@ class Equipment
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Set order
+     *
+     * @param integer $order
+     *
+     * @return Equipment
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return $this->order;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Equipment;
@@ -24,18 +25,19 @@ class EquipmentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $equipments = $em->getRepository('AppBundle:Equipment')->findAll();
-
-        $deleteForms = array();
+        $deleteForm = array();
+        $editOrderForm = array();
         foreach ($equipments as $equipment) {
-            $formDelete = $this->createDeleteForm($equipment);
-            $deleteForms[$equipment->getId()] = $formDelete->createView();
+            $deleteForm[$equipment->getId()] = $this->createDeleteForm($equipment)->createView();
+            $editOrderForm[$equipment->getId()] = $this->createEditForm($equipment)->createView();
         }
 
         return $this->render(
             'admin/equipment/index.html.twig',
             array(
                 'equipments' => $equipments,
-                'delete_forms' => $deleteForms
+                'deleteForm' => $deleteForm,
+                'editOrderForm' => $editOrderForm
             )
         );
     }
@@ -65,6 +67,7 @@ class EquipmentController extends Controller
             )
         );
     }
+
     /**
      * Finds and displays a equipment entity.
      *
@@ -82,6 +85,7 @@ class EquipmentController extends Controller
             )
         );
     }
+
     /**
      * Displays a form to edit an existing equipment entity.
      *
@@ -104,6 +108,7 @@ class EquipmentController extends Controller
             )
         );
     }
+
     /**
      * Deletes a equipment entity.
      *
@@ -121,6 +126,7 @@ class EquipmentController extends Controller
         }
         return $this->redirectToRoute('equipment_index');
     }
+
     /**
      * Creates a form to delete a equipment entity.
      *
@@ -138,6 +144,18 @@ class EquipmentController extends Controller
                 )
             ))
             ->setMethod('DELETE')
+            ->getForm();
+    }
+
+    /**
+     * @param Equipment $equipment
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    private function createEditForm(Equipment $equipment)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('equipment_edit', array('id' => $equipment->getId())))
+            ->setMethod('PUT')
             ->getForm();
     }
 }

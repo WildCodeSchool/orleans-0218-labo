@@ -15,24 +15,28 @@
                         <tr class="admin-listing">
 
                             <td class="name">{{ equipment.name }}</td>
-
+                            {#<td>{{ equipment.order }}</td>#}
+                            <td>
+                                {{ form_start(editOrderForm[equipment.id]) }}
+                                <input type="number" value="{{ equipment.order }}">
+                                {{ form_end(editOrderForm[equipment.id]) }}
+                            </td>
                             <td class="edit">
                                 <a role="button" class="btn btn-primary"
                                    href="{{ path('equipment_show', { 'id': equipment.id }) }}">Détails</a>
                             </td>
-
                             <td class="edit">
                                 <a role="button" class="btn btn-warning"
                                    href="{{ path('equipment_edit', { 'id': equipment.id }) }}">Modifier</a>
                             </td>
 
                             <td class="delete">
-                                {{ form_start(delete_forms[equipment.id]) }}
+                                {{ form_start(deleteForm[equipment.id]) }}
                                 <button type="submit" class="btn btn-danger">
                                     <i class="icon-trash"></i>
                                     Supprimer
                                 </button>
-                                {{ form_end(delete_forms[equipment.id]) }}
+                                {{ form_end(deleteForm[equipment.id]) }}
                             </td>
                         </tr>
                     {% endfor %}
