@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reservationequipment</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Reservationstart</th>
+                <td>{% if reservationEquipment.reservationStart %}{{ reservationEquipment.reservationStart|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Reservationend</th>
+                <td>{% if reservationEquipment.reservationEnd %}{{ reservationEquipment.reservationEnd|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ reservationEquipment.id }}</td>
+            </tr>
+            <tr>
+                <th>Quantity</th>
+                <td>{{ reservationEquipment.quantity }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reservationequipment_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('reservationequipment_edit', { 'id': reservationEquipment.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

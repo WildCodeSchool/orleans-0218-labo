@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * ReservationEquipment
  *
  * @ORM\Table(name="reservation_equipment")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ReservationEquipmentRepository")
+ * @UniqueEntity(fields={"equipment", "reservation", "reservationStart"})
  */
 class ReservationEquipment
 {
@@ -21,20 +23,6 @@ class ReservationEquipment
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Reservation", inversedBy="reservationEquipments")
      */
     private $reservation;
-
-    /**
-     * @var
-     *
-     * @ORM\Column(name="reservation_start", type="datetime")
-     */
-    private $reservationStart;
-
-    /**
-     * @var
-     *
-     * @ORM\Column(name="reservation_end", type="datetime")
-     */
-    private $reservationEnd;
 
     /**
      * @var int
@@ -52,6 +40,19 @@ class ReservationEquipment
      */
     private $quantity;
 
+    /**
+     * @var
+     *
+     * @ORM\Column(name="reservation_start", type="datetime")
+     */
+    private $reservationStart;
+
+    /**
+     * @var
+     *
+     * @ORM\Column(name="reservation_end", type="datetime")
+     */
+    private $reservationEnd;
 
     /**
      * Get id
