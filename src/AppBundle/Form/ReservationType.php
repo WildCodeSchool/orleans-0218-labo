@@ -8,7 +8,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use AppBundle\Entity\Staff;
 
-
 class ReservationType extends AbstractType
 {
     /**
@@ -27,10 +26,8 @@ class ReservationType extends AbstractType
                 'choice_label' => function ($lastName) {
 
                     return $lastName->getLastName();
-
                 }
             ]);
-
     }
 
     /**
