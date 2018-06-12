@@ -23,6 +23,20 @@ class ReservationEquipment
     private $reservation;
 
     /**
+     * @var
+     *
+     * @ORM\Column(name="reservation_start", type="datetime")
+     */
+    private $reservationStart;
+
+    /**
+     * @var
+     *
+     * @ORM\Column(name="reservation_end", type="datetime")
+     */
+    private $reservationEnd;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -127,5 +141,53 @@ class ReservationEquipment
     public function getReservation()
     {
         return $this->reservation;
+    }
+
+    /**
+     * Set reservationStart
+     *
+     * @param \DateTime $reservationStart
+     *
+     * @return ReservationEquipment
+     */
+    public function setReservationStart($reservationStart)
+    {
+        $this->reservationStart = $reservationStart;
+
+        return $this;
+    }
+
+    /**
+     * Get reservationStart
+     *
+     * @return \DateTime
+     */
+    public function getReservationStart()
+    {
+        return $this->reservationStart;
+    }
+
+    /**
+     * Set reservationEnd
+     *
+     * @param \DateTime $reservationEnd
+     *
+     * @return ReservationEquipment
+     */
+    public function setReservationEnd($reservationEnd)
+    {
+        $this->reservationEnd = $reservationEnd;
+
+        return $this;
+    }
+
+    /**
+     * Get reservationEnd
+     *
+     * @return \DateTime
+     */
+    public function getReservationEnd()
+    {
+        return $this->reservationEnd;
     }
 }

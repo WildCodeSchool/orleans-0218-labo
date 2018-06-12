@@ -42,13 +42,6 @@ class Reservation
     private $lastName;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="reservationDate", type="datetime")
-     */
-    private $reservationDate;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=250)
@@ -112,30 +105,6 @@ class Reservation
     public function getLastName()
     {
         return $this->lastName;
-    }
-
-    /**
-     * Set reservationDate
-     *
-     * @param \DateTime $reservationDate
-     *
-     * @return Reservation
-     */
-    public function setReservationDate($reservationDate)
-    {
-        $this->reservationDate = $reservationDate;
-
-        return $this;
-    }
-
-    /**
-     * Get reservationDate
-     *
-     * @return \DateTime
-     */
-    public function getReservationDate()
-    {
-        return $this->reservationDate;
     }
 
     /**
