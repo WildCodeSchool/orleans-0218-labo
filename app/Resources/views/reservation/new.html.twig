@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'form/fields.html.twig' %}
 
 {% block body %}
     <h1>Reservation creation</h1>
@@ -15,11 +16,7 @@
                 <button type="button" id="equipment-button" class="btn btn-danger">Equipements</button>
             </div>
             <section id="room" class="row">
-                {% for room in form.room %}
-                    <div class="col-xs-3">
-                        {{ form_widget(room) }}
-                    </div>
-                {% endfor %}
+                {{ form_row(form.room) }}
             </section>
             <section id="equipment" class="row">
                 <div class="container">
