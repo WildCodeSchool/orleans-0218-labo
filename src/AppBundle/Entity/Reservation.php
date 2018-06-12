@@ -48,12 +48,6 @@ class Reservation
      */
     private $society;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="reservationDate", type="datetime")
-     */
-    private $reservationDate;
 
     /**
      * @var string

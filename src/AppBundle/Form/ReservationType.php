@@ -19,22 +19,20 @@ class ReservationType extends AbstractType
         $builder
             ->add('firstName')
             ->add('lastName')
-            ->add('reservationDate')
             ->add('email')
             ->add('society')
-            ->add ('staff', EntityType::class, [
+            ->add('staff', EntityType::class, [
                 'class' => Staff::class,
                 'placeholder' => 'Choisir un membre du personnel',
                 'choice_label' => function ($lastName) {
 
-                return $lastName->getLastName();
-
+                    return $lastName->getLastName();
 
                 }
             ]);
 
     }
-    
+
     /**
      * {@inheritdoc}
      */
