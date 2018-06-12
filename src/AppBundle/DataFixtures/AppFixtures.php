@@ -23,7 +23,7 @@ class AppFixtures extends Fixture
 
         $staff = new Staff();
         $staff->setFirstName('Cynthia');
-        $staff->setLastName('FORSECA');
+        $staff->setLastName('FONSECA');
         $manager->persist($staff);
 
         $staff = new Staff();

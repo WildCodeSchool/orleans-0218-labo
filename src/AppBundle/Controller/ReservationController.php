@@ -45,6 +45,9 @@ class ReservationController extends Controller
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
+        $staffs = $em->getRepository('AppBundle:Staff')->findAll();
+
+        $em = $this->getDoctrine()->getManager();
         $equipments = $em->getRepository('AppBundle:Equipment')->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -59,6 +62,7 @@ class ReservationController extends Controller
             'reservation' => $reservation,
             'form' => $form->createView(),
             'equipments' => $equipments,
+            'staffs' => $staffs,
         ));
     }
 
