@@ -5,19 +5,24 @@
 
     <table>
         <thead>
-            <tr>
-                <th>Reservationstart</th>
-                <th>Reservationend</th>
-                <th>Id</th>
-                <th>Quantity</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Reservationstart</th>
+            <th>Reservationend</th>
+            <th>Id</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for reservationEquipment in reservationEquipments %}
             <tr>
-                <td><a href="{{ path('reservationequipment_show', { 'id': reservationEquipment.id }) }}">{{ reservationEquipment.reservationStart|date('Y-m-d H:i:s')}}</a></td>
-                <td>{% if reservationEquipment.reservationEnd %}{{ reservationEquipment.reservationEnd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td><a href="{{ path('reservationequipment_show', { 'id': reservationEquipment.id }) }}">
+                        {{ reservationEquipment.reservationStart|date('Y-m-d H:i:s') }}</a></td>
+                <td>
+                    {% if reservationEquipment.reservationEnd %}
+                        {{ reservationEquipment.reservationEnd|date('Y-m-d H:i:s') }}
+                    {% endif %}
+                </td>
                 <td>{{ reservationEquipment.id }}</td>
                 <td>{{ reservationEquipment.quantity }}</td>
                 <td>
