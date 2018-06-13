@@ -1,23 +1,18 @@
 {% block navbar %}
-    <nav class="navbar navbar-default home-nav">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2 col-md-offset-10">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">
-                                <img class="img-responsive dropdown-img-home"
-                                     src="https://image.flaticon.com/icons/svg/64/64722.svg"></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ path ('equipment_index') }}">Équipement</a></li>
-                                <li><a href="{{ path ('room_index') }}">Salles</a></li>
-                                <li><a href="{{ path ('staff_index') }}">Personnel</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                <div class="col-md-4" >
+                    <div class="height10vh">
+                        <img class="height10vh" src="/images/orleans_pepinieres.png">
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-offset-6">
+                    <div class="height10vh wheel-center">
+                        <div>
+                            <a href="{{ path('equipment_index') }}"><i class="fa-red fas fa-cog fa-3x pull-right"></i></a>
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
 {% endblock %}
