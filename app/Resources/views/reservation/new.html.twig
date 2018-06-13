@@ -6,7 +6,6 @@
             <h1>Reservation creation</h1>
         </div>
         <div class="col-md-6">
-
             <div class="col-md-8 col-md-offset-2">
                 <h2 class="text-center">Responsable accueil</h2>
                 <div>
@@ -15,29 +14,20 @@
             </div>
         </div>
         <div class="col-md-6 ">
-
             <div class="col-md-8 col-md-offset-2">
                 <h2 class="text-center">Informations de l'emprunteur</h2>
-
                 {{ form_row(form.firstName) }}
                 {{ form_row(form.lastName) }}
                 {{ form_row(form.email) }}
                 {{ form_row(form.society) }}
-
             </div>
         </div>
-
         <div class="row">
-
             <div class="col-md-2 col-md-offset-5">
                 <a href="{{ path('equipment_index') }}"><img class="icon_size"
-
                                                              src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg"
                                                              alt=""></a>
-
                 <button type="submit" class="btn btn-primary pull-right"> - Valider -</button>
-
-
                 <ul>
                     <li>
                         <a href="{{ path('reservation_index') }}">Back to the list</a>
@@ -45,7 +35,5 @@
                 </ul>
             </div>
         </div>
-
-
     </section>
 {% endblock %}
