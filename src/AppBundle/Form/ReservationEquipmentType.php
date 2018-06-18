@@ -26,7 +26,7 @@ class ReservationEquipmentType extends AbstractType
                 'choice_label' => 'id',
             ));
     }
-    
+
     /**
      * {@inheritdoc}
      */
