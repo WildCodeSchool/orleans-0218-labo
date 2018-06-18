@@ -45,9 +45,6 @@ class ReservationController extends Controller
         $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
         $form->handleRequest($request);
 
-        $reservationEquipment = new Reservationequipment();
-        $formRe = $this->createForm('AppBundle\Form\ReservationEquipmentType', $reservationEquipment);
-        $formRe->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
         $equipments = $em->getRepository('AppBundle:Equipment')->findAll();
@@ -63,7 +60,6 @@ class ReservationController extends Controller
         return $this->render('reservation/new.html.twig', array(
             'reservation' => $reservation,
             'form' => $form->createView(),
-            'formRes' => $formRe->createView(),
             'equipments' => $equipments,
         ));
     }

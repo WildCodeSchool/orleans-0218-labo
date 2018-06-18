@@ -148,7 +148,7 @@ class Reservation
     public function addReservationEquipment(\AppBundle\Entity\ReservationEquipment $reservationEquipment)
     {
         $this->reservationEquipments[] = $reservationEquipment;
-
+        $reservationEquipment->setEquipment($this);
         return $this;
     }
 
