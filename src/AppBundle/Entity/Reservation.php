@@ -61,7 +61,6 @@ class Reservation
      * @ORM\Column(name="email", type="string", length=250)
      */
     private $email;
-
     /**
      * Constructor
      */

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reservationequipments list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Reservationstart</th>
+                <th>Reservationend</th>
+                <th>Id</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservationEquipment in reservationEquipments %}
+            <tr>
+                <td><a href="{{ path('reservationequipment_show', { 'id': reservationEquipment.id }) }}">{{ reservationEquipment.reservationStart|date('Y-m-d H:i:s')}}</a></td>
+                <td>{% if reservationEquipment.reservationEnd %}{{ reservationEquipment.reservationEnd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ reservationEquipment.id }}</td>
+                <td>{{ reservationEquipment.quantity }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('reservationequipment_show', { 'id': reservationEquipment.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('reservationequipment_edit', { 'id': reservationEquipment.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reservationequipment_new') }}">Create a new reservationEquipment</a>
+        </li>
+    </ul>
+{% endblock %}
