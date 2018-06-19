@@ -12,80 +12,27 @@
             {{ form_start(form) }}
                 {{ form_row(form.firstName) }}
                 {{ form_row(form.lastName) }}
-
-                {% for element in form.children %}
-                    {% if 'hidden' in element.vars.name %}
-
-                        <div class="col-md-4">{{ form_row(element) }}</div>
-                    {% endif %}
-                {% endfor %}
-                <input type="submit" value="Create" />
-            {{ form_end(form) }}
-        </div>
-    </div>
-
-    <ul>
-        <li>
-            <a href="{{ path('reservation_index') }}">Back to the list</a>
-        </li>
-    </ul>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="equipment-title">Équipements</h2>
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="col-md-8 col-md-offset-2">
-                <h2 class="text-center">Informations de l'emprunteur</h2>
-                {{ form_row(form.firstName) }}
-                {{ form_row(form.lastName) }}
                 {{ form_row(form.email) }}
                 {{ form_row(form.society) }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-5">
-                <a href="{{ path('equipment_index') }}"><img class="icon_size" src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg" alt=""></a>
-                <button type="submit" class="btn btn-primary pull-right"> - Valider -</button>
-                <ul>
-                    <li>
-                        <a href="{{ path('reservation_index') }}">Back to the list</a>
-                    </li>
-                </ul>
-            </div>
+                {{ form_row(form.staff) }}
+
+                <div class="row">
+                {% for reservationEquipment in form.reservationEquipments %}
+                    <div class="col-md-4">
+                        <img src="" />
+                        {{ form_row(reservationEquipment) }}
+                        <input type="button" class="plus" value="+" data-element="{{ reservationEquipment.quantity.vars.id }}" />
+                        <input type="button" class="minus" value="-" data-element="{{ reservationEquipment.quantity.vars.id }}" />
+                    </div>
+                {% endfor %}
+                </div>
+
+                <div class="row"><input type="submit" class="btn btn-primary" value="Create" /></div>
+            {{ form_end(form) }}
         </div>
     </div>
 </section>
 {% endblock %}
 {% block javascripts %}
-<script
-        src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function(){
-        jQuery('.plus').click(function(){
-            const tab = jQuery(this).attr('name').split('_');
-            const id = tab[tab.length-1].substring(0, tab[tab.length-1].length-1);
-            const elementName = 'hidden_equipment_'+id;
-
-            let value = jQuery('[name="appbundle_reservation['+elementName+']"]').val();
-            value++;
-            jQuery('[name="appbundle_reservation['+elementName+']"]').val(value);
-        });
-
-        jQuery('.minus').click(function(){
-            const tab = jQuery(this).attr('name').split('_');
-            const id = tab[tab.length-1].substring(0, tab[tab.length-1].length-1);
-            const elementName = 'hidden_equipment_'+id;
-
-            let value = jQuery('[name="appbundle_reservation['+elementName+']"]').val();
-            value --;
-            if (value >= 0) {
-                jQuery('[name="appbundle_reservation['+elementName+']"]').val(value);
-            }
-        });
-    });
-</script>
+<script src="{{ asset('build/reservation.js') }}"></script>
 {% endblock %}

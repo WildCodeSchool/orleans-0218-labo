@@ -14,17 +14,7 @@ class ReservationEquipmentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('reservationStart')
-            ->add('reservationEnd')
-            ->add('equipment', EntityType::class, array(
-                'class' => 'AppBundle:Equipment',
-                'choice_label' => 'name',
-            ))
-            ->add('quantity')
-            ->add('reservation', EntityType::class, array(
-                'class' => 'AppBundle:Reservation',
-                'choice_label' => 'id',
-            ));
+        $builder->add('quantity');
     }
 
     /**

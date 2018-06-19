@@ -49,42 +49,27 @@ class ReservationController extends Controller
         $equipments = $em->getRepository(Equipment::class)->findAll();
 
         $reservation = new Reservation();
-        $form = $this->createForm('AppBundle\Form\ReservationType');
 
         foreach ($equipments as $equipment) {
-            $form->add('hidden_equipment_'.$equipment->getId(), TextType::class, ['required' => false]);
-            $form->add('plus_equipment_'.$equipment->getId(), ButtonType::class, ['label' => '+', 'attr' => ['class' => 'plus']]);
-            $form->add('minus_equipment_'.$equipment->getId(), ButtonType::class, ['label' => '-', 'attr' => ['class' => 'minus']]);
+            $resaEquip = new ReservationEquipment();
+
+            $now = new \DateTime();
+
+            $resaEquip->setEquipment($equipment);
+            $resaEquip->setQuantity(0);
+            $resaEquip->setReservation($reservation);
+            $resaEquip->setReservationStart($now);
+            $resaEquip->setReservationEnd($now);
+
+            $reservation->addReservationEquipment($resaEquip);
+            $em->persist($reservation);
         }
+
+        $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-
-            $reservation->setFirstName($data['firstName']);
-            $reservation->setLastName($data['lastName']);
-            $reservation->setEmail($data['email']);
-            $reservation->setSociety($data['society']);
-            $reservation->setStaff($data['staff']);
-
-            foreach ($equipments as $equipment) {
-                $name = 'hidden_equipment_'.$equipment->getId();
-                if (!empty($data[$name])) {
-                    $resaEquip = new ReservationEquipment();
-
-                    $equip = $em->getRepository(Equipment::class)->find($data[$name]);
-                    $resaEquip->setEquipment($equip);
-                    $resaEquip->setQuantity($data[$name]);
-                    $resaEquip->setReservation($reservation);
-                    $resaEquip->setReservationStart($data['reservationStart']);
-                    $resaEquip->setReservationEnd($data['reservationEnd']);
-
-                    $em->persist($resaEquip);
-                }
-            }
-
-            $em = $this->getDoctrine()->getManager();
             $em->persist($reservation);
             $em->flush();
 
