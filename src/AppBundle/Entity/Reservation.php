@@ -37,6 +37,13 @@ class Reservation
     /**
      * @var string
      *
+     * @ORM\Column(name="reservation_date", type="datetime")
+     */
+    private $reservationDate;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="lastName", type="string", length=120)
      */
     private $lastName;
@@ -179,7 +186,7 @@ class Reservation
     {
         $this->room = $room;
     }
-  
+
     /**
      * Set society
      *
@@ -203,7 +210,7 @@ class Reservation
     {
         return $this->room;
     }
-  
+
     /**
      * Get society
      *
