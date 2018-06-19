@@ -2,7 +2,11 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Reservation;
+use AppBundle\Entity\ReservationEquipment;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -27,7 +31,10 @@ class ReservationType extends AbstractType
 
                     return $reservation->getLastName() . ' ' .$reservation->getFirstName();
                 }
-            ]);
+            ])
+            ->add('reservationEquipments', CollectionType::class, ['entry_type' => ReservationEquipmentType::class]);
+//            ->add('reservationStart', DateType::class)
+//            ->add('reservationEnd', DateType::class);
     }
 
     /**
@@ -36,7 +43,7 @@ class ReservationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Reservation'
+            'data_class' => Reservation::class
         ));
     }
 

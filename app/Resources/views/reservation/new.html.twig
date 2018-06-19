@@ -1,37 +1,38 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <section class="staff-reservation">
-        <div class="container-fluid container-title text-center">
-            <h1>Reservation creation</h1>
-        </div>
-        <div class="col-md-6">
-            <div class="col-md-8 col-md-offset-2">
-                <h2 class="text-center">Responsable accueil</h2>
-                <div>
-                    {{ form_row(form.staff) }}
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 ">
-            <div class="col-md-8 col-md-offset-2">
-                <h2 class="text-center">Informations de l'emprunteur</h2>
+
+<section class="staff-reservation">
+    <div class="container-fluid container-title text-center">
+        <h1>Reservation creation</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            {{ form_start(form) }}
                 {{ form_row(form.firstName) }}
                 {{ form_row(form.lastName) }}
                 {{ form_row(form.email) }}
                 {{ form_row(form.society) }}
-            </div>
+                {{ form_row(form.staff) }}
+
+                <div class="row">
+                {% for reservationEquipment in form.reservationEquipments %}
+                    <div class="col-md-4">
+                        <img src="" />
+                        {{ form_row(reservationEquipment) }}
+                        <input type="button" class="plus" value="+" data-element="{{ reservationEquipment.quantity.vars.id }}" />
+                        <input type="button" class="minus" value="-" data-element="{{ reservationEquipment.quantity.vars.id }}" />
+                    </div>
+                {% endfor %}
+                </div>
+
+                <div class="row"><input type="submit" class="btn btn-primary" value="Create" /></div>
+            {{ form_end(form) }}
         </div>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-5">
-                <a href="{{ path('equipment_index') }}"><img class="icon_size" src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg" alt=""></a>
-                <button type="submit" class="btn btn-primary pull-right"> - Valider -</button>
-                <ul>
-                    <li>
-                        <a href="{{ path('reservation_index') }}">Back to the list</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
+{% endblock %}
+{% block javascripts %}
+<script src="{{ asset('build/reservation.js') }}"></script>
 {% endblock %}
