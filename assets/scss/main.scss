@@ -10,6 +10,7 @@ $catamaran: 'Catamaran', sans-serif;
 //ADMIN
 
 tr.admin-listing {
+
   th {
     padding-left: 10px;
 
@@ -23,6 +24,10 @@ tr.admin-listing {
     &.name {
       font-size: 1.4em;
       padding-top: 10px;
+    }
+
+    &.show {
+      width: 50px;
     }
 
     &.edit {
@@ -96,8 +101,9 @@ body {
     width: 100%;
     padding-right: 50px;
     font-family: $catamaran;
+    height: 110px;
     .dropdown-img-home {
-      width: 80px;
+      width: 100px;
     }
     .dropdown-menu {
       background-color: rgba(255, 255, 255, 0.9);
@@ -113,12 +119,10 @@ body {
   }
 
   .home {
-    background-color: $primary-color;
-    min-height: 100vh;
+    background-color: $primary-color ;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 100px;
     font-family: $catamaran;
   }
 
@@ -182,6 +186,28 @@ body {
   width: 80px;
 }
 
+.height80vh {
+  height: 80vh;
+}
+
+.height10vh {
+  height: 10vh;
+}
+
+.fa-red {
+  color : $primary-color;
+}
+
+.wheel-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.width-full {
+  width: 100%;
+}
+
 .equipment-title {
   margin-bottom: 50px;
 }
@@ -197,4 +223,16 @@ body {
   .glyphicon {
     font-size: 5rem;
   }
+}
+
+.imgSize{
+  height: 400px;
+}
+
+.widhtButton{
+  width: 100%;
+}
+
+.spaceWhite{
+  height: 100px;
 }

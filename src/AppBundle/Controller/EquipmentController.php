@@ -71,13 +71,13 @@ class EquipmentController extends Controller
      * @Route("/{id}", name="equipment_show")
      * @Method("GET")
      */
-    public function showAction(Equipment $stuff)
+    public function showAction(Equipment $equipment)
     {
-        $deleteForm = $this->createDeleteForm($stuff);
+        $deleteForm = $this->createDeleteForm($equipment);
         return $this->render(
             'admin/equipment/show.html.twig',
             array(
-                'equipment' => $stuff,
+                'equipment' => $equipment,
                 'delete_form' => $deleteForm->createView(),
             )
         );
@@ -86,7 +86,7 @@ class EquipmentController extends Controller
      * Displays a form to edit an existing equipment entity.
      *
      * @Route("/{id}/edit", name="equipment_edit")
-     * @Method({"GET",      "POST"})
+     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Equipment $equipment)
     {
