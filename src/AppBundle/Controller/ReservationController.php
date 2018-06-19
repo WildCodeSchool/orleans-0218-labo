@@ -2,10 +2,14 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Reservation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\ReservationEquipment;
 
@@ -41,18 +45,45 @@ class ReservationController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $equipments = $em->getRepository(Equipment::class)->findAll();
+
         $reservation = new Reservation();
-        $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
+        $form = $this->createForm('AppBundle\Form\ReservationType');
+
+        foreach ($equipments as $equipment) {
+            $form->add('hidden_equipment_'.$equipment->getId(), TextType::class, ['required' => false]);
+            $form->add('plus_equipment_'.$equipment->getId(), ButtonType::class, ['label' => '+', 'attr' => ['class' => 'plus']]);
+            $form->add('minus_equipment_'.$equipment->getId(), ButtonType::class, ['label' => '-', 'attr' => ['class' => 'minus']]);
+        }
+
         $form->handleRequest($request);
 
-        $reservationEquipment = new Reservationequipment();
-        $formRe = $this->createForm('AppBundle\Form\ReservationEquipmentType', $reservationEquipment);
-        $formRe->handleRequest($request);
-
-        $em = $this->getDoctrine()->getManager();
-        $equipments = $em->getRepository('AppBundle:Equipment')->findAll();
-
         if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $reservation->setFirstName($data['firstName']);
+            $reservation->setLastName($data['lastName']);
+            $reservation->setEmail($data['email']);
+            $reservation->setSociety($data['society']);
+            $reservation->setStaff($data['staff']);
+
+            foreach ($equipments as $equipment) {
+                $name = 'hidden_equipment_'.$equipment->getId();
+                if (!empty($data[$name])) {
+                    $resaEquip = new ReservationEquipment();
+
+                    $equip = $em->getRepository(Equipment::class)->find($data[$name]);
+                    $resaEquip->setEquipment($equip);
+                    $resaEquip->setQuantity($data[$name]);
+                    $resaEquip->setReservation($reservation);
+                    $resaEquip->setReservationStart($data['reservationStart']);
+                    $resaEquip->setReservationEnd($data['reservationEnd']);
+
+                    $em->persist($resaEquip);
+                }
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($reservation);
             $em->flush();
@@ -62,8 +93,7 @@ class ReservationController extends Controller
 
         return $this->render('reservation/new.html.twig', array(
             'form' => $form->createView(),
-            'formRes' => $formRe->createView(),
-            'equipments' => $equipments,
+            'equipments' => $equipments
         ));
     }
 

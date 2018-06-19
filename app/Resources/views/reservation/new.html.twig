@@ -6,22 +6,23 @@
     <div class="container-fluid container-title text-center">
         <h1>Reservation creation</h1>
     </div>
-    <div class="col-md-6">
-        <div class="col-md-8 col-md-offset-2">
-            <h2 class="text-center">Responsable accueil</h2>
-            <div>
-                {{ form_row(form.staff) }}
-            </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            {{ form_start(form) }}
+                {{ form_row(form.firstName) }}
+                {{ form_row(form.lastName) }}
 
-    {{ form_start(formRes) }}
-    {{ form_widget(formRes) }}
-    <input type="submit" value="Create" />
-    {{ form_end(formRes) }}
+                {% for element in form.children %}
+                    {% if 'hidden' in element.vars.name %}
+
+                        <div class="col-md-4">{{ form_row(element) }}</div>
+                    {% endif %}
+                {% endfor %}
+                <input type="submit" value="Create" />
+            {{ form_end(form) }}
+        </div>
+    </div>
 
     <ul>
         <li>
@@ -54,5 +55,37 @@
                 </ul>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+{% endblock %}
+{% block javascripts %}
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery('.plus').click(function(){
+            const tab = jQuery(this).attr('name').split('_');
+            const id = tab[tab.length-1].substring(0, tab[tab.length-1].length-1);
+            const elementName = 'hidden_equipment_'+id;
+
+            let value = jQuery('[name="appbundle_reservation['+elementName+']"]').val();
+            value++;
+            jQuery('[name="appbundle_reservation['+elementName+']"]').val(value);
+        });
+
+        jQuery('.minus').click(function(){
+            const tab = jQuery(this).attr('name').split('_');
+            const id = tab[tab.length-1].substring(0, tab[tab.length-1].length-1);
+            const elementName = 'hidden_equipment_'+id;
+
+            let value = jQuery('[name="appbundle_reservation['+elementName+']"]').val();
+            value --;
+            if (value >= 0) {
+                jQuery('[name="appbundle_reservation['+elementName+']"]').val(value);
+            }
+        });
+    });
+</script>
 {% endblock %}
