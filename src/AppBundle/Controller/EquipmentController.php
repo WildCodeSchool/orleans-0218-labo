@@ -6,6 +6,7 @@ use AppBundle\Entity\Equipment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\MonologBundle\DependencyInjection\Compiler\AddProcessorsPass;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -24,7 +25,7 @@ class EquipmentController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $equipments = $em->getRepository('AppBundle:Equipment')->findAll();
+        $equipments = $em->getRepository('AppBundle:Equipment')->findBy([], ['equipmentOrder' => 'ASC']);
         $deleteForm = array();
         $editOrderForm = array();
         foreach ($equipments as $equipment) {
@@ -110,6 +111,35 @@ class EquipmentController extends Controller
     }
 
     /**
+     * @Route("/{id}/edit/down", name="down_order_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function downOrderAction(Equipment $equipment)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $newDownOrder = $equipment->getEquipmentOrder() + 1;
+        $equipment->setEquipmentOrder($newDownOrder);
+
+        $em->flush();
+
+        return $this->redirectToRoute('equipment_index');
+    }
+
+    /**
+     * @Route("/{id}/edit/up", name="up_order_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function upOrderAction(Equipment $equipment)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $newOrder = $equipment->getEquipmentOrder() - 1;
+        $equipment->setEquipmentOrder($newOrder);
+        $em->flush();
+
+        return $this->redirectToRoute('equipment_index');
+    }
+
+    /**
      * Deletes a equipment entity.
      *
      * @Route("/{id}",   name="equipment_delete")
@@ -136,7 +166,7 @@ class EquipmentController extends Controller
      */
     private function createDeleteForm(Equipment $equipment)
     {
-        return $this->createFormBuilder(null, ['csrf_field_name' => 'delete-equip-'.$equipment->getId()])
+        return $this->createFormBuilder(null, ['csrf_field_name' => 'delete-equip-' . $equipment->getId()])
             ->setAction($this->generateUrl(
                 'equipment_delete',
                 array(
