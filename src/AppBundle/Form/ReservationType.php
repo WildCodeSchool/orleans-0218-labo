@@ -33,8 +33,6 @@ class ReservationType extends AbstractType
                 }
             ])
             ->add('reservationEquipments', CollectionType::class, ['entry_type' => ReservationEquipmentType::class]);
-//            ->add('reservationStart', DateType::class)
-//            ->add('reservationEnd', DateType::class);
     }
 
     /**

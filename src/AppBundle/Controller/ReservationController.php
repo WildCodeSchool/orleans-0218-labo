@@ -50,10 +50,10 @@ class ReservationController extends Controller
 
         $reservation = new Reservation();
 
+        $now = new \DateTime();
+
         foreach ($equipments as $equipment) {
             $resaEquip = new ReservationEquipment();
-
-            $now = new \DateTime();
 
             $resaEquip->setEquipment($equipment);
             $resaEquip->setQuantity(0);

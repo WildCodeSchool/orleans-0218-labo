@@ -200,3 +200,40 @@ body {
 .spaceWhite{
   height: 100px;
 }
+
+.staff-reservation {
+  .reservation-infos {
+    margin-bottom: 100px;
+    .form-control {
+      border-radius: 0px;
+    }
+  }
+  .reservation-equipment {
+    .equipment {
+      margin-bottom: 50px;
+      img {
+        width: 150px;
+        height: 150px;
+        box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
+      }
+      .equipment-btns {
+        display: flex;
+        justify-content: space-around;
+      }
+      .form-control {
+        width: 40px;
+        border: none;
+        box-shadow: none;
+      }
+      .plus, .minus {
+        border-radius: 50%;
+        border: none;
+        width: 40px;
+        height: 40px;
+        background-color: $primary-color;
+        color: $white-color;
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

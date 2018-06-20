@@ -20,7 +20,7 @@
                 <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
                 <td>{{ reservation.firstName }}</td>
                 <td>{{ reservation.lastName }}</td>
-                <td>{% if reservation.reservationDate %}{{ reservation.reservationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                {#<td>{% if reservation.reservationDate %}{{ reservation.reservationDate|date('Y-m-d H:i:s') }}{% endif %}</td>#}
                 <td>{{ reservation.email }}</td>
                 <td>
                     <ul>
