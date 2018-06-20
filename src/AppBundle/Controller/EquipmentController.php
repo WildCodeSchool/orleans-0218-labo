@@ -58,6 +58,7 @@ class EquipmentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($equipment);
             $em->flush();
+            $this->order();
             return $this->redirectToRoute('equipment_index', array('id' => $equipment->getId()));
         }
         return $this->render(
@@ -117,8 +118,10 @@ class EquipmentController extends Controller
     public function downOrderAction(Equipment $equipment)
     {
         $em = $this->getDoctrine()->getManager();
-        $newDownOrder = $equipment->getEquipmentOrder() + 1;
-        $equipment->setEquipmentOrder($newDownOrder);
+        $equipmentUp = $em->getRepository(Equipment::class)->findOneBy(['equipmentOrder'=> $equipment->getEquipmentOrder() + 1]);
+
+        $equipmentUp->setEquipmentOrder($equipmentUp->getEquipmentOrder() - 1);
+        $equipment->setEquipmentOrder($equipment->getEquipmentOrder() + 1);
 
         $em->flush();
 
@@ -132,8 +135,11 @@ class EquipmentController extends Controller
     public function upOrderAction(Equipment $equipment)
     {
         $em = $this->getDoctrine()->getManager();
-        $newOrder = $equipment->getEquipmentOrder() - 1;
-        $equipment->setEquipmentOrder($newOrder);
+        $equipmentDown = $em->getRepository(Equipment::class)->findOneBy(['equipmentOrder'=> $equipment->getEquipmentOrder() - 1]);
+
+        $equipmentDown->setEquipmentOrder($equipmentDown->getEquipmentOrder() + 1);
+        $equipment->setEquipmentOrder($equipment->getEquipmentOrder() - 1);
+
         $em->flush();
 
         return $this->redirectToRoute('equipment_index');
@@ -187,5 +193,17 @@ class EquipmentController extends Controller
             ->setAction($this->generateUrl('equipment_edit', array('id' => $equipment->getId())))
             ->setMethod('PUT')
             ->getForm();
+    }
+
+    public function order()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $equipments = $em->getRepository(Equipment::class)->findby([],['equipmentOrder' => 'ASC']);
+        $i = 1;
+        foreach ($equipments as $equipment) {
+            $equipment->setEquipmentOrder($i++);
+            $em->persist($equipment);
+        }
+        $em->flush();
     }
 }

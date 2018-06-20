@@ -27,7 +27,7 @@ class Equipment
     /**
      * @var int
      *
-     * @ORM\Column(name="equipment_order", type="integer", unique=true)
+     * @ORM\Column(name="equipment_order", type="integer")
      */
     private $equipmentOrder;
 
