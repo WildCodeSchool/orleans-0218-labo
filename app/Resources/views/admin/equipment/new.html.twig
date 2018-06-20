@@ -2,29 +2,29 @@
 
 {% block layout %}
 
-<section class="admin-listing-room">
-    <div class="container-fluid container-title text-center">
-        <h1>Gestion des équipements</h1>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div>
-                    <h2 class="text-center">Création d'un nouvel équipement</h2>
+    <section class="admin-listing-room">
+        <div class="container-fluid container-title text-center">
+            <h1>Gestion des équipements</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div>
+                        <h2 class="text-center">Création d'un nouvel équipement</h2>
 
-                    {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    <a href="{{ path('equipment_index') }}"><img class="icon_size"
-                         src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg"
-                         alt="retour sur la page d'accueil"></a>
-                    <button type="submit" class="btn btn-primary pull-right"> - Valider - </button>
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <a href="{{ path('equipment_index') }}"><img class="icon_size"
+                                                                     src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg"
+                                                                     alt="retour sur la page d'accueil"></a>
+                        <button type="submit" class="btn btn-primary pull-right"> - Valider -</button>
 
-                    {{ form_end(form) }}
+                        {{ form_end(form) }}
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 {% endblock %}

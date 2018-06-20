@@ -3,12 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Equipment
  *
  * @ORM\Table(name="equipment")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EquipmentRepository")
+ * @UniqueEntity("equipmentOrder",
+ *     message="L'ordre de prio est déjà utilisé !")
  */
 class Equipment
 {
@@ -24,9 +27,9 @@ class Equipment
     /**
      * @var int
      *
-     * @ORM\Column(name="order", type="integer")
+     * @ORM\Column(name="equipment_order", type="integer", unique=true)
      */
-    private $order;
+    private $equipmentOrder;
 
     /**
      * @var string
@@ -133,26 +136,26 @@ class Equipment
     }
 
     /**
-     * Set order
+     * Set equipmentOrder
      *
-     * @param integer $order
+     * @param integer $equipmentOrder
      *
      * @return Equipment
      */
-    public function setOrder($order)
+    public function setEquipmentOrder($equipmentOrder)
     {
-        $this->order = $order;
+        $this->equipmentOrder = $equipmentOrder;
 
         return $this;
     }
 
     /**
-     * Get order
+     * Get equipmentOrder
      *
      * @return integer
      */
-    public function getOrder()
+    public function getEquipmentOrder()
     {
-        return $this->order;
+        return $this->equipmentOrder;
     }
 }
