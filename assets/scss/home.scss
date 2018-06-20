@@ -1,0 +1,42 @@
+//HOME
+
+.home-nav {
+  background-color: $primary-color;
+  border: 0px;
+  border-radius: 0px;
+  position: fixed;
+  width: 100%;
+  padding-right: 50px;
+  font-family: $catamaran;
+  height: 110px;
+  .dropdown-img-home {
+    width: 100px;
+  }
+  .dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 0px;
+  }
+}
+
+.white {
+  color: $white-color;
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.home {
+  background-color: $primary-color ;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: $catamaran;
+}
+
+.parameters {
+  margin-top: -120px;
+}
+
+.fa-check {
+  color: $check-color;
+}
