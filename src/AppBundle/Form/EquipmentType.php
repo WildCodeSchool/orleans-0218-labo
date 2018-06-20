@@ -25,7 +25,7 @@ class EquipmentType extends AbstractType
                     'label' => 'Description de l\'équipement',
                     'attr' => array('cols' => '5', 'rows' => '5'))
             )
-            ->add('imageFile',FileType::class);
+            ->add('imageFile', FileType::class);
     }
 
     /**
