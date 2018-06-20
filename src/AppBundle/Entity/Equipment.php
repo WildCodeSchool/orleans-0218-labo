@@ -40,13 +40,6 @@ class Equipment
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="picture", type="text", nullable=true)
-     */
-    private $picture;
-
-    /**
      *
      * @Vich\UploadableField(mapping="product_image", fileNameProperty="image", size="imageSize")
      * @Assert\File(
@@ -66,13 +59,6 @@ class Equipment
      * @var string
      */
     private $imageName;
-
-    /**
-     * @ORM\Column(type="integer",nullable=true)
-     *
-     * @var integer
-     */
-    private $imageSize;
 
     /**
      * @ORM\Column(type="datetime")
@@ -137,30 +123,6 @@ class Equipment
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set picture
-     *
-     * @param string $picture
-     *
-     * @return Equipment
-     */
-    public function setPicture($picture)
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
-    /**
-     * Get picture
-     *
-     * @return string
-     */
-    public function getPicture()
-    {
-        return $this->picture;
     }
 
     /**

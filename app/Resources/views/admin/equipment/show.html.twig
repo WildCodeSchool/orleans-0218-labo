@@ -1,40 +1,33 @@
 {% extends 'admin/layoutAdmin.html.twig' %}
 
 {% block layout %}
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
                 <h2>Détails de l'équipement</h2>
             </div>
         </div>
-        <div class="row spaceWhite"></div>
         <div class="row">
-            <div class="col-md-3 col-md-offset-2 text-center ">
+            <div class="col-md-6 text-center ">
                 <img class="img-responsive imgSize"
-                    src="{{ equipment.picture }}"
+                    src="{{ asset('images/products/' ~ equipment.imageName) }}"
                      alt="{{ equipment.name }}">
             </div>
             <div class="col-md-6 text-justify">
-                <div class="row">
-                    <h3 class="col-md-8">{{ equipment.name }}</h3>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
-                    <p>{{ equipment.description }}"></p>
-                    </div>
-                </div>
+                <h3>{{ equipment.name }}</h3>
+                <p>{{ equipment.description }}</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-1 col-md-offset-5 text-center ">
-                <a type="button" class="btn btn-primary widhtButton" href="{{ path('equipment_index') }}">Retour</a>
+        <div class="row container-button">
+            <div class="col-md-2 col-md-offset-3 text-center ">
+                <a type="button" class="btn btn-primary button-width" href="{{ path('equipment_index') }}">Retour</a>
             </div>
-            <div class="col-md-1 text-justify">
-                <a type="button" class="btn btn-warning widhtButton" href="{{ path('equipment_edit', { 'id': equipment.id }) }}">Modifier</a>
+            <div class="col-md-2 text-center">
+                <a type="button" class="btn btn-warning button-width" href="{{ path('equipment_edit', { 'id': equipment.id }) }}">Modifier</a>
             </div>
-            <div class="col-md-1 text-justify">
+            <div class="col-md-2 text-center">
                     {{ form_start(delete_form) }}
-                    <button type="submit" class="btn btn-danger widhtButton">
+                    <button type="submit" class="btn btn-danger button-width">
                         <i class="icon-trash"></i>
                         Supprimer
                     </button>
