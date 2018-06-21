@@ -8,7 +8,6 @@
 
 namespace AppBundle\Service;
 
-
 use AppBundle\Entity\Equipment;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -37,7 +36,8 @@ class OrderService
 
     public function up($equipment)
     {
-        $equipmentDown = $this->em->getRepository(Equipment::class)->findOneBy(['equipmentOrder' => $equipment->getEquipmentOrder() - 1]);
+        $equipmentDown = $this->em->getRepository(Equipment::class)->findOneBy([
+            'equipmentOrder' => $equipment->getEquipmentOrder() - 1]);
         $equipmentDown->setEquipmentOrder($equipmentDown->getEquipmentOrder() + 1);
         $equipment->setEquipmentOrder($equipment->getEquipmentOrder() - 1);
         $this->em->flush();
@@ -45,7 +45,8 @@ class OrderService
 
     public function down($equipment)
     {
-        $equipmentUp = $this->em->getRepository(Equipment::class)->findOneBy(['equipmentOrder' => $equipment->getEquipmentOrder() + 1]);
+        $equipmentUp = $this->em->getRepository(Equipment::class)->findOneBy([
+            'equipmentOrder' => $equipment->getEquipmentOrder() + 1]);
         $equipmentUp->setEquipmentOrder($equipmentUp->getEquipmentOrder() - 1);
         $equipment->setEquipmentOrder($equipment->getEquipmentOrder() + 1);
         $this->em->flush();
