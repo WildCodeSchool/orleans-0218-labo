@@ -3,26 +3,29 @@
 {% block body %}
 
     <section class="staff-reservation">
-        <div class="container-fluid container-title text-center">
-            <h1>Réservation</h1>
-        </div>
+        {#<div class="container-fluid container-title text-center">#}
+        {#</div>#}
 
         <div class="row">
             <div class="col-xs-offset-1 col-xs-10">
                 <div class="row reservation-infos">
-                    <div class="col-sm-6 col-xs-12">
+                    <div class="col-sm-3 col-xs-12">
                         {{ form_start(form) }}
                         {{ form_row(form.staff) }}
-                        <div id="datetimepicker">
-                            {{ form_row(form.reservationStart) }}
+                        {{ form_row(form.reservationStart) }}
+                        {{ form_row(form.reservationEnd) }}
+                    </div>
+                    <div class="col-sm-6 col-xs-12 col-xs-offset-3">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                {{ form_row(form.firstName) }}
+                            </div>
+                            <div class="col-xs-6">
+                                {{ form_row(form.lastName) }}
+                            </div>
                         </div>
 
 
-                        {{ form_row(form.reservationEnd) }}
-                    </div>
-                    <div class="col-sm-6 col-xs-12">
-                        {{ form_row(form.firstName) }}
-                        {{ form_row(form.lastName) }}
                         {{ form_row(form.email) }}
                         {{ form_row(form.society) }}
                     </div>
@@ -35,16 +38,17 @@
                             <p>{{ reservationEquipment.vars.value.equipment.name }}</p>
                             <div class="row equipment-btns">
                                 <div class="col-xs-4 row equipment-btns">
-                                    <input type="button" class="plus" value="+"
-                                           data-element="{{ reservationEquipment.quantity.vars.id }}"/>
+                                    <input  type="button" class="minus" value="-"
+                                            data-element="{{ reservationEquipment.quantity.vars.id }}"/>
                                 </div>
                                 <div class="col-xs-4 row equipment-btns text-center">
                                     {{ form_widget(reservationEquipment) }}
                                 </div>
                                 <div class="col-xs-4 row equipment-btns">
-                                    <input  type="button" class="minus" value="-"
+                                    <input type="button" class="plus" value="+"
                                            data-element="{{ reservationEquipment.quantity.vars.id }}"/>
                                 </div>
+
                             </div>
                         </div>
                     {% endfor %}
@@ -55,20 +59,20 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="row">
-                <div class='col-sm-6'>
-                    <div class="form-group">
-                        <div class='input-group date' id='datetimepicker2'>
-                            <input type='text' class="form-control" />
-                            <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {#<div class="container">#}
+            {#<div class="row">#}
+                {#<div class='col-sm-6'>#}
+                    {#<div class="form-group">#}
+                        {#<div class='input-group date' id='datetimepicker2'>#}
+                            {#<input type='text' class="form-control" />#}
+                            {#<span class="input-group-addon">#}
+                        {#<span class="glyphicon glyphicon-calendar"></span>#}
+                    {#</span>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
 
 
     </section>

@@ -6,6 +6,7 @@
     {% block stylesheets %}{% endblock %}
     <link rel="stylesheet" href="{{ asset('build/style.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
     {% block body %}{% endblock %}
@@ -15,6 +16,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
           crossorigin="anonymous">
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    {% endblock %}
 </body>
 </html>

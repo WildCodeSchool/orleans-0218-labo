@@ -1,4 +1,5 @@
 import $ from "jquery";
+import flatpickr from "flatpickr";
 
 $(document).ready(function () {
     jQuery('.plus, .minus').click(function(){
@@ -11,8 +12,12 @@ $(document).ready(function () {
             if (elementValue > 0) jQuery('#'+elementId).val(--elementValue);
         }
     })
-     
-        $('#datetimepicker2').datetimepicker({
-            locale: 'ru'
-        });
+
+    flatpickr(".flatpickr", {
+        enableTime: true,
+        dateFormat: "d-m-Y H:i",
+        time_24hr: true,
+    });
+
+
 });
