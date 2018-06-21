@@ -3,15 +3,12 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Equipment
  *
  * @ORM\Table(name="equipment")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EquipmentRepository")
- * @UniqueEntity("equipmentOrder",
- *     message="L'ordre de prio est déjà utilisé !")
  */
 class Equipment
 {

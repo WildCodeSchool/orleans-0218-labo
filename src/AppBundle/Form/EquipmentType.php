@@ -24,8 +24,7 @@ class EquipmentType extends AbstractType
                 array(
                     'label'=> 'Description de l\'équipement',
                     'attr' => array('cols' => '5', 'rows' => '5'))
-            )
-            ->add('equipment_order', IntegerType::Class, array('label' => 'Ordre de priorité'));
+            );
     }
     
     /**

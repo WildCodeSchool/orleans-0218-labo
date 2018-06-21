@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\MonologBundle\DependencyInjection\Compiler\AddProcessorsPass;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Service\OrderService;
 
 /**
  * Equipment controller.
@@ -49,16 +50,19 @@ class EquipmentController extends Controller
      * @Route("/new",  name="equipment_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, OrderService $service)
     {
         $equipment = new Equipment();
         $form = $this->createForm('AppBundle\Form\EquipmentType', $equipment);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $equipments = $em->getRepository(Equipment::class)->findAll();
+            $nbEquipment = count($equipments);
+            $equipment->setEquipmentOrder($nbEquipment + 1);
             $em->persist($equipment);
             $em->flush();
-            $this->order();
+            $service->order();
             return $this->redirectToRoute('equipment_index', array('id' => $equipment->getId()));
         }
         return $this->render(
@@ -118,7 +122,7 @@ class EquipmentController extends Controller
     public function downOrderAction(Equipment $equipment)
     {
         $em = $this->getDoctrine()->getManager();
-        $equipmentUp = $em->getRepository(Equipment::class)->findOneBy(['equipmentOrder'=> $equipment->getEquipmentOrder() + 1]);
+        $equipmentUp = $em->getRepository(Equipment::class)->findOneBy(['equipmentOrder' => $equipment->getEquipmentOrder() + 1]);
 
         $equipmentUp->setEquipmentOrder($equipmentUp->getEquipmentOrder() - 1);
         $equipment->setEquipmentOrder($equipment->getEquipmentOrder() + 1);
@@ -135,7 +139,7 @@ class EquipmentController extends Controller
     public function upOrderAction(Equipment $equipment)
     {
         $em = $this->getDoctrine()->getManager();
-        $equipmentDown = $em->getRepository(Equipment::class)->findOneBy(['equipmentOrder'=> $equipment->getEquipmentOrder() - 1]);
+        $equipmentDown = $em->getRepository(Equipment::class)->findOneBy(['equipmentOrder' => $equipment->getEquipmentOrder() - 1]);
 
         $equipmentDown->setEquipmentOrder($equipmentDown->getEquipmentOrder() + 1);
         $equipment->setEquipmentOrder($equipment->getEquipmentOrder() - 1);
@@ -151,7 +155,7 @@ class EquipmentController extends Controller
      * @Route("/{id}",   name="equipment_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Equipment $stuff)
+    public function deleteAction(Request $request, Equipment $stuff, OrderService $service)
     {
         $form = $this->createDeleteForm($stuff);
         $form->handleRequest($request);
@@ -159,6 +163,7 @@ class EquipmentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($stuff);
             $em->flush();
+            $service->order();
         }
         return $this->redirectToRoute('equipment_index');
     }
@@ -193,17 +198,5 @@ class EquipmentController extends Controller
             ->setAction($this->generateUrl('equipment_edit', array('id' => $equipment->getId())))
             ->setMethod('PUT')
             ->getForm();
-    }
-
-    public function order()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $equipments = $em->getRepository(Equipment::class)->findby([],['equipmentOrder' => 'ASC']);
-        $i = 1;
-        foreach ($equipments as $equipment) {
-            $equipment->setEquipmentOrder($i++);
-            $em->persist($equipment);
-        }
-        $em->flush();
     }
 }
