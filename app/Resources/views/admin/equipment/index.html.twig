@@ -11,18 +11,16 @@
             <div class="row">
                 <table class="table">
                     <tbody>
-                        <tr class="admin-listing">
                             {% for equipment in equipments %}
-                            <td class="name">{{ equipment.name }}</td>
-                            <td>
-                            <td class="name">{{ equipment.equipmentOrder }}</td>
-                            </td>
+                        <tr class="admin-listing">
+                            <td>{{ equipment.name }}</td>
+                            <td>{{ equipment.equipmentOrder }}</td>
                             <td>
                                 {% if loop.index0 != 0 %}
-                                    <a href="{{ path('up_order_edit', { 'id': equipment.id }) }}">Up</a>
+                                    <a href="{{ path('up_order_edit', { 'id': equipment.id }) }}"><i class="fas fa-angle-up"></i></a>
                                 {% endif %}
                                 {% if loop.index0 < (equipments|length)-1 %}
-                                    <a href="{{ path('down_order_edit', { 'id': equipment.id }) }}">Down</a>
+                                    <a href="{{ path('down_order_edit', { 'id': equipment.id }) }}"><i class="fas fa-angle-down"></i></a>
                                 {% endif %}
                             </td>
                             <td class="edit">

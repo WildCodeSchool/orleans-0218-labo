@@ -34,4 +34,20 @@ class OrderService
         }
         $this->em->flush();
     }
+
+    public function up($equipment)
+    {
+        $equipmentDown = $this->em->getRepository(Equipment::class)->findOneBy(['equipmentOrder' => $equipment->getEquipmentOrder() - 1]);
+        $equipmentDown->setEquipmentOrder($equipmentDown->getEquipmentOrder() + 1);
+        $equipment->setEquipmentOrder($equipment->getEquipmentOrder() - 1);
+        $this->em->flush();
+    }
+
+    public function down($equipment)
+    {
+        $equipmentUp = $this->em->getRepository(Equipment::class)->findOneBy(['equipmentOrder' => $equipment->getEquipmentOrder() + 1]);
+        $equipmentUp->setEquipmentOrder($equipmentUp->getEquipmentOrder() - 1);
+        $equipment->setEquipmentOrder($equipment->getEquipmentOrder() + 1);
+        $this->em->flush();
+    }
 }

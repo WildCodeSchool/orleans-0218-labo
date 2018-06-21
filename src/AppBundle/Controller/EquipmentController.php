@@ -119,16 +119,9 @@ class EquipmentController extends Controller
      * @Route("/{id}/edit/down", name="down_order_edit")
      * @Method({"GET", "POST"})
      */
-    public function downOrderAction(Equipment $equipment)
+    public function downOrderAction(Equipment $equipment, OrderService $service)
     {
-        $em = $this->getDoctrine()->getManager();
-        $equipmentUp = $em->getRepository(Equipment::class)->findOneBy(['equipmentOrder' => $equipment->getEquipmentOrder() + 1]);
-
-        $equipmentUp->setEquipmentOrder($equipmentUp->getEquipmentOrder() - 1);
-        $equipment->setEquipmentOrder($equipment->getEquipmentOrder() + 1);
-
-        $em->flush();
-
+        $service->down($equipment);
         return $this->redirectToRoute('equipment_index');
     }
 
@@ -136,16 +129,9 @@ class EquipmentController extends Controller
      * @Route("/{id}/edit/up", name="up_order_edit")
      * @Method({"GET", "POST"})
      */
-    public function upOrderAction(Equipment $equipment)
+    public function upOrderAction(Equipment $equipment, OrderService $service)
     {
-        $em = $this->getDoctrine()->getManager();
-        $equipmentDown = $em->getRepository(Equipment::class)->findOneBy(['equipmentOrder' => $equipment->getEquipmentOrder() - 1]);
-
-        $equipmentDown->setEquipmentOrder($equipmentDown->getEquipmentOrder() + 1);
-        $equipment->setEquipmentOrder($equipment->getEquipmentOrder() - 1);
-
-        $em->flush();
-
+        $service->up($equipment);
         return $this->redirectToRoute('equipment_index');
     }
 
