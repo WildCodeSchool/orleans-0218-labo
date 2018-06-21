@@ -61,6 +61,20 @@ class Reservation
      * @ORM\Column(name="email", type="string", length=250)
      */
     private $email;
+
+    /**
+     * @var
+     *
+     * @ORM\Column(name="reservationStart", type="datetime")
+     */
+    private $reservationStart;
+
+    /**
+     * @var
+     *
+     * @ORM\Column(name="reservationEnd", type="datetime")
+     */
+    private $reservationEnd;
     /**
      * Constructor
      */
@@ -232,4 +246,38 @@ class Reservation
     {
         return $this->reservationEquipments;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getReservationStart()
+    {
+        return $this->reservationStart;
+    }
+
+    /**
+     * @param mixed $reservationStart
+     */
+    public function setReservationStart($reservationStart)
+    {
+        $this->reservationStart = $reservationStart;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReservationEnd()
+    {
+        return $this->reservationEnd;
+    }
+
+    /**
+     * @param mixed $reservationEnd
+     */
+    public function setReservationEnd($reservationEnd)
+    {
+        $this->reservationEnd = $reservationEnd;
+    }
+
+
 }

@@ -13,6 +13,12 @@
                     <div class="col-sm-6 col-xs-12">
                         {{ form_start(form) }}
                         {{ form_row(form.staff) }}
+                        <div id="datetimepicker">
+                            {{ form_row(form.reservationStart) }}
+                        </div>
+
+
+                        {{ form_row(form.reservationEnd) }}
                     </div>
                     <div class="col-sm-6 col-xs-12">
                         {{ form_row(form.firstName) }}
@@ -36,7 +42,7 @@
                                     {{ form_widget(reservationEquipment) }}
                                 </div>
                                 <div class="col-xs-4 row equipment-btns">
-                                    <input type="button" class="minus" value="-"
+                                    <input  type="button" class="minus" value="-"
                                            data-element="{{ reservationEquipment.quantity.vars.id }}"/>
                                 </div>
                             </div>
@@ -48,6 +54,23 @@
                 {{ form_end(form) }}
             </div>
         </div>
+
+        <div class="container">
+            <div class="row">
+                <div class='col-sm-6'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker2'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </section>
 {% endblock %}
 {% block javascripts %}

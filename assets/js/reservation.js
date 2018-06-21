@@ -11,4 +11,8 @@ $(document).ready(function () {
             if (elementValue > 0) jQuery('#'+elementId).val(--elementValue);
         }
     })
+     
+        $('#datetimepicker2').datetimepicker({
+            locale: 'ru'
+        });
 });

@@ -6,6 +6,7 @@ use AppBundle\Entity\Reservation;
 use AppBundle\Entity\ReservationEquipment;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,6 +25,8 @@ class ReservationType extends AbstractType
             ->add('lastName')
             ->add('email')
             ->add('society')
+            ->add('reservationStart', DateTimeType::class)
+            ->add('reservationEnd', DateTimeType::class)
             ->add('staff', EntityType::class, [
                 'class' => Staff::class,
                 'placeholder' => 'Choisir un membre du personnel',

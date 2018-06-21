@@ -50,26 +50,28 @@ class ReservationController extends Controller
 
         $reservation = new Reservation();
 
-        $now = new \DateTime();
-
         foreach ($equipments as $equipment) {
             $resaEquip = new ReservationEquipment();
 
             $resaEquip->setEquipment($equipment);
             $resaEquip->setQuantity(0);
             $resaEquip->setReservation($reservation);
-            $resaEquip->setReservationStart($now);
-            $resaEquip->setReservationEnd($now);
 
             $reservation->addReservationEquipment($resaEquip);
-            $em->persist($reservation);
         }
 
         $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
 
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
+
+            foreach ($reservation->getReservationEquipments() as $dateEquipment){
+                $dateEquipment->setReservationStart($reservation->getReservationStart());
+                $dateEquipment->setReservationEnd($reservation->getReservationEnd());
+            }
+
             $em->persist($reservation);
             $em->flush();
 
