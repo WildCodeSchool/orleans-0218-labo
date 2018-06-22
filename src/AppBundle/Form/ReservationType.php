@@ -34,7 +34,8 @@ class ReservationType extends AbstractType
                     'html5' => false,
                     'attr' => ['class' => 'flatpickr'],
             ))
-            ->add('reservationEnd',
+            ->add(
+                'reservationEnd',
                 DateTimeType::class,
                 array (
                     'widget' => 'single_text',
@@ -42,7 +43,9 @@ class ReservationType extends AbstractType
                     'html5' => false,
                     'attr' => ['class' => 'flatpickr'],
                 ))
-            ->add('staff', EntityType::class, [
+            ->add(
+                'staff',
+                EntityType::class, [
                 'class' => Staff::class,
                 'placeholder' => 'Choisir un membre du personnel',
                 'choice_label' => function ($reservation) {
@@ -50,7 +53,10 @@ class ReservationType extends AbstractType
                     return $reservation->getLastName() . ' ' .$reservation->getFirstName();
                 }
             ])
-            ->add('reservationEquipments', CollectionType::class, ['entry_type' => ReservationEquipmentType::class]);
+            ->add(
+                'reservationEquipments',
+                CollectionType::class,
+                ['entry_type' => ReservationEquipmentType::class]);
     }
 
     /**
