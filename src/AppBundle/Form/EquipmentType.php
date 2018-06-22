@@ -17,17 +17,17 @@ class EquipmentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, array('label'=> 'Nom de l\'équipement'))
+            ->add('name', TextType::class, array('label' => 'Nom de l\'équipement'))
             ->add(
                 'description',
                 TextareaType::class,
                 array(
-                    'label'=> 'Description de l\'équipement',
+                    'label' => 'Description de l\'équipement',
                     'attr' => array('cols' => '5', 'rows' => '5'))
             )
             ->add('imageFile', FileType::class);
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -35,7 +35,7 @@ class EquipmentType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-            'data_class' => 'AppBundle\Entity\Equipment'
+                'data_class' => 'AppBundle\Entity\Equipment'
             )
         );
     }
