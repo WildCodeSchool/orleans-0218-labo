@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,7 +24,8 @@ class EquipmentType extends AbstractType
                 array(
                     'label'=> 'Description de l\'équipement',
                     'attr' => array('cols' => '5', 'rows' => '5'))
-            );
+            )
+            ->add('imageFile', FileType::class);
     }
     
     /**
