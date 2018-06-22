@@ -190,6 +190,8 @@ class Equipment
     public function getReservationEquipments()
     {
         return $this->reservationEquipments;
+    }
+    
     /**
      * Get equipmentOrder
      *
