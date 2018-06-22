@@ -115,9 +115,9 @@ class EquipmentController extends Controller
      * @Route("/{id}/edit/down", name="down_order_edit")
      * @Method({"GET", "POST"})
      */
-    public function downOrderAction(Equipment $equipment, OrderService $orderAction)
+    public function downOrderAction(Equipment $equipment, OrderService $orderService)
     {
-        $orderAction->down($equipment);
+        $orderService->down($equipment);
         return $this->redirectToRoute('equipment_index');
     }
 
@@ -125,9 +125,9 @@ class EquipmentController extends Controller
      * @Route("/{id}/edit/up", name="up_order_edit")
      * @Method({"GET", "POST"})
      */
-    public function upOrderAction(Equipment $equipment, OrderService $orderAction)
+    public function upOrderAction(Equipment $equipment, OrderService $orderService)
     {
-        $orderAction->up($equipment);
+        $orderService->up($equipment);
         return $this->redirectToRoute('equipment_index');
     }
 
@@ -137,7 +137,7 @@ class EquipmentController extends Controller
      * @Route("/{id}",   name="equipment_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Equipment $equipment, OrderService $equipmentPriority)
+    public function deleteAction(Request $request, Equipment $equipment, OrderService $orderService)
     {
         $form = $this->createDeleteForm($equipment);
         $form->handleRequest($request);
@@ -145,7 +145,7 @@ class EquipmentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($equipment);
             $em->flush();
-            $equipmentPriority->order();
+            $orderService->order();
         }
         return $this->redirectToRoute('equipment_index');
     }
