@@ -26,6 +26,13 @@ class Equipment
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="equipment_order", type="integer")
+     */
+    private $equipmentOrder;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -159,5 +166,29 @@ class Equipment
     public function getImageSize(): ?int
     {
         return $this->imageSize;
+    }
+  
+    /**
+     * Set equipmentOrder
+     *
+     * @param integer $equipmentOrder
+     *
+     * @return Equipment
+     */
+    public function setEquipmentOrder($equipmentOrder)
+    {
+        $this->equipmentOrder = $equipmentOrder;
+
+        return $this;
+    }
+
+    /**
+     * Get equipmentOrder
+     *
+     * @return integer
+     */
+    public function getEquipmentOrder()
+    {
+        return $this->equipmentOrder;
     }
 }

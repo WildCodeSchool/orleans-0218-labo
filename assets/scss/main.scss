@@ -1,58 +1,18 @@
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
-
-$primary-color: #E1151A;
-$white-color: #FFF;
-$check-color: #27ae60;
-
-$catamaran: 'Catamaran', sans-serif;
-
-//ADMIN
-
-tr.admin-listing {
-
-  th {
-    padding-left: 10px;
-
-    &.name {
-      font-size: 1.4em;
-      padding-top: 10px;
-    }
-  }
-  td {
-
-    &.name {
-      font-size: 1.4em;
-      padding-top: 10px;
-    }
-
-    &.show {
-      width: 50px;
-    }
-
-    &.edit {
-      width: 50px;
-    }
-
-    &.delete {
-      width: 50px;
-    }
-
-    &.double {
-      width: 100px;
-    }
-  }
-}
+@import 'variables';
+@import 'home';
+@import 'admin';
 
 body {
   h1 {
     font-size: 2.5em;
-    font-family: $catamaran;
+    font-family: $font-title;
     text-transform: uppercase;
   }
 
   h2 {
     font-size: 2em;
-    font-family: $catamaran;
+    font-family: $font-title;
   }
 
   .container-title {
@@ -89,6 +49,14 @@ body {
     }
   }
 
+  i.fa-angle-up {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  i.fa-angle-down {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
 
   //HOME
 
@@ -132,6 +100,7 @@ body {
   .fa-check {
     color: $check-color;
   }
+
 }
 
 .icon_size {
@@ -144,10 +113,6 @@ body {
       background-color: rgba(255, 255, 255, 0.7);
     }
   }
-}
-
-.staff-index .edit, .show, .new {
-  width: 80px;
 }
 
 .height80vh {
@@ -191,12 +156,4 @@ body {
 
 .imgSize{
   height: 400px;
-}
-
-.widhtButton{
-  width: 100%;
-}
-
-.spaceWhite{
-  height: 100px;
 }
