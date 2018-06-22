@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Equipment;
@@ -57,6 +58,7 @@ class EquipmentController extends Controller
             $em->flush();
             return $this->redirectToRoute('equipment_index', array('id' => $equipment->getId()));
         }
+
         return $this->render(
             'admin/equipment/new.html.twig',
             array(
@@ -65,6 +67,7 @@ class EquipmentController extends Controller
             )
         );
     }
+
     /**
      * Finds and displays a equipment entity.
      *
@@ -82,6 +85,7 @@ class EquipmentController extends Controller
             )
         );
     }
+
     /**
      * Displays a form to edit an existing equipment entity.
      *
@@ -104,6 +108,7 @@ class EquipmentController extends Controller
             )
         );
     }
+
     /**
      * Deletes a equipment entity.
      *
@@ -121,6 +126,7 @@ class EquipmentController extends Controller
         }
         return $this->redirectToRoute('equipment_index');
     }
+
     /**
      * Creates a form to delete a equipment entity.
      *
@@ -130,7 +136,7 @@ class EquipmentController extends Controller
      */
     private function createDeleteForm(Equipment $equipment)
     {
-        return $this->createFormBuilder(null, ['csrf_field_name' => 'delete-equip-'.$equipment->getId()])
+        return $this->createFormBuilder(null, ['csrf_field_name' => 'delete-equip-' . $equipment->getId()])
             ->setAction($this->generateUrl(
                 'equipment_delete',
                 array(

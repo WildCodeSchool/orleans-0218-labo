@@ -34,6 +34,8 @@ class Reservation
      */
     private $firstName;
 
+
+
     /**
      * @var string
      *
@@ -56,6 +58,11 @@ class Reservation
      */
     private $email;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Room")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $room;
 
     /**
      * Get id
@@ -116,30 +123,6 @@ class Reservation
     }
 
     /**
-     * Set reservationDate
-     *
-     * @param \DateTime $reservationDate
-     *
-     * @return Reservation
-     */
-    public function setReservationDate($reservationDate)
-    {
-        $this->reservationDate = $reservationDate;
-
-        return $this;
-    }
-
-    /**
-     * Get reservationDate
-     *
-     * @return \DateTime
-     */
-    public function getReservationDate()
-    {
-        return $this->reservationDate;
-    }
-
-    /**
      * Set email
      *
      * @param string $email
@@ -164,6 +147,18 @@ class Reservation
     }
 
     /**
+     * Set room
+     *
+     * @param \AppBundle\Entity\Room $room
+     *
+     * @return Reservation
+     */
+    public function setRoom(\AppBundle\Entity\Room $room)
+    {
+        $this->room = $room;
+    }
+
+    /**
      * Set society
      *
      * @param string $society
@@ -175,6 +170,16 @@ class Reservation
         $this->society = $society;
 
         return $this;
+    }
+
+    /**
+     * Get room
+     *
+     * @return \AppBundle\Entity\Room
+     */
+    public function getRoom()
+    {
+        return $this->room;
     }
 
     /**
