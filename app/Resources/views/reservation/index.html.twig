@@ -1,45 +1,41 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutMain.html.twig' %}
 
-{% block body %}
-    <h1>Reservations list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Reservationdate</th>
-                <th>Email</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for reservation in reservations %}
-            <tr>
-                <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
-                <td>{{ reservation.firstName }}</td>
-                <td>{{ reservation.lastName }}</td>
-                <td>{% if reservation.reservationDate %}{{ reservation.reservationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ reservation.email }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('reservation_show', { 'id': reservation.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('reservation_new') }}">Create a new reservation</a>
-        </li>
-    </ul>
+{% block layout %}
+    <section class="admin-listing-room">
+    <div class="container-fluid container-title text-center">
+        <h1>Liste des réservation</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="text-center">Accueil</th>
+                    <th class="text-center">Nom / Prénom du client</th>
+                    <th class="text-center">Date de pret</th>
+                    <th class="text-center">Date de retour</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for reservation in reservations %}
+                    <tr class="admin-listing">
+                        <td class="text-center">{{ reservation.staff.lastname }}
+                            - {{ reservation.staff.firstname }}</td>
+                        <td class="text-center">{{ reservation.lastName }} - {{ reservation.firstName }}</td>
+                        <td class="text-center">{{ reservation.reservationStart.date|date('d-m-Y H:i') }}</td>
+                        <td class="text-center">{{ reservation.reservationEnd.date|date('d-m-Y H:i') }}</td>
+                        <td class="edit">
+                            <a role="button" class="btn btn-primary"
+                               href="{{ path('reservation_show', { 'id': reservation.id }) }}">Détails</a>
+                        </td>
+                        <td class="edit">
+                            <a role="button" class="btn btn-warning"
+                               href="{{ path('reservation_edit', { 'id': reservation.id }) }}">Modifier</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
