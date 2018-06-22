@@ -37,6 +37,4 @@ class ReservationEquipmentType extends AbstractType
     {
         return 'appbundle_reservationequipment';
     }
-
-
 }

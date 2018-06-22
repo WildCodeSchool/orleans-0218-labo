@@ -27,16 +27,18 @@ class ReservationType extends AbstractType
             ->add('society')
             ->add(
                 'reservationStart',
-                DateTimeType::class, array(
+                DateTimeType::class,
+                array(
                     'widget' => 'single_text',
-                    'required'    => true,
+                    'required' => true,
                     'html5' => false,
                     'attr' => ['class' => 'flatpickr'],
             ))
             ->add('reservationEnd',
-                DateTimeType::class, array (
+                DateTimeType::class,
+                array (
                     'widget' => 'single_text',
-                    'required'    => true,
+                    'required' => true,
                     'html5' => false,
                     'attr' => ['class' => 'flatpickr'],
                 ))

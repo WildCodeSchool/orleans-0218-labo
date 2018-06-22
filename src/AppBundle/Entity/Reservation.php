@@ -278,6 +278,4 @@ class Reservation
     {
         $this->reservationEnd = $reservationEnd;
     }
-
-
 }
