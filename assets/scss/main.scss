@@ -3,6 +3,11 @@
 $primary-color: #E1151A;
 $white-color: #FFF;
 $check-color: #27ae60;
+$gray: #F1F0F3;
+$mid-gray: #B8AE9C;
+$dark-gray: #595241;
+$black: #070A0F;
+$blue: #ACCFCC;
 
 $catamaran: 'Catamaran', sans-serif;
 
@@ -93,21 +98,15 @@ body {
   //HOME
 
   .home-nav {
-    background-color: $primary-color;
     border: 0px;
     border-radius: 0px;
-    position: fixed;
     width: 100%;
     padding-right: 50px;
     font-family: $catamaran;
     height: 110px;
-    .dropdown-img-home {
-      width: 100px;
-    }
-    .dropdown-menu {
-      background-color: rgba(255, 255, 255, 0.9);
-      border: 0px;
-    }
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: $gray;
   }
 
   .white {
@@ -159,7 +158,7 @@ body {
 }
 
 .fa-red {
-  color : $primary-color;
+  color : black;
 }
 
 .wheel-center {
@@ -202,19 +201,39 @@ body {
 }
 
 .staff-reservation {
+  background-color: $gray;
   .reservation-infos {
-    margin-bottom: 100px;
+    padding-top: 50px;
+    border-top: $dark-gray 1px solid;
+    margin-bottom: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
     .form-control {
       border-radius: 0px;
     }
   }
   .reservation-equipment {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    background-color: $white-color;
+    box-shadow: 5px 0px 20px rgba(0,0,0,0.4);
     .equipment {
-      margin-bottom: 50px;
+      margin-bottom: 30px;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: $primary-color;
+      padding: 20px;
+      border-radius: 5px;
+      color: $white-color;
+      text-transform: uppercase;
       img {
-        width: 150px;
-        height: 150px;
-        box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
+        width: 180px;
+        height: 180px;
+        border: $white-color 10px solid;
+        margin-bottom: 20px;
+        background-color: $white-color;
       }
       .equipment-btns {
         display: flex;
@@ -230,10 +249,24 @@ body {
         border: none;
         width: 40px;
         height: 40px;
-        background-color: $primary-color;
-        color: $white-color;
-        font-size: 1.5rem;
+        background-color: $white-color;
+        color: #595241;
+        font-weight: bold;
+        font-size: 1.6rem;
       }
+    }
+  }
+  .btn {
+    background-color: $black;
+    border: 0px;
+    width: 100px;
+    height: 40px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-family: $catamaran;
+    text-transform: uppercase;
+    &:hover {
+      background-color: $black;
     }
   }
 }

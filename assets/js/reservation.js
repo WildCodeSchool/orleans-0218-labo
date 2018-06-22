@@ -19,5 +19,9 @@ $(document).ready(function () {
         time_24hr: true,
     });
 
+    $('.flatpickr-input:visible').on('focus', function () {
+        $(this).blur()
+    })
+    $('.flatpickr-input:visible').prop('readonly', false)
 
 });
