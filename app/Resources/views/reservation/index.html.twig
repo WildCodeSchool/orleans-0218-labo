@@ -19,10 +19,11 @@
                 <tbody>
                 {% for reservation in reservations %}
                     <tr class="admin-listing">
-                        <td class="text-center">{{ reservation.staff.lastname }} - {{ reservation.staff.firstname }}</td>
+                        <td class="text-center">{{ reservation.staff.lastname }}
+                            - {{ reservation.staff.firstname }}</td>
                         <td class="text-center">{{ reservation.lastName }} - {{ reservation.firstName }}</td>
                         <td class="text-center">{{ reservation.reservationStart.date|date('d-m-Y H:i') }}</td>
-                        <td class="text-center">{{ reservation.reservationEnd.date|date('d-m-Y H:i')}}</td>
+                        <td class="text-center">{{ reservation.reservationEnd.date|date('d-m-Y H:i') }}</td>
                         <td class="edit">
                             <a role="button" class="btn btn-primary"
                                href="{{ path('reservation_show', { 'id': reservation.id }) }}">Détails</a>
