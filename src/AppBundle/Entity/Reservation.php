@@ -19,6 +19,12 @@ class Reservation
     private $staff;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ReservationEquipment", mappedBy="reservation", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $reservationEquipments;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -55,12 +61,18 @@ class Reservation
      * @ORM\Column(name="email", type="string", length=250)
      */
     private $email;
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reservationEquipments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -116,27 +128,27 @@ class Reservation
     }
 
     /**
-     * Set reservationDate
+     * Set society
      *
-     * @param \DateTime $reservationDate
+     * @param string $society
      *
      * @return Reservation
      */
-    public function setReservationDate($reservationDate)
+    public function setSociety($society)
     {
-        $this->reservationDate = $reservationDate;
+        $this->society = $society;
 
         return $this;
     }
 
     /**
-     * Get reservationDate
+     * Get society
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getReservationDate()
+    public function getSociety()
     {
-        return $this->reservationDate;
+        return $this->society;
     }
 
     /**
@@ -164,30 +176,6 @@ class Reservation
     }
 
     /**
-     * Set society
-     *
-     * @param string $society
-     *
-     * @return Reservation
-     */
-    public function setSociety($society)
-    {
-        $this->society = $society;
-
-        return $this;
-    }
-
-    /**
-     * Get society
-     *
-     * @return string
-     */
-    public function getSociety()
-    {
-        return $this->society;
-    }
-
-    /**
      * Set staff
      *
      * @param \AppBundle\Entity\Staff $staff
@@ -209,5 +197,39 @@ class Reservation
     public function getStaff()
     {
         return $this->staff;
+    }
+
+    /**
+     * Add reservationEquipment
+     *
+     * @param \AppBundle\Entity\ReservationEquipment $reservationEquipment
+     *
+     * @return Reservation
+     */
+    public function addReservationEquipment(\AppBundle\Entity\ReservationEquipment $reservationEquipment)
+    {
+        $this->reservationEquipments[] = $reservationEquipment;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservationEquipment
+     *
+     * @param \AppBundle\Entity\ReservationEquipment $reservationEquipment
+     */
+    public function removeReservationEquipment(\AppBundle\Entity\ReservationEquipment $reservationEquipment)
+    {
+        $this->reservationEquipments->removeElement($reservationEquipment);
+    }
+
+    /**
+     * Get reservationEquipments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservationEquipments()
+    {
+        return $this->reservationEquipments;
     }
 }

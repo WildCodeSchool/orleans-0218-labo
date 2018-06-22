@@ -2,11 +2,16 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Reservation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\ReservationEquipment;
 
 /**
  * Reservation controller.
@@ -40,12 +45,31 @@ class ReservationController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $equipments = $em->getRepository(Equipment::class)->findAll();
+
         $reservation = new Reservation();
+
+        foreach ($equipments as $equipment) {
+            $resaEquip = new ReservationEquipment();
+
+            $now = new \DateTime();
+
+            $resaEquip->setEquipment($equipment);
+            $resaEquip->setQuantity(0);
+            $resaEquip->setReservation($reservation);
+            $resaEquip->setReservationStart($now);
+            $resaEquip->setReservationEnd($now);
+
+            $reservation->addReservationEquipment($resaEquip);
+            $em->persist($reservation);
+        }
+
         $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($reservation);
             $em->flush();
 
@@ -54,6 +78,7 @@ class ReservationController extends Controller
 
         return $this->render('reservation/new.html.twig', array(
             'form' => $form->createView(),
+            'equipments' => $equipments
         ));
     }
 
