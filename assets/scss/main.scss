@@ -1,4 +1,7 @@
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import 'variables';
+@import 'home';
+@import 'admin';
 
 $primary-color: #E1151A;
 $white-color: #FFF;
@@ -51,13 +54,13 @@ tr.admin-listing {
 body {
   h1 {
     font-size: 2.5em;
-    font-family: $catamaran;
+    font-family: $font-title;
     text-transform: uppercase;
   }
 
   h2 {
     font-size: 2em;
-    font-family: $catamaran;
+    font-family: $font-title;
   }
 
   .container-title {
@@ -93,7 +96,6 @@ body {
       }
     }
   }
-
 
   //HOME
 
@@ -143,10 +145,6 @@ body {
       background-color: rgba(255, 255, 255, 0.7);
     }
   }
-}
-
-.staff-index .edit, .show, .new {
-  width: 80px;
 }
 
 .height80vh {
