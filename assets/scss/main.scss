@@ -92,7 +92,7 @@ body {
       width: 100%;
       display: flex;
       justify-content: space-around;
-      font-family: $catamaran;
+      font-family: $font-title;
       text-transform: uppercase;
       font-weight: 600;
       font-size: 2rem;
@@ -113,7 +113,7 @@ body {
     border-radius: 0px;
     width: 100%;
     padding-right: 50px;
-    font-family: $catamaran;
+    font-family: $font-title;
     height: 110px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -132,7 +132,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-family: $catamaran;
+    font-family: $font-title;
   }
 
   .parameters {
