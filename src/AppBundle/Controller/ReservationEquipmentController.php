@@ -128,15 +128,16 @@ class ReservationEquipmentController extends Controller
      */
     private function createDeleteForm(ReservationEquipment $reservationEquipment)
     {
-        return $this->createFormBuilder()
+        return $this
+            ->createFormBuilder()
             ->setAction(
                 $this->generateUrl(
                     'reservationequipment_delete',
-                array(
-                    'id' => $reservationEquipment->getId()
-                )))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
+                    array(
+                        'id' => $reservationEquipment->getId()
+                    )
+                )
+            )
+            ->setMethod('DELETE')->getForm();
     }
 }

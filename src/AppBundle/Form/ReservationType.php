@@ -33,30 +33,36 @@ class ReservationType extends AbstractType
                     'required' => true,
                     'html5' => false,
                     'attr' => ['class' => 'flatpickr'],
-            ))
+                )
+            )
             ->add(
                 'reservationEnd',
                 DateTimeType::class,
-                array (
+                array(
                     'widget' => 'single_text',
                     'required' => true,
                     'html5' => false,
                     'attr' => ['class' => 'flatpickr'],
-                ))
+                )
+            )
             ->add(
                 'staff',
-                EntityType::class, [
-                'class' => Staff::class,
-                'placeholder' => 'Choisir un membre du personnel',
-                'choice_label' => function ($reservation) {
-
-                    return $reservation->getLastName() . ' ' .$reservation->getFirstName();
-                }
-            ])
+                EntityType::class,
+                [
+                    'class' => Staff::class,
+                    'placeholder' => 'Choisir un membre du personnel',
+                    'choice_label' => function ($reservation) {
+                        return $reservation->getLastName() . ' ' . $reservation->getFirstName();
+                    }
+                ]
+            )
             ->add(
                 'reservationEquipments',
                 CollectionType::class,
-                ['entry_type' => ReservationEquipmentType::class]);
+                [
+                    'entry_type' => ReservationEquipmentType::class
+                ]
+            );
     }
 
     /**
