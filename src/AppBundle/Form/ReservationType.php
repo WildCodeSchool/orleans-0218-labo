@@ -49,7 +49,9 @@ class ReservationType extends AbstractType
                     return $reservation->getLastName() . ' ' .$reservation->getFirstName();
                 }
             ])
-            ->add('reservationEquipments', CollectionType::class, ['entry_type' => ReservationEquipmentType::class]);
+            ->add('reservationEquipments', CollectionType::class,
+                ['entry_type' => ReservationEquipmentType::class]
+            );
     }
 
     /**
