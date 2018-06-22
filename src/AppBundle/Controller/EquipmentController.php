@@ -28,10 +28,8 @@ class EquipmentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $equipments = $em->getRepository('AppBundle:Equipment')->findBy([], ['equipmentOrder' => 'ASC']);
         $deleteForm = array();
-        $editOrderForm = array();
         foreach ($equipments as $equipment) {
             $deleteForm[$equipment->getId()] = $this->createDeleteForm($equipment)->createView();
-            $editOrderForm[$equipment->getId()] = $this->createEditForm($equipment)->createView();
         }
 
         return $this->render(
@@ -39,7 +37,6 @@ class EquipmentController extends Controller
             array(
                 'equipments' => $equipments,
                 'deleteForm' => $deleteForm,
-                'editOrderForm' => $editOrderForm
             )
         );
     }
@@ -50,7 +47,7 @@ class EquipmentController extends Controller
      * @Route("/new",  name="equipment_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request, OrderService $service)
+    public function newAction(Request $request)
     {
         $equipment = new Equipment();
         $form = $this->createForm('AppBundle\Form\EquipmentType', $equipment);
@@ -62,7 +59,6 @@ class EquipmentController extends Controller
             $equipment->setEquipmentOrder($nbEquipment + 1);
             $em->persist($equipment);
             $em->flush();
-            $service->order();
             return $this->redirectToRoute('equipment_index', array('id' => $equipment->getId()));
         }
         return $this->render(
@@ -119,9 +115,9 @@ class EquipmentController extends Controller
      * @Route("/{id}/edit/down", name="down_order_edit")
      * @Method({"GET", "POST"})
      */
-    public function downOrderAction(Equipment $equipment, OrderService $service)
+    public function downOrderAction(Equipment $equipment, OrderService $orderAction)
     {
-        $service->down($equipment);
+        $orderAction->down($equipment);
         return $this->redirectToRoute('equipment_index');
     }
 
@@ -129,9 +125,9 @@ class EquipmentController extends Controller
      * @Route("/{id}/edit/up", name="up_order_edit")
      * @Method({"GET", "POST"})
      */
-    public function upOrderAction(Equipment $equipment, OrderService $service)
+    public function upOrderAction(Equipment $equipment, OrderService $orderAction)
     {
-        $service->up($equipment);
+        $orderAction->up($equipment);
         return $this->redirectToRoute('equipment_index');
     }
 
