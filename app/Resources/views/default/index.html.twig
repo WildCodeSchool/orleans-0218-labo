@@ -12,10 +12,10 @@
     <div class="container-fluid height10vh wheel-center">
         <div class="row">
             <div class="col-xs-1 col-md-offset-4">
-                <button type="button" class="btn-danger btn-lg btn home-btn width-full">Réservation</button>
+                <a href="{{ path('reservation_new') }}"><button type="button" class="btn-danger btn-lg btn home-btn width-full">Réservation</button></a>
             </div>
             <div class="col-xs-1 col-md-offset-2">
-                <button type="button" class="btn-danger btn-lg btn home-btn width-full">Retour</button>
+                <a href="{{ path('reservation_index') }}"><button type="button" class="btn-danger btn-lg btn home-btn width-full">Retour</button></a>
             </div>
         </div>
     </div>
