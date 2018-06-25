@@ -3,6 +3,63 @@
 @import 'home';
 @import 'admin';
 
+$primary-color: #E1151A;
+$white-color: #FFF;
+$check-color: #27ae60;
+$gray: #F1F0F3;
+$mid-gray: #B8AE9C;
+$dark-gray: #595241;
+$black: #070A0F;
+$blue: #ACCFCC;
+
+$font-title: 'Catamaran', sans-serif;
+
+//ADMIN
+
+i.fa-angle-up {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  i.fa-angle-down {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+tr.admin-listing {
+
+  th {
+    padding-left: 10px;
+
+    &.name {
+      font-size: 1.4em;
+      padding-top: 10px;
+    }
+  }
+  td {
+
+    &.name {
+      font-size: 1.4em;
+      padding-top: 10px;
+    }
+
+    &.show {
+      width: 50px;
+    }
+
+    &.edit {
+      width: 50px;
+    }
+
+    &.delete {
+      width: 50px;
+    }
+
+    &.double {
+      width: 100px;
+    }
+  }
+}
+
 body {
   h1 {
     font-size: 2.5em;
@@ -49,33 +106,18 @@ body {
     }
   }
 
-  i.fa-angle-up {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-  i.fa-angle-down {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-
   //HOME
 
   .home-nav {
-    background-color: $primary-color;
     border: 0px;
     border-radius: 0px;
-    position: fixed;
     width: 100%;
     padding-right: 50px;
     font-family: $font-title;
     height: 110px;
-    .dropdown-img-home {
-      width: 100px;
-    }
-    .dropdown-menu {
-      background-color: rgba(255, 255, 255, 0.9);
-      border: 0px;
-    }
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: $gray;
   }
 
   .white {
@@ -100,7 +142,6 @@ body {
   .fa-check {
     color: $check-color;
   }
-
 }
 
 .icon_size {
@@ -123,14 +164,8 @@ body {
   height: 10vh;
 }
 
-.fa-red {
-  color : $primary-color;
-}
-
-.wheel-center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.icon {
+  width: 50px;
 }
 
 .width-full {
@@ -156,4 +191,83 @@ body {
 
 .imgSize{
   height: 400px;
+}
+
+.widhtButton{
+  width: 100%;
+}
+
+.spaceWhite{
+  height: 100px;
+}
+
+.staff-reservation {
+  background-color: $gray;
+  .reservation-infos {
+    padding-top: 50px;
+    border-top: $dark-gray 1px solid;
+    margin-bottom: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    .form-control {
+      border-radius: 0px;
+    }
+  }
+  .reservation-equipment {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    background-color: $white-color;
+    box-shadow: 5px 0px 20px rgba(0,0,0,0.4);
+    .equipment {
+      margin-bottom: 30px;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: $primary-color;
+      padding: 20px;
+      border-radius: 5px;
+      color: $white-color;
+      text-transform: uppercase;
+      img {
+        width: 180px;
+        height: 180px;
+        border: $white-color 10px solid;
+        margin-bottom: 20px;
+        background-color: $white-color;
+      }
+      .equipment-btns {
+        display: flex;
+        justify-content: space-around;
+      }
+      .form-control {
+        width: 40px;
+        border: none;
+        box-shadow: none;
+      }
+      .plus, .minus {
+        border-radius: 50%;
+        border: none;
+        width: 40px;
+        height: 40px;
+        background-color: $white-color;
+        color: #595241;
+        font-weight: bold;
+        font-size: 1.6rem;
+      }
+    }
+  }
+  .btn {
+    background-color: $black;
+    border: 0px;
+    width: 100px;
+    height: 40px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-family: $font-title;
+    text-transform: uppercase;
+    &:hover {
+      background-color: $black;
+    }
+  }
 }

@@ -17,6 +17,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Equipment
 {
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ReservationEquipment", mappedBy="equipment")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $reservationEquipments;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -169,6 +175,26 @@ class Equipment
     }
   
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reservationEquipments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add reservationEquipment
+     *
+     * @param \AppBundle\Entity\ReservationEquipment $reservationEquipment
+     *
+     * @return Equipment
+     */
+    public function addReservationEquipment(\AppBundle\Entity\ReservationEquipment $reservationEquipment)
+    {
+        $this->reservationEquipments[] = $reservationEquipment;
+    }
+    
+    /**
      * Set equipmentOrder
      *
      * @param integer $equipmentOrder
@@ -182,6 +208,26 @@ class Equipment
         return $this;
     }
 
+    /**
+     * Remove reservationEquipment
+     *
+     * @param \AppBundle\Entity\ReservationEquipment $reservationEquipment
+     */
+    public function removeReservationEquipment(\AppBundle\Entity\ReservationEquipment $reservationEquipment)
+    {
+        $this->reservationEquipments->removeElement($reservationEquipment);
+    }
+
+    /**
+     * Get reservationEquipments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservationEquipments()
+    {
+        return $this->reservationEquipments;
+    }
+    
     /**
      * Get equipmentOrder
      *
