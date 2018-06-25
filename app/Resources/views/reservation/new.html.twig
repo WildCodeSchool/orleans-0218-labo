@@ -33,7 +33,7 @@
                             {% for reservationEquipment in form.reservationEquipments %}
                                 <div class="col-sm-3 col-xs-12 text-center">
                                     <div class="equipment">
-                                        <img class="img-circle"
+                                        <img class="img-circle" alt="image de l'équipement"
                                              src="{{ reservationEquipment.vars.value.equipment.picture }}"/>
                                         <p>{{ reservationEquipment.vars.value.equipment.name }}</p>
                                         <div class="row equipment-btns">

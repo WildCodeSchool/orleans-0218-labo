@@ -13,9 +13,8 @@
                         <h2 class="text-center">Création d'une nouvelle salle</h2>
                         {{ form_start(form) }}
                         {{ form_widget(form) }}
-                        <a href="{{ path('room_index') }}"><img class="icon_size"
-                                                                src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg"
-                                                                alt="Back picture"></a>
+                        <a href="{{ path('room_index') }}"><img src="/images/arrow-circle-left.svg" class = "icon"
+                                                                alt="retour en arrière"></a>
                         <button type="submit" class="btn btn-primary pull-right"> - Valider -</button>
                         {{ form_end(form) }}
                     </div>
