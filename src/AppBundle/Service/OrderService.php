@@ -34,7 +34,7 @@ class OrderService
         $this->em->flush();
     }
 
-    public function up($equipment)
+    public function up(Equipment $equipment)
     {
         $equipmentDown = $this->em->getRepository(Equipment::class)->findOneBy([
             'equipmentOrder' => $equipment->getEquipmentOrder() - 1]);
