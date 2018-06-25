@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ReservationEquipment
@@ -35,6 +36,8 @@ class ReservationEquipment
 
     /**
      * @var int
+     *
+     * @Assert\Type("integer")
      *
      * @ORM\Column(name="quantity", type="integer")
      */
@@ -151,7 +154,7 @@ class ReservationEquipment
      *
      * @return ReservationEquipment
      */
-    public function setReservationStart($reservationStart)
+    public function setReservationStart(\Datetime $reservationStart)
     {
         $this->reservationStart = $reservationStart;
 
@@ -163,7 +166,7 @@ class ReservationEquipment
      *
      * @return \DateTime
      */
-    public function getReservationStart()
+    public function getReservationStart(): DateTime
     {
         return $this->reservationStart;
     }
@@ -175,7 +178,7 @@ class ReservationEquipment
      *
      * @return ReservationEquipment
      */
-    public function setReservationEnd($reservationEnd)
+    public function setReservationEnd(\Datetime $reservationEnd)
     {
         $this->reservationEnd = $reservationEnd;
 
@@ -187,7 +190,7 @@ class ReservationEquipment
      *
      * @return \DateTime
      */
-    public function getReservationEnd()
+    public function getReservationEnd(): Datetime
     {
         return $this->reservationEnd;
     }

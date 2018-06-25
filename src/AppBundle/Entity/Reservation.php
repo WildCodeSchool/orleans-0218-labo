@@ -66,7 +66,7 @@ class Reservation
     /**
      * @var
      *
-     * @Assert\NotBlank()
+     * @Assert\DateTime
      *
      * @ORM\Column(name="reservationStart", type="datetime")
      */
@@ -75,7 +75,7 @@ class Reservation
     /**
      * @var
      *
-     * @Assert\NotBlank()
+     * @Assert\DateTime
      *
      * @ORM\Column(name="reservationEnd", type="datetime")
      */
