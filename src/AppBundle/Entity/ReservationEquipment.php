@@ -71,7 +71,7 @@ class ReservationEquipment
      *
      * @return ReservationEquipment
      */
-    public function setQuantity($quantity)
+    public function setQuantity(int $quantity)
     {
         $this->quantity = $quantity;
 

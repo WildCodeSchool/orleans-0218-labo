@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Reservation
@@ -65,12 +66,16 @@ class Reservation
     /**
      * @var
      *
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(name="reservationStart", type="datetime")
      */
     private $reservationStart;
 
     /**
      * @var
+     *
+     * @Assert\NotBlank()
      *
      * @ORM\Column(name="reservationEnd", type="datetime")
      */
@@ -258,7 +263,7 @@ class Reservation
     /**
      * @param mixed $reservationStart
      */
-    public function setReservationStart($reservationStart)
+    public function setReservationStart(\DateTime $reservationStart)
     {
         $this->reservationStart = $reservationStart;
     }
@@ -274,7 +279,7 @@ class Reservation
     /**
      * @param mixed $reservationEnd
      */
-    public function setReservationEnd($reservationEnd)
+    public function setReservationEnd(\DateTime $reservationEnd)
     {
         $this->reservationEnd = $reservationEnd;
     }

@@ -19,7 +19,7 @@ $(document).ready(function () {
         locale: French,
         altInput: true,
         enableTime: true,
-        altFormat: 'd/m/Y - H:i',
+        altFormat: 'J F Y - H:i',
         time_24hr: true
     });
 
