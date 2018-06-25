@@ -7,11 +7,11 @@
         <tbody>
             <tr>
                 <th>Reservationstart</th>
-                <td>{% if reservationEquipment.reservationStart %}{{ reservationEquipment.reservationStart|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if reservationEquipment.reservationStart %}{{ reservationEquipment.reservationStart|date('d/m/Y - H:i') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Reservationend</th>
-                <td>{% if reservationEquipment.reservationEnd %}{{ reservationEquipment.reservationEnd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if reservationEquipment.reservationEnd %}{{ reservationEquipment.reservationEnd|date('d/m/Y - H:i') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Id</th>

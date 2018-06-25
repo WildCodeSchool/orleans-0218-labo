@@ -1,5 +1,6 @@
 import $ from "jquery";
 import flatpickr from "flatpickr";
+import {French} from 'flatpickr/dist/l10n/fr.js';
 
 $(document).ready(function () {
     jQuery('.plus, .minus').click(function(){
@@ -13,10 +14,13 @@ $(document).ready(function () {
         }
     })
 
-    flatpickr(".flatpickr", {
+    flatpickr('.flatpickr', {
+        utc: false,
+        locale: French,
+        altInput: true,
         enableTime: true,
-        dateFormat: "d-m-Y H:i",
-        time_24hr: true,
+        altFormat: 'd/m/Y - H:i',
+        time_24hr: true
     });
 
     $('.flatpickr-input:visible').on('focus', function () {

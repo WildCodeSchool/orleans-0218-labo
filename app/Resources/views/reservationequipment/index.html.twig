@@ -17,10 +17,10 @@
         {% for reservationEquipment in reservationEquipments %}
             <tr>
                 <td><a href="{{ path('reservationequipment_show', { 'id': reservationEquipment.id }) }}">
-                        {{ reservationEquipment.reservationStart|date('Y-m-d H:i:s') }}</a></td>
+                        {{ reservationEquipment.reservationStart|date('d/m/Y H:i') }}</a></td>
                 <td>
                     {% if reservationEquipment.reservationEnd %}
-                        {{ reservationEquipment.reservationEnd|date('Y-m-d H:i:s') }}
+                        {{ reservationEquipment.reservationEnd|date('d/m/Y H:i') }}
                     {% endif %}
                 </td>
                 <td>{{ reservationEquipment.id }}</td>

@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/flatpickr.css') }}">
+{% endblock %}
 {% block body %}
     {% include 'navbar.html.twig' %}
     <section class="container-fluid staff-reservation">
+        {{ form_start(form) }}
         <div class="row">
             <div class="col-xs-offset-1 col-xs-10">
                 <div class="row reservation-infos">
                     <div class="col-sm-4 col-xs-12">
-                        {{ form_start(form) }}
                         {{ form_row(form.staff) }}
                         {{ form_row(form.reservationStart) }}
                         {{ form_row(form.reservationEnd) }}
