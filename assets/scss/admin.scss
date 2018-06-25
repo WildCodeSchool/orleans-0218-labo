@@ -27,7 +27,6 @@
 //LISTING
 
 tr.admin-listing {
-
   th {
     padding-left: 10px;
 
@@ -37,7 +36,6 @@ tr.admin-listing {
     }
   }
   td {
-
     &.name {
       font-size: 1.4em;
       padding-top: 10px;
@@ -57,6 +55,21 @@ tr.admin-listing {
 
     &.double {
       width: 100px;
+    }
+
+    &.arrow {
+      width: 1px;
+      padding: 0;
+      margin: 0;
+
+      &:nth-child(2) {
+        border-right: 1px #ddd solid;
+        padding-right: 8px;
+      }
+      i {
+        margin: 2px;
+        padding: 2px;
+      }
     }
   }
 }
