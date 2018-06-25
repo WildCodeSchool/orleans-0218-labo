@@ -30,7 +30,7 @@ class Equipment
      *
      * @ORM\Column(name="equipment_order", type="integer")
      */
-    private $equipmentOrder;
+    private $order;
 
     /**
      * @var string
@@ -167,28 +167,52 @@ class Equipment
     {
         return $this->imageSize;
     }
-  
+
     /**
-     * Set equipmentOrder
+     * Set order
      *
-     * @param integer $equipmentOrder
+     * @param integer $order
      *
      * @return Equipment
      */
-    public function setEquipmentOrder($equipmentOrder)
+    public function setOrder($order)
     {
-        $this->equipmentOrder = $equipmentOrder;
+        $this->order = $order;
 
         return $this;
     }
 
     /**
-     * Get equipmentOrder
+     * Get order
      *
      * @return integer
      */
-    public function getEquipmentOrder()
+    public function getOrder()
     {
-        return $this->equipmentOrder;
+        return $this->order;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Equipment
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

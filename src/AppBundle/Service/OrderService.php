@@ -23,32 +23,32 @@ class OrderService
     /**
      *Order an equipment list from 1 to n
      */
-    public function order()
+    public function order($className)
     {
-        $equipments = $this->em->getRepository(Equipment::class)->findby([], ['equipmentOrder' => 'ASC']);
+        $items = $this->em->getRepository($className)->findby([], ['order' => 'ASC']);
         $i = 1;
-        foreach ($equipments as $equipment) {
-            $equipment->setEquipmentOrder($i++);
-            $this->em->persist($equipment);
+        foreach ($items as $item) {
+            $item->setOrder($i++);
+            $this->em->persist($item);
         }
         $this->em->flush();
     }
 
-    public function up($equipment)
+    public function up($item)
     {
-        $equipmentDown = $this->em->getRepository(Equipment::class)->findOneBy([
-            'equipmentOrder' => $equipment->getEquipmentOrder() - 1]);
-        $equipmentDown->setEquipmentOrder($equipmentDown->getEquipmentOrder() + 1);
-        $equipment->setEquipmentOrder($equipment->getEquipmentOrder() - 1);
+        $itemDown = $this->em->getRepository(get_class($item))->findOneBy([
+            'order' => $item->getOrder() - 1]);
+        $itemDown->setOrder($itemDown->getOrder() + 1);
+        $item->setOrder($item->getOrder() - 1);
         $this->em->flush();
     }
 
-    public function down($equipment)
+    public function down($item)
     {
-        $equipmentUp = $this->em->getRepository(Equipment::class)->findOneBy([
-            'equipmentOrder' => $equipment->getEquipmentOrder() + 1]);
-        $equipmentUp->setEquipmentOrder($equipmentUp->getEquipmentOrder() - 1);
-        $equipment->setEquipmentOrder($equipment->getEquipmentOrder() + 1);
+        $itemUp = $this->em->getRepository(get_class($item))->findOneBy([
+            'order' => $item->getOrder() + 1]);
+        $itemUp->setOrder($itemUp->getOrder() - 1);
+        $item->setOrder($item->getOrder() + 1);
         $this->em->flush();
     }
 }
