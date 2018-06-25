@@ -1,4 +1,5 @@
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import "node_modules/font-awesome/scss/font-awesome";
 @import 'variables';
 @import 'home';
 @import 'admin';
@@ -11,6 +12,7 @@ $mid-gray: #B8AE9C;
 $dark-gray: #595241;
 $black: #070A0F;
 $blue: #ACCFCC;
+$fa-font-path: '~font-awesome/fonts';
 
 $font-title: 'Catamaran', sans-serif;
 
