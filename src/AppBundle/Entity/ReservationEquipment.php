@@ -166,7 +166,7 @@ class ReservationEquipment
      *
      * @return \DateTime
      */
-    public function getReservationStart(): DateTime
+    public function getReservationStart(): \DateTime
     {
         return $this->reservationStart;
     }
@@ -190,7 +190,7 @@ class ReservationEquipment
      *
      * @return \DateTime
      */
-    public function getReservationEnd(): Datetime
+    public function getReservationEnd(): \Datetime
     {
         return $this->reservationEnd;
     }
