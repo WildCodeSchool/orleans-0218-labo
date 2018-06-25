@@ -46,7 +46,7 @@ class ReservationController extends Controller
     public function newAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $equipments = $em->getRepository(Equipment::class)->findBy([],['equipmentOrder' => 'ASC']);
+        $equipments = $em->getRepository(Equipment::class)->findBy([], ['equipmentOrder' => 'ASC']);
 
         $reservation = new Reservation();
 
