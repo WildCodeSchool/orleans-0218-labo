@@ -22,10 +22,10 @@ class ReservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName',TextType::class, array('label'=> 'Prénom'))
-            ->add('lastName',TextType::class, array('label'=> 'Nom'))
-            ->add('email',TextType::class, array('label'=> 'Email'))
-            ->add('society',TextType::class, array('label'=> 'Société'))
+            ->add('firstName', TextType::class, array('label'=> 'Prénom'))
+            ->add('lastName', TextType::class, array('label'=> 'Nom'))
+            ->add('email', TextType::class, array('label'=> 'Email'))
+            ->add('society', TextType::class, array('label'=> 'Société'))
             ->add(
                 'reservationStart',
                 DateTimeType::class,
@@ -67,7 +67,6 @@ class ReservationType extends AbstractType
                     'entry_type' => ReservationEquipmentType::class,
 
                 ]
-
             );
     }
 
