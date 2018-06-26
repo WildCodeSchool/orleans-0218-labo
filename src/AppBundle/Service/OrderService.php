@@ -9,6 +9,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\Equipment;
+use AppBundle\Entity\OrderInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 class OrderService
@@ -34,7 +35,7 @@ class OrderService
         $this->em->flush();
     }
 
-    public function up($item)
+    public function up(OrderInterface $item)
     {
         $itemDown = $this->em->getRepository(get_class($item))->findOneBy([
             'order' => $item->getOrder() - 1]);
@@ -43,7 +44,7 @@ class OrderService
         $this->em->flush();
     }
 
-    public function down($item)
+    public function down(OrderInterface $item)
     {
         $itemUp = $this->em->getRepository(get_class($item))->findOneBy([
             'order' => $item->getOrder() + 1]);
