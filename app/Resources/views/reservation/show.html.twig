@@ -1,43 +1,47 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Reservation</h1>
+    <section class="staff-reservation">
+        <div class="container-fluid container-title text-center">
+            <h1>Recapitulatif de la Reservation</h1>
+        </div>
+        <div class="col-6">
+            <div class="col-xs-12 col-md-5 col-md-offset-1">
+                <h4> Responsable de l'accueil : {{ reservation.staff.firstName }} {{ reservation.staff.lastName }}</h4>
+                {#liste checkbox room#}
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="col-xs-12 col-md-5 col-md-offset-1">
+                <h4>Matériel réservé : </h4>
+                {#liste du matériel réservé#}
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="col-xs-12 col-md-5 col-md-offset-1">
+                <h4>Salle séléctionnée : </h4>
+                {# salle réservée#}
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="col-xs-6 col-md-5 col-md-offset-1">
+                <h4>Signature : </h4>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="col-xs-6 col-md-5 col-md-offset-1">
+                <h4>Société : {{ reservation.Society }}</h4>
+                <h4>Nom : {{ reservation.lastName }} </h4>
+                <h4>Prénom : {{ reservation.firstName }}  </h4>
+                <h4>Email : {{ reservation.Email }}  </h4>
+                <h4>Date : </h4>
+            </div>
+        </div>
+    </section>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ reservation.id }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
-                <td>{{ reservation.firstName }}</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
-                <td>{{ reservation.lastName }}</td>
-            </tr>
-            <tr>
-                <th>Reservationdate</th>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ reservation.email }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('reservation_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    {#<a href="{{ path('reservation_index') }}">Back to the list</a>#}
+
+
+
 {% endblock %}
