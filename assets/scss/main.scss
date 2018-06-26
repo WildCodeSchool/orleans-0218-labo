@@ -161,7 +161,7 @@ body {
   .reservation-equipment {
     padding-top: 40px;
     padding-bottom: 20px;
-    background-color: $white-color;
+    background-color: white;
     box-shadow: 5px 0px 20px rgba(0,0,0,0.4);
     .equipment {
       margin-bottom: 30px;
@@ -171,14 +171,14 @@ body {
       background-color: $primary-color;
       padding: 20px;
       border-radius: 5px;
-      color: $white-color;
+      color: white;
       text-transform: uppercase;
       img {
         width: 180px;
         height: 180px;
-        border: $white-color 10px solid;
+        border: white 10px solid;
         margin-bottom: 20px;
-        background-color: $white-color;
+        background-color: white;
       }
       .equipment-btns {
         display: flex;
@@ -194,7 +194,7 @@ body {
         border: none;
         width: 40px;
         height: 40px;
-        background-color: $white-color;
+        background-color: white;
         color: #595241;
         font-weight: bold;
         font-size: 1.6rem;
@@ -202,7 +202,7 @@ body {
     }
   }
   .btn {
-    background-color: $black;
+    background-color: black;
     border: 0px;
     width: 100px;
     height: 40px;
@@ -211,7 +211,7 @@ body {
     font-family: $font-title;
     text-transform: uppercase;
     &:hover {
-      background-color: $black;
+      background-color: black;
     }
   }
 }
