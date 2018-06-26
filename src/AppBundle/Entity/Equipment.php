@@ -231,7 +231,7 @@ class Equipment implements OrderInterface
     }
     
     /**
-     * Get Order
+     * Get order
      *
      * @return integer
      */
