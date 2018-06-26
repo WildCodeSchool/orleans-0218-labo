@@ -74,7 +74,6 @@ class ReservationController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
-
         }
 
         return $this->render('reservation/new.html.twig', array(
