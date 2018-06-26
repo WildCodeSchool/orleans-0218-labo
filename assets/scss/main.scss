@@ -197,8 +197,22 @@ body {
   width: 100%;
 }
 
+.height-titre{
+  max-height: 120px;
+  margin-bottom: 10px !important;
+}
+
+.separator-border{
+  border-top: solid $dark-gray 2px;
+}
+
 .spaceWhite{
   height: 100px;
+}
+
+.form-control {
+  border: white 0px solid;
+  background-color: $gray;
 }
 
 .staff-reservation {
@@ -270,4 +284,8 @@ body {
       background-color: $black;
     }
   }
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
 }

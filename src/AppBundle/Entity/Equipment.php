@@ -139,7 +139,7 @@ class Equipment
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      */
-    public function setImageFile(?File $image = null): void
+    public function setImageFile(?File $image = null)
     {
         $this->imageFile = $image;
         if (null !== $image) {
@@ -154,7 +154,7 @@ class Equipment
         return $this->imageFile;
     }
 
-    public function setPicture(?string $imageName): void
+    public function setPicture(string $imageName)
     {
         $this->picture = $imageName;
     }
@@ -164,7 +164,7 @@ class Equipment
         return $this->picture;
     }
 
-    public function setImageSize(?int $imageSize): void
+    public function setImageSize(int $imageSize)
     {
         $this->imageSize = $imageSize;
     }
