@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EquipmentRepository")
  * @Vich\Uploadable
  */
-class Equipment
+class Equipment implements OrderInterface
 {
     /**
      * @var int
@@ -175,7 +175,7 @@ class Equipment
      *
      * @return Equipment
      */
-    public function setOrder($order)
+    public function setOrder(int $order)
     {
         $this->order = $order;
 
