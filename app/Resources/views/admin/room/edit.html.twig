@@ -14,7 +14,8 @@
 
                         {{ form_start(edit_form) }}
                         {{ form_widget(edit_form) }}
-                        <a href="{{ path('room_index') }}"><img class="icon_size" src="https://use.fontawesome.com/releases/v5.0.13/svgs/solid/arrow-circle-left.svg" alt=""></a>
+                        <a href="{{ path('room_index') }}"><img src="/images/arrow-circle-left.svg" class = "icon"
+                                                                alt="retour en arrière"></a>
                         <button type="submit" class="btn btn-warning pull-right">Modifier</button>
                         {{ form_end(edit_form) }}
                     </div>

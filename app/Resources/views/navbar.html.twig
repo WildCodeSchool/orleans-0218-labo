@@ -1,18 +1,18 @@
 {% block navbar %}
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4" >
-                    <div class="height10vh">
-                        <img class="height10vh" src="/images/orleans_pepinieres.png">
-                    </div>
+    <div class="container-fluid home-nav">
+        <div class="row">
+            <div class="col-md-4" >
+                <div class="height10vh">
+                    <img class="height10vh" src="/images/orleans_pepinieres.png">
                 </div>
-                <div class="col-md-2 col-md-offset-6">
-                    <div class="height10vh wheel-center">
-                        <div>
-                            <a href="{{ path('equipment_index') }}"><i class="fa-red fas fa-cog fa-3x pull-right"></i></a>
-                        </div>
-                        </div>
+            </div>
+            <div class="col-md-2 col-md-offset-6">
+                <div class="height10vh wheel-center">
+                    <div>
+                        <a href="{{ path('equipment_index') }}"><img src="/images/cog.svg" class="icon pull-right"></a>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 {% endblock %}
