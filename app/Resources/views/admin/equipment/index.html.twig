@@ -17,10 +17,12 @@
                             <td>{{ equipment.equipmentOrder }}</td>
                             <td>
                                 {% if loop.index0 != 0 %}
-                                    <a href="{{ path('up_order_edit', { 'id': equipment.id }) }}"><i class="fas fa-angle-up"></i></a>
+                                    <a href="{{ path('up_order_edit', { 'id': equipment.id }) }}">
+                                        <img src="/images/angle-up.svg" width="10" alt="up"></a>
                                 {% endif %}
                                 {% if loop.index0 < (equipments|length)-1 %}
-                                    <a href="{{ path('down_order_edit', { 'id': equipment.id }) }}"><i class="fas fa-angle-down"></i></a>
+                                    <a href="{{ path('down_order_edit', { 'id': equipment.id }) }}">
+                                        <img src="/images/angle-down.svg" width="10" alt="down"></a>
                                 {% endif %}
                             </td>
                             <td class="edit">
