@@ -8,7 +8,6 @@
 
 namespace AppBundle\Entity;
 
-
 interface OrderInterface
 {
     public function setOrder(int $order);
