@@ -13,18 +13,19 @@
                     <tbody>
                             {% for equipment in equipments %}
                         <tr class="admin-listing">
-                            <td>{{ equipment.name }}</td>
-                            <td>{{ equipment.equipmentOrder }}</td>
-                            <td>
+                            <td class="arrow">
                                 {% if loop.index0 != 0 %}
                                     <a href="{{ path('up_order_edit', { 'id': equipment.id }) }}">
                                         <img src="/images/angle-up.svg" width="10" alt="up"></a>
                                 {% endif %}
+                            </td>
+                            <td class="arrow">
                                 {% if loop.index0 < (equipments|length)-1 %}
                                     <a href="{{ path('down_order_edit', { 'id': equipment.id }) }}">
                                         <img src="/images/angle-down.svg" width="10" alt="down"></a>
                                 {% endif %}
                             </td>
+                            <td>{{ equipment.name }}</td>
                             <td class="edit">
                                 <a role="button" class="btn btn-primary"
                                    href="{{ path('equipment_show', { 'id': equipment.id }) }}">Détails</a>

@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EquipmentRepository")
  * @Vich\Uploadable
  */
-class Equipment
+class Equipment implements OrderInterface
 {
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\ReservationEquipment", mappedBy="equipment")
@@ -36,7 +36,7 @@ class Equipment
      *
      * @ORM\Column(name="equipment_order", type="integer")
      */
-    private $equipmentOrder;
+    private $order;
 
     /**
      * @var string
@@ -173,8 +173,9 @@ class Equipment
     {
         return $this->imageSize;
     }
-  
+
     /**
+     * Set order
      * Constructor
      */
     public function __construct()
@@ -197,18 +198,19 @@ class Equipment
     /**
      * Set equipmentOrder
      *
-     * @param integer $equipmentOrder
+     * @param integer $order
      *
      * @return Equipment
      */
-    public function setEquipmentOrder($equipmentOrder)
+    public function setOrder(int $order)
     {
-        $this->equipmentOrder = $equipmentOrder;
+        $this->order = $order;
 
         return $this;
     }
 
     /**
+     * Get order
      * Remove reservationEquipment
      *
      * @param \AppBundle\Entity\ReservationEquipment $reservationEquipment
@@ -233,8 +235,32 @@ class Equipment
      *
      * @return integer
      */
-    public function getEquipmentOrder()
+    public function getOrder()
     {
-        return $this->equipmentOrder;
+        return $this->order;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Equipment
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

@@ -26,7 +26,7 @@ class EquipmentController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $equipments = $em->getRepository('AppBundle:Equipment')->findBy([], ['equipmentOrder' => 'ASC']);
+        $equipments = $em->getRepository('AppBundle:Equipment')->findBy([], ['order' => 'ASC']);
         $deleteForm = array();
         foreach ($equipments as $equipment) {
             $deleteForm[$equipment->getId()] = $this->createDeleteForm($equipment)->createView();
@@ -56,7 +56,7 @@ class EquipmentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $equipments = $em->getRepository(Equipment::class)->findAll();
             $nbEquipment = count($equipments);
-            $equipment->setEquipmentOrder($nbEquipment + 1);
+            $equipment->setOrder($nbEquipment + 1);
             $em->persist($equipment);
             $em->flush();
             return $this->redirectToRoute('equipment_index', array('id' => $equipment->getId()));
@@ -145,7 +145,7 @@ class EquipmentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($equipment);
             $em->flush();
-            $orderService->order();
+            $orderService->order(Equipment::class);
         }
         return $this->redirectToRoute('equipment_index');
     }
