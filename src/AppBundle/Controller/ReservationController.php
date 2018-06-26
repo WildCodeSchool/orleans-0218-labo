@@ -73,7 +73,8 @@ class ReservationController extends Controller
             $em->persist($reservation);
             $em->flush();
 
-            return $this->redirectToRoute('reservation_index', array('id' => $reservation->getId()));
+            return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
+
         }
 
         return $this->render('reservation/new.html.twig', array(
@@ -155,7 +156,6 @@ class ReservationController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('reservation_delete', array('id' => $reservation->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
