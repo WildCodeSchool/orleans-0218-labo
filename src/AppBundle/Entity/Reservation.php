@@ -20,7 +20,9 @@ class Reservation
     private $staff;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ReservationEquipment", mappedBy="reservation", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ReservationEquipment",
+     *     mappedBy="reservation",
+     *     cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $reservationEquipments;
