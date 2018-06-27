@@ -11,6 +11,7 @@
                 <thead>
                 <tr>
                     <th class="text-center">Accueil</th>
+                    <th class="text-center">Société</th>
                     <th class="text-center">Nom / Prénom du client</th>
                     <th class="text-center">Date de pret</th>
                     <th class="text-center">Date de retour</th>
@@ -21,6 +22,7 @@
                     <tr class="admin-listing">
                         <td class="text-center">{{ reservation.staff.lastname }}
                             - {{ reservation.staff.firstname }}</td>
+                        <td class="text-center">{{ reservation.society }}</td>
                         <td class="text-center">{{ reservation.lastName }} - {{ reservation.firstName }}</td>
                         <td class="text-center">{{ reservation.reservationStart.date|date('d/m/Y H:i') }}</td>
                         <td class="text-center">{{ reservation.reservationEnd.date|date('d/m/Y H:i') }}</td>

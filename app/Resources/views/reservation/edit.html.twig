@@ -1,21 +1,78 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutMain.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/flatpickr.css') }}">
+{% endblock %}
+{% block layout %}
 
-{% block body %}
-    <h1>Reservation edit</h1>
+    <div class="container-fluid container-title text-center height-titre">
+        <h1>Edition de la réservation</h1>
+    </div>
+    <div class="container">
+        {{ form_start(edit_form) }}
+        <div class="row">
+            <div class="col-xs-2">
+                {{ form_row(edit_form.staff) }}
+            </div>
+            <div class="col-xs-3 col-xs-offset-1">
+                {{ form_row(edit_form.society) }}
+            </div>
+            <div class="col-xs-3">
+                {{ form_row(edit_form.lastName) }}
+            </div>
+            <div class="col-xs-3">
+                {{ form_row(edit_form.reservationStart)}}
+            </div>
+        </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-3">
+
+                {{ form_row(edit_form.email) }}
+            </div>
+            <div class="col-xs-3">
+                {{ form_row(edit_form.firstName) }}
+            </div>
+            <div class="col-xs-3">
+                {{ form_row(edit_form.reservationEnd)  }}
+            </div>
+        </div>
+
+        <div class="row height10vh" >
+            <div class="col-xs-8 col-xs-offset-2 separator-border">
+            </div>
+        </div>
+
+
+        <div class="row">
+            {% for reservationEquipment in edit_form.reservationEquipments %}
+            <div class="col-xs-2 col-xs-offset-1">
+                {{ form_row(reservationEquipment, { 'label': reservationEquipment.vars.value.equipment.name })}}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2 col-xs-offset-2">
+                <a href="{{ path('reservation_index') }}">
+                    <img src="/images/arrow-circle-left.svg" class = "icon"
+                         alt="retour en arrière"></a>
+            </div>
+            <div class="col-xs-2 col-xs-offset-6">
+                <input role="button" class="btn btn-warning widhtButton"
+                       type="submit" value="Edit" />
+                {{ form_end(edit_form) }}
+            </div>
+        </div>
+    </div>
+
 
     <ul>
         <li>
-            <a href="{{ path('reservation_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+
         </li>
     </ul>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('build/reservation.js') }}"></script>
 {% endblock %}
