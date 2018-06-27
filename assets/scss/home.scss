@@ -1,25 +1,27 @@
 //HOME
 
+.container-nav {
+  background-color: $light-color;
+}
+
 .home-nav {
-  background-color: white;
+  background-color: $light-color;
   border: 0px;
   border-radius: 0px;
   width: 100%;
+  height: $home-navbar-height;
   padding-right: 50px;
   font-family: $font-title;
-  height: $home-navbar-height;
-  .dropdown-img-home {
-    width: 100px;
-  }
-  .dropdown-menu {
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 0px;
-  }
+  padding-top: 10px;
+  padding-bottom: 10px;
 
   .logo-orleans-pepiniere {
-    height: 100%;
     width: 200px;
   }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .white {
@@ -48,7 +50,7 @@
 
 .btn-home {
   background-color: white;
-  color: $dark-gray;
+  color: $dark-color;
   border-radius: 3px;
   padding: 8px 14px;
   font-size: 1em;
@@ -60,10 +62,4 @@
 .btn-container {
   position: relative;
   top: -60px;
-}
-
-.home-navbar-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
