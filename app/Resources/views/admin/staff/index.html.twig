@@ -34,8 +34,8 @@
                                         <img src="/images/angle-down.svg" width="10" alt="down"></a>
                                 {% endif %}
                             </td>
-                            <td class="name">{{ staffMember.firstName }}</td>
-                            <td class="name">{{ staffMember.lastName }}</td>
+                            <td>{{ staffMember.firstName }}</td>
+                            <td>{{ staffMember.lastName }}</td>
                             <td class="edit">
                                 <a role="button" class="btn btn-warning"
                                    href="{{ path('staff_edit', { 'id': staffMember.id }) }}">Modifier</a>
