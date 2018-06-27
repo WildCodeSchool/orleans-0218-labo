@@ -27,6 +27,7 @@ class EquipmentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $equipments = $em->getRepository('AppBundle:Equipment')->findBy([], ['order' => 'ASC']);
+
         $deleteForm = array();
         foreach ($equipments as $equipment) {
             $deleteForm[$equipment->getId()] = $this->createDeleteForm($equipment)->createView();

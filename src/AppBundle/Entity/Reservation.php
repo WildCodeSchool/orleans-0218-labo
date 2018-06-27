@@ -20,7 +20,7 @@ class Reservation
     private $staff;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ReservationEquipment", mappedBy="reservation", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ReservationEquipment", mappedBy="reservation", cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $reservationEquipments;
@@ -31,6 +31,7 @@ class Reservation
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
      */
     private $id;
 
