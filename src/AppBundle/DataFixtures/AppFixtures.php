@@ -48,28 +48,28 @@ class AppFixtures extends Fixture
         connecter une carte graphique à un écran d\'ordinateur en analogique. Ce connecteur est parfois appelé 
         connecteur RGB, HD-15 ou D-sub 15');
         $equipment->setPicture('https://zupimages.net/up/18/25/1odw.png');
-        $equipment->setEquipmentOrder(1);
+        $equipment->setOrder(1);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Cable VGA');
         $equipment->setDescription('Ceci est un Cable VGA');
         $equipment->setPicture('https://zupimages.net/up/18/25/ng32.png');
-        $equipment->setEquipmentOrder(2);
+        $equipment->setOrder(2);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Badge');
         $equipment->setDescription('Ceci est un badge');
         $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
-        $equipment->setEquipmentOrder(3);
+        $equipment->setOrder(3);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Chariot');
         $equipment->setDescription('Ceci est un chariot');
         $equipment->setPicture('https://zupimages.net/up/18/25/xrk0.png');
-        $equipment->setEquipmentOrder(4);
+        $equipment->setOrder(4);
         $manager->persist($equipment);
 
 
@@ -77,14 +77,14 @@ class AppFixtures extends Fixture
         $equipment->setName('Escabeau');
         $equipment->setDescription('Ceci est un escabeau');
         $equipment->setPicture('https://zupimages.net/up/18/25/s3kz.png');
-        $equipment->setEquipmentOrder(5);
+        $equipment->setOrder(5);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Aspirateur');
         $equipment->setDescription('Ceci est un aspirateur');
         $equipment->setPicture('https://zupimages.net/up/18/25/3lwg.png');
-        $equipment->setEquipmentOrder(6);
+        $equipment->setOrder(6);
         $manager->persist($equipment);
 
         $room = new Room();

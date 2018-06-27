@@ -196,7 +196,7 @@ class Equipment implements OrderInterface
     }
     
     /**
-     * Set equipmentOrder
+     * Set order
      *
      * @param integer $order
      *
@@ -231,7 +231,7 @@ class Equipment implements OrderInterface
     }
     
     /**
-     * Get equipmentOrder
+     * Get order
      *
      * @return integer
      */

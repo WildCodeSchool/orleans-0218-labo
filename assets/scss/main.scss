@@ -96,6 +96,7 @@ body {
   }
 }
 
+
 .icon_size {
   height: 30px;
   width: 30px;
@@ -146,63 +147,75 @@ body {
 }
 
 .staff-reservation {
-  background-color: $gray;
+  background-color: white;
+  h1 {
+    margin-top: 50px;
+  }
   .reservation-infos {
     padding-top: 50px;
-    border-top: $dark-gray 1px solid;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     padding-left: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
     .form-control {
-      border-radius: 0px;
+      border: white 0px solid;
+      background-color: $light-color;
     }
   }
   .reservation-equipment {
     padding-top: 40px;
     padding-bottom: 20px;
-    background-color: white;
-    box-shadow: 5px 0px 20px rgba(0,0,0,0.4);
-    .equipment {
-      margin-bottom: 30px;
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-      background-color: $primary-color;
-      padding: 20px;
+    background-color: $light-color;
+    .res-col {
       border-radius: 5px;
-      color: white;
-      text-transform: uppercase;
-      img {
-        width: 180px;
-        height: 180px;
-        border: white 10px solid;
-        margin-bottom: 20px;
-        background-color: white;
-      }
-      .equipment-btns {
-        display: flex;
-        justify-content: space-around;
-      }
-      .form-control {
-        width: 40px;
-        border: none;
-        box-shadow: none;
-      }
-      .plus, .minus {
-        border-radius: 50%;
-        border: none;
-        width: 40px;
-        height: 40px;
-        background-color: white;
-        color: #595241;
-        font-weight: bold;
-        font-size: 1.6rem;
+      background-color: white;
+      box-shadow: 0px 0px 10px 5px rgba($box-shadow,0.5);
+      .equipment {
+        margin-bottom: 30px;
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        background-color: $primary-color;
+        padding: 20px;
+        border-radius: 5px;
+        color: white;
+        text-transform: uppercase;
+        img {
+          width: 180px;
+          height: 180px;
+          border: white 10px solid;
+          margin-bottom: 20px;
+          background-color: white;
+        }
+        .equipment-btns {
+          display: flex;
+          justify-content: space-around;
+        }
+        .form-control {
+          width: 40px;
+          border: none;
+          box-shadow: none;
+          background-color: $primary-color;
+          color: white;
+          margin-left: 10px;
+          font-size: 2rem;
+        }
+        .plus, .minus {
+          border-radius: 50%;
+          border: none;
+          width: 40px;
+          height: 40px;
+          background-color: white;
+          color: $dark-color;
+          font-weight: bold;
+          font-size: 1.6rem;
+        }
       }
     }
   }
   .btn {
-    background-color: black;
+    background-color: $primary-color;
     border: 0px;
     width: 100px;
     height: 40px;
