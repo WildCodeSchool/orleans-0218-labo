@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Staff;
+use AppBundle\Service\OrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -25,7 +26,7 @@ class StaffController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $staffMembers = $em->getRepository('AppBundle:Staff')->findAll();
+        $staffMembers = $em->getRepository('AppBundle:Staff')->findBy([], ['order' => 'ASC']);
         $deleteForm = array();
         foreach ($staffMembers as $staffMember) {
             $deleteForm[$staffMember->getId()] = $this->createDeleteForm($staffMember)->createView();
@@ -50,6 +51,9 @@ class StaffController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $allStaffMember = $em->getRepository(Staff::class)->findAll();
+            $nbStaffMember = count($allStaffMember);
+            $staff->setOrder($nbStaffMember + 1);
             $em->persist($staff);
             $em->flush();
 
@@ -109,7 +113,7 @@ class StaffController extends Controller
      * @Route("/{id}", name="staff_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Staff $staff)
+    public function deleteAction(Request $request, Staff $staff, OrderService $orderService)
     {
         $form = $this->createDeleteForm($staff);
         $form->handleRequest($request);
@@ -118,8 +122,29 @@ class StaffController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($staff);
             $em->flush();
+            $orderService->order(Staff::class);
         }
 
+        return $this->redirectToRoute('staff_index');
+    }
+
+    /**
+     * @Route("/{id}/edit/down", name="down_order_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function downOrderAction(Staff $staff, OrderService $orderService)
+    {
+        $orderService->down($staff);
+        return $this->redirectToRoute('staff_index');
+    }
+
+    /**
+     * @Route("/{id}/edit/up", name="up_order_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function upOrderAction(Staff $staff, OrderService $orderService)
+    {
+        $orderService->up($staff);
         return $this->redirectToRoute('staff_index');
     }
 

@@ -8,13 +8,32 @@
         <div class="container">
             <div class="row">
                 <table class="table">
-                    <tbody>
-                    <tr class="admin-listing">
-                        <th class="name">Prénom</th>
-                        <th colspan=3 class="name">Nom</th>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
+                    </thead>
+                    <tbody>
                     {% for staffMember in staffMembers %}
                         <tr class="admin-listing">
+                            <td class="arrow">
+                                {% if loop.index0 != 0 %}
+                                    <a href="{{ path('up_order_edit', { 'id': staffMember.id }) }}">
+                                        <img src="/images/angle-up.svg" width="10" alt="up"></a>
+                                {% endif %}
+                            </td>
+                            <td class="arrow">
+                                {% if loop.index0 < (staffMembers|length)-1 %}
+                                    <a href="{{ path('down_order_edit', { 'id': staffMember.id }) }}">
+                                        <img src="/images/angle-down.svg" width="10" alt="down"></a>
+                                {% endif %}
+                            </td>
                             <td class="name">{{ staffMember.firstName }}</td>
                             <td class="name">{{ staffMember.lastName }}</td>
                             <td class="edit">
