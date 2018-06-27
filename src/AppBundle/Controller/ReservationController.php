@@ -2,11 +2,16 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Reservation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\ReservationEquipment;
 
 /**
  * Reservation controller.
@@ -40,12 +45,31 @@ class ReservationController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $equipments = $em->getRepository(Equipment::class)->findBy([], ['order' => 'ASC']);
+
         $reservation = new Reservation();
+
+        foreach ($equipments as $equipment) {
+            $resaEquip = new ReservationEquipment();
+
+            $resaEquip->setEquipment($equipment);
+            $resaEquip->setQuantity(0);
+            $resaEquip->setReservation($reservation);
+
+            $reservation->addReservationEquipment($resaEquip);
+        }
+
         $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            foreach ($reservation->getReservationEquipments() as $dateEquipment) {
+                $dateEquipment->setReservationStart($reservation->getReservationStart());
+                $dateEquipment->setReservationEnd($reservation->getReservationEnd());
+            }
+
             $em->persist($reservation);
             $em->flush();
 
@@ -54,6 +78,7 @@ class ReservationController extends Controller
 
         return $this->render('reservation/new.html.twig', array(
             'form' => $form->createView(),
+            'equipments' => $equipments
         ));
     }
 
@@ -88,7 +113,7 @@ class ReservationController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('reservation_edit', array('id' => $reservation->getId()));
+            return $this->redirectToRoute('reservation_index');
         }
 
         return $this->render('reservation/edit.html.twig', array(

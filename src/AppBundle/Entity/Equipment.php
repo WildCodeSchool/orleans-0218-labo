@@ -3,15 +3,25 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Equipment
  *
  * @ORM\Table(name="equipment")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EquipmentRepository")
+ * @Vich\Uploadable
  */
-class Equipment
+class Equipment implements OrderInterface
 {
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ReservationEquipment", mappedBy="equipment")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $reservationEquipments;
+
     /**
      * @var int
      *
@@ -20,6 +30,13 @@ class Equipment
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="equipment_order", type="integer")
+     */
+    private $order;
 
     /**
      * @var string
@@ -36,12 +53,32 @@ class Equipment
     private $description;
 
     /**
-     * @var string
      *
-     * @ORM\Column(name="picture", type="text", nullable=true)
+     * @Vich\UploadableField(mapping="product_image", fileNameProperty="picture", size="imageSize")
+     * @Assert\File(
+     * maxSize="1000k",
+     * maxSizeMessage="Le fichier excède 1000Ko.",
+     * mimeTypes={"image/png", "image/jpeg", "image/jpg", "image/svg+xml", "image/gif"},
+     * mimeTypesMessage= "formats autorisés: png, jpeg, jpg, svg, gif"
+     * )
+     *
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
      */
     private $picture;
 
+    /**
+     * @ORM\Column(type="datetime", nullable = true)
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     /**
      * Get id
@@ -63,7 +100,6 @@ class Equipment
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -87,7 +123,6 @@ class Equipment
     public function setDescription($description)
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -102,26 +137,130 @@ class Equipment
     }
 
     /**
-     * Set picture
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     */
+    public function setImageFile(?File $image = null)
+    {
+        $this->imageFile = $image;
+        if (null !== $image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setPicture(string $imageName)
+    {
+        $this->picture = $imageName;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setImageSize(int $imageSize)
+    {
+        $this->imageSize = $imageSize;
+    }
+
+    public function getImageSize(): ?int
+    {
+        return $this->imageSize;
+    }
+
+    /**
+     * Set order
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reservationEquipments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add reservationEquipment
      *
-     * @param string $picture
+     * @param \AppBundle\Entity\ReservationEquipment $reservationEquipment
      *
      * @return Equipment
      */
-    public function setPicture($picture)
+    public function addReservationEquipment(\AppBundle\Entity\ReservationEquipment $reservationEquipment)
     {
-        $this->picture = $picture;
+        $this->reservationEquipments[] = $reservationEquipment;
+    }
+    
+    /**
+     * Set order
+     *
+     * @param integer $order
+     *
+     * @return Equipment
+     */
+    public function setOrder(int $order)
+    {
+        $this->order = $order;
 
         return $this;
     }
 
     /**
-     * Get picture
+     * Get order
+     * Remove reservationEquipment
      *
-     * @return string
+     * @param \AppBundle\Entity\ReservationEquipment $reservationEquipment
      */
-    public function getPicture()
+    public function removeReservationEquipment(\AppBundle\Entity\ReservationEquipment $reservationEquipment)
     {
-        return $this->picture;
+        $this->reservationEquipments->removeElement($reservationEquipment);
+    }
+
+    /**
+     * Get reservationEquipments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservationEquipments()
+    {
+        return $this->reservationEquipments;
+    }
+    
+    /**
+     * Get order
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Equipment
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }
