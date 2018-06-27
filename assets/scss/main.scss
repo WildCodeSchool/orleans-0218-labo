@@ -94,44 +94,8 @@ body {
       }
     }
   }
-
-  //HOME
-
-  .home-nav {
-    border: 0px;
-    border-radius: 0px;
-    width: 100%;
-    padding-right: 50px;
-    font-family: $font-title;
-    height: 110px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: $light-color;
-  }
-
-  .white {
-    color: white;
-    &:hover {
-      color: rgba(255, 255, 255, 0.8);
-    }
-  }
-
-  .home {
-    background-color: $primary-color ;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-family: $font-title;
-  }
-
-  .parameters {
-    margin-top: -120px;
-  }
-
-  .fa-check {
-    color: $check-color;
-  }
 }
+
 
 .icon_size {
   height: 30px;
@@ -143,14 +107,6 @@ body {
       background-color: rgba(255, 255, 255, 0.7);
     }
   }
-}
-
-.height80vh {
-  height: 80vh;
-}
-
-.height10vh {
-  height: 10vh;
 }
 
 .icon {
@@ -294,12 +250,14 @@ body {
 //button
 
 .btn {
-  background-color: $primary-color;
-  border: 1px $primary-color solid;
   border-radius: 3px;
   padding: 8px 14px;
   font-size: 1em;
-  font-weight: bold;
+}
+
+.btn-primary, .btn-warning, .btn-danger {
+  background-color: $primary-color;
+  border: 1px $primary-color solid;
   &:hover {
     background-color: darken( $primary-color, 10%);
     border: 1px $primary-color solid;
