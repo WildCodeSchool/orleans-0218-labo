@@ -46,23 +46,18 @@ class ReservationController extends Controller
     public function newAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $equipments = $em->getRepository(Equipment::class)->findAll();
+        $equipments = $em->getRepository(Equipment::class)->findBy([], ['order' => 'ASC']);
 
         $reservation = new Reservation();
 
         foreach ($equipments as $equipment) {
             $resaEquip = new ReservationEquipment();
 
-            $now = new \DateTime();
-
             $resaEquip->setEquipment($equipment);
             $resaEquip->setQuantity(0);
             $resaEquip->setReservation($reservation);
-            $resaEquip->setReservationStart($now);
-            $resaEquip->setReservationEnd($now);
 
             $reservation->addReservationEquipment($resaEquip);
-            $em->persist($reservation);
         }
 
         $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
@@ -70,6 +65,11 @@ class ReservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            foreach ($reservation->getReservationEquipments() as $dateEquipment) {
+                $dateEquipment->setReservationStart($reservation->getReservationStart());
+                $dateEquipment->setReservationEnd($reservation->getReservationEnd());
+            }
+
             $em->persist($reservation);
             $em->flush();
 
@@ -113,7 +113,7 @@ class ReservationController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('reservation_edit', array('id' => $reservation->getId()));
+            return $this->redirectToRoute('reservation_index');
         }
 
         return $this->render('reservation/edit.html.twig', array(

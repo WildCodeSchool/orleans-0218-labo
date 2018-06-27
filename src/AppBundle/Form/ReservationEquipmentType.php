@@ -4,8 +4,11 @@ namespace AppBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ReservationEquipmentType extends AbstractType
 {
@@ -14,7 +17,8 @@ class ReservationEquipmentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('quantity');
+        $builder
+            ->add('quantity', IntegerType::class, array('label'=> false));
     }
 
     /**
@@ -34,6 +38,4 @@ class ReservationEquipmentType extends AbstractType
     {
         return 'appbundle_reservationequipment';
     }
-
-
 }

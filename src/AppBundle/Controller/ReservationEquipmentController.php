@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\ReservationEquipment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Reservationequipment controller.
@@ -127,10 +128,16 @@ class ReservationEquipmentController extends Controller
      */
     private function createDeleteForm(ReservationEquipment $reservationEquipment)
     {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('reservationequipment_delete', array('id' => $reservationEquipment->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
+        return $this
+            ->createFormBuilder()
+            ->setAction(
+                $this->generateUrl(
+                    'reservationequipment_delete',
+                    array(
+                        'id' => $reservationEquipment->getId()
+                    )
+                )
+            )
+            ->setMethod('DELETE')->getForm();
     }
 }
