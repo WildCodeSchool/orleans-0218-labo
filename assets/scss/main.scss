@@ -6,13 +6,14 @@
 //ADMIN
 
 i.fa-angle-up {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-  i.fa-angle-down {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+i.fa-angle-down {
+  padding-right: 20px;
+  padding-left: 20px;
+}
 
 tr.admin-listing {
 
@@ -96,7 +97,6 @@ body {
   }
 }
 
-
 .icon_size {
   height: 30px;
   width: 30px;
@@ -123,7 +123,7 @@ body {
 
 .add-equipment {
   margin-bottom: 50px;
-  img{
+  img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -134,30 +134,30 @@ body {
   }
 }
 
-.imgSize{
+.imgSize {
   height: 400px;
 }
 
-.widhtButton{
+.widhtButton {
   width: 100%;
 }
 
-.height-titre{
+.height-titre {
   max-height: 120px;
   margin-bottom: 10px !important;
 }
 
-.separator-border{
-  border-top: solid $dark-gray 2px;
+.separator-border {
+  border-top: solid $dark-color 2px;
 }
 
-.spaceWhite{
+.spaceWhite {
   height: 100px;
 }
 
 .form-control {
   border: white 0px solid;
-  background-color: $gray;
+  background-color: $light-color;
 }
 
 .staff-reservation {
@@ -183,7 +183,7 @@ body {
     .res-col {
       border-radius: 5px;
       background-color: white;
-      box-shadow: 0px 0px 10px 5px rgba($box-shadow,0.5);
+      box-shadow: 0px 0px 10px 5px rgba($box-shadow, 0.5);
       .equipment {
         margin-bottom: 30px;
         width: 95%;
@@ -259,7 +259,7 @@ body {
   background-color: $primary-color;
   border: 1px $primary-color solid;
   &:hover {
-    background-color: darken( $primary-color, 10%);
+    background-color: darken($primary-color, 10%);
     border: 1px $primary-color solid;
   }
 }
