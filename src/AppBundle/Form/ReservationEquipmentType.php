@@ -18,11 +18,7 @@ class ReservationEquipmentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('quantity', IntegerType::class,
-                array(
-                    'label'=> false,
-                )
-            );
+            ->add('quantity', IntegerType::class, array('label'=> false));
     }
 
     /**
