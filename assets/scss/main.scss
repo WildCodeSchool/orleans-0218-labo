@@ -163,10 +163,10 @@ body {
 .staff-reservation {
   background-color: white;
   h1 {
-    margin-top: 50px;
+    margin-top: 30px;
   }
   .reservation-infos {
-    padding-top: 50px;
+    padding-top: 20px;
     margin-bottom: 20px;
     padding-left: 0px;
     padding-right: 0px;
@@ -177,27 +177,28 @@ body {
     }
   }
   .reservation-equipment {
-    padding-top: 40px;
-    padding-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     background-color: $light-color;
     .res-col {
+      min-height: 45vh;
       border-radius: 5px;
       background-color: white;
       box-shadow: 0px 0px 10px 5px rgba($box-shadow, 0.5);
       .equipment {
-        margin-bottom: 30px;
         width: 95%;
         margin-left: auto;
         margin-right: auto;
         margin-top: 30px;
+        margin-bottom: 20px;
         background-color: $primary-color;
         padding: 20px;
         border-radius: 5px;
         color: white;
         text-transform: uppercase;
         img {
-          width: 180px;
-          height: 180px;
+          max-width: 80%;
+          max-height: 80%;
           border: white 10px solid;
           margin-bottom: 20px;
           background-color: white;
@@ -217,15 +218,15 @@ body {
         .plus, .minus {
           border-radius: 50%;
           border: none;
-          width: 40px;
-          height: 40px;
+          min-width: 40px;
+          max-height: 40px;
           background-color: white;
           color: $dark-color;
           font-weight: bold;
-          font-size: 1.6rem;
+          font-size: 1.5rem;
         }
         p {
-          height: 50px;
+          height: 40px;
         }
       }
     }
@@ -235,8 +236,8 @@ body {
     border: 0px;
     width: 100px;
     height: 40px;
-    margin-top: 40px;
-    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-family: $font-title;
     text-transform: uppercase;
     &:hover {
