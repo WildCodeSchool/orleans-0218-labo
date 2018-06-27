@@ -207,12 +207,11 @@ body {
           justify-content: space-around;
         }
         .form-control {
-          width: 40px;
           border: none;
           box-shadow: none;
           background-color: $primary-color;
           color: white;
-          margin-left: 10px;
+          margin-left: 18%;
           font-size: 2rem;
         }
         .plus, .minus {
@@ -224,6 +223,9 @@ body {
           color: $dark-color;
           font-weight: bold;
           font-size: 1.6rem;
+        }
+        p {
+          height: 50px;
         }
       }
     }
@@ -243,6 +245,12 @@ body {
   }
   input[type=number] {
     -moz-appearance: textfield;
+  }
+
+  input::-webkit-inner-spin-button,
+  input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin:0;
   }
 
 }
