@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="resources/css/bcPaint.css"/>
+    <link type="text/css" rel="stylesheet" href="resources/css/bcPaint.mobile.css"/>
+{% endblock %}
+
+
 {% block body %}
     <h1>Reservation</h1>
 
@@ -40,4 +46,18 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+
+    <div id="bcPaint"> <!-- Signature start -->
+
+    </div> <!-- Signature end -->
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="resources/js/bcPaint.js"></script>
+    <script>
+        $(function(){
+            $('#bcPaint').bcPaint();
+        });
+    </script>
 {% endblock %}

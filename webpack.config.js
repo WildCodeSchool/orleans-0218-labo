@@ -7,7 +7,10 @@ Encore
     .enableSassLoader()
     .addEntry('app', './assets/js/app.js')
     .addEntry('reservation', './assets/js/reservation.js')
+    .addEntry('bcPaintt', './assets/js/bcPaint.js')
     .addEntry('flatpickr', './node_modules/flatpickr/dist/flatpickr.css')
+    .addEntry('bcPaint', './assets/scss/bcPaint.css')
+    .addEntry('bcPaint.mobile', './assets/scss/bcPaint.mobile.css')
     .addEntry('style', './assets/scss/main.scss')
     .createSharedEntry('vendor', [
         'jquery',
