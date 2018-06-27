@@ -23,7 +23,7 @@ class AppFixtures extends Fixture
 
         $staff = new Staff();
         $staff->setFirstName('Cynthia');
-        $staff->setLastName('FORSECA');
+        $staff->setLastName('FONSECA');
         $manager->persist($staff);
 
         $staff = new Staff();
@@ -42,60 +42,76 @@ class AppFixtures extends Fixture
         $manager->persist($staff);
 
         $equipment = new Equipment();
+        $equipment->setName('Clef');
+        $equipment->setDescription('Ceci est une clef');
+        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setOrder(1);
+        $manager->persist($equipment);
+
+        $equipment = new Equipment();
         $equipment->setName('Cable HDMI');
         $equipment->setDescription('La numérotation d\'un connecteur mâle, généralement monté sur un câble, 
         est symétrique. Un connecteur VGA est un connecteur de type D-sub, plus précisément DE-15. Il est utilisé pour 
         connecter une carte graphique à un écran d\'ordinateur en analogique. Ce connecteur est parfois appelé 
         connecteur RGB, HD-15 ou D-sub 15');
-        $equipment->setPicture('https://images-na.ssl-images-amazon.com/images/I/81kz%2BIy9YwL._SX679_.jpg');
-        $manager->persist($equipment);
-
-        $equipment = new Equipment();
-        $equipment->setName('Cable VGA');
-        $equipment->setDescription('Ceci est un Cable VGA');
-        $equipment->setPicture('https://images-na.ssl-images-amazon.com/images/I/41-pTAb-q1L.jpg');
+        $equipment->setPicture('https://zupimages.net/up/18/25/1odw.png');
+        $equipment->setOrder(2);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Badge');
         $equipment->setDescription('Ceci est un badge');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/
-        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setOrder(3);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
-        $equipment->setName('Chariot');
-        $equipment->setDescription('Ceci est un chariot');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/
-        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setName('Adaptateur VGA');
+        $equipment->setDescription('Ceci est un Cable VGA');
+        $equipment->setPicture('https://zupimages.net/up/18/25/ng32.png');
+        $equipment->setOrder(4);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
-        $equipment->setName('Escabeau');
-        $equipment->setDescription('Ceci est un escabeau');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/
-        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setName('Ordinateur portable');
+        $equipment->setDescription('Ceci est un ordinateur portable');
+        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setOrder(5);
+        $manager->persist($equipment);
+
+        $equipment = new Equipment();
+        $equipment->setName('Microphone');
+        $equipment->setDescription('Ceci est un microphone');
+        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setOrder(6);
+        $manager->persist($equipment);
+
+        $equipment = new Equipment();
+        $equipment->setName('Clef du local technique');
+        $equipment->setDescription('Ceci est une clef ouvrant le local technique');
+        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setOrder(7);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Aspirateur');
         $equipment->setDescription('Ceci est un aspirateur');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/
-        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setOrder(8);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
-        $equipment->setName('Sonorisation portative');
-        $equipment->setDescription('Ceci est une sonorisation portative');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/
-        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setName('Chariot');
+        $equipment->setDescription('Ceci est un chariot');
+        $equipment->setPicture('https://zupimages.net/up/18/25/xrk0.png');
+        $equipment->setOrder(9);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
-        $equipment->setName('Scene mobile');
-        $equipment->setDescription('Ceci est une scene mobile');
-        $equipment->setPicture('http://www.aspirateur.free.fr/images/
-        Aspirateur-Silencieux-Rowenta-Silence-Force-RO472311.jpg');
+        $equipment->setName('Plastifieuse');
+        $equipment->setDescription('Ceci est une plastifieuse');
+        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setOrder(10);
         $manager->persist($equipment);
 
         $room = new Room();

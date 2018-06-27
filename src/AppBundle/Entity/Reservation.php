@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Reservation
@@ -12,6 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Reservation
 {
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Staff")
+     * @var int
+     */
+    private $staff;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ReservationEquipment", mappedBy="reservation", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $reservationEquipments;
+
     /**
      * @var int
      *
@@ -36,11 +49,12 @@ class Reservation
     private $lastName;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="reservationDate", type="datetime")
+     * @ORM\Column(name="society", type="string", length=120)
      */
-    private $reservationDate;
+    private $society;
+
 
     /**
      * @var string
@@ -49,11 +63,35 @@ class Reservation
      */
     private $email;
 
+    /**
+     * @var
+     *
+     * @Assert\DateTime
+     *
+     * @ORM\Column(name="reservationStart", type="datetime")
+     */
+    private $reservationStart;
+
+    /**
+     * @var
+     *
+     * @Assert\DateTime
+     *
+     * @ORM\Column(name="reservationEnd", type="datetime")
+     */
+    private $reservationEnd;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reservationEquipments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -109,27 +147,27 @@ class Reservation
     }
 
     /**
-     * Set reservationDate
+     * Set society
      *
-     * @param \DateTime $reservationDate
+     * @param string $society
      *
      * @return Reservation
      */
-    public function setReservationDate($reservationDate)
+    public function setSociety($society)
     {
-        $this->reservationDate = $reservationDate;
+        $this->society = $society;
 
         return $this;
     }
 
     /**
-     * Get reservationDate
+     * Get society
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getReservationDate()
+    public function getSociety()
     {
-        return $this->reservationDate;
+        return $this->society;
     }
 
     /**
@@ -154,5 +192,95 @@ class Reservation
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set staff
+     *
+     * @param \AppBundle\Entity\Staff $staff
+     *
+     * @return Reservation
+     */
+    public function setStaff(\AppBundle\Entity\Staff $staff = null)
+    {
+        $this->staff = $staff;
+
+        return $this;
+    }
+
+    /**
+     * Get staff
+     *
+     * @return \AppBundle\Entity\Staff
+     */
+    public function getStaff()
+    {
+        return $this->staff;
+    }
+
+    /**
+     * Add reservationEquipment
+     *
+     * @param \AppBundle\Entity\ReservationEquipment $reservationEquipment
+     *
+     * @return Reservation
+     */
+    public function addReservationEquipment(\AppBundle\Entity\ReservationEquipment $reservationEquipment)
+    {
+        $this->reservationEquipments[] = $reservationEquipment;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservationEquipment
+     *
+     * @param \AppBundle\Entity\ReservationEquipment $reservationEquipment
+     */
+    public function removeReservationEquipment(\AppBundle\Entity\ReservationEquipment $reservationEquipment)
+    {
+        $this->reservationEquipments->removeElement($reservationEquipment);
+    }
+
+    /**
+     * Get reservationEquipments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservationEquipments()
+    {
+        return $this->reservationEquipments;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReservationStart()
+    {
+        return $this->reservationStart;
+    }
+
+    /**
+     * @param mixed $reservationStart
+     */
+    public function setReservationStart(\DateTime $reservationStart)
+    {
+        $this->reservationStart = $reservationStart;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReservationEnd()
+    {
+        return $this->reservationEnd;
+    }
+
+    /**
+     * @param mixed $reservationEnd
+     */
+    public function setReservationEnd(\DateTime $reservationEnd)
+    {
+        $this->reservationEnd = $reservationEnd;
     }
 }
