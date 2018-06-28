@@ -131,7 +131,7 @@ class StaffController extends Controller
                     'Error',
                     'Il est impossible de supprimer un membre du personnel lié à une réservation en cours'
                 );
-               return $this->redirectToRoute('staff_index');
+                return $this->redirectToRoute('staff_index');
             }
             $orderService->order(Staff::class);
         }
