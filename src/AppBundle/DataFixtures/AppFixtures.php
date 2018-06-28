@@ -19,26 +19,31 @@ class AppFixtures extends Fixture
         $staff = new Staff();
         $staff->setFirstName('Julie');
         $staff->setLastName('VAILLANT');
+        $staff->setOrder(1);
         $manager->persist($staff);
 
         $staff = new Staff();
         $staff->setFirstName('Cynthia');
         $staff->setLastName('FONSECA');
+        $staff->setOrder(2);
         $manager->persist($staff);
 
         $staff = new Staff();
         $staff->setFirstName('Pauline');
         $staff->setLastName('BOULAS');
+        $staff->setOrder(3);
         $manager->persist($staff);
 
         $staff = new Staff();
         $staff->setFirstName('Ludovic');
         $staff->setLastName('COURTOIS');
+        $staff->setOrder(4);
         $manager->persist($staff);
 
         $staff = new Staff();
         $staff->setFirstName('Sylvie');
         $staff->setLastName('PARFUM');
+        $staff->setOrder(5);
         $manager->persist($staff);
 
         $equipment = new Equipment();
