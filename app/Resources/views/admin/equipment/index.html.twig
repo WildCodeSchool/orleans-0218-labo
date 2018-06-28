@@ -36,12 +36,12 @@
                             </td>
 
                             <td class="delete">
-                                {{ form_start(deleteForm[equipment.id]) }}
+                                {{ form_start(deleteForms[equipment.id]) }}
                                 <button type="submit" class="btn btn-danger">
                                     <i class="icon-trash"></i>
                                     Supprimer
                                 </button>
-                                {{ form_end(deleteForm[equipment.id]) }}
+                                {{ form_end(deleteForms[equipment.id]) }}
                             </td>
                         </tr>
                         {% endfor %}

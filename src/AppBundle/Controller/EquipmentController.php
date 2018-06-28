@@ -28,16 +28,16 @@ class EquipmentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $equipments = $em->getRepository('AppBundle:Equipment')->findBy([], ['order' => 'ASC']);
 
-        $deleteForm = array();
+        $deleteForms = array();
         foreach ($equipments as $equipment) {
-            $deleteForm[$equipment->getId()] = $this->createDeleteForm($equipment)->createView();
+            $deleteForms[$equipment->getId()] = $this->createDeleteForm($equipment)->createView();
         }
 
         return $this->render(
             'admin/equipment/index.html.twig',
             array(
                 'equipments' => $equipments,
-                'deleteForm' => $deleteForm,
+                'deleteForms' => $deleteForms,
             )
         );
     }
