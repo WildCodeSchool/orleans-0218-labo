@@ -3,8 +3,20 @@
 {% block layout %}
     <section class="admin-listing-staff">
         <div class="container-fluid container-title">
-            <h1>Gestion des membres du personnel</h1>
+                <h1>Gestion des membres du personnel</h1>
         </div>
+        <div class="container-fluid">
+            <div class="col-xs-6 col-xs-offset-3">
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger text-center" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+
         <div class="container">
             <div class="row">
                 <table class="table">

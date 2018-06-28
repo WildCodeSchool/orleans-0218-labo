@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Equipment;
+use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -145,7 +146,14 @@ class EquipmentController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($equipment);
-            $em->flush();
+
+            try {
+                $em->flush();
+            }catch(ForeignKeyConstraintViolationException $exception) {
+                $this->addFlash('Error', 'Il est impossible de supprimer un équipement lié à une réservation en cours');
+                return $this->redirectToRoute('equipment_index');
+            }
+
             $orderService->order(Equipment::class);
         }
         return $this->redirectToRoute('equipment_index');
