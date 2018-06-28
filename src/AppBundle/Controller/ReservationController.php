@@ -52,7 +52,7 @@ class ReservationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $reservations = $em->getRepository('AppBundle:Reservation')->findBy([],['reservationEnd' => 'DESC']);
+        $reservations = $em->getRepository('AppBundle:Reservation')->findBy([], ['reservationEnd' => 'DESC']);
 
         return $this->render('reservation/archive.html.twig', array(
             'reservations' => $reservations,
