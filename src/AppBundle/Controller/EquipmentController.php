@@ -1,14 +1,11 @@
 <?php
-
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Equipment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\MonologBundle\DependencyInjection\Compiler\AddProcessorsPass;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Service\OrderService;
 
 /**
  * Equipment controller.
@@ -26,17 +23,19 @@ class EquipmentController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $equipments = $em->getRepository('AppBundle:Equipment')->findBy([], ['order' => 'ASC']);
-        $deleteForm = array();
+        $equipments = $em->getRepository('AppBundle:Equipment')->findAll();
+
+        $deleteForms = array();
         foreach ($equipments as $equipment) {
-            $deleteForm[$equipment->getId()] = $this->createDeleteForm($equipment)->createView();
+            $formDelete = $this->createDeleteForm($equipment);
+            $deleteForms[$equipment->getId()] = $formDelete->createView();
         }
 
         return $this->render(
             'admin/equipment/index.html.twig',
             array(
                 'equipments' => $equipments,
-                'deleteForm' => $deleteForm,
+                'delete_forms' => $deleteForms
             )
         );
     }
@@ -54,9 +53,6 @@ class EquipmentController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $equipments = $em->getRepository(Equipment::class)->findAll();
-            $nbEquipment = count($equipments);
-            $equipment->setOrder($nbEquipment + 1);
             $em->persist($equipment);
             $em->flush();
             return $this->redirectToRoute('equipment_index', array('id' => $equipment->getId()));
@@ -69,30 +65,28 @@ class EquipmentController extends Controller
             )
         );
     }
-
     /**
      * Finds and displays a equipment entity.
      *
      * @Route("/{id}", name="equipment_show")
      * @Method("GET")
      */
-    public function showAction(Equipment $equipment)
+    public function showAction(Equipment $stuff)
     {
-        $deleteForm = $this->createDeleteForm($equipment);
+        $deleteForm = $this->createDeleteForm($stuff);
         return $this->render(
             'admin/equipment/show.html.twig',
             array(
-                'equipment' => $equipment,
+                'equipment' => $stuff,
                 'delete_form' => $deleteForm->createView(),
             )
         );
     }
-
     /**
      * Displays a form to edit an existing equipment entity.
      *
      * @Route("/{id}/edit", name="equipment_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Equipment $equipment)
     {
@@ -110,46 +104,23 @@ class EquipmentController extends Controller
             )
         );
     }
-
-    /**
-     * @Route("/{id}/edit/down", name="down_order_edit")
-     * @Method({"GET", "POST"})
-     */
-    public function downOrderAction(Equipment $equipment, OrderService $orderService)
-    {
-        $orderService->down($equipment);
-        return $this->redirectToRoute('equipment_index');
-    }
-
-    /**
-     * @Route("/{id}/edit/up", name="up_order_edit")
-     * @Method({"GET", "POST"})
-     */
-    public function upOrderAction(Equipment $equipment, OrderService $orderService)
-    {
-        $orderService->up($equipment);
-        return $this->redirectToRoute('equipment_index');
-    }
-
     /**
      * Deletes a equipment entity.
      *
      * @Route("/{id}",   name="equipment_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Equipment $equipment, OrderService $orderService)
+    public function deleteAction(Request $request, Equipment $stuff)
     {
-        $form = $this->createDeleteForm($equipment);
+        $form = $this->createDeleteForm($stuff);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($equipment);
+            $em->remove($stuff);
             $em->flush();
-            $orderService->order(Equipment::class);
         }
         return $this->redirectToRoute('equipment_index');
     }
-
     /**
      * Creates a form to delete a equipment entity.
      *
@@ -159,7 +130,7 @@ class EquipmentController extends Controller
      */
     private function createDeleteForm(Equipment $equipment)
     {
-        return $this->createFormBuilder(null, ['csrf_field_name' => 'delete-equip-' . $equipment->getId()])
+        return $this->createFormBuilder(null, ['csrf_field_name' => 'delete-equip-'.$equipment->getId()])
             ->setAction($this->generateUrl(
                 'equipment_delete',
                 array(

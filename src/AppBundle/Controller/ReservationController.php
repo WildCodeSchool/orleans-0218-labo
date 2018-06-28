@@ -144,6 +144,27 @@ class ReservationController extends Controller
     }
 
     /**
+     * Deletes a reservation entity.
+     *
+     * @Route("/test", name="reservation_test")
+     * @Method("GET")
+     */
+    public function getSignatureAction(Request $request, Reservation $reservation)
+    {
+        $form = $this->createForm($reservation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $someNewFilename = '';
+
+            $file = $form['attachment']->getData();
+            /*$file->move($directory, $someNewFilename);*/
+            return $this->redirectToRoute('reservation_show');
+        }
+        return $this->render('reservation/vueTestSignature.html.twig');
+    }
+
+    /**
      * Creates a form to delete a reservation entity.
      *
      * @param Reservation $reservation The reservation entity
