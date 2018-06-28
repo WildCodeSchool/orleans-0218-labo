@@ -32,8 +32,14 @@ class ReservationController extends Controller
 
         $reservations = $em->getRepository('AppBundle:Reservation')->findAll();
 
+        $deleteForms = array();
+        foreach ($reservations as $reservation) {
+            $deleteForms[$reservation->getId()] = $this->createDeleteForm($reservation)->createView();
+        }
+
         return $this->render('reservation/index.html.twig', array(
             'reservations' => $reservations,
+            'deleteForms' => $deleteForms,
         ));
     }
 
@@ -73,7 +79,7 @@ class ReservationController extends Controller
             $em->persist($reservation);
             $em->flush();
 
-            return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
+            return $this->redirectToRoute('reservation_index', array('id' => $reservation->getId()));
         }
 
         return $this->render('reservation/new.html.twig', array(
