@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="staff")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\StaffRepository")
  */
-class Staff
+class Staff implements OrderInterface
 {
     /**
      * @var int
@@ -20,6 +20,13 @@ class Staff
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="staff_order", type="integer")
+     */
+    private $order;
 
     /**
      * @var string
@@ -92,5 +99,29 @@ class Staff
     public function getFirstName()
     {
         return $this->firstName;
+    }
+
+    /**
+     * Get order
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * Set order
+     *
+     * @param integer $order
+     *
+     * @return Equipment
+     */
+    public function setOrder(int $order)
+    {
+        $this->order = $order;
+
+        return $this;
     }
 }
