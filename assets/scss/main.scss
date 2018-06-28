@@ -135,7 +135,9 @@ body {
 }
 
 .imgSize {
-  height: 400px;
+  max-height: 350px;
+  max-width: 350px;
+  margin-bottom: 50px;
 }
 
 .widhtButton {
@@ -153,6 +155,11 @@ body {
 
 .spaceWhite {
   height: 100px;
+}
+
+.show-btn {
+  display: flex;
+  justify-content: space-around;
 }
 
 .form-control {

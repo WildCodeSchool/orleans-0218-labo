@@ -25,14 +25,14 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-1 col-md-offset-5 text-center ">
+        <div class="row show-btn">
+            <div class="col-md-2 text-center ">
                 <a type="button" class="btn btn-primary widhtButton" href="{{ path('equipment_index') }}">Retour</a>
             </div>
-            <div class="col-md-1 text-justify">
+            <div class="col-md-2 text-justify">
                 <a type="button" class="btn btn-warning widhtButton" href="{{ path('equipment_edit', { 'id': equipment.id }) }}">Modifier</a>
             </div>
-            <div class="col-md-1 text-justify">
+            <div class="col-md-2 text-justify">
                     {{ form_start(delete_form) }}
                     <button type="submit" class="btn btn-danger widhtButton">
                         <i class="icon-trash"></i>
