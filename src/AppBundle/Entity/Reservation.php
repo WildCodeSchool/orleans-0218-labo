@@ -80,6 +80,13 @@ class Reservation
      * @ORM\Column(name="reservationEnd", type="datetime")
      */
     private $reservationEnd;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Room")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $room;
+
     /**
      * Constructor
      */
@@ -282,5 +289,27 @@ class Reservation
     public function setReservationEnd(\DateTime $reservationEnd)
     {
         $this->reservationEnd = $reservationEnd;
+    }
+
+    /**
+     * Get room
+     *
+     * @return \AppBundle\Entity\Room
+     */
+    public function getRoom()
+    {
+        return $this->room;
+    }
+
+    /**
+     * Set room
+     *
+     * @param \AppBundle\Entity\Room $room
+     *
+     * @return Reservation
+     */
+    public function setRoom(\AppBundle\Entity\Room $room)
+    {
+        $this->room = $room;
     }
 }

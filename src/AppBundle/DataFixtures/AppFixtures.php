@@ -145,7 +145,47 @@ class AppFixtures extends Fixture
         $manager->persist($room);
 
         $room = new Room();
-        $room->setName('Cocon');
+        $room->setName('Shaker');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Imaginarium');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Tipi');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Bulle 1');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Bulle 2');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Bootcamp');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Club');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Ruche');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Tremplin');
         $room->setDoors(0);
         $manager->persist($room);
 
