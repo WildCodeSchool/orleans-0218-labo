@@ -32,14 +32,14 @@ class ReservationController extends Controller
 
         $reservations = $em->getRepository('AppBundle:Reservation')->findAll();
 
-        $deleteForm = array();
+        $deleteForms = array();
         foreach ($reservations as $reservation) {
-            $deleteForm[$reservation->getId()] = $this->createDeleteForm($reservation)->createView();
+            $deleteForms[$reservation->getId()] = $this->createDeleteForm($reservation)->createView();
         }
 
         return $this->render('reservation/index.html.twig', array(
             'reservations' => $reservations,
-            'deleteForm' => $deleteForm,
+            'deleteForms' => $deleteForms,
         ));
     }
 
