@@ -3,12 +3,7 @@
 {% block layout %}
     <section class="admin-listing-room">
     <div class="container-fluid container-title text-center">
-        <div class="col-xs-8 col-xs-offset-2">
-            <h1>Liste des réservations</h1>
-        </div>
-        <div class="col-xs-2">
-            <a class="btn btn-warning" href="{{ path('reservation_archive')}}">Archive</a>
-        </div>
+        <h1>Archive des réservations</h1>
     </div>
     <div class="container">
         <div class="row">
@@ -33,16 +28,7 @@
                         <td class="text-center">{{ reservation.reservationEnd.date|date('d/m/Y H:i') }}</td>
                         <td class="edit">
                             <a role="button" class="btn btn-warning"
-                               href="{{ path('reservation_edit', { 'id': reservation.id }) }}">Modifier</a>
-                        </td>
-
-                        <td class="delete">
-                            {{ form_start(deleteForms[reservation.id]) }}
-                            <button type="submit" class="btn btn-danger">
-                                <i class="icon-trash"></i>
-                                Supprimer
-                            </button>
-                            {{ form_end(deleteForms[reservation.id]) }}
+                               href="">Détails</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -51,4 +37,3 @@
         </div>
     </div>
 {% endblock %}
-

@@ -44,6 +44,22 @@ class ReservationController extends Controller
     }
 
     /**
+     * Listing of the old reservations
+     *
+     * @Route("/archive", name="reservation_archive")
+     */
+    public function archiveAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $reservations = $em->getRepository('AppBundle:Reservation')->findBy([],['reservationEnd' => 'DESC']);
+
+        return $this->render('reservation/archive.html.twig', array(
+            'reservations' => $reservations,
+        ));
+    }
+
+    /**
      * Creates a new reservation entity.
      *
      * @Route("/new", name="reservation_new")
