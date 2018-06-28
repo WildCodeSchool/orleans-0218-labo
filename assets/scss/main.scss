@@ -174,7 +174,7 @@ body {
   }
   .reservation-infos {
     padding-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding-left: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
@@ -184,8 +184,7 @@ body {
     }
   }
   .reservation-equipment {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     background-color: $light-color;
     .res-col {
       min-height: 45vh;
@@ -243,8 +242,8 @@ body {
     border: 0px;
     width: 100px;
     height: 40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     font-family: $font-title;
     text-transform: uppercase;
     &:hover {
