@@ -115,12 +115,14 @@ class AdminRoomController extends Controller
 
             try {
                 $em->flush();
-            }catch(ForeignKeyConstraintViolationException $exception) {
-                $this->addFlash('Error', 'Il est impossible de supprimer une salle liée à une réservation en cours');
+            } catch (ForeignKeyConstraintViolationException $exception) {
+                $this->addFlash(
+                    'Error',
+                    'Il est impossible de supprimer une salle liée à une réservation en cours'
+                );
                 return $this->redirectToRoute('room_index');
             }
         }
-
         return $this->redirectToRoute('room_index');
     }
 
