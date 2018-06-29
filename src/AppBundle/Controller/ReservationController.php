@@ -85,7 +85,7 @@ class ReservationController extends Controller
     /**
      * Finds and displays a reservation entity.
      *
-     * @Route("/{id}", name="reservation_show")
+     * @Route("/{id}", name="reservation_show", requirements={"id"="\d+"})
      * @Method("GET")
      */
     public function showAction(Reservation $reservation)
@@ -147,19 +147,13 @@ class ReservationController extends Controller
      * Deletes a reservation entity.
      *
      * @Route("/test", name="reservation_test")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function getSignatureAction(Request $request, Reservation $reservation)
+    public function getSignatureAction(Request $request)
     {
-        $form = $this->createForm($reservation);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $someNewFilename = '';
-
-            $file = $form['attachment']->getData();
-            /*$file->move($directory, $someNewFilename);*/
-            return $this->redirectToRoute('reservation_show');
+        $addForm = $this->createForm('AppBundle\Form\SignatureType');
+        if(!empty($request->request->get('test'))) {
+            file_put_contents( 'images/signatures/'. uniqid('sign_') . ".png", file_get_contents($request->request->get('test')));
         }
         return $this->render('reservation/vueTestSignature.html.twig');
     }

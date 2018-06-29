@@ -1,26 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link type="text/css" rel="stylesheet" href="../../../../web/build/bcPaint.css"/>
-    <link type="text/css" rel="stylesheet" href="../../../../web/build/bcPaint.mobile.css"/>
 {% endblock %}
 
 
 {% block body %}
-
     <h1>Page de test : signature</h1>
-    <div id="container">
-        {{ form_start(delete_form) }}
-        <div id="bcPaint"></div>
-        <input type="image" id="bcPaint" onsubmit="submit();">
-        {{ form_end(delete_form) }}
-    </div>
+    <form action="" method="post">
+        <div id="container">
+            <div id="bcPaint"></div>
+            <form action="" method="post">
+                <input type="hidden" name="test" id="test">
+                <input type="submit" id="bcPaint-export">
+            </form>
+        </div>
+    </form>
 
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('build/signature.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('build/bcPaint.js') }}"></script>
     <script type="text/javascript">
         $(function(){
             $('#bcPaint').bcPaint();

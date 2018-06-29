@@ -65,7 +65,7 @@ $(document).ready(function () {
             header.append(palette);
             canvasContainer.append(canvasPane);
             bottom.append(buttonReset);
-            bottom.append(buttonSave);
+            // bottom.append(buttonSave);
 
             // assembly color palette
             $.each(colorSet.colors, function (i) {
@@ -191,8 +191,7 @@ $(document).ready(function () {
          */
         export : function(){
             var imgData = paintCanvas.toDataURL('image/png');
-            var windowOpen = window.open('about:blank', 'Image');
-            windowOpen.document.write('<img src="' + imgData + '" alt="Exported Image"/>');
+            $('#test').val(imgData);
         },
 
         /**
