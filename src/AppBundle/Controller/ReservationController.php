@@ -117,13 +117,13 @@ class ReservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            var_dump($reservation->getId());
             if(!empty($request->request->get('signature')['signature'])) {
                 $signature = 'images/signatures/'. uniqid('sign_') . ".png";
                 file_put_contents( $signature, file_get_contents($request->request->get('signature')['signature']));
                 $reservation->setSignature($signature);
                 $this->getDoctrine()->getManager()->flush();
             }
+            return $this->redirectToRoute('reservation_index');
 
         }
         return $this->render('reservation/show.html.twig', array(

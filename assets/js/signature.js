@@ -13,7 +13,7 @@ $(document).ready(function(){
         $.fn.bcPaint.clearCanvas();
     });
 
-    $('body').on('click', '#bcPaint-export', function(){
+    $('body').on('click', '#submit', function(){
         $.fn.bcPaint.export();
     });
 });
@@ -66,7 +66,6 @@ $(document).ready(function(){
             header.append(palette);
             canvasContainer.append(canvasPane);
             bottom.append(buttonReset);
-            bottom.append(buttonSave);
 
             // assembly color palette
             $.each(colorSet.colors, function (i) {
@@ -247,5 +246,5 @@ $(document).ready(function(){
 })(jQuery);
 
 $(function(){
-    $('#bcPaint').bcPaint();
+    $('#canvas').bcPaint();
 });
