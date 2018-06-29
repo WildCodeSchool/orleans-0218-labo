@@ -78,7 +78,8 @@
                                 <h4>Email : {{ reservation.email }}</h4>
                                 <h4>Date : {{ reservation.reservationStart.date | date('d-m-Y H:i') }}</h4>
                             </div>
-                            <div class="col-xs-12 col-md-8 details-col">
+                            <div class="col-xs-12 col-md-8 details-col" id="bcPaint">
+
                             </div>
                         </div>
                     </div>
@@ -92,8 +93,14 @@
                 <a href="{{ path('reservation_new') }}"><button type="button" class="btn btn-home">Retour</button></a>
             </div>
             <div class="col-xs-12 col-md-2 text-center">
-                <a href="{{ path('reservation_index') }}"><button type="button" class="btn btn-home">Envoyer</button></a>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button type="submit" id="bcPaint-export" class="btn btn-home">Envoyer</button>
+                {{ form_end(form) }}
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('build/signature.js') }}"></script>
 {% endblock %}

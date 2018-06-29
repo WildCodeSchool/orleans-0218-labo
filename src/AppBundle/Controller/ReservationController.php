@@ -24,9 +24,9 @@ class ReservationController extends Controller
      * Lists all reservation entities.
      *
      * @Route("/", name="reservation_index")
-     * @Method("GET")
+     * @Method({"GET","POST"})
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -108,15 +108,27 @@ class ReservationController extends Controller
      * Finds and displays a reservation entity.
      *
      * @Route("/{id}", name="reservation_show")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function showAction(Reservation $reservation)
+    public function showAction(Reservation $reservation, Request $request)
     {
-        $deleteForm = $this->createDeleteForm($reservation);
 
+        $form = $this->createForm('AppBundle\Form\SignatureType', $reservation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            var_dump($reservation->getId());
+            if(!empty($request->request->get('signature')['signature'])) {
+                $signature = 'images/signatures/'. uniqid('sign_') . ".png";
+                file_put_contents( $signature, file_get_contents($request->request->get('signature')['signature']));
+                $reservation->setSignature($signature);
+                $this->getDoctrine()->getManager()->flush();
+            }
+
+        }
         return $this->render('reservation/show.html.twig', array(
             'reservation' => $reservation,
-            'delete_form' => $deleteForm->createView(),
+            'form' => $form->createView(),
         ));
     }
 

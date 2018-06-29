@@ -6,6 +6,7 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableSassLoader()
     .addEntry('app', './assets/js/app.js')
+    .addEntry('signature', './assets/js/signature.js')
     .addEntry('reservation', './assets/js/reservation.js')
     .addEntry('flatpickr', './node_modules/flatpickr/dist/flatpickr.css')
     .addEntry('style', './assets/scss/main.scss')
