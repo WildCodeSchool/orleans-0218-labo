@@ -321,6 +321,51 @@ div.radio input[type="radio"] {
   padding-bottom: 20px;
 }
 
+// recap resa
+
+.details-reservation{
+  background-color: $light-color;
+  /*min-height: 100vh;*/
+
+  .container-title {
+    background-color: white;
+  }
+
+  .details-col {
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 0px 10px 5px rgba($box-shadow, 0.5);
+    display: flex;
+    flex-direction: column;
+    margin:10px;
+  }
+  .vertical-align {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    div {
+      p {
+        padding-top: 10px;
+      }
+    }
+  }
+  .vertical-align > [class^="col-"],
+  .vertical-align > [class*=" col-"] {
+    display: flex;
+    align-items: left;
+  }
+}
+
+.detail-btn {
+  padding-top: 50px;
+  .row-btn {
+    background-color: white;
+    .btn {
+      background-color: $primary-color;
+      color: white;
+    }
+  }
+}
 .fixed-bot-style {
   background-color: $light-color;
 
