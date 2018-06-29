@@ -4,10 +4,12 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Staff;
 use AppBundle\Service\OrderService;
+use Doctrine\ORM\ORMException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 
 /**
  * Staff controller.
@@ -121,9 +123,20 @@ class StaffController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($staff);
-            $em->flush();
+
+            try {
+                $em->flush();
+            } catch (ForeignKeyConstraintViolationException $exception) {
+                $this->addFlash(
+                    'Error',
+                    'Il est impossible de supprimer un membre du personnel lié à une réservation en cours'
+                );
+                return $this->redirectToRoute('staff_index');
+            }
             $orderService->order(Staff::class);
         }
+
+
 
         return $this->redirectToRoute('staff_index');
     }

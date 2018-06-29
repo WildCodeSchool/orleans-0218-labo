@@ -320,3 +320,12 @@ div.radio input[type="radio"] {
 .container-room {
   padding-bottom: 20px;
 }
+
+.fixed-bot-style {
+  background-color: $light-color;
+
+  .margin-bt {
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+}
