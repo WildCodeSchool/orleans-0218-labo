@@ -180,6 +180,4 @@ class ReservationController extends Controller
             ->getForm()
         ;
     }
-
-
 }
