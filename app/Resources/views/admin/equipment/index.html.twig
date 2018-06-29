@@ -3,6 +3,7 @@
 {% block layout %}
 
     <section class="admin-listing-room">
+
         <div class="container-fluid container-title text-center">
             <h1>Gestion des équipements</h1>
         </div>
@@ -11,7 +12,7 @@
             <div class="row">
                 <table class="table">
                     <tbody>
-                            {% for equipment in equipments %}
+                    {% for equipment in equipments %}
                         <tr class="admin-listing">
                             <td class="arrow">
                                 {% if loop.index0 != 0 %}
@@ -44,16 +45,17 @@
                                 {{ form_end(deleteForms[equipment.id]) }}
                             </td>
                         </tr>
-                        {% endfor %}
+                    {% endfor %}
                     </tbody>
                 </table>
 
-                <div class="row">
+                <div class="row navbar-fixed-bottom style-fixed-bot">
                     <div class="col-xs-12 text-center">
                         <a role="button" class="btn btn-primary" href="{{ path('equipment_new') }}">
                             Ajouter un équipement</a>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>

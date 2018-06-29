@@ -24,7 +24,7 @@
   }
 }
 
-//LISTING
+// LISTING
 
 tr.admin-listing {
   th {
@@ -77,3 +77,13 @@ tr.admin-listing {
 .staff-index .edit, .show, .new {
   width: 80px;
 }
+
+// COLOR AND STYLE FOR THE FIXED BOTTOM //
+section {
+  .style-fixed-bot {
+    background-color: $light-color;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
