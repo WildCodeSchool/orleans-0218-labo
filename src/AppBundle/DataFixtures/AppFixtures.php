@@ -49,7 +49,7 @@ class AppFixtures extends Fixture
         $equipment = new Equipment();
         $equipment->setName('Clef');
         $equipment->setDescription('Ceci est une clef');
-        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setPicture('https://zupimages.net/up/18/26/rr47.png');
         $equipment->setOrder(1);
         $manager->persist($equipment);
 
@@ -80,21 +80,21 @@ class AppFixtures extends Fixture
         $equipment = new Equipment();
         $equipment->setName('Ordinateur portable');
         $equipment->setDescription('Ceci est un ordinateur portable');
-        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setPicture('https://zupimages.net/up/18/26/7b55.png');
         $equipment->setOrder(5);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Microphone');
         $equipment->setDescription('Ceci est un microphone');
-        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setPicture('https://zupimages.net/up/18/26/q4xl.png');
         $equipment->setOrder(6);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Clef du local technique');
         $equipment->setDescription('Ceci est une clef ouvrant le local technique');
-        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setPicture('https://zupimages.net/up/18/26/e3yk.png');
         $equipment->setOrder(7);
         $manager->persist($equipment);
 
@@ -115,7 +115,7 @@ class AppFixtures extends Fixture
         $equipment = new Equipment();
         $equipment->setName('Plastifieuse');
         $equipment->setDescription('Ceci est une plastifieuse');
-        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setPicture('https://zupimages.net/up/18/26/qbpg.png');
         $equipment->setOrder(10);
         $manager->persist($equipment);
 
