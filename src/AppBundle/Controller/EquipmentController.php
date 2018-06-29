@@ -21,7 +21,7 @@ class EquipmentController extends Controller
     /**
      * Lists all Equipment entities.
      *
-     * @Route("/",    name="equipment_index")
+     * @Route("/", name="equipment_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -114,7 +114,7 @@ class EquipmentController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit/down", name="down_order_edit")
+     * @Route("/{id}/edit/down", name="equipment_down_order_edit")
      * @Method({"GET", "POST"})
      */
     public function downOrderAction(Equipment $equipment, OrderService $orderService)
@@ -124,7 +124,7 @@ class EquipmentController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit/up", name="up_order_edit")
+     * @Route("/{id}/edit/up", name="equipment_up_order_edit")
      * @Method({"GET", "POST"})
      */
     public function upOrderAction(Equipment $equipment, OrderService $orderService)

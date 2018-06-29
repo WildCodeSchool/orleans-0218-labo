@@ -36,13 +36,13 @@
                         <tr class="admin-listing">
                             <td class="arrow">
                                 {% if loop.index0 != 0 %}
-                                    <a href="{{ path('up_order_edit', { 'id': staffMember.id }) }}">
+                                    <a href="{{ path('staff_up_order_edit', { 'id': staffMember.id }) }}">
                                         <img src="/images/angle-up.svg" width="10" alt="up"></a>
                                 {% endif %}
                             </td>
                             <td class="arrow">
                                 {% if loop.index0 < (staffMembers|length)-1 %}
-                                    <a href="{{ path('down_order_edit', { 'id': staffMember.id }) }}">
+                                    <a href="{{ path('staff_down_order_edit', { 'id': staffMember.id }) }}">
                                         <img src="/images/angle-down.svg" width="10" alt="down"></a>
                                 {% endif %}
                             </td>
