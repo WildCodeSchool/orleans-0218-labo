@@ -142,7 +142,7 @@ class StaffController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit/down", name="down_order_edit")
+     * @Route("/{id}/edit/down", name="staff_down_order_edit")
      * @Method({"GET", "POST"})
      */
     public function downOrderAction(Staff $staff, OrderService $orderService)
@@ -152,7 +152,7 @@ class StaffController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit/up", name="up_order_edit")
+     * @Route("/{id}/edit/up", name="staff_up_order_edit")
      * @Method({"GET", "POST"})
      */
     public function upOrderAction(Staff $staff, OrderService $orderService)
