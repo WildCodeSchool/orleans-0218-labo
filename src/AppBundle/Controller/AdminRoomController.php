@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Room;
+use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -111,9 +112,17 @@ class AdminRoomController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($room);
-            $em->flush();
-        }
 
+            try {
+                $em->flush();
+            } catch (ForeignKeyConstraintViolationException $exception) {
+                $this->addFlash(
+                    'Error',
+                    'Il est impossible de supprimer une salle liée à une réservation en cours'
+                );
+                return $this->redirectToRoute('room_index');
+            }
+        }
         return $this->redirectToRoute('room_index');
     }
 

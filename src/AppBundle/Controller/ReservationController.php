@@ -32,7 +32,29 @@ class ReservationController extends Controller
 
         $reservations = $em->getRepository('AppBundle:Reservation')->findAll();
 
+        $deleteForms = array();
+        foreach ($reservations as $reservation) {
+            $deleteForms[$reservation->getId()] = $this->createDeleteForm($reservation)->createView();
+        }
+
         return $this->render('reservation/index.html.twig', array(
+            'reservations' => $reservations,
+            'deleteForms' => $deleteForms,
+        ));
+    }
+
+    /**
+     * Listing of the old reservations
+     *
+     * @Route("/archive", name="reservation_archive")
+     */
+    public function archiveAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $reservations = $em->getRepository('AppBundle:Reservation')->findBy([], ['reservationEnd' => 'DESC']);
+
+        return $this->render('reservation/archive.html.twig', array(
             'reservations' => $reservations,
         ));
     }

@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Reservation;
 use AppBundle\Entity\ReservationEquipment;
+use AppBundle\Entity\Room;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -66,6 +67,16 @@ class ReservationType extends AbstractType
                 [
                     'entry_type' => ReservationEquipmentType::class,
 
+                ]
+            )->add(
+                'room',
+                EntityType::class,
+                [
+                    'class' => Room::class,
+                    'label' => ' ',
+                    'choice_label' => 'name',
+                    'expanded' => true,
+                    'multiple' => false
                 ]
             );
     }

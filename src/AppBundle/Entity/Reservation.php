@@ -20,7 +20,9 @@ class Reservation
     private $staff;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ReservationEquipment", mappedBy="reservation", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ReservationEquipment",
+     *     mappedBy="reservation",
+     *     cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $reservationEquipments;
@@ -31,6 +33,7 @@ class Reservation
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
      */
     private $id;
 
@@ -80,6 +83,13 @@ class Reservation
      * @ORM\Column(name="reservationEnd", type="datetime")
      */
     private $reservationEnd;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Room")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $room;
+
     /**
      * Constructor
      */
@@ -282,5 +292,27 @@ class Reservation
     public function setReservationEnd(\DateTime $reservationEnd)
     {
         $this->reservationEnd = $reservationEnd;
+    }
+
+    /**
+     * Get room
+     *
+     * @return \AppBundle\Entity\Room
+     */
+    public function getRoom()
+    {
+        return $this->room;
+    }
+
+    /**
+     * Set room
+     *
+     * @param \AppBundle\Entity\Room $room
+     *
+     * @return Reservation
+     */
+    public function setRoom(\AppBundle\Entity\Room $room)
+    {
+        $this->room = $room;
     }
 }

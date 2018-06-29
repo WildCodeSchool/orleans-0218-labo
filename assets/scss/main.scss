@@ -135,7 +135,9 @@ body {
 }
 
 .imgSize {
-  height: 400px;
+  max-height: 350px;
+  max-width: 350px;
+  margin-bottom: 50px;
 }
 
 .widhtButton {
@@ -155,6 +157,11 @@ body {
   height: 100px;
 }
 
+.show-btn {
+  display: flex;
+  justify-content: space-around;
+}
+
 .form-control {
   border: white 0px solid;
   background-color: $light-color;
@@ -163,11 +170,11 @@ body {
 .staff-reservation {
   background-color: white;
   h1 {
-    margin-top: 50px;
+    margin-top: 30px;
   }
   .reservation-infos {
-    padding-top: 50px;
-    margin-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 10px;
     padding-left: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
@@ -177,27 +184,27 @@ body {
     }
   }
   .reservation-equipment {
-    padding-top: 40px;
     padding-bottom: 20px;
     background-color: $light-color;
     .res-col {
+      min-height: 45vh;
       border-radius: 5px;
       background-color: white;
       box-shadow: 0px 0px 10px 5px rgba($box-shadow, 0.5);
       .equipment {
-        margin-bottom: 30px;
         width: 95%;
         margin-left: auto;
         margin-right: auto;
         margin-top: 30px;
+        margin-bottom: 20px;
         background-color: $primary-color;
         padding: 20px;
         border-radius: 5px;
         color: white;
         text-transform: uppercase;
         img {
-          width: 180px;
-          height: 180px;
+          max-width: 80%;
+          max-height: 80%;
           border: white 10px solid;
           margin-bottom: 20px;
           background-color: white;
@@ -217,15 +224,15 @@ body {
         .plus, .minus {
           border-radius: 50%;
           border: none;
-          width: 40px;
-          height: 40px;
+          min-width: 40px;
+          max-height: 40px;
           background-color: white;
           color: $dark-color;
           font-weight: bold;
-          font-size: 1.6rem;
+          font-size: 1.5rem;
         }
         p {
-          height: 50px;
+          height: 40px;
         }
       }
     }
@@ -235,12 +242,12 @@ body {
     border: 0px;
     width: 100px;
     height: 40px;
-    margin-top: 40px;
-    margin-bottom: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     font-family: $font-title;
     text-transform: uppercase;
     &:hover {
-      background-color: black;
+      background-color: $primary-color;
     }
   }
   input[type=number] {
@@ -269,5 +276,101 @@ body {
   &:hover {
     background-color: darken($primary-color, 10%);
     border: 1px $primary-color solid;
+  }
+}
+
+
+//ROOM RESERVATION
+
+.btn-reservation {
+  width: 400px !important;
+}
+
+div.radio {
+  margin: 20px;
+  font-size: 1.3em;
+  font-family: $font-title;
+}
+
+div.radio input[type="radio"] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  margin-left:-35px;
+  margin-top: -1px;
+  width: 20px;
+  height: 20px;
+  background: lighten($primary-color, 30%);
+  box-shadow:
+          inset 0 0 0 .4em white,
+          0 0 0 .2em $primary-color;
+  border-radius: 50%;
+  transition: .2s;
+  cursor:pointer;
+  color: $primary-color;
+
+  &:checked {
+    background: $primary-color;
+    box-shadow:
+            inset 0 0 0 .2em white,
+            0 0 0 .2em  $primary-color;
+  }
+  &:focus { outline: 0; }
+}
+
+.container-room {
+  padding-bottom: 20px;
+}
+
+// recap resa
+
+.details-reservation{
+  background-color: $light-color;
+  /*min-height: 100vh;*/
+
+  .container-title {
+    background-color: white;
+  }
+
+  .details-col {
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 0px 10px 5px rgba($box-shadow, 0.5);
+    display: flex;
+    flex-direction: column;
+    margin:10px;
+  }
+  .vertical-align {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    div {
+      p {
+        padding-top: 10px;
+      }
+    }
+  }
+  .vertical-align > [class^="col-"],
+  .vertical-align > [class*=" col-"] {
+    display: flex;
+    align-items: left;
+  }
+}
+
+.detail-btn {
+  padding-top: 50px;
+  .row-btn {
+    background-color: white;
+    .btn {
+      background-color: $primary-color;
+      color: white;
+    }
+  }
+}
+.fixed-bot-style {
+  background-color: $light-color;
+
+  .margin-bt {
+    margin-bottom: 15px;
+    margin-top: 15px;
   }
 }

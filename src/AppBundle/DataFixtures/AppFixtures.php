@@ -19,32 +19,37 @@ class AppFixtures extends Fixture
         $staff = new Staff();
         $staff->setFirstName('Julie');
         $staff->setLastName('VAILLANT');
+        $staff->setOrder(1);
         $manager->persist($staff);
 
         $staff = new Staff();
         $staff->setFirstName('Cynthia');
         $staff->setLastName('FONSECA');
+        $staff->setOrder(2);
         $manager->persist($staff);
 
         $staff = new Staff();
         $staff->setFirstName('Pauline');
         $staff->setLastName('BOULAS');
+        $staff->setOrder(3);
         $manager->persist($staff);
 
         $staff = new Staff();
         $staff->setFirstName('Ludovic');
         $staff->setLastName('COURTOIS');
+        $staff->setOrder(4);
         $manager->persist($staff);
 
         $staff = new Staff();
         $staff->setFirstName('Sylvie');
         $staff->setLastName('PARFUM');
+        $staff->setOrder(5);
         $manager->persist($staff);
 
         $equipment = new Equipment();
         $equipment->setName('Clef');
         $equipment->setDescription('Ceci est une clef');
-        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setPicture('https://zupimages.net/up/18/26/rr47.png');
         $equipment->setOrder(1);
         $manager->persist($equipment);
 
@@ -75,21 +80,21 @@ class AppFixtures extends Fixture
         $equipment = new Equipment();
         $equipment->setName('Ordinateur portable');
         $equipment->setDescription('Ceci est un ordinateur portable');
-        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setPicture('https://zupimages.net/up/18/26/7b55.png');
         $equipment->setOrder(5);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Microphone');
         $equipment->setDescription('Ceci est un microphone');
-        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setPicture('https://zupimages.net/up/18/26/q4xl.png');
         $equipment->setOrder(6);
         $manager->persist($equipment);
 
         $equipment = new Equipment();
         $equipment->setName('Clef du local technique');
         $equipment->setDescription('Ceci est une clef ouvrant le local technique');
-        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setPicture('https://zupimages.net/up/18/26/e3yk.png');
         $equipment->setOrder(7);
         $manager->persist($equipment);
 
@@ -110,7 +115,7 @@ class AppFixtures extends Fixture
         $equipment = new Equipment();
         $equipment->setName('Plastifieuse');
         $equipment->setDescription('Ceci est une plastifieuse');
-        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setPicture('https://zupimages.net/up/18/26/qbpg.png');
         $equipment->setOrder(10);
         $manager->persist($equipment);
 
@@ -140,7 +145,47 @@ class AppFixtures extends Fixture
         $manager->persist($room);
 
         $room = new Room();
-        $room->setName('Cocon');
+        $room->setName('Shaker');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Imaginarium');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Tipi');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Bulle 1');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Bulle 2');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Bootcamp');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Club');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Ruche');
+        $room->setDoors(0);
+        $manager->persist($room);
+
+        $room = new Room();
+        $room->setName('Tremplin');
         $room->setDoors(0);
         $manager->persist($room);
 
