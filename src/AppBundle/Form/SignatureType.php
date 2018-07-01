@@ -15,11 +15,11 @@ class SignatureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('signature', HiddenType::class,
-                [
-                    'attr' => [
-                        'class' => 'signature',
-                    ]
+            [
+                'attr' => [
+                    'class' => 'signature',
                 ]
-            );
+            ]
+        );
     }
 }
