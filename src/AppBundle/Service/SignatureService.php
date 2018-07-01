@@ -8,7 +8,6 @@
 
 namespace AppBundle\Service;
 
-
 use AppBundle\Entity\Reservation;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,11 +35,10 @@ class SignatureService
     public function delete(Reservation $reservation)
     {
         $path = $reservation->getSignature();
-        if(!empty($path)) {
+        if (!empty($path)) {
             if (file_exists($path)) {
                 unlink($path);
             }
         }
     }
-
 }

@@ -168,7 +168,6 @@ class ReservationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($reservation);
             $em->flush();
-
         }
 
         return $this->redirectToRoute('reservation_index');
