@@ -82,7 +82,8 @@ class ReservationType extends AbstractType
                     'label' => ' ',
                     'choice_label' => 'name',
                     'expanded' => true,
-                    'multiple' => false
+                    'multiple' => false,
+                    'required' => false,
                 ]
             );
     }
