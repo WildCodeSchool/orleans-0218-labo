@@ -33,6 +33,12 @@
                         <td class="text-center">{{ reservation.room.name }}</td>
                         <td class="text-center">{{ reservation.reservationStart.date|date('d/m/Y H:i') }}</td>
                         <td class="text-center">{{ reservation.reservationEnd.date|date('d/m/Y H:i') }}</td>
+
+                        <td class="edit">
+                            <a role="button" class="btn btn-warning"
+                               href="{{ path('reservation_details', { 'id': reservation.id }) }}">Details</a>
+                        </td>
+
                         <td class="edit">
                             <a role="button" class="btn btn-warning"
                                href="{{ path('reservation_edit', { 'id': reservation.id }) }}">Modifier</a>
@@ -46,6 +52,7 @@
                             </button>
                             {{ form_end(deleteForms[reservation.id]) }}
                         </td>
+
                     </tr>
                 {% endfor %}
                 </tbody>

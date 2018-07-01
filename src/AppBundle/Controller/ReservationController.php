@@ -121,6 +121,22 @@ class ReservationController extends Controller
     }
 
     /**
+     * display the details of a reservation
+     *
+     * @route("/{id}/details", name="reservation_details")
+     * @Method("GET")
+     */
+    public function detailsReservation(Reservation $reservation)
+    {
+        $deleteForm = $this->createDeleteForm($reservation);
+
+        return $this->render('reservation/details.html.twig', array(
+            'reservation' => $reservation,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
      * Displays a form to edit an existing reservation entity.
      *
      * @Route("/{id}/edit", name="reservation_edit")
