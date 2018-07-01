@@ -124,7 +124,6 @@ class ReservationController extends Controller
                 $this->getDoctrine()->getManager()->flush();
             }
             return $this->redirectToRoute('reservation_index');
-
         }
         return $this->render('reservation/show.html.twig', array(
             'reservation' => $reservation,
@@ -169,9 +168,16 @@ class ReservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if(!empty($reservation->getSignature())) {
+                if(file_exists($reservation->getSignature())) {
+                    unlink($reservation->getSignature());
+                }
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->remove($reservation);
             $em->flush();
+
         }
 
         return $this->redirectToRoute('reservation_index');
