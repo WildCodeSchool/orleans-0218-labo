@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Reservation;
+use AppBundle\Service\SignatureService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -110,19 +111,14 @@ class ReservationController extends Controller
      * @Route("/{id}", name="reservation_show")
      * @Method({"GET", "POST"})
      */
-    public function showAction(Reservation $reservation, Request $request)
+    public function showAction(Reservation $reservation, Request $request, SignatureService $signatureService)
     {
 
         $form = $this->createForm('AppBundle\Form\SignatureType', $reservation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if(!empty($request->request->get('signature')['signature'])) {
-                $signature = 'images/signatures/'. uniqid('sign_') . ".png";
-                file_put_contents( $signature, file_get_contents($request->request->get('signature')['signature']));
-                $reservation->setSignature($signature);
-                $this->getDoctrine()->getManager()->flush();
-            }
+            $signatureService->add($reservation, $request);
             return $this->redirectToRoute('reservation_index');
         }
         return $this->render('reservation/show.html.twig', array(
@@ -162,18 +158,13 @@ class ReservationController extends Controller
      * @Route("/{id}", name="reservation_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Reservation $reservation)
+    public function deleteAction(Request $request, Reservation $reservation, SignatureService $signatureService)
     {
         $form = $this->createDeleteForm($reservation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if(!empty($reservation->getSignature())) {
-                if(file_exists($reservation->getSignature())) {
-                    unlink($reservation->getSignature());
-                }
-            }
-
+            $signatureService->delete($reservation);
             $em = $this->getDoctrine()->getManager();
             $em->remove($reservation);
             $em->flush();
