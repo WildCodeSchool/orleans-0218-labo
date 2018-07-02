@@ -91,6 +91,13 @@ class Reservation
     private $room;
 
     /**
+     * @var
+     *
+     * @ORM\Column(name="signature", type="string", nullable=true)
+     */
+    private $signature;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -314,5 +321,29 @@ class Reservation
     public function setRoom(\AppBundle\Entity\Room $room)
     {
         $this->room = $room;
+    }
+
+    /**
+     * Set signature
+     *
+     * @param string $signature
+     *
+     * @return Reservation
+     */
+    public function setSignature($signature)
+    {
+        $this->signature = $signature;
+
+        return $this;
+    }
+
+    /**
+     * Get signature
+     *
+     * @return string
+     */
+    public function getSignature()
+    {
+        return $this->signature;
     }
 }
