@@ -30,11 +30,13 @@
                             - {{ reservation.staff.firstname }}</td>
                         <td class="text-center">{{ reservation.society }}</td>
                         <td class="text-center">{{ reservation.lastName }} - {{ reservation.firstName }}</td>
+
                         {% if reservation.room is not null %}
-                        <td class="text-center">{{ reservation.room.name }}</td>
-                            {% else %}
-                                <td class="text-center"></td>
+                            <td class="text-center">{{ reservation.room.name }}</td>
+                        {% else %}
+                            <td class="text-center"></td>
                         {% endif %}
+
                         <td class="text-center">{{ reservation.reservationStart.date|date('d/m/Y H:i') }}</td>
                         <td class="text-center">{{ reservation.reservationEnd.date|date('d/m/Y H:i') }}</td>
 
@@ -45,7 +47,7 @@
 
                         <td class="edit">
                             <a role="button" class="btn btn-warning"
-                               href="{{ path('reservation_details', { 'id': reservation.id }) }}">Restitution</a>
+                               href="{{ path('reservation_restitution', { 'id': reservation.id }) }}">Restitution</a>
                         </td>
                     </tr>
                 {% endfor %}

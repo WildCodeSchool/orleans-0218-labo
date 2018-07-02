@@ -16,20 +16,26 @@ class SignatureService
 {
 
     private $em;
+    private $signature;
 
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }
 
-    public function add(Reservation $reservation, Request $request)
+    public function add(Request $request, $signatureName)
     {
-        if (!empty($request->request->get('signature')['signature'])) {
+        if (!empty($request->request->get($signatureName)[$signatureName])) {
+            var_dump($request->request->get($signatureName)[$signatureName]);
             $signature = 'images/signatures/' . uniqid('sign_') . ".png";
-            file_put_contents($signature, file_get_contents($request->request->get('signature')['signature']));
-            $reservation->setSignature($signature);
-            $this->em->flush();
+            file_put_contents($signature, file_get_contents($request->request->get($signatureName)[$signatureName]));
+            $this->signature = $signature;
         }
+    }
+
+    public function flushSignature(Reservation $reservation) {
+        $reservation->setSignature($this->signature);
+        $this->em->flush();
     }
 
     public function delete(Reservation $reservation)
