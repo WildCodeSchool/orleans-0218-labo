@@ -333,7 +333,7 @@ class Reservation
     /**
      * Set signature
      *
-     * @param string $signature
+     * @param mixed $signature
      *
      * @return Reservation
      */
@@ -347,7 +347,7 @@ class Reservation
     /**
      * Get signature
      *
-     * @return string
+     * @return mixed
      */
     public function getSignature()
     {
