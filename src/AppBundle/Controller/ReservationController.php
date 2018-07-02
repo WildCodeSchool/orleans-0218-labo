@@ -61,6 +61,22 @@ class ReservationController extends Controller
     }
 
     /**
+     * Display the archive's details
+     *
+     * @Route("/{id}/Archive/Details", name="archive_details")
+     * @Method("GET")
+     */
+    public function archiveDetailsAction(Reservation $reservation)
+    {
+        $deleteForm = $this->createDeleteForm($reservation);
+
+        return $this->render('reservation/archive_details.html.twig', array(
+            'reservation' => $reservation,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
      * Creates a new reservation entity.
      *
      * @Route("/new", name="reservation_new")
