@@ -1,0 +1,106 @@
+{% extends 'layoutMain.html.twig' %}
+
+{% block layout %}
+    <section class="container-fluid ">
+        <div class="row details-reservation">
+            <div class="col-xs-12">
+                <div class="row container-title text-center">
+                    <div class="col-xs-12">
+                        <h1>Détails de la Reservation</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-10 col-xs-offset-1">
+                        <div class="row vertical-align">
+                            <div class="col-xs-12 col-md-4 details-col">
+                                <h4> Responsable de l'accueil
+                                    : {{ reservation.staff.firstName }} {{ reservation.staff.lastName }}</h4>
+                                <h4>Date de retour : {{ reservation.reservationEnd.date | date('d/m/Y H:i') }} </h4>
+                            </div>
+                            <div class="col-xs-12 col-md-4 details-col">
+                                <h4>Salle séléctionnée : {{ reservation.room.name }} </h4>
+                                <div class="row vertical-align">
+                                    <div class="col-xs-1">
+                                        <img src="/images/check-circle.svg" alt="checkbox" class="icon">
+                                    </div>
+                                    <div class="col-xs-11">
+                                        <p>Clé remise</p>
+                                    </div>
+                                </div>
+                                <div class="row vertical-align">
+                                    <div class="col-xs-1">
+                                        <img src="/images/check-circle.svg" alt="checkbox" class="icon">
+                                    </div>
+                                    <div class="col-xs-11">
+                                        <p>Double des clés</p>
+                                    </div>
+                                </div>
+                                <div class="row vertical-align">
+                                    <div class="col-xs-1">
+                                        <img src="/images/check-circle.svg" alt="checkbox" class="icon">
+                                    </div>
+                                    <div class="col-xs-11">
+                                        <p>Formation SSI</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-4 details-col">
+                                <h4>Matériel réservé </h4>
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Equipement</th>
+                                        <th>Quantité</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for equipment in reservation.reservationEquipments %}
+                                        {% if (equipment.quantity > 0) %}
+                                            <tr>
+                                                <th>{{ equipment.equipment.name }}</th>
+                                                <th>{{ equipment.quantity }}</th>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-xs-10 col-xs-offset-1">
+                        <div class="row vertical-align">
+                            <div class="col-xs-12 col-md-4 details-col">
+                                <h4>Société : {{ reservation.society }}</h4>
+                                <h4>Nom : {{ reservation.lastName }}</h4>
+                                <h4>Prénom : {{ reservation.firstName }}</h4>
+                                <h4>Email : {{ reservation.email }}</h4>
+                                <h4>Date : {{ reservation.reservationStart.date | date('d/m/Y H:i') }}</h4>
+                            </div>
+                            <div class="col-xs-12 col-md-8 details-col">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container-fluid detail-btn">
+        <div class="row row-btn">
+            <div class="col-xs-12 col-md-2 col-md-offset-4 text-center">
+                <a href="{{ path('reservation_index') }}"><button type="button" class="btn btn-home">Retour</button></a>
+            </div>
+            <div class="col-xs-12 col-md-2 text-center">
+                <td class="delete">
+                    {{ form_start(delete_form) }}
+                    <button type="submit" class="btn btn-home">
+                        <i class="icon-trash"></i>
+                        Supprimer
+                    </button>
+                    {{ form_end(delete_form) }}
+                </td>
+            </div>
+        </div>
+    </div>
+{% endblock %}
