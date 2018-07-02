@@ -21,7 +21,7 @@ class RoomType extends AbstractType
                 'doors',
                 CheckboxType::class,
                 [
-                'required' => false,
+                    'required' => false,
                     'label' => 'Double',
                 ]
             );
@@ -34,7 +34,7 @@ class RoomType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-            'data_class' => 'AppBundle\Entity\Room'
+                'data_class' => 'AppBundle\Entity\Room'
             )
         );
     }

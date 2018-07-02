@@ -5,10 +5,12 @@ namespace AppBundle\Form;
 use AppBundle\Entity\Reservation;
 use AppBundle\Entity\ReservationEquipment;
 use AppBundle\Entity\Room;
+use AppBundle\Repository\StaffRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -25,7 +27,7 @@ class ReservationType extends AbstractType
         $builder
             ->add('firstName', TextType::class, array('label'=> 'Prénom'))
             ->add('lastName', TextType::class, array('label'=> 'Nom'))
-            ->add('email', TextType::class, array('label'=> 'Email'))
+            ->add('email', EmailType::class, array('label'=> 'Email'))
             ->add('society', TextType::class, array('label'=> 'Société'))
             ->add(
                 'reservationStart',
@@ -56,6 +58,10 @@ class ReservationType extends AbstractType
                     'class' => Staff::class,
                     'label' => 'Personnel d\'accueil',
                     'placeholder' => 'Choisir un membre du personnel',
+                    'query_builder' => function (StaffRepository $sr) {
+                        return $sr->createQueryBuilder('s')
+                            ->orderBy('s.order', 'ASC');
+                    },
                     'choice_label' => function ($reservation) {
                         return $reservation->getLastName() . ' ' . $reservation->getFirstName();
                     }
@@ -76,7 +82,8 @@ class ReservationType extends AbstractType
                     'label' => ' ',
                     'choice_label' => 'name',
                     'expanded' => true,
-                    'multiple' => false
+                    'multiple' => false,
+                    'required' => false,
                 ]
             );
     }

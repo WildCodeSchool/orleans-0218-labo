@@ -18,7 +18,9 @@
                                 <h4>Date de retour : {{ reservation.reservationEnd.date | date('d-m-Y H:i') }} </h4>
                             </div>
                             <div class="col-xs-12 col-md-4 details-col">
+                                {% if reservation.room is not null %}
                                 <h4>Salle séléctionnée : {{ reservation.room.name }} </h4>
+                                {% endif %}
                                 <div class="row vertical-align">
                                     <div class="col-xs-1">
                                         <img src="/images/check-circle.svg" alt="checkbox" class="icon">

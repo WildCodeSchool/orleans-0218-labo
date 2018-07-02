@@ -86,7 +86,7 @@ class Reservation
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Room")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $room;
 
