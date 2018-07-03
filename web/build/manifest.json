@@ -1,0 +1,16 @@
+{
+  "build/vendor.js": "/build/vendor.js",
+  "build/reservation.js": "/build/reservation.js",
+  "build/style.js": "/build/style.js",
+  "build/style.css": "/build/style.css",
+  "build/flatpickr.js": "/build/flatpickr.js",
+  "build/flatpickr.css": "/build/flatpickr.css",
+  "build/signature.js": "/build/signature.js",
+  "build/app.js": "/build/app.js",
+  "build/manifest.js": "/build/manifest.js",
+  "build/fonts/glyphicons-halflings-regular.eot": "/build/fonts/glyphicons-halflings-regular.f4769f9b.eot",
+  "build/fonts/glyphicons-halflings-regular.ttf": "/build/fonts/glyphicons-halflings-regular.e18bbf61.ttf",
+  "build/fonts/glyphicons-halflings-regular.woff": "/build/fonts/glyphicons-halflings-regular.fa277232.woff",
+  "build/fonts/glyphicons-halflings-regular.woff2": "/build/fonts/glyphicons-halflings-regular.448c34a5.woff2",
+  "build/images/glyphicons-halflings-regular.svg": "/build/images/glyphicons-halflings-regular.89889688.svg"
+}

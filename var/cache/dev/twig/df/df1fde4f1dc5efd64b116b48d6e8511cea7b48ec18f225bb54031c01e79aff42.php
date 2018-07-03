@@ -1,0 +1,143 @@
+<?php
+
+/* admin/staff/edit.html.twig */
+class __TwigTemplate_4ffb8d2cec2c58419e2d2cc6753b646b18fa6e7dfb1e300ab67eafbb3c954c76 extends Twig_Template
+{
+    public function __construct(Twig_Environment $env)
+    {
+        parent::__construct($env);
+
+        // line 1
+        $this->parent = $this->loadTemplate("admin/layoutAdmin.html.twig", "admin/staff/edit.html.twig", 1);
+        $this->blocks = array(
+            'layout' => array($this, 'block_layout'),
+        );
+    }
+
+    protected function doGetParent(array $context)
+    {
+        return "admin/layoutAdmin.html.twig";
+    }
+
+    protected function doDisplay(array $context, array $blocks = array())
+    {
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "admin/staff/edit.html.twig"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "admin/staff/edit.html.twig"));
+
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+    }
+
+    // line 3
+    public function block_layout($context, array $blocks = array())
+    {
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "layout"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "layout"));
+
+        // line 4
+        echo "    <section class=\"admin-listing-staff\">
+        <div class=\"container-fluid container-title text-center\">
+            <h1>Gestion des membres du personnel</h1>
+        </div>
+        <div class=\"container\">
+            <div class=\"row\">
+                <div class=\"col-md-8 col-md-offset-2\">
+                    <div>
+                        <h2 class=\"text-center\">Modification des informations d'un membre du personnel</h2>
+                        ";
+        // line 13
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["edit_form"] ?? $this->getContext($context, "edit_form")), 'form_start');
+        echo "
+                        ";
+        // line 14
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(($context["edit_form"] ?? $this->getContext($context, "edit_form")), 'widget');
+        echo "
+                        <a href=\"";
+        // line 15
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("staff_index");
+        echo "\">
+                            <img src=\"/images/arrow-circle-left.svg\" class = \"icon\"
+                                 alt=\"retour en arrière\"></a>
+                        <button type=\"submit\" class=\"btn btn-warning pull-right\">Modifier</button>
+                        ";
+        // line 19
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["edit_form"] ?? $this->getContext($context, "edit_form")), 'form_end');
+        echo "
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+    }
+
+    public function getTemplateName()
+    {
+        return "admin/staff/edit.html.twig";
+    }
+
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    public function getDebugInfo()
+    {
+        return array (  75 => 19,  68 => 15,  64 => 14,  60 => 13,  49 => 4,  40 => 3,  11 => 1,);
+    }
+
+    /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
+    public function getSource()
+    {
+        @trigger_error('The '.__METHOD__.' method is deprecated since version 1.27 and will be removed in 2.0. Use getSourceContext() instead.', E_USER_DEPRECATED);
+
+        return $this->getSourceContext()->getCode();
+    }
+
+    public function getSourceContext()
+    {
+        return new Twig_Source("{% extends 'admin/layoutAdmin.html.twig' %}
+
+{% block layout %}
+    <section class=\"admin-listing-staff\">
+        <div class=\"container-fluid container-title text-center\">
+            <h1>Gestion des membres du personnel</h1>
+        </div>
+        <div class=\"container\">
+            <div class=\"row\">
+                <div class=\"col-md-8 col-md-offset-2\">
+                    <div>
+                        <h2 class=\"text-center\">Modification des informations d'un membre du personnel</h2>
+                        {{ form_start(edit_form) }}
+                        {{ form_widget(edit_form) }}
+                        <a href=\"{{ path('staff_index') }}\">
+                            <img src=\"/images/arrow-circle-left.svg\" class = \"icon\"
+                                 alt=\"retour en arrière\"></a>
+                        <button type=\"submit\" class=\"btn btn-warning pull-right\">Modifier</button>
+                        {{ form_end(edit_form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+", "admin/staff/edit.html.twig", "/home/wilder19/Documents/projets/projet3/orleans-0218-labo/app/Resources/views/admin/staff/edit.html.twig");
+    }
+}
