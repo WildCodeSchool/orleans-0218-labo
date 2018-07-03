@@ -3,6 +3,23 @@
 @import 'home';
 @import 'admin';
 
+p{
+  font-size: 18px;
+}
+
+a.primary {
+  font-size: 18px;
+  &:link, &:visited, &:active {
+    color: $dark-color;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $primary-color;
+    text-decoration: none;
+  }
+}
+
 //ADMIN
 
 i.fa-angle-up {
@@ -371,4 +388,8 @@ div.radio input[type="radio"] {
     margin-bottom: 15px;
     margin-top: 15px;
   }
+}
+
+#canvas {
+  width:500px;
 }

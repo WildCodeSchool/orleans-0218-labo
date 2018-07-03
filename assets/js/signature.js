@@ -2,13 +2,6 @@ import "bootstrap-sass/assets/javascripts/bootstrap";
 import $ from "jquery";
 
 $(document).ready(function(){
-    $("#button-modal").click(function(){
-        $("#myModal").modal('show');
-        $('#myModal').on('show.bs.modal', function (e) {
-            if (!data) return e.preventDefault() // stops modal from being shown
-        })
-
-    });
     $.support.transition = false
 
     $('body').on('click', '.bcPaint-palette-color', function(){
