@@ -6,28 +6,31 @@
 
 .home-nav {
   background-color: $light-color;
-  border: 0px;
-  border-radius: 0px;
-  width: 100%;
+  /*width: 100%;*/
   height: $home-navbar-height;
-  padding-right: 50px;
   font-family: $font-title;
   padding-top: 10px;
   padding-bottom: 10px;
 
   .logo-orleans-pepiniere {
     width: 200px;
-  }
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    @media screen and (max-device-width: 500px) {
+      width: 150px;
+    }
+  }
 }
 
 .white {
   color: white;
   &:hover {
     color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.btn-container {
+  .col-xs-6 {
+    padding: 0px;
   }
 }
 
@@ -38,6 +41,28 @@
   justify-content: space-between;
   font-family: $font-title;
   height: calc(100vh - #{$home-navbar-height});
+
+  img {
+    margin: auto;
+
+    @media screen and (max-device-width: 500px) {
+      width: 150px;
+      margin-top: 10px;
+      margin-bottom: 50px;
+    }
+
+    @media screen and (min-device-width: 500px) and (max-device-width: 1280px) {
+      width: 370px;
+      margin-top: 15px;
+      margin-bottom: 60px;
+    }
+
+    @media screen and (min-device-width: 1280px) {
+      width: 370px;
+      margin-top: 15px;
+      margin-bottom: 60px;
+    }
+  }
 }
 
 .parameters {
@@ -53,10 +78,19 @@
   color: $dark-color;
   border-radius: 3px;
   padding: 8px 14px;
-  font-size: 1em;
-  width: 160px;
   height: 46px;
   text-transform: uppercase;
+
+  @media screen and (max-device-width: 500px) {
+    font-size: 10px !important;
+    width: 140px;
+    padding: 0px !important;
+  }
+
+  @media screen and (min-device-width: 500px) and (max-device-width: 1280px) {
+    font-size: 12px !important;
+    width: 190px;
+  }
 }
 
 .btn-container {

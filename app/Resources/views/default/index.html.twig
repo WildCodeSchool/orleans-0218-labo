@@ -1,21 +1,21 @@
 {% extends 'layoutMain.html.twig' %}
 
 {% block layout %}
-    <div class="container-fluid home">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <img class="img-responsive" src="images/logo labo_blanc.png" alt="Logo du Lab'O">
-            </div>
-        </div>
+    <div class="container-fluid home text-center">
+        <p>
+            <img class="img-responsive" src="images/logo labo_blanc.png" alt="Logo du Lab'O">
+        </p>
 
         <div class="btn-container">
-            <div class="row" >
-                <div class="col-md-offset-2 col-md-2 text-center">
-                    <a href="{{ path('reservation_new') }}"><button type="button" class="btn btn-home">Réservation</button></a>
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="{{ path('reservation_new') }}">
+                        <button type="button" class="btn btn-home">Nouvelle réservation</button>
+                    </a>
                 </div>
-                <div class="col-md-offset-4 col-md-2 text-center">
+                <div class="col-xs-6">
                     <a href="{{ path('reservation_index') }}">
-                        <button type="button" class="btn btn-home">Retour</button>
+                        <button type="button" class="btn btn-home">Réservations en cours</button>
                     </a>
                 </div>
             </div>
