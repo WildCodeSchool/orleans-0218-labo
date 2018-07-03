@@ -369,7 +369,4 @@ class Reservation
     {
         $this->returnSignature = $returnSignature;
     }
-
-
 }
-

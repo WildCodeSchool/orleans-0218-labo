@@ -130,7 +130,9 @@ class ReservationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $reservation->setSignature($signatureService->add($request->request->get('signature')['signature']));
+            $reservation->setSignature($signatureService->add(
+                $request->request->get('signature')['signature']
+            ));
             $em->flush();
             return $this->redirectToRoute('reservation_index');
         }
@@ -162,14 +164,16 @@ class ReservationController extends Controller
      * @route("/{id}/restitution", name="reservation_restitution")
      * @Method({"GET", "POST"})
      */
-    public function restitutionReservation(Reservation $reservation, Request $request, SignatureService $signatureService)
+    public function restitutionReservation(Reservation $reservation, Request $request, SignatureService $service)
     {
         $form = $this->createForm('AppBundle\Form\ReturnSignatureType', $reservation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $reservation->setReturnSignature($signatureService->add($request->request->get('return_signature')['returnSignature']));
+            $reservation->setReturnSignature($service->add(
+                $request->request->get('return_signature')['returnSignature']
+            ));
             $em->flush();
 
             return $this->redirectToRoute('reservation_index');

@@ -14,14 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SignatureService
 {
-
-    private $em;
-
-    public function __construct(EntityManagerInterface $em)
-    {
-        $this->em = $em;
-    }
-
     public function add(string $signature)
     {
         if (!empty($signature)) {
@@ -40,3 +32,4 @@ class SignatureService
         }
     }
 }
+
