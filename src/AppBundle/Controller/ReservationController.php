@@ -174,6 +174,7 @@ class ReservationController extends Controller
             $reservation->setReturnSignature($service->add(
                 $request->request->get('return_signature')['returnSignature']
             ));
+            $reservation->setReservationOver(true);
             $em->flush();
 
             return $this->redirectToRoute('reservation_index');
