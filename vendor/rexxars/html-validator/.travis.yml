@@ -1,0 +1,15 @@
+language: php
+php:
+  - '5.6'
+  - '7.1'
+  - 'hhvm'
+branches:
+  only:
+    - develop
+    - master
+before_script:
+    - composer -n --no-ansi install --dev --prefer-source
+    - cp phpunit.xml.travis phpunit.xml
+matrix:
+  fast_finish: true
+sudo: false
