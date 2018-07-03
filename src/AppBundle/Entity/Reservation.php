@@ -16,7 +16,7 @@ class Reservation
     /**
      * @var boolean
      *
-     * @ORM\Column(name="reservationOver", type="boolean")
+     * @ORM\Column(name="reservationOver", type="boolean", nullable = true)
      */
     private $reservationOver;
 

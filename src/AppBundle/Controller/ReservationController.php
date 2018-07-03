@@ -99,6 +99,7 @@ class ReservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $reservation->setReservationOver(false);
             foreach ($reservation->getReservationEquipments() as $dateEquipment) {
                 $dateEquipment->setReservationStart($reservation->getReservationStart());
                 $dateEquipment->setReservationEnd($reservation->getReservationEnd());
