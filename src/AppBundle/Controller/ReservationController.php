@@ -48,7 +48,10 @@ class ReservationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $reservations = $em->getRepository('AppBundle:Reservation')->findBy([], ['reservationEnd' => 'DESC']);
+        $reservations = $em->getRepository('AppBundle:Reservation')->findBy(
+            ['reservationOver' => 1],
+            ['reservationEnd' => 'ASC']
+        );
 
         return $this->render('reservation/archive.html.twig', array(
             'reservations' => $reservations,
@@ -246,7 +249,6 @@ class ReservationController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('reservation_delete', array('id' => $reservation->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
