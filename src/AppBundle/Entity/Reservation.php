@@ -14,6 +14,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Reservation
 {
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="reservationOver", type="boolean", nullable = true)
+     */
+    private $reservationOver;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Staff")
      * @var int
      */
@@ -368,5 +375,29 @@ class Reservation
     public function setReturnSignature($returnSignature)
     {
         $this->returnSignature = $returnSignature;
+    }
+
+    /**
+     * Set reservationOver
+     *
+     * @param boolean $reservationOver
+     *
+     * @return Reservation
+     */
+    public function setReservationOver($reservationOver)
+    {
+        $this->reservationOver = $reservationOver;
+
+        return $this;
+    }
+
+    /**
+     * Get reservationOver
+     *
+     * @return boolean
+     */
+    public function getReservationOver()
+    {
+        return $this->reservationOver;
     }
 }
