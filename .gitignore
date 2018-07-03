@@ -17,6 +17,7 @@
 /node_modules/
 /web/bundles/
 /web/build/
+/web/build/images/signatures/
 .idea/
 !/var/reports
 /var/reports/*

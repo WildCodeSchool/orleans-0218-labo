@@ -1,7 +1,7 @@
 {%- block choice_widget_expanded -%}
     <div {{ block('widget_container_attributes') }}>
         {%- for child in form %}
-            <div class="col-xs-3">
+            <div class="col-xs-12 col-sm-4 col-md-4">
                 {{- form_widget(child) -}}
                 {{- form_label(child, null, {translation_domain: choice_translation_domain}) -}}
             </div>

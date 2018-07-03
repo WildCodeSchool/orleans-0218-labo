@@ -4,70 +4,95 @@
     <link rel="stylesheet" href="{{ asset('build/flatpickr.css') }}">
 {% endblock %}
 {% block layout %}
-<section>
-    <div class="container-fluid container-title text-center height-titre">
-        <h1>Edition de la réservation</h1>
-    </div>
-    <div class="container">
+    <section class="container-fluid staff-reservation">
+        <div class="row container-title text-center">
+            <div class="col-xs-12">
+                <h1>édition de la réservation</h1>
+            </div>
+        </div>
         {{ form_start(edit_form) }}
         <div class="row">
-            <div class="col-xs-2">
-                {{ form_row(edit_form.staff) }}
+            <div class="col-xs-offset-1 col-xs-10">
+                <div class="row reservation-infos">
+                    <div class="col-sm-3 col-xs-12">
+                        {{ form_row(edit_form.staff) }}
+                    </div>
+                    <div class="col-sm-3 col-xs-12">
+                        {{ form_row(edit_form.lastName) }}
+                        {{ form_row(edit_form.reservationStart) }}
+                    </div>
+                    <div class="col-sm-3 col-xs-12">
+                        {{ form_row(edit_form.firstName) }}
+                        {{ form_row(edit_form.reservationEnd) }}
+                    </div>
+                    <div class="col-sm-3 col-xs-12">
+                        {{ form_row(edit_form.society) }}
+                        {{ form_row(edit_form.email) }}
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-3 col-xs-offset-1">
-                {{ form_row(edit_form.society) }}
-            </div>
-            <div class="col-xs-3">
-                {{ form_row(edit_form.lastName) }}
-            </div>
-            <div class="col-xs-3">
-                {{ form_row(edit_form.reservationStart)}}
+        </div>
+        <div class="row">
+            <div class="container-fluid">
+                <div class="row reservation-equipment">
+                    <div class="col-md-12">
+                        <div class="container-button text-center">
+                            <button type="button" id="room-button" class="btn btn-danger btn-reservation">Salles</button>
+                            <button type="button" id="equipment-button" class="btn btn-danger btn-reservation">Équipements</button>
+                        </div>
+                    </div>
+                    <div class="col-xs-10 col-xs-offset-1 res-col pre-scrollable">
+                        <div class="row">
+                            <section id="room">
+                                <div class="container container-room">
+                                    <div class="row">
+                                        {{ form_row(edit_form.room) }}
+                                    </div>
+                                </div>
+                            </section>
+                            <div id="equipment">
+                                {% for reservationEquipment in edit_form.reservationEquipments %}
+                                    <div class="col-sm-3 col-xs-12 text-center">
+                                        <div class="equipment">
+                                            <p>{{ reservationEquipment.vars.value.equipment.name }}</p>
+                                            <img class="img-circle" alt="image de l'équipement"
+                                                 src="{{ reservationEquipment.vars.value.equipment.picture }}"/>
+                                            <div class="row equipment-btns">
+                                                <div class="col-xs-4 row equipment-btns">
+                                                    <input type="button" class="minus" value="-"
+                                                           data-element="{{ reservationEquipment.quantity.vars.id }}"/>
+                                                </div>
+                                                <div class="col-xs-4 row equipment-btns text-center">
+                                                    {{ form_widget(reservationEquipment) }}
+                                                </div>
+                                                <div class="col-xs-4 row equipment-btns">
+                                                    <input type="button" class="plus" value="+"
+                                                           data-element="{{ reservationEquipment.quantity.vars.id }}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-3 col-xs-offset-3">
+            <div class="col-xs-2 col-xs-offset-3 text-center">
+                <a href="{{ path('reservation_index') }}" role="button" class="btn btn-primary">Retour</a>
+            </div>
 
-                {{ form_row(edit_form.email) }}
-            </div>
-            <div class="col-xs-3">
-                {{ form_row(edit_form.firstName) }}
-            </div>
-            <div class="col-xs-3">
-                {{ form_row(edit_form.reservationEnd)  }}
+            <div class="col-xs-2 col-xs-offset-1 text-center">
+                <input type="submit" class="btn btn-primary" value="Valider"/>
             </div>
         </div>
 
-        <div class="row" >
-            <div class="col-xs-12 separator-border">
-                {{ form_row(edit_form.room) }}
-            </div>
-        </div>
-
-
-        <div class="row separator-border margin-fixed-bottom">
-            {% for reservationEquipment in edit_form.reservationEquipments %}
-            <div class="col-xs-2 col-xs-offset-1">
-                {{ form_row(reservationEquipment, { 'label': reservationEquipment.vars.value.equipment.name })}}
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="container-fluid navbar-fixed-bottom style-fixed-bot">
-        <div class="row">
-            <div class="col-xs-2 col-xs-offset-2">
-                <a href="{{ path('reservation_index') }}">
-                    <img src="/images/arrow-circle-left.svg" class = "icon"
-                         alt="retour en arrière"></a>
-            </div>
-            <div class="col-xs-2 col-xs-offset-6">
-                <input role="button" class="btn btn-warning widhtButton"
-                       type="submit" value="Edit" />
-                {{ form_end(edit_form) }}
-            </div>
-        </div>
-    </div>
-</section>
+        {{ form_end(edit_form) }}
+    </section>
 {% endblock %}
 {% block javascripts %}
     <script src="{{ asset('build/reservation.js') }}"></script>

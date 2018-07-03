@@ -14,6 +14,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Reservation
 {
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="reservationOver", type="boolean", nullable = true)
+     */
+    private $reservationOver;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Staff")
      * @var int
      */
@@ -86,9 +93,23 @@ class Reservation
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Room")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $room;
+
+    /**
+     * @var
+     *
+     * @ORM\Column(name="signature", type="string", nullable=true)
+     */
+    private $signature;
+
+    /**
+     * @var
+     *
+     * @ORM\Column(name="returnSignature", type="string", nullable=true)
+     */
+    private $returnSignature;
 
     /**
      * Constructor
@@ -314,5 +335,69 @@ class Reservation
     public function setRoom(\AppBundle\Entity\Room $room)
     {
         $this->room = $room;
+    }
+
+    /**
+     * Set signature
+     *
+     * @param mixed $signature
+     *
+     * @return Reservation
+     */
+    public function setSignature($signature)
+    {
+        $this->signature = $signature;
+
+        return $this;
+    }
+
+    /**
+     * Get signature
+     *
+     * @return mixed
+     */
+    public function getSignature()
+    {
+        return $this->signature;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReturnSignature()
+    {
+        return $this->returnSignature;
+    }
+
+    /**
+     * @param mixed $returnSignature
+     */
+    public function setReturnSignature($returnSignature)
+    {
+        $this->returnSignature = $returnSignature;
+    }
+
+    /**
+     * Set reservationOver
+     *
+     * @param boolean $reservationOver
+     *
+     * @return Reservation
+     */
+    public function setReservationOver($reservationOver)
+    {
+        $this->reservationOver = $reservationOver;
+
+        return $this;
+    }
+
+    /**
+     * Get reservationOver
+     *
+     * @return boolean
+     */
+    public function getReservationOver()
+    {
+        return $this->reservationOver;
     }
 }

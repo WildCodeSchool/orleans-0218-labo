@@ -28,7 +28,7 @@
                         <td class="text-center">{{ reservation.reservationEnd.date|date('d/m/Y H:i') }}</td>
                         <td class="edit">
                             <a role="button" class="btn btn-warning"
-                               href="">Détails</a>
+                               href="{{ path('archive_details' , { 'id': reservation.id }) }}">Détails</a>
                         </td>
                     </tr>
                 {% endfor %}

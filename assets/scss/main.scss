@@ -3,6 +3,23 @@
 @import 'home';
 @import 'admin';
 
+p{
+  font-size: 18px;
+}
+
+a.primary {
+  font-size: 18px;
+  &:link, &:visited, &:active {
+    color: $dark-color;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $primary-color;
+    text-decoration: none;
+  }
+}
+
 //ADMIN
 
 i.fa-angle-up {
@@ -52,7 +69,7 @@ tr.admin-listing {
 
 body {
   h1 {
-    font-size: 2.5em;
+    font-size: 2.3em;
     font-family: $font-title;
     text-transform: uppercase;
   }
@@ -283,7 +300,7 @@ body {
 //ROOM RESERVATION
 
 .btn-reservation {
-  width: 400px !important;
+  width: 40% !important;
 }
 
 div.radio {
@@ -321,44 +338,41 @@ div.radio input[type="radio"] {
   padding-bottom: 20px;
 }
 
-// recap resa
+// RECAP RESA
 
-.details-reservation{
-  background-color: $light-color;
-  /*min-height: 100vh;*/
-
-  .container-title {
-    background-color: white;
+.recap-resa {
+  p{
+    margin: 0px;
   }
-
-  .details-col {
-    border-radius: 5px;
-    background-color: white;
-    box-shadow: 0px 0px 10px 5px rgba($box-shadow, 0.5);
-    display: flex;
-    flex-direction: column;
-    margin:10px;
+  h4 {
+    margin-top: 5px;
+    margin-bottom: 0px;
   }
-  .vertical-align {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
-    div {
-      p {
-        padding-top: 10px;
+  .title {
+    padding: 10px;
+  }
+  .content {
+    .vignette {
+      padding-left: 5px;
+      padding-right: 5px;
+      .container-fluid {
+        border-top: 1px solid $dark-color;
+        margin: 15px;
+      }
+      img {
+        width: 15px;
       }
     }
+    #bcPaintCanvas {
+      background-color: white;
+      max-width: 100%;
+      min-height: 150px;
+      box-shadow: inset 0px 0px 10px 5px rgba($box-shadow, 0.1);
+      border-radius: 5px;
+      border: 2px solid lightgrey;
+    }
   }
-  .vertical-align > [class^="col-"],
-  .vertical-align > [class*=" col-"] {
-    display: flex;
-    align-items: left;
-  }
-}
-
-.detail-btn {
-  padding-top: 50px;
-  .row-btn {
+  .buttons {
     background-color: white;
     .btn {
       background-color: $primary-color;
@@ -366,6 +380,7 @@ div.radio input[type="radio"] {
     }
   }
 }
+
 .fixed-bot-style {
   background-color: $light-color;
 
@@ -373,4 +388,8 @@ div.radio input[type="radio"] {
     margin-bottom: 15px;
     margin-top: 15px;
   }
+}
+
+#canvas {
+  width:500px;
 }
