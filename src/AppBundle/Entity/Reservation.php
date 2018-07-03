@@ -98,6 +98,13 @@ class Reservation
     private $signature;
 
     /**
+     * @var
+     *
+     * @ORM\Column(name="returnSignature", type="string", nullable=true)
+     */
+    private $returnSignature;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -326,7 +333,7 @@ class Reservation
     /**
      * Set signature
      *
-     * @param string $signature
+     * @param mixed $signature
      *
      * @return Reservation
      */
@@ -340,10 +347,26 @@ class Reservation
     /**
      * Get signature
      *
-     * @return string
+     * @return mixed
      */
     public function getSignature()
     {
         return $this->signature;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReturnSignature()
+    {
+        return $this->returnSignature;
+    }
+
+    /**
+     * @param mixed $returnSignature
+     */
+    public function setReturnSignature($returnSignature)
+    {
+        $this->returnSignature = $returnSignature;
     }
 }

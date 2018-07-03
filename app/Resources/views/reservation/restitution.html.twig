@@ -1,12 +1,13 @@
 {% extends 'layoutMain.html.twig' %}
 
+
 {% block layout %}
     <section class="container-fluid ">
         <div class="row details-reservation">
             <div class="col-xs-12">
                 <div class="row container-title text-center">
                     <div class="col-xs-12">
-                        <h1>Détails de la Reservation</h1>
+                        <h1>Restitution du matériel</h1>
                     </div>
                 </div>
                 <div class="row">
@@ -16,6 +17,30 @@
                                 <h4> Responsable de l'accueil
                                     : {{ reservation.staff.firstName }} {{ reservation.staff.lastName }}</h4>
                                 <h4>Date de retour : {{ reservation.reservationEnd.date | date('d/m/Y H:i') }} </h4>
+                                <a href=""><h4>Signature de la reservation</h4></a>
+
+                                <!-- Small modal -->
+                                <button type="button" id="button-modal" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+                                <div id="myModal" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title">Confirmation</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Do you want to save changes you made to document before closing?</p>
+                                                <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="col-xs-12 col-md-4 details-col">
                                 {% if reservation.room is not null %}
@@ -84,6 +109,11 @@
                                 <h4>Date : {{ reservation.reservationStart.date | date('d/m/Y H:i') }}</h4>
                             </div>
                             <div class="col-xs-12 col-md-8 details-col">
+                                <div class="row">
+                                    <div class="col-xs-12" id="canvas">
+                                        <h4>Signature de retour :</h4>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -94,24 +124,19 @@
     <div class="container-fluid detail-btn">
         <div class="row row-btn">
             <div class="col-xs-2 col-md-offset-2 text-center">
-                <a href="{{ path('reservation_index') }}"><button type="button" class="btn btn-home">Retour</button></a>
+                <a href="{{ path('reservation_index') }}">
+                    <button type="button" class="btn btn-home">Retour</button>
+                </a>
             </div>
-
-            <div class="col-xs-2 col-md-offset-1 text-center">
-                <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">
-                    <button class="btn btn-home" type="button">Modifier</button></a>
-            </div>
-
-            <div class="col-xs-2 col-md-offset-1 text-center">
-                <td class="delete">
-                    {{ form_start(delete_form) }}
-                    <button type="submit" class="btn btn-home">
-                        <i class="icon-trash"></i>
-                        Supprimer
-                    </button>
-                    {{ form_end(delete_form) }}
-                </td>
+            <div class="col-xs-12 col-md-2 text-center">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button type="submit" id="submit" class="btn btn-home">Envoyer</button>
+                {{ form_end(form) }}
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('build/signature.js') }}"></script>
 {% endblock %}

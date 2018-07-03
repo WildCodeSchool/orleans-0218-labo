@@ -33,14 +33,9 @@ class ReservationController extends Controller
 
         $reservations = $em->getRepository('AppBundle:Reservation')->findAll();
 
-        $deleteForms = array();
-        foreach ($reservations as $reservation) {
-            $deleteForms[$reservation->getId()] = $this->createDeleteForm($reservation)->createView();
-        }
-
         return $this->render('reservation/index.html.twig', array(
             'reservations' => $reservations,
-            'deleteForms' => $deleteForms,
+
         ));
     }
 
@@ -134,7 +129,11 @@ class ReservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $signatureService->add($reservation, $request);
+            $em = $this->getDoctrine()->getManager();
+            $reservation->setSignature($signatureService->add(
+                $request->request->get('signature')['signature']
+            ));
+            $em->flush();
             return $this->redirectToRoute('reservation_index');
         }
         return $this->render('reservation/show.html.twig', array(
@@ -156,6 +155,33 @@ class ReservationController extends Controller
         return $this->render('reservation/details.html.twig', array(
             'reservation' => $reservation,
             'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * display the return of a reservation
+     *
+     * @route("/{id}/restitution", name="reservation_restitution")
+     * @Method({"GET", "POST"})
+     */
+    public function restitutionReservation(Reservation $reservation, Request $request, SignatureService $service)
+    {
+        $form = $this->createForm('AppBundle\Form\ReturnSignatureType', $reservation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $reservation->setReturnSignature($service->add(
+                $request->request->get('return_signature')['returnSignature']
+            ));
+            $em->flush();
+
+            return $this->redirectToRoute('reservation_index');
+        }
+
+        return $this->render('reservation/restitution.html.twig', array(
+            'reservation' => $reservation,
+            'form' => $form->createView(),
         ));
     }
 
@@ -196,7 +222,8 @@ class ReservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $signatureService->delete($reservation);
+            $signatureService->delete($reservation->getSignature());
+            $signatureService->delete($reservation->getReturnSignature());
             $em = $this->getDoctrine()->getManager();
             $em->remove($reservation);
             $em->flush();

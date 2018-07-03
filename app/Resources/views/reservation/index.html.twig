@@ -30,11 +30,13 @@
                             - {{ reservation.staff.firstname }}</td>
                         <td class="text-center">{{ reservation.society }}</td>
                         <td class="text-center">{{ reservation.lastName }} - {{ reservation.firstName }}</td>
+
                         {% if reservation.room is not null %}
-                        <td class="text-center">{{ reservation.room.name }}</td>
-                            {% else %}
-                                <td class="text-center"></td>
+                            <td class="text-center">{{ reservation.room.name }}</td>
+                        {% else %}
+                            <td class="text-center"></td>
                         {% endif %}
+
                         <td class="text-center">{{ reservation.reservationStart.date|date('d/m/Y H:i') }}</td>
                         <td class="text-center">{{ reservation.reservationEnd.date|date('d/m/Y H:i') }}</td>
 
@@ -45,18 +47,8 @@
 
                         <td class="edit">
                             <a role="button" class="btn btn-warning"
-                               href="{{ path('reservation_edit', { 'id': reservation.id }) }}">Modifier</a>
+                               href="{{ path('reservation_restitution', { 'id': reservation.id }) }}">Restitution</a>
                         </td>
-
-                        <td class="delete">
-                            {{ form_start(deleteForms[reservation.id]) }}
-                            <button type="submit" class="btn btn-danger">
-                                <i class="icon-trash"></i>
-                                Supprimer
-                            </button>
-                            {{ form_end(deleteForms[reservation.id]) }}
-                        </td>
-
                     </tr>
                 {% endfor %}
                 </tbody>

@@ -1,8 +1,16 @@
+import "bootstrap-sass/assets/javascripts/bootstrap";
 import $ from "jquery";
 
-
-
 $(document).ready(function(){
+    $("#button-modal").click(function(){
+        $("#myModal").modal('show');
+        $('#myModal').on('show.bs.modal', function (e) {
+            if (!data) return e.preventDefault() // stops modal from being shown
+        })
+
+    });
+    $.support.transition = false
+
     $('body').on('click', '.bcPaint-palette-color', function(){
         $(this).parent().find('.selected').removeClass('selected');
         $(this).addClass('selected');
@@ -16,6 +24,9 @@ $(document).ready(function(){
     $('body').on('click', '#submit', function(){
         $.fn.bcPaint.export();
     });
+
+    $('#canvas').bcPaint();
+
 });
 
 
@@ -244,7 +255,3 @@ $(document).ready(function(){
     };
 
 })(jQuery);
-
-$(function(){
-    $('#canvas').bcPaint();
-});
