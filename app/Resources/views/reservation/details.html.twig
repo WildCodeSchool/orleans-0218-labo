@@ -77,11 +77,11 @@
                     <div class="col-xs-10 col-xs-offset-1">
                         <div class="row vertical-align">
                             <div class="col-xs-12 col-md-4 details-col">
+                                <h4>Date : {{ reservation.reservationStart.date | date('d/m/Y H:i') }}</h4>
                                 <h4>Société : {{ reservation.society }}</h4>
                                 <h4>Nom : {{ reservation.lastName }}</h4>
                                 <h4>Prénom : {{ reservation.firstName }}</h4>
                                 <h4>Email : {{ reservation.email }}</h4>
-                                <h4>Date : {{ reservation.reservationStart.date | date('d/m/Y H:i') }}</h4>
                             </div>
                             <div class="col-xs-12 col-md-8 details-col">
                             </div>
