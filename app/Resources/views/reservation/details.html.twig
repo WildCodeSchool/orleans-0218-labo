@@ -26,29 +26,36 @@
 
                                 <div class="row vertical-align">
                                     <div class="col-xs-1">
-                                        <img src="/images/check-circle.svg" alt="checkbox" class="icon">
+                                        <img src="/images/key.svg" alt="checkbox" class="icon">
                                     </div>
                                     <div class="col-xs-11">
                                         <p>Clé remise</p>
                                     </div>
                                 </div>
+
                                 <div class="row vertical-align">
+                                    {% if reservation.room.doors == true %}
                                     <div class="col-xs-1">
-                                        <img src="/images/check-circle.svg" alt="checkbox" class="icon">
+                                        <img src="/images/door-open.svg" alt="checkbox" class="icon">
                                     </div>
                                     <div class="col-xs-11">
-                                        <p>Double des clés</p>
+                                        <p>Merci de penser à dévérrouiller les deux portes</p>
                                     </div>
+                                    {% endif %}
                                 </div>
+
                                 <div class="row vertical-align">
-                                    <div class="col-xs-1">
-                                        <img src="/images/check-circle.svg" alt="checkbox" class="icon">
-                                    </div>
-                                    <div class="col-xs-11">
-                                        <p>Formation SSI</p>
-                                    </div>
+                                    {% if dateOffice == true %}
+                                        <div class="col-xs-1">
+                                            <img src="/images/extinguisher.svg" alt="checkbox" class="icon">
+                                        </div>
+                                        <div class="col-xs-11">
+                                            <p>Formation SSI</p>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
+
                             <div class="col-xs-12 col-md-4 details-col">
                                 <h4>Matériel réservé </h4>
                                 <table class="table">
