@@ -3,7 +3,7 @@
 @import 'home';
 @import 'admin';
 
-p{
+p {
   font-size: 18px;
 }
 
@@ -89,263 +89,223 @@ body {
     align-items: center;
   }
 
-  .admin-nav {
-    background-color: $primary-color;
-    margin: -1px;
-    .navbar-brand {
-      position: absolute;
+  .icon_size {
+    height: 30px;
+    width: 30px;
+    .home-btn {
+      width: 100px;
+      height: 50px;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.7);
+      }
     }
-    .navbar-nav {
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
+  }
+
+  .icon {
+    width: 50px;
+  }
+
+  .width-full {
+    width: 100%;
+  }
+
+  .equipment-title {
+    margin-bottom: 50px;
+  }
+
+  .add-equipment {
+    margin-bottom: 50px;
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .glyphicon {
+      font-size: 5rem;
+    }
+  }
+
+  .imgSize {
+    max-height: 350px;
+    max-width: 350px;
+    margin-bottom: 50px;
+  }
+
+  .widhtButton {
+    width: 100%;
+  }
+
+  .height-titre {
+    max-height: 120px;
+    margin-bottom: 10px !important;
+  }
+
+  .separator-border {
+    border-top: solid $dark-color 2px;
+  }
+
+  .spaceWhite {
+    height: 100px;
+  }
+
+  .show-btn {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .form-control {
+    border: white 0px solid;
+    background-color: $light-color;
+  }
+
+  .staff-reservation {
+    background-color: white;
+    h1 {
+      margin-top: 30px;
+    }
+    .reservation-infos {
+      padding-top: 20px;
+      margin-bottom: 10px;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-bottom: 0px;
+      .form-control {
+        border: white 0px solid;
+        background-color: $light-color;
+      }
+    }
+    .reservation-equipment {
+      padding-bottom: 20px;
+      background-color: $light-color;
+      .res-col {
+        min-height: 45vh;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 0px 0px 10px 5px rgba($box-shadow, 0.5);
+        .equipment {
+          width: 95%;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 30px;
+          margin-bottom: 20px;
+          background-color: $primary-color;
+          padding: 20px;
+          border-radius: 5px;
+          color: white;
+          text-transform: uppercase;
+          img {
+            max-width: 80%;
+            max-height: 80%;
+            border: white 10px solid;
+            margin-bottom: 20px;
+            background-color: white;
+          }
+          .equipment-btns {
+            display: flex;
+            justify-content: space-around;
+          }
+          .form-control {
+            border: none;
+            box-shadow: none;
+            background-color: $primary-color;
+            color: white;
+            margin-left: 18%;
+            font-size: 2rem;
+          }
+          .plus, .minus {
+            border-radius: 50%;
+            border: none;
+            min-width: 40px;
+            max-height: 40px;
+            background-color: white;
+            color: $dark-color;
+            font-weight: bold;
+            font-size: 1.5rem;
+          }
+          p {
+            height: 40px;
+          }
+        }
+      }
+    }
+    .btn {
+      background-color: $primary-color;
+      border: 0px;
+      width: 100px;
+      height: 40px;
+      margin-top: 15px;
+      margin-bottom: 15px;
       font-family: $font-title;
       text-transform: uppercase;
-      font-weight: 600;
-      font-size: 2rem;
-      height: 100px;
-      li {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-    }
-  }
-}
-
-.icon_size {
-  height: 30px;
-  width: 30px;
-  .home-btn {
-    width: 100px;
-    height: 50px;
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.7);
-    }
-  }
-}
-
-.icon {
-  width: 50px;
-}
-
-.width-full {
-  width: 100%;
-}
-
-.equipment-title {
-  margin-bottom: 50px;
-}
-
-.add-equipment {
-  margin-bottom: 50px;
-  img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  .glyphicon {
-    font-size: 5rem;
-  }
-}
-
-.imgSize {
-  max-height: 350px;
-  max-width: 350px;
-  margin-bottom: 50px;
-}
-
-.widhtButton {
-  width: 100%;
-}
-
-.height-titre {
-  max-height: 120px;
-  margin-bottom: 10px !important;
-}
-
-.separator-border {
-  border-top: solid $dark-color 2px;
-}
-
-.spaceWhite {
-  height: 100px;
-}
-
-.show-btn {
-  display: flex;
-  justify-content: space-around;
-}
-
-.form-control {
-  border: white 0px solid;
-  background-color: $light-color;
-}
-
-.staff-reservation {
-  background-color: white;
-  h1 {
-    margin-top: 30px;
-  }
-  .reservation-infos {
-    padding-top: 20px;
-    margin-bottom: 10px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    .form-control {
-      border: white 0px solid;
-      background-color: $light-color;
-    }
-  }
-  .reservation-equipment {
-    padding-bottom: 20px;
-    background-color: $light-color;
-    .res-col {
-      min-height: 45vh;
-      border-radius: 5px;
-      background-color: white;
-      box-shadow: 0px 0px 10px 5px rgba($box-shadow, 0.5);
-      .equipment {
-        width: 95%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 30px;
-        margin-bottom: 20px;
+      &:hover {
         background-color: $primary-color;
-        padding: 20px;
-        border-radius: 5px;
-        color: white;
-        text-transform: uppercase;
-        img {
-          max-width: 80%;
-          max-height: 80%;
-          border: white 10px solid;
-          margin-bottom: 20px;
-          background-color: white;
-        }
-        .equipment-btns {
-          display: flex;
-          justify-content: space-around;
-        }
-        .form-control {
-          border: none;
-          box-shadow: none;
-          background-color: $primary-color;
-          color: white;
-          margin-left: 18%;
-          font-size: 2rem;
-        }
-        .plus, .minus {
-          border-radius: 50%;
-          border: none;
-          min-width: 40px;
-          max-height: 40px;
-          background-color: white;
-          color: $dark-color;
-          font-weight: bold;
-          font-size: 1.5rem;
-        }
-        p {
-          height: 40px;
-        }
       }
     }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    input::-webkit-inner-spin-button,
+    input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
   }
+
+  //button
+
   .btn {
+    border-radius: 3px;
+    padding: 8px 14px;
+    font-size: 1em;
+  }
+
+  .btn-primary, .btn-warning, .btn-danger {
     background-color: $primary-color;
-    border: 0px;
-    width: 100px;
-    height: 40px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-family: $font-title;
-    text-transform: uppercase;
+    border: 1px $primary-color solid;
     &:hover {
-      background-color: $primary-color;
+      background-color: darken($primary-color, 10%);
+      border: 1px $primary-color solid;
     }
   }
 
-  input[type=number] {
-    -moz-appearance: textfield;
+  .room-buttons {
+    @media screen and (max-device-width: 500px) {
+      font-size: 12px;
+    }
   }
 
-  input::-webkit-inner-spin-button,
-  input::-webkit-outer-spin-button {
+  //ROOM RESERVATION
+
+  .btn-reservation {
+    width: 40% !important;
+  }
+
+  div.radio {
+    margin: 20px;
+    font-size: 1.3em;
+    font-family: $font-title;
+  }
+
+  div.radio input[type="radio"] {
+    -moz-appearance: none;
     -webkit-appearance: none;
-    margin:0;
-  }
+    margin-left: -35px;
+    margin-top: -1px;
+    width: 20px;
+    height: 20px;
+    background: lighten($primary-color, 30%);
+    box-shadow: inset 0 0 0 .4em white,
+    0 0 0 .2em $primary-color;
+    border-radius: 50%;
+    transition: .2s;
+    cursor: pointer;
+    color: $primary-color;
 
-}
-
-//button
-
-.btn {
-  border-radius: 3px;
-  padding: 8px 14px;
-  font-size: 1em;
-}
-
-.btn-primary, .btn-warning, .btn-danger {
-  background-color: $primary-color;
-  border: 1px $primary-color solid;
-  &:hover {
-    background-color: darken($primary-color, 10%);
-    border: 1px $primary-color solid;
-  }
-}
-
-.room-buttons {
-  @media screen and (max-device-width: 500px) {
-    font-size: 12px;
-  }
-}
-
-//ROOM RESERVATION
-
-.btn-reservation {
-  width: 40% !important;
-}
-
-div.radio {
-  margin: 20px;
-  font-size: 1.3em;
-  font-family: $font-title;
-}
-
-div.radio input[type="radio"] {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  margin-left:-35px;
-  margin-top: -1px;
-  width: 20px;
-  height: 20px;
-  background: lighten($primary-color, 30%);
-  box-shadow:
-          inset 0 0 0 .4em white,
-          0 0 0 .2em $primary-color;
-  border-radius: 50%;
-  transition: .2s;
-  cursor:pointer;
-  color: $primary-color;
-
-  &:checked {
-    background: $primary-color;
-    box-shadow:
-            inset 0 0 0 .2em white,
-            0 0 0 .2em  $primary-color;
-  }
-  &:focus { outline: 0; }
-}
-
-.container-room {
-  padding-bottom: 20px;
-}
-
-// RECAP RESA
-
+<<<<<<< Updated upstream
 .recap-resa {
   .title {
     padding: 20px;
@@ -362,13 +322,59 @@ div.radio input[type="radio"] {
         border-radius: 5px;
         box-shadow: 0px 0px 10px 5px rgba($box-shadow, 0.5);
         margin: 15px;
+=======
+    &:checked {
+      background: $primary-color;
+      box-shadow: inset 0 0 0 .2em white,
+      0 0 0 .2em $primary-color;
+    }
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  .container-room {
+    padding-bottom: 20px;
+  }
+
+  // RECAP RESA
+
+  .recap-resa {
+    p {
+      margin: 0px;
+    }
+    h4 {
+      margin-top: 5px;
+      margin-bottom: 0px;
+    }
+    .title {
+      padding: 10px;
+    }
+    .content {
+      .vignette {
+        padding-left: 5px;
+        padding-right: 5px;
+        .container-fluid {
+          border-top: 1px solid $dark-color;
+          margin: 15px;
+        }
+        img {
+          width: 15px;
+        }
+>>>>>>> Stashed changes
       }
-      img {
-        width: 15px;
+      #bcPaintCanvas {
+        background-color: white;
+        max-width: 100%;
+        min-height: 150px;
+        box-shadow: inset 0px 0px 10px 5px rgba($box-shadow, 0.1);
+        border-radius: 5px;
+        border: 2px solid lightgrey;
       }
     }
-    #bcPaintCanvas {
+    .buttons {
       background-color: white;
+<<<<<<< Updated upstream
       max-width: 100%;
       min-height: 250px;
       box-shadow: inset 0px 0px 10px 5px rgba($box-shadow, 0.1);
@@ -383,51 +389,58 @@ div.radio input[type="radio"] {
       background-color: $primary-color;
       color: white;
       margin: 5px;
+=======
+      .btn {
+        background-color: $primary-color;
+        color: white;
+      }
+>>>>>>> Stashed changes
     }
   }
-}
 
-.fixed-bot-style {
-  background-color: $light-color;
+  .fixed-bot-style {
+    background-color: $light-color;
 
-  .margin-bt {
-    margin-bottom: 15px;
-    margin-top: 15px;
+    .margin-bt {
+      margin-bottom: 15px;
+      margin-top: 15px;
+    }
   }
-}
 
-// ARCHIVE DETAILS
+  // ARCHIVE DETAILS
 
-.archive-details {
-  min-height: 70vh;
-  background-color: $light-color;
-  .title {
-    padding: 30px;
+  .archive-details {
+    min-height: 70vh;
+    background-color: $light-color;
+    .title {
+      padding: 30px;
+      background-color: white;
+    }
+    .content {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      .vignette {
+        padding-left: 5px;
+        padding-right: 5px;
+        .container-fluid {
+          background-color: white;
+          border-radius: 5px;
+          box-shadow: 0px 0px 10px 5px rgba($box-shadow, 0.5);
+          margin: 15px;
+        }
+        img {
+          width: 15px;
+        }
+      }
+    }
+  }
+
+  .buttons {
+    margin-top: 20px;
     background-color: white;
-  }
-  .content {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    .vignette {
-      padding-left: 5px;
-      padding-right: 5px;
-      .container-fluid {
-        background-color: white;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px 5px rgba($box-shadow, 0.5);
-        margin: 15px;
-      }
-      img {
-        width: 15px;
-      }
+    .btn {
+      background-color: $primary-color;
+      color: white;
     }
-  }
-}
-.buttons {
-  margin-top: 20px;
-  background-color: white;
-  .btn {
-    background-color: $primary-color;
-    color: white;
   }
 }

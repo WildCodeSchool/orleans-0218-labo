@@ -44,13 +44,13 @@
   img {
     margin: auto;
 
-    @media screen and (max-device-width: 500px) {
+    @media screen and (max-device-width: 600px) {
       width: 150px;
       margin-top: 10px;
       margin-bottom: 50px;
     }
 
-    @media screen and (min-device-width: 500px) and (max-device-width: 1280px) {
+    @media screen and (min-device-width: 600px) and (max-device-width: 1280px) {
       width: 370px;
       margin-top: 15px;
       margin-bottom: 60px;
