@@ -129,11 +129,12 @@ class ReservationController extends Controller
      * @Route("/{id}", name="reservation_show")
      * @Method({"GET", "POST"})
      */
-    public function showAction(Reservation $reservation,
-                               Request $request,
-                               SignatureService $signatureService,
-                               DateDisplayOptionService $dateService
-    )
+    public function showAction(
+        Reservation $reservation,
+        Request $request,
+        SignatureService $signatureService,
+        DateDisplayOptionService $dateService
+        )
     {
 
         $form = $this->createForm('AppBundle\Form\SignatureType', $reservation);
