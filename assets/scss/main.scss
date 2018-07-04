@@ -3,6 +3,23 @@
 @import 'home';
 @import 'admin';
 
+p{
+  font-size: 18px;
+}
+
+a.primary {
+  font-size: 18px;
+  &:link, &:visited, &:active {
+    color: $dark-color;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $primary-color;
+    text-decoration: none;
+  }
+}
+
 //ADMIN
 
 i.fa-angle-up {
@@ -370,5 +387,45 @@ div.radio input[type="radio"] {
   .margin-bt {
     margin-bottom: 15px;
     margin-top: 15px;
+  }
+}
+
+#canvas {
+  width:500px;
+}
+
+// ARCHIVE DETAILS
+
+.archive-details {
+  min-height: 70vh;
+  background-color: $light-color;
+  .title {
+    padding: 30px;
+    background-color: white;
+  }
+  .content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    .vignette {
+      padding-left: 5px;
+      padding-right: 5px;
+      .container-fluid {
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 5px rgba($box-shadow, 0.5);
+        margin: 15px;
+      }
+      img {
+        width: 15px;
+      }
+    }
+  }
+}
+.buttons {
+  margin-top: 20px;
+  background-color: white;
+  .btn {
+    background-color: $primary-color;
+    color: white;
   }
 }
