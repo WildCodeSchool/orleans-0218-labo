@@ -109,20 +109,20 @@ $(document).ready(function(){
 
             // Prevent scrolling on touch event
             document.body.addEventListener("touchstart", function (e) {
-                if (e.target == 'paintCanvas') {
+                if (e.target.id == 'bcPaintCanvas') {
                     e.preventDefault();
                 }
-            }, false);
+            }, { passive: false });
             document.body.addEventListener("touchend", function (e) {
-                if (e.target == 'paintCanvas') {
+                if (e.target.id == 'bcPaintCanvas') {
                     e.preventDefault();
                 }
-            }, false);
+            }, { passive: false });
             document.body.addEventListener("touchmove", function (e) {
-                if (e.target == 'paintCanvas') {
+                if (e.target.id == 'bcPaintCanvas') {
                     e.preventDefault();
                 }
-            }, false);
+            }, { passive: false });
         });
     }
 
