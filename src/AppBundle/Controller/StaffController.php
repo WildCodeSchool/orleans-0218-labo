@@ -21,7 +21,7 @@ class StaffController extends Controller
     /**
      * Lists all staff entities.
      *
-     * @Route("/", name="staff_index")
+     * @Route("/",    name="staff_index")
      * @Method("GET")
      */
     public function indexAction(Request $request)
@@ -33,16 +33,18 @@ class StaffController extends Controller
         foreach ($staffMembers as $staffMember) {
             $deleteForm[$staffMember->getId()] = $this->createDeleteForm($staffMember)->createView();
         }
-        return $this->render('admin/staff/index.html.twig', array(
+        return $this->render(
+            'admin/staff/index.html.twig', array(
             'staffMembers' => $staffMembers,
             'deleteForm' => $deleteForm
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new staff entity.
      *
-     * @Route("/new", name="staff_new")
+     * @Route("/new",  name="staff_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -62,10 +64,12 @@ class StaffController extends Controller
             return $this->redirectToRoute('staff_index', array('id' => $staff->getId()));
         }
 
-        return $this->render('admin/staff/new.html.twig', array(
+        return $this->render(
+            'admin/staff/new.html.twig', array(
             'staff' => $staff,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
@@ -78,17 +82,19 @@ class StaffController extends Controller
     {
         $deleteForm = $this->createDeleteForm($staff);
 
-        return $this->render('admin/staff/show.html.twig', array(
+        return $this->render(
+            'admin/staff/show.html.twig', array(
             'staff' => $staff,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing staff entity.
      *
      * @Route("/{id}/edit", name="staff_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Staff $staff)
     {
@@ -102,17 +108,19 @@ class StaffController extends Controller
             return $this->redirectToRoute('staff_index', array('id' => $staff->getId()));
         }
 
-        return $this->render('admin/staff/edit.html.twig', array(
+        return $this->render(
+            'admin/staff/edit.html.twig', array(
             'staff' => $staff,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a staff entity.
      *
-     * @Route("/{id}", name="staff_delete")
+     * @Route("/{id}",   name="staff_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Staff $staff, OrderService $orderService)

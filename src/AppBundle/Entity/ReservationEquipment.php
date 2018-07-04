@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="reservation_equipment")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ReservationEquipmentRepository")
- * @UniqueEntity(fields={"equipment", "reservation", "reservationStart"})
+ * @UniqueEntity(fields={"equipment",                                                 "reservation", "reservationStart"})
  */
 class ReservationEquipment
 {

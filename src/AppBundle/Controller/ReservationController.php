@@ -25,7 +25,7 @@ class ReservationController extends Controller
     /**
      * Lists all reservation entities.
      *
-     * @Route("/", name="reservation_index")
+     * @Route("/",             name="reservation_index")
      * @Method({"GET","POST"})
      */
     public function indexAction(Request $request)
@@ -34,10 +34,12 @@ class ReservationController extends Controller
 
         $reservations = $em->getRepository('AppBundle:Reservation')->findAll();
 
-        return $this->render('reservation/index.html.twig', array(
+        return $this->render(
+            'reservation/index.html.twig', array(
             'reservations' => $reservations,
 
-        ));
+            )
+        );
     }
 
     /**
@@ -54,9 +56,11 @@ class ReservationController extends Controller
             ['reservationEnd' => 'DESC']
         );
 
-        return $this->render('reservation/archive.html.twig', array(
+        return $this->render(
+            'reservation/archive.html.twig', array(
             'reservations' => $reservations,
-        ));
+            )
+        );
     }
 
     /**
@@ -69,17 +73,19 @@ class ReservationController extends Controller
     {
         $deleteForm = $this->createDeleteForm($reservation);
 
-        return $this->render('reservation/archive_details.html.twig', array(
+        return $this->render(
+            'reservation/archive_details.html.twig', array(
             'reservation' => $reservation,
             'delete_form' => $deleteForm->createView(),
             'dateOffice' => $dateService->isAvailable($reservation),
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new reservation entity.
      *
-     * @Route("/new", name="reservation_new")
+     * @Route("/new",  name="reservation_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -116,10 +122,12 @@ class ReservationController extends Controller
             return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
         }
 
-        return $this->render('reservation/new.html.twig', array(
+        return $this->render(
+            'reservation/new.html.twig', array(
             'form' => $form->createView(),
             'equipments' => $equipments
-        ));
+            )
+        );
     }
 
 
@@ -133,24 +141,29 @@ class ReservationController extends Controller
         Reservation $reservation,
         Request $request,
         SignatureService $signatureService,
-        DateDisplayOptionService $dateService) {
+        DateDisplayOptionService $dateService
+    ) {
 
         $form = $this->createForm('AppBundle\Form\SignatureType', $reservation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $reservation->setSignature($signatureService->add(
-                $request->request->get('signature')['signature']
-            ));
+            $reservation->setSignature(
+                $signatureService->add(
+                    $request->request->get('signature')['signature']
+                )
+            );
             $em->flush();
             return $this->redirectToRoute('reservation_index');
         }
-        return $this->render('reservation/show.html.twig', array(
+        return $this->render(
+            'reservation/show.html.twig', array(
             'reservation' => $reservation,
             'form' => $form->createView(),
             'dateOffice' => $dateService->isAvailable($reservation),
-        ));
+            )
+        );
     }
 
 
@@ -164,53 +177,58 @@ class ReservationController extends Controller
     {
         $deleteForm = $this->createDeleteForm($reservation);
 
-        return $this->render('reservation/details.html.twig', array(
+        return $this->render(
+            'reservation/details.html.twig', array(
             'reservation' => $reservation,
             'delete_form' => $deleteForm->createView(),
             'dateOffice' => $dateService->isAvailable($reservation),
-        ));
+            )
+        );
     }
 
     /**
      * display the return of a reservation
      *
      * @route("/{id}/restitution", name="reservation_restitution")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",             "POST"})
      */
     public function restitutionReservation(
         Reservation $reservation,
         Request $request,
         SignatureService $service,
         DateDisplayOptionService $dateService
-    )
-    {
+    ) {
 
         $form = $this->createForm('AppBundle\Form\ReturnSignatureType', $reservation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $reservation->setReturnSignature($service->add(
-                $request->request->get('return_signature')['returnSignature']
-            ));
+            $reservation->setReturnSignature(
+                $service->add(
+                    $request->request->get('return_signature')['returnSignature']
+                )
+            );
             $reservation->setReservationOver(true);
             $em->flush();
 
             return $this->redirectToRoute('reservation_index');
         }
 
-        return $this->render('reservation/restitution.html.twig', array(
+        return $this->render(
+            'reservation/restitution.html.twig', array(
             'reservation' => $reservation,
             'form' => $form->createView(),
             'dateOffice' => $dateService->isAvailable($reservation),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing reservation entity.
      *
      * @Route("/{id}/edit", name="reservation_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Reservation $reservation)
     {
@@ -224,17 +242,19 @@ class ReservationController extends Controller
             return $this->redirectToRoute('reservation_index');
         }
 
-        return $this->render('reservation/edit.html.twig', array(
+        return $this->render(
+            'reservation/edit.html.twig', array(
             'reservation' => $reservation,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a reservation entity.
      *
-     * @Route("/{id}", name="reservation_delete")
+     * @Route("/{id}",   name="reservation_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Reservation $reservation, SignatureService $signatureService)

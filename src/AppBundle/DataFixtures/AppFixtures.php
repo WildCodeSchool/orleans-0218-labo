@@ -55,10 +55,12 @@ class AppFixtures extends Fixture
 
         $equipment = new Equipment();
         $equipment->setName('Cable HDMI');
-        $equipment->setDescription('La numérotation d\'un connecteur mâle, généralement monté sur un câble, 
+        $equipment->setDescription(
+            'La numérotation d\'un connecteur mâle, généralement monté sur un câble, 
         est symétrique. Un connecteur VGA est un connecteur de type D-sub, plus précisément DE-15. Il est utilisé pour 
         connecter une carte graphique à un écran d\'ordinateur en analogique. Ce connecteur est parfois appelé 
-        connecteur RGB, HD-15 ou D-sub 15');
+        connecteur RGB, HD-15 ou D-sub 15'
+        );
         $equipment->setPicture('https://zupimages.net/up/18/25/1odw.png');
         $equipment->setOrder(2);
         $manager->persist($equipment);

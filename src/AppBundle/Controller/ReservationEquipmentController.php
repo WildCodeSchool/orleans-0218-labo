@@ -18,7 +18,7 @@ class ReservationEquipmentController extends Controller
     /**
      * Lists all reservationEquipment entities.
      *
-     * @Route("/", name="reservationequipment_index")
+     * @Route("/",    name="reservationequipment_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -27,15 +27,17 @@ class ReservationEquipmentController extends Controller
 
         $reservationEquipments = $em->getRepository('AppBundle:ReservationEquipment')->findAll();
 
-        return $this->render('reservationequipment/index.html.twig', array(
+        return $this->render(
+            'reservationequipment/index.html.twig', array(
             'reservationEquipments' => $reservationEquipments,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new reservationEquipment entity.
      *
-     * @Route("/new", name="reservationequipment_new")
+     * @Route("/new",  name="reservationequipment_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -52,10 +54,12 @@ class ReservationEquipmentController extends Controller
             return $this->redirectToRoute('reservationequipment_show', array('id' => $reservationEquipment->getId()));
         }
 
-        return $this->render('reservationequipment/new.html.twig', array(
+        return $this->render(
+            'reservationequipment/new.html.twig', array(
             'reservationEquipment' => $reservationEquipment,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
@@ -68,17 +72,19 @@ class ReservationEquipmentController extends Controller
     {
         $deleteForm = $this->createDeleteForm($reservationEquipment);
 
-        return $this->render('reservationequipment/show.html.twig', array(
+        return $this->render(
+            'reservationequipment/show.html.twig', array(
             'reservationEquipment' => $reservationEquipment,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing reservationEquipment entity.
      *
      * @Route("/{id}/edit", name="reservationequipment_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, ReservationEquipment $reservationEquipment)
     {
@@ -92,17 +98,19 @@ class ReservationEquipmentController extends Controller
             return $this->redirectToRoute('reservationequipment_edit', array('id' => $reservationEquipment->getId()));
         }
 
-        return $this->render('reservationequipment/edit.html.twig', array(
+        return $this->render(
+            'reservationequipment/edit.html.twig', array(
             'reservationEquipment' => $reservationEquipment,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a reservationEquipment entity.
      *
-     * @Route("/{id}", name="reservationequipment_delete")
+     * @Route("/{id}",   name="reservationequipment_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, ReservationEquipment $reservationEquipment)
