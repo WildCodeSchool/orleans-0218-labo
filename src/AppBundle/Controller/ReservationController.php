@@ -134,8 +134,7 @@ class ReservationController extends Controller
         Request $request,
         SignatureService $signatureService,
         DateDisplayOptionService $dateService
-        )
-    {
+    ) {
 
         $form = $this->createForm('AppBundle\Form\SignatureType', $reservation);
         $form->handleRequest($request);
