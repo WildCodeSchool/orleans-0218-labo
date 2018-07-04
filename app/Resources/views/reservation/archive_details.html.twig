@@ -55,6 +55,24 @@
                                             <p>{{ reservation.reservationEnd.date | date('d/m/Y H:i') }}</p>
                                         </div>
                                     </div>
+
+                                    <p>Signature de la réservation: <a class="primary" href="" data-toggle="modal" data-target="#myModal" id="button-modal">aperçu</a></p>
+                                    <div id="myModal" class="modal fade">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title">Signature</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img src="{{ asset(reservation.signature) }}" alt="signature">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -70,12 +88,16 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-xs-1">
-                                            <img src="/images/key.svg" alt="key" class="icon">
-                                        </div>
-                                        <div class="col-xs-10">
-                                            <p>Clé remise</p>
-                                        </div>
+                                        {% if reservation.room is not null %}
+                                            {% if reservation.room is not null %}
+                                            <div class="col-xs-1">
+                                                <img src="/images/key.svg" alt="key" class="icon">
+                                            </div>
+                                            <div class="col-xs-10">
+                                                <p>Clé remise</p>
+                                            </div>
+                                            {% endif %}
+                                        {% endif %}
                                     </div>
                                     <div class="row">
                                         {% if reservation.room.doors == true %}
@@ -83,7 +105,7 @@
                                                 <img src="/images/door-open.svg" alt="door" class="icon">
                                             </div>
                                             <div class="col-xs-10">
-                                                <p>Merci de penser à dévérrouiller les deux portes</p>
+                                                <p>Dévérrouillage des deux portes</p>
                                             </div>
                                         {% endif %}
                                     </div>
@@ -131,7 +153,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -148,4 +169,7 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('build/signature.js') }}"></script>
 {% endblock %}

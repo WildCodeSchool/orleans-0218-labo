@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Reservation;
-
 use AppBundle\Service\DateDisplayOptionService;
 use AppBundle\Service\SignatureService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -123,6 +122,7 @@ class ReservationController extends Controller
         ));
     }
 
+
     /**
      * Finds and displays a reservation entity.
      *
@@ -149,6 +149,7 @@ class ReservationController extends Controller
             'dateOffice' => $dateService->isAvailable($reservation),
         ));
     }
+
 
     /**
      * display the details of a reservation
