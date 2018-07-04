@@ -134,7 +134,8 @@ class ReservationController extends Controller
         Request $request,
         SignatureService $signatureService,
         DateDisplayOptionService $dateService
-    ) {
+    )
+    {
 
         $form = $this->createForm('AppBundle\Form\SignatureType', $reservation);
         $form->handleRequest($request);
@@ -178,8 +179,14 @@ class ReservationController extends Controller
      * @route("/{id}/restitution", name="reservation_restitution")
      * @Method({"GET", "POST"})
      */
-    public function restitutionReservation(Reservation $reservation, Request $request, SignatureService $service)
+    public function restitutionReservation(
+        Reservation $reservation,
+        Request $request,
+        SignatureService $service,
+        DateDisplayOptionService $dateService
+    )
     {
+
         $form = $this->createForm('AppBundle\Form\ReturnSignatureType', $reservation);
         $form->handleRequest($request);
 
@@ -197,6 +204,7 @@ class ReservationController extends Controller
         return $this->render('reservation/restitution.html.twig', array(
             'reservation' => $reservation,
             'form' => $form->createView(),
+            'dateOffice' => $dateService->isAvailable($reservation),
         ));
     }
 
