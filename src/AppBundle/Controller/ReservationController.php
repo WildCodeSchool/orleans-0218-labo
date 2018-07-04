@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Reservation;
+use AppBundle\Service\DateDisplayOptionService;
 use AppBundle\Service\SignatureService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -50,7 +51,7 @@ class ReservationController extends Controller
 
         $reservations = $em->getRepository('AppBundle:Reservation')->findBy(
             ['reservationOver' => 1],
-            ['reservationEnd' => 'ASC']
+            ['reservationEnd' => 'DESC']
         );
 
         return $this->render('reservation/archive.html.twig', array(
@@ -64,13 +65,14 @@ class ReservationController extends Controller
      * @Route("/{id}/Archive/Details", name="archive_details")
      * @Method("GET")
      */
-    public function archiveDetailsAction(Reservation $reservation)
+    public function archiveDetailsAction(Reservation $reservation, DateDisplayOptionService $dateService)
     {
         $deleteForm = $this->createDeleteForm($reservation);
 
         return $this->render('reservation/archive_details.html.twig', array(
             'reservation' => $reservation,
             'delete_form' => $deleteForm->createView(),
+            'dateOffice' => $dateService->isAvailable($reservation),
         ));
     }
 
@@ -120,14 +122,19 @@ class ReservationController extends Controller
         ));
     }
 
+
     /**
      * Finds and displays a reservation entity.
      *
      * @Route("/{id}", name="reservation_show")
      * @Method({"GET", "POST"})
      */
-    public function showAction(Reservation $reservation, Request $request, SignatureService $signatureService)
-    {
+    public function showAction(
+        Reservation $reservation,
+        Request $request,
+        SignatureService $signatureService,
+        DateDisplayOptionService $dateService
+    ) {
 
         $form = $this->createForm('AppBundle\Form\SignatureType', $reservation);
         $form->handleRequest($request);
@@ -143,8 +150,10 @@ class ReservationController extends Controller
         return $this->render('reservation/show.html.twig', array(
             'reservation' => $reservation,
             'form' => $form->createView(),
+            'dateOffice' => $dateService->isAvailable($reservation),
         ));
     }
+
 
     /**
      * display the details of a reservation
@@ -152,13 +161,14 @@ class ReservationController extends Controller
      * @route("/{id}/details", name="reservation_details")
      * @Method("GET")
      */
-    public function detailsReservation(Reservation $reservation)
+    public function detailsReservation(Reservation $reservation, DateDisplayOptionService $dateService)
     {
         $deleteForm = $this->createDeleteForm($reservation);
 
         return $this->render('reservation/details.html.twig', array(
             'reservation' => $reservation,
             'delete_form' => $deleteForm->createView(),
+            'dateOffice' => $dateService->isAvailable($reservation),
         ));
     }
 

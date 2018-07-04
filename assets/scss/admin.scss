@@ -90,3 +90,27 @@ section {
   }
 }
 
+// BOUTONS
+
+.admin-btn {
+  background-color: white;
+  border: solid 2px $check-color;
+  img {
+    width: 15px;
+  }
+}
+
+.admin-listing {
+  .equ-order, .arrow {
+    @media screen and (max-device-width: 500px) {
+      display: none;
+    }
+  }
+}
+
+.th-order {
+    @media screen and (max-device-width: 500px) {
+      display: none;
+    }
+}
+
