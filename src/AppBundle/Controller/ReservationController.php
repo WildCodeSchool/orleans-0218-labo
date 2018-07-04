@@ -6,6 +6,8 @@ use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Reservation;
 use AppBundle\Service\DateDisplayOptionService;
 use AppBundle\Service\SignatureService;
+use DateInterval;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -34,10 +36,17 @@ class ReservationController extends Controller
 
         $reservations = $em->getRepository('AppBundle:Reservation')->findAll();
 
-        return $this->render(
-            'reservation/index.html.twig', array(
-            'reservations' => $reservations,
+        foreach ($reservations as $key => $reservation) {
+            if (($reservation->getReservationEnd()->add(new DateInterval('P3M')) < new DateTime())
+            or (null == $reservation->getSignature())) {
+                $em->remove($reservation);
+                unset($reservations[$key]);
+            }
+        }
+        $em->flush();
 
+        return $this->render('reservation/index.html.twig', array(
+            'reservations' => $reservations,
             )
         );
     }
