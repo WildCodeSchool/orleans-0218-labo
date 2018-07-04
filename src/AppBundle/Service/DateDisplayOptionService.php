@@ -21,8 +21,8 @@ class DateDisplayOptionService
         $open =  (int) ($reservation->getReservationStart()->format('H'));
         $close =  (int) ($reservation->getReservationEnd()->format('H'));
 
-        if (($open <= Reservation::OPEN_OFFICE) OR ($open >= Reservation::END_OFFICE)
-            OR ($close <= Reservation::OPEN_OFFICE) OR ($close >= Reservation::END_OFFICE)){
+        if (($open <= Reservation::OPEN_OFFICE) or ($open >= Reservation::END_OFFICE)
+            or ($close <= Reservation::OPEN_OFFICE) or ($close >= Reservation::END_OFFICE)) {
             return true;
         } else {
             return false;
