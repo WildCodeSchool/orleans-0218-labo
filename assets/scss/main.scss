@@ -267,6 +267,7 @@ body {
       background-color: $primary-color;
     }
   }
+
   input[type=number] {
     -moz-appearance: textfield;
   }
@@ -296,6 +297,11 @@ body {
   }
 }
 
+.room-buttons {
+  @media screen and (max-device-width: 500px) {
+    font-size: 12px;
+  }
+}
 
 //ROOM RESERVATION
 

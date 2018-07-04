@@ -22,11 +22,11 @@
                 <table class="table">
                     <thead>
                     <tr>
+                        <th>Ordre</th>
                         <th></th>
                         <th></th>
                         <th>Prénom</th>
                         <th>Nom</th>
-                        <th></th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -34,6 +34,7 @@
                     <tbody>
                     {% for staffMember in staffMembers %}
                         <tr class="admin-listing">
+                            <td>{{ staffMember.order }}</td>
                             <td class="arrow">
                                 {% if loop.index0 != 0 %}
                                     <a href="{{ path('staff_up_order_edit', { 'id': staffMember.id }) }}">
