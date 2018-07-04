@@ -167,34 +167,6 @@
                             </div>
 
                         </div>
-                        {#<div class="row">
-                            <div class="col-xs-12 vignette">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-md-2">
-                                            <h4>Date :</h4>
-                                            <p>{{ reservation.reservationStart.date | date('d/m/Y H:i') }}</p>
-                                        </div>
-                                        <div class="col-xs-12 col-md-2 col-md-offset-1">
-                                            <h4>Société :</h4>
-                                            <p>{{ reservation.society }}</p>
-                                        </div>
-                                        <div class="col-xs-12 col-md-2">
-                                            <h4>Nom :</h4>
-                                            <p>{{ reservation.lastName }}</p>
-                                        </div>
-                                        <div class="col-xs-12 col-md-2">
-                                            <h4>Prénom :</h4>
-                                            <p>{{ reservation.firstName }}</p>
-                                        </div>
-                                        <div class="col-xs-12 col-md-2">
-                                            <h4>Email :</h4>
-                                            <p>{{ reservation.email }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>#}
 
                         <div class="row">
                             <div class="col-xs-12 col-sm-4 col-sm-offset-4">
@@ -207,7 +179,7 @@
 
                 <div class="row buttons">
                     <div class="col-xs-12 col-md-2 col-md-offset-4 text-center">
-                        <a href="{{ path('reservation_new') }}">
+                        <a href="{{ path('reservation_index') }}">
                             <button type="button" class="btn btn-home">Retour</button>
                         </a>
                     </div>
