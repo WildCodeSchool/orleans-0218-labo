@@ -21,7 +21,7 @@ class EquipmentController extends Controller
     /**
      * Lists all Equipment entities.
      *
-     * @Route("/", name="equipment_index")
+     * @Route("/",    name="equipment_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -94,7 +94,7 @@ class EquipmentController extends Controller
      * Displays a form to edit an existing equipment entity.
      *
      * @Route("/{id}/edit", name="equipment_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Equipment $equipment)
     {
@@ -169,12 +169,14 @@ class EquipmentController extends Controller
     private function createDeleteForm(Equipment $equipment)
     {
         return $this->createFormBuilder(null, ['csrf_field_name' => 'delete-equip-' . $equipment->getId()])
-            ->setAction($this->generateUrl(
-                'equipment_delete',
-                array(
+            ->setAction(
+                $this->generateUrl(
+                    'equipment_delete',
+                    array(
                     'id' => $equipment->getId()
+                    )
                 )
-            ))
+            )
             ->setMethod('DELETE')
             ->getForm();
     }
