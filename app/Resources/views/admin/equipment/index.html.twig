@@ -22,9 +22,21 @@
         <div class="container margin-fixed-bottom">
             <div class="row">
                 <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Ordre</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
                     <tbody>
                     {% for equipment in equipments %}
                         <tr class="admin-listing">
+                            <td>{{ equipment.order }}</td>
                             <td class="arrow">
                                 {% if loop.index0 != 0 %}
                                     <a href="{{ path('equipment_up_order_edit', { 'id': equipment.id }) }}">
