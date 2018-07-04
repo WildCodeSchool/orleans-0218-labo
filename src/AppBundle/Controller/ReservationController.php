@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Reservation;
+use AppBundle\Service\MailService;
 use AppBundle\Service\SignatureService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -46,6 +47,7 @@ class ReservationController extends Controller
      */
     public function archiveAction()
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $reservations = $em->getRepository('AppBundle:Reservation')->findBy(
