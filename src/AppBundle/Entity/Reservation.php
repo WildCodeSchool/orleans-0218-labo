@@ -14,6 +14,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Reservation
 {
     /**
+     * Office opens at 8 AM
+     */
+    const OPEN_OFFICE = 8;
+
+    /**
+     * Office opens at 18 PM
+     */
+    const END_OFFICE = 18;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="reservationOver", type="boolean", nullable = true)
