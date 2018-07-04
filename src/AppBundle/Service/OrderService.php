@@ -22,7 +22,7 @@ class OrderService
     }
 
     /**
-     *Order an equipment list from 1 to n
+     * Order an equipment list from 1 to n
      */
     public function order($className)
     {
@@ -37,8 +37,10 @@ class OrderService
 
     public function up(OrderInterface $item)
     {
-        $itemDown = $this->em->getRepository(get_class($item))->findOneBy([
-            'order' => $item->getOrder() - 1]);
+        $itemDown = $this->em->getRepository(get_class($item))->findOneBy(
+            [
+            'order' => $item->getOrder() - 1]
+        );
         $itemDown->setOrder($itemDown->getOrder() + 1);
         $item->setOrder($item->getOrder() - 1);
         $this->em->flush();
@@ -46,8 +48,10 @@ class OrderService
 
     public function down(OrderInterface $item)
     {
-        $itemUp = $this->em->getRepository(get_class($item))->findOneBy([
-            'order' => $item->getOrder() + 1]);
+        $itemUp = $this->em->getRepository(get_class($item))->findOneBy(
+            [
+            'order' => $item->getOrder() + 1]
+        );
         $itemUp->setOrder($itemUp->getOrder() - 1);
         $item->setOrder($item->getOrder() + 1);
         $this->em->flush();

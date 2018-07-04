@@ -15,7 +15,7 @@ class StaffType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('lastName', TextType::class, array('label' => 'Nom'))
-                ->add('firstName', TextType::class, array('label' => 'Prénom'));
+            ->add('firstName', TextType::class, array('label' => 'Prénom'));
     }
     
     /**
@@ -23,9 +23,11 @@ class StaffType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults(
+            array(
             'data_class' => 'AppBundle\Entity\Staff'
-        ));
+            )
+        );
     }
 
     /**
