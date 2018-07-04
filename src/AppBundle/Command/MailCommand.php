@@ -32,8 +32,6 @@ class MailCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output) {
         $this->mailService->sendAll();
-
         $output->writeln('Les mails de retard ont été envoyés');
-
     }
 }

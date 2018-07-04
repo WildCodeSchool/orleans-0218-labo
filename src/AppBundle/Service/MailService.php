@@ -34,17 +34,19 @@ class MailService
         foreach ($reservations as $reservation) {
             if ($reservation->getSignature() != null &&
                 $reservation->getReservationEnd()->add(new \DateInterval('PT24H')) <= $dateNow) {
-                $this->send($reservation->getEMail());
+                $this->send($reservation->getEMail(), $reservation);
             }
         }
     }
 
-    public function send($mail)
+    public function send($mail, $reservation)
     {
+        $body = $this->templating->render('mail/retard.html.twig', ['reservation' => $reservation]);
+
         $message = (new \Swift_Message('Réservation Labo'))
             ->setFrom($this->sender)
             ->setTo($mail)
-            ->setBody('Vous avez oubliez de rendre une salle', 'text/html');
+            ->setBody($body, 'text/html');
         $this->mailer->send($message);
     }
 }
