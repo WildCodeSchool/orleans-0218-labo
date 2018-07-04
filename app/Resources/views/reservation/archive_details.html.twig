@@ -100,23 +100,27 @@
                                         {% endif %}
                                     </div>
                                     <div class="row">
-                                        {% if reservation.room.doors == true %}
-                                            <div class="col-xs-1">
-                                                <img src="/images/door-open.svg" alt="door" class="icon">
-                                            </div>
-                                            <div class="col-xs-10">
-                                                <p>Dévérrouillage des deux portes</p>
-                                            </div>
+                                        {% if reservation.room is not null %}
+                                            {% if reservation.room.doors == true %}
+                                                <div class="col-xs-1">
+                                                    <img src="/images/door-open.svg" alt="door" class="icon">
+                                                </div>
+                                                <div class="col-xs-10">
+                                                    <p>Dévérrouillage des deux portes</p>
+                                                </div>
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                     <div class="row">
-                                        {% if dateOffice == true %}
-                                            <div class="col-xs-1">
-                                                <img src="/images/extinguisher.svg" alt="checkbox" class="icon">
-                                            </div>
-                                            <div class="col-xs-10">
-                                                <p>Formation SSI</p>
-                                            </div>
+                                        {% if reservation.room is not null %}
+                                            {% if dateOffice == true %}
+                                                <div class="col-xs-1">
+                                                    <img src="/images/extinguisher.svg" alt="checkbox" class="icon">
+                                                </div>
+                                                <div class="col-xs-10">
+                                                    <p>Formation SSI</p>
+                                                </div>
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
