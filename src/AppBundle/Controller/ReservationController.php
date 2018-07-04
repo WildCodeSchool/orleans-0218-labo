@@ -37,7 +37,8 @@ class ReservationController extends Controller
         $reservations = $em->getRepository('AppBundle:Reservation')->findAll();
 
         foreach ($reservations as $key => $reservation) {
-            if ($reservation->getReservationEnd()->add(new DateInterval('P3M')) < new DateTime()) {
+            if (($reservation->getReservationEnd()->add(new DateInterval('P3M')) < new DateTime())
+            or (null == $reservation->getSignature())) {
                 $em->remove($reservation);
                 unset($reservations[$key]);
             }
