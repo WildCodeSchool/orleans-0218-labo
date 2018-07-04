@@ -36,8 +36,8 @@ class ReservationController extends Controller
 
         $reservations = $em->getRepository('AppBundle:Reservation')->findAll();
 
-        foreach ($reservations as $key=>$reservation) {
-            if ($reservation->getReservationEnd()->add(new DateInterval('P3M')) < new DateTime()){
+        foreach ($reservations as $key => $reservation) {
+            if ($reservation->getReservationEnd()->add(new DateInterval('P3M')) < new DateTime()) {
                 $em->remove($reservation);
                 unset($reservations[$key]);
             }
@@ -144,8 +144,7 @@ class ReservationController extends Controller
         Request $request,
         SignatureService $signatureService,
         DateDisplayOptionService $dateService
-    )
-    {
+    ){
 
         $form = $this->createForm('AppBundle\Form\SignatureType', $reservation);
         $form->handleRequest($request);
