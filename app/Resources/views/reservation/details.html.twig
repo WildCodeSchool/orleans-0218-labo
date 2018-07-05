@@ -4,6 +4,24 @@
         <section class="container-fluid archive-details">
             <div class="row">
                 <div class="col-xs-12">
+
+                    <div id="myModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Signature</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{ asset(reservation.signature) }}" alt="signature" class="img-responsive">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row title">
                         <div class="col-xs-12 text-center">
                             <h1>Détails de la réservation</h1>
@@ -56,23 +74,12 @@
                                             </div>
                                         </div>
 
-                                        <p>Signature de la réservation: <a class="primary" href="" data-toggle="modal" data-target="#myModal" id="button-modal">aperçu</a></p>
-                                        <div id="myModal" class="modal fade">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                        <h4 class="modal-title">Signature</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <img src="{{ asset(reservation.signature) }}" alt="signature">
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <h4>Signature de la réservation :</h4>
+                                        <p>
+                                            <a class="primary" href="" data-toggle="modal" data-target="#myModal"
+                                               id="button-modal">aperçu</a>
+                                        </p>
+
                                     </div>
                                 </div>
 
