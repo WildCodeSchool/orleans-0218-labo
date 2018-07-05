@@ -22,11 +22,11 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th></th>
-                        <th></th>
+                        <th class="th-order">Ordre</th>
+                        <th class="th-order"></th>
+                        <th class="th-order"></th>
                         <th>Prénom</th>
                         <th>Nom</th>
-                        <th></th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -34,6 +34,7 @@
                     <tbody>
                     {% for staffMember in staffMembers %}
                         <tr class="admin-listing">
+                            <td class="equ-order">{{ staffMember.order }}</td>
                             <td class="arrow">
                                 {% if loop.index0 != 0 %}
                                     <a href="{{ path('staff_up_order_edit', { 'id': staffMember.id }) }}">
@@ -49,13 +50,15 @@
                             <td>{{ staffMember.firstName }}</td>
                             <td>{{ staffMember.lastName }}</td>
                             <td class="edit">
-                                <a role="button" class="btn btn-warning"
-                                   href="{{ path('staff_edit', { 'id': staffMember.id }) }}">Modifier</a>
+                                <a role="button" class="btn admin-btn"
+                                   href="{{ path('staff_edit', { 'id': staffMember.id }) }}">
+                                    <img src="/images/edit-regular.svg" alt="Éditer">
+                                </a>
                             </td>
                             <td class="delete">
                                 {{ form_start(deleteForm[staffMember.id]) }}
-                                <button type="submit" class="btn btn-danger">
-                                    Supprimer
+                                <button type="submit" class="btn admin-btn">
+                                    <img src="/images/trash-alt-regular.svg" alt="Supprimer">
                                 </button>
                                 {{ form_end(deleteForm[staffMember.id]) }}
                             </td>

@@ -32,9 +32,12 @@
             <div class="container-fluid">
                 <div class="row reservation-equipment">
                     <div class="col-md-12">
-                        <div class="container-button text-center">
-                            <button type="button" id="room-button" class="btn btn-danger btn-reservation">Salles</button>
-                            <button type="button" id="equipment-button" class="btn btn-danger btn-reservation">Équipements</button>
+                        <div class="container-button room-buttons text-center">
+                            <button type="button" id="room-button" class="btn btn-danger btn-reservation">Salles
+                            </button>
+                            <button type="button" id="equipment-button" class="btn btn-danger btn-reservation">
+                                Équipements
+                            </button>
                         </div>
                     </div>
                     <div class="col-xs-10 col-xs-offset-1 res-col pre-scrollable">
@@ -47,28 +50,28 @@
                                 </div>
                             </section>
                             <div id="equipment">
-                            {% for reservationEquipment in form.reservationEquipments %}
-                                <div class="col-sm-3 col-xs-12 text-center">
-                                    <div class="equipment">
-                                        <p>{{ reservationEquipment.vars.value.equipment.name }}</p>
-                                        <img class="img-circle" alt="image de l'équipement"
-                                             src="{{ reservationEquipment.vars.value.equipment.picture }}"/>
-                                        <div class="row equipment-btns">
-                                            <div class="col-xs-4 row equipment-btns">
-                                                <input type="button" class="minus" value="-"
-                                                       data-element="{{ reservationEquipment.quantity.vars.id }}"/>
-                                            </div>
-                                            <div class="col-xs-4 row equipment-btns text-center">
-                                                {{ form_widget(reservationEquipment) }}
-                                            </div>
-                                            <div class="col-xs-4 row equipment-btns">
-                                                <input type="button" class="plus" value="+"
-                                                       data-element="{{ reservationEquipment.quantity.vars.id }}"/>
+                                {% for reservationEquipment in form.reservationEquipments %}
+                                    <div class="col-sm-3 col-xs-12 text-center">
+                                        <div class="equipment">
+                                            <p>{{ reservationEquipment.vars.value.equipment.name }}</p>
+                                            <img class="img-circle" alt="image de l'équipement"
+                                                 src="{{ reservationEquipment.vars.value.equipment.picture }}"/>
+                                            <div class="row equipment-btns">
+                                                <div class="col-xs-4 row equipment-btns">
+                                                    <input type="button" class="minus" value="-"
+                                                           data-element="{{ reservationEquipment.quantity.vars.id }}"/>
+                                                </div>
+                                                <div class="col-xs-4 row equipment-btns text-center">
+                                                    {{ form_widget(reservationEquipment) }}
+                                                </div>
+                                                <div class="col-xs-4 row equipment-btns">
+                                                    <input type="button" class="plus" value="+"
+                                                           data-element="{{ reservationEquipment.quantity.vars.id }}"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            {% endfor %}
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
