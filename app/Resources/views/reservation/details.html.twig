@@ -162,26 +162,28 @@
                 </div>
             </div>
         </section>
-    <div class="container-fluid detail-btn">
-        <div class="row row-btn">
-            <div class="col-xs-2 col-md-offset-2 text-center">
-                <a href="{{ path('reservation_index') }}"><button type="button" class="btn btn-home">Retour</button></a>
-            </div>
-
-            <div class="col-xs-2 col-md-offset-1 text-center">
-                <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">
-                    <button class="btn btn-home" type="button">Modifier</button></a>
-            </div>
-
-            <div class="col-xs-2 col-md-offset-1 text-center">
-                <td class="delete">
-                    {{ form_start(delete_form) }}
-                    <button type="submit" class="btn btn-home">
-                        <i class="icon-trash"></i>
-                        Supprimer
-                    </button>
-                    {{ form_end(delete_form) }}
-                </td>
+        <div class="container-fluid detail-btn details-btn">
+            <div class="row buttons">
+                <div class="col-xs-12 col-sm-4 col-md-4 text-center">
+                    <a href="{{ path('reservation_index') }}">
+                        <button type="button" class="btn btn-home">Retour</button>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 text-center">
+                    <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">
+                        <button class="btn btn-home" type="button">Modifier</button>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 text-center">
+                    <div class="row">
+                        {{ form_start(delete_form) }}
+                        <button type="submit" class="btn btn-home">
+                            <i class="icon-trash"></i>
+                            Supprimer
+                        </button>
+                        {{ form_end(delete_form) }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
