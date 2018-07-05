@@ -22,7 +22,7 @@ class RoomType extends AbstractType
                 CheckboxType::class,
                 [
                     'required' => false,
-                    'label' => 'Double',
+                    'label' => 'Deux portes',
                 ]
             );
     }
