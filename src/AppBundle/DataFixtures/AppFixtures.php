@@ -101,7 +101,7 @@ class AppFixtures extends Fixture
         $equipment = new Equipment();
         $equipment->setName('Aspirateur');
         $equipment->setDescription('Ceci est un aspirateur');
-        $equipment->setPicture('https://zupimages.net/up/18/25/4yyj.png');
+        $equipment->setPicture('https://zupimages.net/up/18/25/3lwg.png');
         $equipment->setOrder(8);
         $manager->persist($equipment);
 
