@@ -36,15 +36,6 @@ class ReservationController extends Controller
 
         $reservations = $em->getRepository('AppBundle:Reservation')->findAll();
 
-        foreach ($reservations as $key => $reservation) {
-            if (($reservation->getReservationEnd()->add(new DateInterval('P3M')) < new DateTime())
-            or (null == $reservation->getSignature())) {
-                $em->remove($reservation);
-                unset($reservations[$key]);
-            }
-        }
-        $em->flush();
-
         return $this->render('reservation/index.html.twig', array(
             'reservations' => $reservations,
 
@@ -64,6 +55,15 @@ class ReservationController extends Controller
             ['reservationOver' => 1],
             ['reservationEnd' => 'DESC']
         );
+
+        foreach ($reservations as $key => $reservation) {
+            if (($reservation->getReservationEnd()->add(new DateInterval('P3M')) < new DateTime())
+                or (null == $reservation->getSignature())) {
+                $em->remove($reservation);
+                unset($reservations[$key]);
+            }
+        }
+        $em->flush();
 
         return $this->render('reservation/archive.html.twig', array(
             'reservations' => $reservations,
