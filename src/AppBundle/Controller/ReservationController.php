@@ -114,18 +114,29 @@ class ReservationController extends Controller
 
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $reservation->setReservationOver(false);
-            foreach ($reservation->getReservationEquipments() as $dateEquipment) {
-                $dateEquipment->setReservationStart($reservation->getReservationStart());
-                $dateEquipment->setReservationEnd($reservation->getReservationEnd());
+            if ($reservation->getReservationStart() < $reservation->getReservationEnd()) {
+                $reservation->setReservationOver(false);
+
+                foreach ($reservation->getReservationEquipments() as $dateEquipment) {
+                    $dateEquipment->setReservationStart($reservation->getReservationStart());
+                    $dateEquipment->setReservationEnd($reservation->getReservationEnd());
+                }
+
+                $em->persist($reservation);
+                $em->flush();
+
+                return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
+
+            } else {
+                $this->addFlash('Error', 'La date de debut ne peut pas être antérieure à celle de sortie');
+                return $this->redirectToRoute('reservation_new');
+
             }
-
-            $em->persist($reservation);
-            $em->flush();
-
-            return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
         }
+
+
 
         return $this->render('reservation/new.html.twig', array(
             'form' => $form->createView(),
@@ -230,9 +241,16 @@ class ReservationController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            if ($reservation->getReservationStart() < $reservation->getReservationEnd()) {
+                $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('reservation_index');
+                return $this->redirectToRoute('reservation_index');
+
+            } else {
+                $this->addFlash('Error', 'La date de debut ne peut pas être antérieure à celle de sortie');
+                return $this->redirectToRoute('reservation_edit', array('id' => $reservation->getId()));
+
+            }
         }
 
         return $this->render('reservation/edit.html.twig', array(
