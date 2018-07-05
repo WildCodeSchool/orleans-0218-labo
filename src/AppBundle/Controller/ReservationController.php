@@ -128,11 +128,9 @@ class ReservationController extends Controller
                 $em->flush();
 
                 return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
-
             } else {
                 $this->addFlash('Error', 'La date de debut ne peut pas être antérieure à celle de sortie');
                 return $this->redirectToRoute('reservation_new');
-
             }
         }
 
@@ -245,11 +243,9 @@ class ReservationController extends Controller
                 $this->getDoctrine()->getManager()->flush();
 
                 return $this->redirectToRoute('reservation_index');
-
             } else {
                 $this->addFlash('Error', 'La date de debut ne peut pas être antérieure à celle de sortie');
                 return $this->redirectToRoute('reservation_edit', array('id' => $reservation->getId()));
-
             }
         }
 
