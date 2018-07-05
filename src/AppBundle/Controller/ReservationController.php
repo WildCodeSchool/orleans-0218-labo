@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Reservation;
+use AppBundle\Service\MailService;
 use AppBundle\Service\DateDisplayOptionService;
 use AppBundle\Service\SignatureService;
 use DateInterval;
@@ -49,6 +50,7 @@ class ReservationController extends Controller
      */
     public function archiveAction()
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $reservations = $em->getRepository('AppBundle:Reservation')->findBy(
