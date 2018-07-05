@@ -17,20 +17,26 @@
                                 <h4> Responsable de l'accueil
                                     : {{ reservation.staff.firstName }} {{ reservation.staff.lastName }}</h4>
                                 <h4>Date de retour : {{ reservation.reservationEnd.date | date('d/m/Y H:i') }} </h4>
-                                <p>Signature de la réservation: <a class="primary" href="" data-toggle="modal" data-target="#myModal" id="button-modal">aperçu</a></p>
+                                <p>Signature de la réservation: <a class="primary" href="" data-toggle="modal"
+                                                                   data-target="#myModal" id="button-modal">aperçu</a>
+                                </p>
 
                                 <div id="myModal" class="modal fade">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">&times;
+                                                </button>
                                                 <h4 class="modal-title">Signature</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <img src="{{ asset(reservation.signature) }}" alt="signature">
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                    Fermer
+                                                </button>
                                             </div>
                                         </div>
                                     </div>

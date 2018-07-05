@@ -24,13 +24,15 @@ class MailCommand extends Command
         parent::__construct();
     }
 
-    protected function configure() {
+    protected function configure()
+    {
         $this->setName('app.mailAuto')
-        ->setDescription('Envoyer les mails de retard')
-        ->setHelp('Envoyer les mails de retard app/console app:mailAuto');
+            ->setDescription('Envoyer les mails de retard')
+            ->setHelp('Envoyer les mails de retard app/console app:mailAuto');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) {
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
         $this->mailService->sendAll();
         $output->writeln('Les mails de retard ont été envoyés');
     }
