@@ -6,6 +6,8 @@ use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Reservation;
 use AppBundle\Service\DateDisplayOptionService;
 use AppBundle\Service\SignatureService;
+use DateInterval;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -53,6 +55,15 @@ class ReservationController extends Controller
             ['reservationOver' => 1],
             ['reservationEnd' => 'DESC']
         );
+
+        foreach ($reservations as $key => $reservation) {
+            if (($reservation->getReservationEnd()->add(new DateInterval('P3M')) < new DateTime())
+                or (null == $reservation->getSignature())) {
+                $em->remove($reservation);
+                unset($reservations[$key]);
+            }
+        }
+        $em->flush();
 
         return $this->render('reservation/archive.html.twig', array(
             'reservations' => $reservations,
@@ -178,8 +189,13 @@ class ReservationController extends Controller
      * @route("/{id}/restitution", name="reservation_restitution")
      * @Method({"GET", "POST"})
      */
-    public function restitutionReservation(Reservation $reservation, Request $request, SignatureService $service)
-    {
+    public function restitutionReservation(
+        Reservation $reservation,
+        Request $request,
+        SignatureService $service,
+        DateDisplayOptionService $dateService
+    ) {
+
         $form = $this->createForm('AppBundle\Form\ReturnSignatureType', $reservation);
         $form->handleRequest($request);
 
@@ -197,6 +213,7 @@ class ReservationController extends Controller
         return $this->render('reservation/restitution.html.twig', array(
             'reservation' => $reservation,
             'form' => $form->createView(),
+            'dateOffice' => $dateService->isAvailable($reservation),
         ));
     }
 
