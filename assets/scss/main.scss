@@ -213,6 +213,12 @@ body {
           color: white;
           margin-left: 18%;
           font-size: 2rem;
+          @media screen and (max-device-width: 800px) {
+            margin-left: 0%;
+            font-size: 16px;
+            width: 30px;
+            padding-right: 0px;
+          }
         }
         .plus, .minus {
           border-radius: 50%;
@@ -223,9 +229,16 @@ body {
           color: $dark-color;
           font-weight: bold;
           font-size: 1.5rem;
+          @media screen and (max-device-width: 800px) {
+            min-width: 25px;
+            max-height: 25px;
+          }
         }
         p {
           height: 40px;
+          @media screen and (max-device-width: 800px) {
+            font-size: 1rem;
+          }
         }
       }
     }
@@ -406,4 +419,20 @@ div.radio input[type="radio"] {
     background-color: $primary-color;
     color: white;
   }
+}
+
+// Alert message //
+
+.error-message{
+  margin-top: 30px;
+}
+
+// Button style margin //
+
+.margin-bottom-button{
+  margin-bottom: 20px;
+}
+
+.margin-top-button{
+  margin-top: 20px;
 }

@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="{{ asset('build/flatpickr.css') }}">
 {% endblock %}
 {% block layout %}
-
     <section class="container-fluid staff-reservation">
         {{ form_start(form) }}
         <div class="row">
@@ -27,6 +26,15 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3 error-message">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-danger text-center" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
         </div>
         <div class="row">
             <div class="container-fluid">

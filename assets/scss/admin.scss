@@ -9,7 +9,7 @@
 
   @media screen and (min-device-width: 768px) {
     ul {
-      margin-top: 30px ;
+      margin-top: 30px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -23,6 +23,7 @@
 .navbar-toggle {
   margin-top: 35px;
 }
+
 .admin-nav {
   background-color: $primary-color;
 }
@@ -108,6 +109,12 @@ section {
     @media screen and (max-device-width: 500px) {
       display: none;
     }
+  }
+}
+
+.details-btn {
+  .col-xs-12 {
+    height: 56px;
   }
 }
 
