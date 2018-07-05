@@ -18,8 +18,12 @@ class MailService
     private $templating;
     private $sender;
 
-    public function __construct(EntityManagerInterface $em, \Swift_Mailer $mailer, \Twig_Environment $templating, $sender)
-    {
+    public function __construct(
+        EntityManagerInterface $em,
+        \Swift_Mailer $mailer,
+        \Twig_Environment $templating,
+        $sender
+    ) {
         $this->em = $em;
         $this->mailer = $mailer;
         $this->templating = $templating;
