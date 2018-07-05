@@ -154,12 +154,12 @@ class Equipment implements OrderInterface
         return $this->imageFile;
     }
 
-    public function setPicture(string $imageName)
+    public function setPicture($imageName)
     {
         $this->picture = $imageName;
     }
 
-    public function getPicture(): ?string
+    public function getPicture()
     {
         return $this->picture;
     }
