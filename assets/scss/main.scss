@@ -426,3 +426,14 @@ div.radio input[type="radio"] {
 .error-message{
   margin-top: 30px;
 }
+
+// Wheel //
+.icon-wheel-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.height-wheel{
+  height: 100%;
+}
