@@ -20,7 +20,8 @@ $(document).ready(function () {
         altInput: true,
         enableTime: true,
         altFormat: 'J F Y - H:i',
-        time_24hr: true
+        time_24hr: true,
+        disableMobile: true
     });
 
     $('.flatpickr-input:visible').on('focus', function () {
