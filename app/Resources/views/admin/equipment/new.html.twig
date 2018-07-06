@@ -6,6 +6,17 @@
         <div class="container-fluid container-title text-center">
             <h1>Gestion des équipements</h1>
         </div>
+        <div class="container-fluid">
+            <div class="col-xs-6 col-xs-offset-3">
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger text-center" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">

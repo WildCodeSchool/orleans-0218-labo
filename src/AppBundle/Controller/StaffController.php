@@ -128,7 +128,7 @@ class StaffController extends Controller
                 $em->flush();
             } catch (ForeignKeyConstraintViolationException $exception) {
                 $this->addFlash(
-                    'Error',
+                    'danger',
                     'Il est impossible de supprimer un membre du personnel lié à une réservation en cours'
                 );
                 return $this->redirectToRoute('staff_index');

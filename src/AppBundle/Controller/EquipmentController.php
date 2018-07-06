@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Equipment;
 use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
+use Doctrine\DBAL\Exception\NotNullConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -59,8 +60,15 @@ class EquipmentController extends Controller
             $equipments = $em->getRepository(Equipment::class)->findAll();
             $nbEquipment = count($equipments);
             $equipment->setOrder($nbEquipment + 1);
-            $em->persist($equipment);
-            $em->flush();
+            try {
+                $em->persist($equipment);
+                $em->flush();
+            } catch (NotNullConstraintViolationException $exception) {
+                $this->addFlash('danger', 'Vous devez ajouter une image');
+                return $this->redirectToRoute('equipment_new', array('id' => $equipment->getId()));
+            }
+            $this->addFlash('success', $equipment->getName() . ' a été ajouté');
+
             return $this->redirectToRoute('equipment_index', array('id' => $equipment->getId()));
         }
         return $this->render(
@@ -143,6 +151,7 @@ class EquipmentController extends Controller
     {
         $form = $this->createDeleteForm($equipment);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($equipment);

@@ -9,9 +9,9 @@
         </div>
         <div class="container-fluid">
             <div class="col-xs-6 col-xs-offset-3">
-                {% for label, messages in app.flashes %}
+                {% for label, messages in app.flashes(['danger', 'success']) %}
                     {% for message in messages %}
-                        <div class="alert alert-danger text-center" role="alert">
+                        <div class="alert alert-{{ label }} text-center" role="alert">
                             {{ message }}
                         </div>
                     {% endfor %}

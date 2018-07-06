@@ -7,9 +7,9 @@
         </div>
         <div class="container-fluid">
             <div class="col-xs-6 col-xs-offset-3">
-                {% for label, messages in app.flashes %}
+                {% for label, messages in app.flashes(['danger', 'success']) %}
                     {% for message in messages %}
-                        <div class="alert alert-danger text-center" role="alert">
+                        <div class="alert alert-{{ label }} text-center" role="alert">
                             {{ message }}
                         </div>
                     {% endfor %}
@@ -40,13 +40,11 @@
                                 </a>
                             </td>
                             <td class="delete">
-                                <form action="{{ path('room_delete', { 'id': room.id }) }}" method="post">
-                                    <input type="hidden" name="_method" value="DELETE" />
-                                    {{ form_widget(delete_forms[room.id]) }}
-                                    <button type="submit" class="btn admin-btn">
-                                        <img src="/images/trash-alt-regular.svg" alt="Supprimer">
-                                    </button>
-                                </form>
+                                {{ form_start(deleteForms[room.id]) }}
+                                <button type="submit" class="btn admin-btn">
+                                    <img src="/images/trash-alt-regular.svg" alt="Supprimer">
+                                </button>
+                                {{ form_end(deleteForms[room.id]) }}
                             </td>
                         </tr>
                     {% endfor %}
