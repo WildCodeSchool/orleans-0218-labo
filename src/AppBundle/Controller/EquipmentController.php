@@ -64,10 +64,10 @@ class EquipmentController extends Controller
                 $em->persist($equipment);
                 $em->flush();
             } catch (NotNullConstraintViolationException $exception) {
-                $this->addFlash('danger','Vous devez ajouter une image');
+                $this->addFlash('danger', 'Vous devez ajouter une image');
                 return $this->redirectToRoute('equipment_new', array('id' => $equipment->getId()));
             }
-            $this->addFlash('success',$equipment->getName() . ' a été ajouté');
+            $this->addFlash('success', $equipment->getName() . ' a été ajouté');
 
             return $this->redirectToRoute('equipment_index', array('id' => $equipment->getId()));
         }
