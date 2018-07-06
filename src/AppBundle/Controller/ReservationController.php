@@ -136,7 +136,7 @@ class ReservationController extends Controller
 
                 return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
             } else {
-                $this->addFlash('Error', 'La date de debut ne peut pas être antérieure à celle de sortie');
+                $this->addFlash('Error', 'La date de sortie ne peut pas être antérieure à la date d\'entrée.');
                 return $this->redirectToRoute('reservation_new');
             }
         }
