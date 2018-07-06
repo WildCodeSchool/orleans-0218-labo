@@ -71,7 +71,7 @@ class Reservation
     /**
      * @var string
      *
-     * @ORM\Column(name="society", type="string", length=120)
+     * @ORM\Column(name="society", type="string", length=120, nullable=true)
      */
     private $society;
 
@@ -79,7 +79,7 @@ class Reservation
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=250)
+     * @ORM\Column(name="email", type="string", length=250, nullable=true)
      */
     private $email;
 

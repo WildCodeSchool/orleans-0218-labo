@@ -27,8 +27,14 @@ class ReservationType extends AbstractType
         $builder
             ->add('firstName', TextType::class, array('label'=> 'Prénom'))
             ->add('lastName', TextType::class, array('label'=> 'Nom'))
-            ->add('email', EmailType::class, array('label'=> 'Email'))
-            ->add('society', TextType::class, array('label'=> 'Société'))
+            ->add('email', EmailType::class, array(
+                'label'=> 'Email',
+                'required' => false,
+            ))
+            ->add('society', TextType::class, array(
+                'label'=> 'Société',
+                'required' => false,
+            ))
             ->add(
                 'reservationStart',
                 DateTimeType::class,

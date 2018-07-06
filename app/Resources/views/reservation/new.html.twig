@@ -63,7 +63,7 @@
                                         <div class="equipment">
                                             <p>{{ reservationEquipment.vars.value.equipment.name }}</p>
                                             <img class="img-circle" alt="image de l'équipement"
-                                                 src="{{ reservationEquipment.vars.value.equipment.picture }}"/>
+                                                 src="{{ asset('images/products/' ~ reservationEquipment.vars.value.equipment.picture) }}"/>
                                             <div class="row equipment-btns">
                                                 <div class="col-xs-4 row equipment-btns">
                                                     <input type="button" class="minus" value="-"
