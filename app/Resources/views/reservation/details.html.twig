@@ -22,6 +22,9 @@
                                             </div>
                                             <div class="col-xs-12 col-md-2 col-md-offset-1">
                                                 <h4>Société :</h4>
+                                                {% if reservation.society == false %}
+                                                    <p>Non renseigné</p>
+                                                {% endif %}
                                                 <p>{{ reservation.society }}</p>
                                             </div>
                                             <div class="col-xs-12 col-md-2">
@@ -34,6 +37,9 @@
                                             </div>
                                             <div class="col-xs-12 col-md-2">
                                                 <h4>Email :</h4>
+                                                {% if reservation.email == false %}
+                                                    <p>Non renseigné</p>
+                                                {% endif %}
                                                 <p>{{ reservation.email }}</p>
                                             </div>
                                         </div>
