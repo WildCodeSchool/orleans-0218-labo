@@ -7,38 +7,45 @@
                 <h2>Détails de l'équipement</h2>
             </div>
         </div>
+
         <div class="row spaceWhite"></div>
+
         <div class="row">
-            <div class="col-md-3 col-md-offset-2 text-center ">
+
+            <div class="col-xs-4 col-xs-offset-2 text-center ">
                 <img class="img-responsive imgSize"
-                    src="{{ vich_uploader_asset(equipment, 'imageFile') }}"
+                     src="{{ vich_uploader_asset(equipment, 'imageFile') }}"
                      alt="{{ equipment.name }}">
             </div>
-            <div class="col-md-6 text-justify">
-                <div class="row">
-                    <h3 class="col-md-8">{{ equipment.name }}</h3>
+
+            <div class="col-xs-6">
+                <div class="row text-center">
+                    <div class="col-xs-8">
+                        <h3>{{ equipment.name }}</h3>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-8">
-                    <p>{{ equipment.description }}</p>
+                <div class="row text-center ">
+                    <div class="col-xs-8">
+                        <p>{{ equipment.description }}</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row show-btn">
-            <div class="col-md-2 text-center ">
+            <div class="col-md-2 text-center margin-bottom-button">
                 <a type="button" class="btn btn-primary widhtButton" href="{{ path('equipment_index') }}">Retour</a>
             </div>
-            <div class="col-md-2 text-justify">
-                <a type="button" class="btn btn-warning widhtButton" href="{{ path('equipment_edit', { 'id': equipment.id }) }}">Modifier</a>
+            <div class="col-md-2 text-justify margin-bottom-button">
+                <a type="button" class="btn btn-warning widhtButton"
+                   href="{{ path('equipment_edit', { 'id': equipment.id }) }}">Modifier</a>
             </div>
-            <div class="col-md-2 text-justify">
-                    {{ form_start(delete_form) }}
-                    <button type="submit" class="btn btn-danger widhtButton">
-                        <i class="icon-trash"></i>
-                        Supprimer
-                    </button>
-                    {{ form_end(delete_form) }}
+            <div class="col-md-2 text-justify margin-bottom-button">
+                {{ form_start(delete_form) }}
+                <button type="submit" class="btn btn-danger widhtButton">
+                    <i class="icon-trash"></i>
+                    Supprimer
+                </button>
+                {{ form_end(delete_form) }}
             </div>
         </div>
     </div>

@@ -19,14 +19,14 @@ class AdminRoomController extends Controller
     /**
      * Lists all room entities.
      *
-     * @Route("/",    name="room_index")
+     * @Route("/", name="room_index")
      * @Method("GET")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $rooms = $em->getRepository('AppBundle:Room')->findAll();
+
         $deleteForms = array();
         foreach ($rooms as $room) {
             $deleteForms[$room->getId()] = $this->createDeleteForm($room)->createView();
@@ -35,8 +35,8 @@ class AdminRoomController extends Controller
         return $this->render(
             'admin/room/index.html.twig',
             array(
-            'rooms' => $rooms,
-            'delete_forms' => $deleteForms,
+                'rooms' => $rooms,
+                'deleteForms' => $deleteForms,
             )
         );
     }
@@ -135,8 +135,13 @@ class AdminRoomController extends Controller
      */
     private function createDeleteForm(Room $room)
     {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('room_delete', array('id' => $room->getId())))
+        return $this->createFormBuilder(null, ['csrf_field_name' => 'delete-room-' . $room->getId()])
+            ->setAction($this->generateUrl(
+                'room_delete',
+                array(
+                    'id' => $room->getId()
+                )
+            ))
             ->setMethod('DELETE')
             ->getForm();
     }
