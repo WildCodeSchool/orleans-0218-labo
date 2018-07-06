@@ -94,7 +94,7 @@ class ReservationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Reservation::class
+            'data_class' => Reservation::class,
         ));
     }
 
