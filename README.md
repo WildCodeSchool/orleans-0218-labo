@@ -1,72 +1,66 @@
-Symfony Standard Edition
+Lab'O project
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+[...]
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+System requirements
+-------------------
 
-What's inside?
---------------
+* PHP 7.1;
 
-The Symfony Standard Edition is configured with the following defaults:
+* Web-server (Apache or Nginx);
 
-  * An AppBundle you can use to start coding;
+* Database (MySQL/MariaDB or PostgreSQL);
 
-  * Twig as the only configured template engine;
+* composer https://getcomposer.org/doc/00-intro.md
 
-  * Doctrine ORM/DBAL;
+* npm https://www.npmjs.com/get-npm
 
-  * Swiftmailer;
 
-  * Annotations enabled for everything.
+How To Use
+----------
 
-It comes pre-configured with the following bundles:
+To clone and run this project, you'll need Git, Composer and NPM. From your command line:
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+*Clone this repository*
+gitclone https://github.com/WildCodeSchool/orleans-0218-labo.git
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+*Go to the project repertory*
+cd orleans-0218-labo
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+*Install dependencies*
+Before you continue, you must authorize you computer to connect to your mail account.
+Connect to a gmail account and go to "google account". Click on "connect to google validation in two steps", click on "start", click on "next".
+Then you must authenticate yourself with your mobile phone, and write the code you will receive.
+Click on "next", and activate.
+You will receive a confirmation message on your mobile phone.
+You have to go back on your google account and go to connection and security and click click on "connect to google".
+Click on "applications's password" (you have none yet). Approve the connection to the mobile phone, 
+select "other (personnalised name)", then generate.
+The generated password must be kept for the composer installation.
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+1) How to install composer :
+composer install (cli)
+Press enter for parameters : database_host, database_port
+Choose a name for database_name, then press enter.
+Chooser a name for database_user, or keep default name (root), then press enter.
+Enter your database password and press enter.
+Enter "gmail" in mailer_transport parameter, press enter.
+Enter "smtp.gmail.com" in mailer_host parameter, press enter.
+Enter an email address in mailer_user parameter, press enter.
+You have to fill mailer_password parameter with the previously generated password.
+For mailer_mail, do the same as with the mailer_user parameter, then press enter.
+Finally, press enter to keep the secret parameter default.
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+2) How to install npm:
+npm install (cli)
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+*Compile Webpack for CSS and JS*
+./node_modules/.bin/encore production (cli)
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+*Initiate Project*
+php bin/console doctrine:database:create (cli)
+php bin/console doctrine:schema:update --force (cli)
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
-
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.4/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.4/doctrine.html
-[8]:  https://symfony.com/doc/3.4/templating.html
-[9]:  https://symfony.com/doc/3.4/security.html
-[10]: https://symfony.com/doc/3.4/email.html
-[11]: https://symfony.com/doc/3.4/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
+*Launch Server PHP*
+php bin/console server:run or configure a web server (apache, nginx, ...).
