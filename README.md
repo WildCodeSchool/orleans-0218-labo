@@ -1,7 +1,13 @@
 Lab'O project
 ========================
 
-[...]
+The Lab'O project is a web application for the management of equipment loans and their return. The application
+can collect the loan details and the signature and agree on a date of return of the equipment. After a restitution, the 
+summary of the loan remains stored in archive for a period of three months before being deleted
+automatically. If the date of return is not respected, an automatic email is sent after a period of
+24h, every day until the return of the equipment.  
+
+The application's developpers : Anthony Sottejeau, Clément Paquin, Julia Limousin, Anthony Pointu, Quentin Picart.
 
 System requirements
 -------------------
@@ -20,7 +26,7 @@ System requirements
 How To Use
 ----------
 
-To clone and run this project, you'll need Git, Composer and NPM. From your command line:
+To clone and run this project, you'll need Git, Composer, NPM and Crontab. From your command line:
 
 *Clone this repository*
 gitclone https://github.com/WildCodeSchool/orleans-0218-labo.git
@@ -30,11 +36,12 @@ cd orleans-0218-labo
 
 *Install dependencies*
 Before you continue, you must authorize you computer to connect to your mail account.
-Connect to a gmail account and go to "google account". Click on "connect to google validation in two steps", click on "start", click on "next".
-Then you must authenticate yourself with your mobile phone, and write the code you will receive.
+Connect to a gmail account and go to "google account". Click on "connect to google validation in two steps", click on 
+"start", click on "next".
+Then you must authentificate yourself with your mobile phone, and write the code you will receive.
 Click on "next", and activate.
 You will receive a confirmation message on your mobile phone.
-You have to go back on your google account and go to connection and security and click click on "connect to google".
+You have to go back on your google account and go to connection and security and click on "connect to google".
 Click on "applications's password" (you have none yet). Approve the connection to the mobile phone, 
 select "other (personnalised name)", then generate.
 The generated password must be kept for the composer installation.
@@ -54,6 +61,10 @@ Finally, press enter to keep the secret parameter default.
 
 2) How to install npm:
 npm install (cli)
+
+3) Use crontab (in the cli)
+crontab -e 
+00 10 * * * php {path to project}/orleans-0218-labo/bin/console app.mailAuto
 
 *Compile Webpack for CSS and JS*
 ./node_modules/.bin/encore production (cli)
