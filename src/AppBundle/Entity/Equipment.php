@@ -56,8 +56,8 @@ class Equipment implements OrderInterface
      *
      * @Vich\UploadableField(mapping="product_image", fileNameProperty="picture", size="imageSize")
      * @Assert\File(
-     * maxSize="1000k",
-     * maxSizeMessage="Le fichier excède 1000Ko.",
+     * maxSize="2000k",
+     * maxSizeMessage="Le fichier excède 2000Ko.",
      * mimeTypes={"image/png", "image/jpeg", "image/jpg", "image/svg+xml", "image/gif"},
      * mimeTypesMessage= "formats autorisés: png, jpeg, jpg, svg, gif"
      * )
@@ -194,7 +194,7 @@ class Equipment implements OrderInterface
     {
         $this->reservationEquipments[] = $reservationEquipment;
     }
-    
+
     /**
      * Set order
      *
@@ -229,7 +229,7 @@ class Equipment implements OrderInterface
     {
         return $this->reservationEquipments;
     }
-    
+
     /**
      * Get order
      *

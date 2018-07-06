@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-3 col-md-offset-2 text-center ">
                 <img class="img-responsive imgSize"
-                    src="{{ asset('images/products/' ~ equipment.picture) }}"
+                    src="{{ vich_uploader_asset(equipment, 'imageFile') }}"
                      alt="{{ equipment.name }}">
             </div>
             <div class="col-md-6 text-justify">
