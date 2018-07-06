@@ -151,6 +151,7 @@ class EquipmentController extends Controller
     {
         $form = $this->createDeleteForm($equipment);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($equipment);

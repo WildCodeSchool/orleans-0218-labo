@@ -90,6 +90,7 @@ class ReservationType extends AbstractType
                     'expanded' => true,
                     'multiple' => false,
                     'required' => false,
+                    'placeholder' => 'Aucune salle'
                 ]
             );
     }
