@@ -164,9 +164,14 @@
                 </div>
 
                 <div class="row buttons">
-                    <div class="col-xs-12 col-md-2 col-md-offset-4 text-center">
+                    <div class="col-xs-12 col-md-2 col-xs-offset-3 text-center">
                         <a href="{{ path('reservation_new') }}">
                             <button type="button" class="btn btn-home">Retour</button>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-md-2 text-center">
+                        <a href="{{ path('reservation_edit_error', { 'id': reservation.id }) }}">
+                            <button type="button" class="btn btn-home">Modifier</button>
                         </a>
                     </div>
                     <div class="col-xs-12 col-md-2 text-center">

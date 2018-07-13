@@ -264,6 +264,37 @@ class ReservationController extends Controller
     }
 
     /**
+     * Displays a form to edit an existing reservation entity.
+     *
+     * @Route("/{id}/edit/reservation", name="reservation_edit_error")
+     * @Method({"GET", "POST"})
+     */
+    public function editReservationAction(Request $request, Reservation $reservation)
+    {
+        $deleteForm = $this->createDeleteForm($reservation);
+        $editForm = $this->createForm('AppBundle\Form\ReservationType', $reservation);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            if ($reservation->getReservationStart() < $reservation->getReservationEnd()) {
+                $this->getDoctrine()->getManager()->flush();
+
+                return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
+            } else {
+                $this->addFlash('Error', 'La date de debut ne peut pas être antérieure à celle de sortie');
+                return $this->redirectToRoute('reservation_edit_error', array('id' => $reservation->getId()));
+            }
+        }
+
+        return $this->render('reservation/edit.error.html.twig', array(
+            'reservation' => $reservation,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+
+    /**
      * Deletes a reservation entity.
      *
      * @Route("/{id}", name="reservation_delete")
