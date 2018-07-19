@@ -11,6 +11,9 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -34,6 +37,16 @@ class ReservationType extends AbstractType
             ->add('society', TextType::class, array(
                 'label'=> 'Société',
                 'required' => false,
+            ))
+            ->add('phone', IntegerType::class, array(
+                'label' => 'Numéro de téléphone',
+                'required' => false,
+            ))
+            ->add('commentary', TextareaType::class, array(
+                'label' => 'Commentaire',
+                'required' => false,
+                'attr' => array(
+                    'rows' => 5)
             ))
             ->add(
                 'reservationStart',
@@ -63,7 +76,7 @@ class ReservationType extends AbstractType
                 [
                     'class' => Staff::class,
                     'label' => 'Personnel d\'accueil',
-                    'placeholder' => 'Choisir un membre du personnel',
+                    'placeholder' => ' ',
                     'query_builder' => function (StaffRepository $sr) {
                         return $sr->createQueryBuilder('s')
                             ->orderBy('s.order', 'ASC');

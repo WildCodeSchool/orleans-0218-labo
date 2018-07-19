@@ -21,7 +21,8 @@ $(document).ready(function () {
         enableTime: true,
         altFormat: 'J F Y - H:i',
         time_24hr: true,
-        disableMobile: true
+        disableMobile: true,
+        defaultDate: Date.now(),
     });
 
     $('.flatpickr-input:visible').on('focus', function () {
