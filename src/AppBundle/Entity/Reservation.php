@@ -455,6 +455,4 @@ class Reservation
     {
         $this->phone = $phone;
     }
-
-
 }
