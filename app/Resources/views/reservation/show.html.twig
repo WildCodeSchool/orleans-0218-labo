@@ -145,7 +145,21 @@
                                 </div>
                             </div>
 
+                        {% if reservation.phone is not null or reservation.commentary is not null %}
+                        <div class="col-xs-12 col-md-12 vignette">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4>Numéro de téléphone : {% if reservation.phone is not null %} {{ reservation.phone }} {% else %} - {% endif %} </h4>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h4>Commentaire : {% if reservation.commentary is not null %}
+                                            {{ reservation.commentary }} {% else %}  -  {% endif %} </h4>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        {% endif %}
                         <div class="row text-center">
                             <div class="col-xs-12">
                                 {% if reservation.room is not null %}
@@ -178,7 +192,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
