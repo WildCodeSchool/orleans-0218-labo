@@ -21,7 +21,20 @@ $(document).ready(function () {
         enableTime: true,
         altFormat: 'J F Y - H:i',
         time_24hr: true,
-        disableMobile: true
+        disableMobile: true,
+
+    });
+
+    flatpickr('.start', {
+        utc: false,
+        locale: French,
+        altInput: true,
+        enableTime: true,
+        altFormat: 'J F Y - H:i',
+        time_24hr: true,
+        disableMobile: true,
+        defaultDate: Date.now(),
+
     });
 
     $('.flatpickr-input:visible').on('focus', function () {

@@ -75,6 +75,20 @@ class Reservation
      */
     private $society;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="commentary", type="text", nullable=true)
+     */
+    private $commentary;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", nullable=true)
+     * @Assert\Regex(pattern="/^[0-9]*$/", message="chiffres uniquement")
+     */
+    private $phone;
 
     /**
      * @var string
@@ -409,5 +423,37 @@ class Reservation
     public function getReservationOver()
     {
         return $this->reservationOver;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCommentary()
+    {
+        return $this->commentary;
+    }
+
+    /**
+     * @param string $commentary
+     */
+    public function setCommentary($commentary)
+    {
+        $this->commentary = $commentary;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
     }
 }

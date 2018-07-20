@@ -27,7 +27,7 @@
                         {{ form_row(edit_form.email) }}
                     </div>
                     <div class="col-sm-3 col-xs-12">
-                        {{ form_row(edit_form.reservationStart, { 'attr': {'class': 'start'}}) }}
+                        {{ form_row(edit_form.reservationStart) }}
                         {{ form_row(edit_form.reservationEnd) }}
                     </div>
                     <div class="col-sm-3 col-xs-12">
@@ -96,10 +96,10 @@
 
         <div class="row">
             <div class="col-xs-2 col-xs-offset-3 text-center">
-                <a href="{{ path('reservation_details', { 'id': reservation.id }) }}" role="button" class="btn btn-primary">Retour</a>
+                <a href="{{ path('homepage') }}" role="button" class="btn btn-primary">Annuler</a>
             </div>
 
-            <div class="col-xs-2 col-xs-offset-1 text-center">
+            <div class="col-xs-2 col-xs-offset-2 text-center">
                 <input type="submit" class="btn btn-primary" value="Valider"/>
             </div>
         </div>

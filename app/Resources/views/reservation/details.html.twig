@@ -106,7 +106,7 @@
                                                     <img src="/images/key.svg" alt="key" class="icon">
                                                 </div>
                                                 <div class="col-xs-10">
-                                                    <p>Clé remise</p>
+                                                    <p>Clef remise</p>
                                                 </div>
                                             {% endif %}
                                         </div>
@@ -168,10 +168,31 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-xs-12 col-md-12 vignette">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h4>Numéro de téléphone :</h4>
+                                                {% if reservation.phone == false %}
+                                                    <p>Non renseigné</p>
+                                                {% else %}
+                                                    <p>{{ reservation.phone }}</p>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h4>Commentaire :</h4>
+                                                {% if reservation.commentary == false %}
+                                                    <p>Non renseigné</p>
+                                                {% else %}
+                                                    <p>{{ reservation.commentary }}</p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
