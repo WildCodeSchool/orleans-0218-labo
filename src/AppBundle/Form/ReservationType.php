@@ -38,7 +38,7 @@ class ReservationType extends AbstractType
                 'label'=> 'Société',
                 'required' => false,
             ))
-            ->add('phone', IntegerType::class, array(
+            ->add('phone', TextType::class, array(
                 'label' => 'Numéro de téléphone',
                 'required' => false,
             ))
