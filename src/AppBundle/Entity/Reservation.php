@@ -78,7 +78,7 @@ class Reservation
     /**
      * @var string
      *
-     * @ORM\Column(name="commentary", type="string", length=120, nullable=true)
+     * @ORM\Column(name="commentary", type="text", nullable=true)
      */
     private $commentary;
 
