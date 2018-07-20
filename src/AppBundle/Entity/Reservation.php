@@ -85,7 +85,8 @@ class Reservation
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="integer", nullable=true)
+     * @ORM\Column(name="phone", type="string", nullable=true)
+     * @Assert\Regex(pattern="/^[0-9]*$/", message="chiffres uniquement")
      */
     private $phone;
 
