@@ -181,15 +181,17 @@
                                                 <h4>Numéro de téléphone :</h4>
                                                 {% if reservation.phone == false %}
                                                     <p>Non renseigné</p>
-                                                {% endif %}
+                                                {% else %}
                                                 <p>{{ reservation.phone }}</p>
+                                                {% endif %}
                                             </div>
                                             <div class="col-md-8">
                                                 <h4>Commentaire :</h4>
                                                 {% if reservation.commentary == false %}
                                                     <p>Non renseigné</p>
-                                                {% endif %}
+                                                {% else %}
                                                 <p>{{ reservation.commentary }}</p>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>
